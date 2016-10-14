@@ -4,4 +4,4 @@ My website.
 
 - Hosted on GitLab Pages
 - Build with [Hexo](http://hexo.io)
-- Theme: [Hueman](https://github.com/ppoffice/hexo-theme-hueman)
+- Theme: [Icarus](https://github.com/ppoffice/hexo-theme-icarus)
