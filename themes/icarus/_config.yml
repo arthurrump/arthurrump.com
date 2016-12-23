@@ -12,11 +12,11 @@ customize:
         height: 40
         url: 
     profile:
-        enabled: false # Whether to show profile bar
+        enabled: true # Whether to show profile bar
         avatar: 
         gravatar: arthurrump@outlook.com
         author: Arthur Rump
-        author_title: C# Developer for Windows and the Web
+        short_bio: Writing C# for Windows and the web, while also spending time on some thing called school.
         location: Groningen, the Netherlands
         follow: https://twitter.com/arthurrump/
     highlight: monokai
@@ -24,9 +24,9 @@ customize:
     thumbnail: false # enable posts thumbnail, options: true, false
     favicon: # path to favicon
     social_links:
+        twitter: https://twitter.com/arthurrump
         github: https://github.com/arthurrump
         gitlab: https://gitlab.com/arthurrump
-        twitter: https://twitter.com/arthurrump
         rss: /feed.xml
     social_link_tooltip: false # enable the social link tooltip, options: true, false
 
@@ -37,7 +37,7 @@ widgets:
     #- archive
     - tag
     #- tagcloud
-    - links
+    #- links
 
 # Search
 search:
@@ -56,7 +56,7 @@ share: default # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
-    lightgallery: true # options: true, false
+    lightgallery: false # options: true, false
     google_analytics: # enter the tracking ID for your Google Analytics
     google_site_verification: # enter Google site verification code
     baidu_analytics: # enter Baidu Analytics hash key
@@ -68,8 +68,3 @@ miscellaneous:
         fb_admins:
         twitter_id:
         google_plus:
-    links:
-        Twitter: https://twitter.com/arthurrump
-        GitHub: https://github.com/arthurrump
-        GitLab: https://gitlab.com/arthurrump
-        RSS: /feed.xml

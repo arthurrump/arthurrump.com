@@ -1,6 +1,3 @@
-.bio
-    text-align: center
-
 #profile .inner .bio h2
     font-size: 1.3em
     font-weight: bold
@@ -19,10 +16,7 @@
         border-bottom: none
 
 #profile
-    column(profile-column)
-    display: none
-    @media mq-normal
-        display: block
+    display: block
     .inner
         @extend $block
         margin-top: block-margin
@@ -33,12 +27,14 @@
                 margin: 10px auto 20px
                 width: profile-avatar-size
                 height: profile-avatar-size
-            #name, #title, #location
+            #name, #short-bio, #location
                 display: block
                 text-align: center
             #name
                 font-size: 20px
                 font-weight: 600
+            #short-bio
+                margin-top: 10px
             #location
                 font-size: font-size - 2
                 margin-top: 5px

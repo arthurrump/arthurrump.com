@@ -42,7 +42,6 @@ article-padding = 20px
 mobile-nav-width = 280px
 main-column = 7
 sidebar-column = 3
-profile-column = 3
 sidebar-column-tablet = 4
 
 if sidebar
@@ -50,19 +49,14 @@ if sidebar
 else
     _sidebar-column = 0
 
-if profile
-    _profile-column = profile-column
-else
-    _profile-column = 0
-
 // Grids
 column-width = 80px
 gutter-width = 20px
-if _sidebar-column is 0 and _profile-column is 0
+if _sidebar-column is 0
     columns = 10
     main-column = 10
 else
-    columns = main-column + _sidebar-column + _profile-column
+    columns = main-column + _sidebar-column
 
 if sidebar
     main-column-tablet = 6

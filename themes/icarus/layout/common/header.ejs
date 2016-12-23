@@ -10,17 +10,6 @@
                     <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
                 <% } %>
             </nav>
-            <% if(theme.customize.profile && theme.customize.profile.enabled) { %>
-                <% var profile = theme.customize.profile; %>
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="<%= ( profile.gravatar ? gravatar(profile.gravatar) : url_for(profile.avatar)) %>" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            <% } %>
             <%- partial('search/index') %>
         </div>
     </div>
