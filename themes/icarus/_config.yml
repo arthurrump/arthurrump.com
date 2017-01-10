@@ -27,6 +27,7 @@ customize:
         twitter: https://twitter.com/arthurrump
         github: https://github.com/arthurrump
         gitlab: https://gitlab.com/arthurrump
+        stack-overflow: https://stackoverflow.com/story/arthurrump
         rss: /feed.xml
     social_link_tooltip: false # enable the social link tooltip, options: true, false
 
