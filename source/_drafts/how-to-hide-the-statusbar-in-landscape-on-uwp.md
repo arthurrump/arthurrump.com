@@ -7,9 +7,11 @@ tags:
   - Windows 10 Mobile
 ---
 
+Windows 10 Mobile has lost a lot of the awesome UI/UX from the good ol' Windows Phone 7 era, but there's one thing that they kept around: the enormous amount of space the statusbar takes up in landscape view. I still love the look and feel of the old Windows Phone, but this thing has been bugging me since, well, my first smartphone.
+
 {% asset_img wp7.jpg "The StatusBar on WP7 (screenshots were impossible, back then)" %}
 
-Windows 10 Mobile has lost a lot of the awesome UI/UX from the good ol' Windows Phone 7 era, but there's one thing that they kept around: the enormous amount of space the statusbar takes up in landscape view. I love the feel of the old Windows Phone, but this thing has been bugging me since, well, my first smartphone and when building an app, I prefer to just hide the statusbar when the user goes into landscape mode. However, in portrait mode, the statusbar should be there. Here's my solution:
+In my apps, I prefer to hide the statusbar when the user goes into landscape mode, but just let it stay where it is when in portrait mode. It includes some useful information, after all, and in portrait the amount of used space is acceptable. Here's my solution:
 
 ------
 tl;dr:
@@ -48,7 +50,7 @@ else
     await statusBar.ShowAsync();
 ```
 
-We want to execute this every time the orientation of the device changes, but unfortunately there is no `OrientationChanged` event. What we want to use is the `Window.Current.SizeChanged` event in the `Windows.UI.Xaml` namespace. We can hook this all up this way:
+We want to execute this every time the orientation of the device changes, but unfortunately, there is no `OrientationChanged` event. What we want to use is the `Window.Current.SizeChanged` event in the `Windows.UI.Xaml` namespace. We can hook this all up this way:
 
 ```csharp
 Window.Current.SizeChanged += async (sender, e) =>
@@ -77,13 +79,15 @@ if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
 }
 ```
 
-Finally, where should we place this snippet? I want my entire application to behave this way, so I put the code to set this up in the `OnInitializeAsync()` method of the [Template 10](https://aka.ms/template10) BootStrapper. You can also choose to enable this functionality later in the runtime of your app. I'd recommend moving the event handler into it's own method, so the functionality can easily be disabled by unsubscribing the event:
+Finally, where should we place this snippet? I want my entire application to behave this way, so I put the code to set this up in the `OnInitializeAsync()` method of the [Template 10](https://aka.ms/template10) BootStrapper. You can also choose to enable this functionality later in the runtime of your app. I'd recommend moving the event handler into its own method, so the functionality can easily be disabled by unsubscribing the event:
 
 ```csharp
 Window.Current.SizeChanged += HideStatusBarIfLandscape;
 Window.Current.SizeChanged -= HideStatusBarIfLandscape; // Disabling by unsubscribing
 ```
 
-Let's take back our valuable screen estate and hide that massive statusbar!
+In this case, you should also check for availability of the statusbar, before subscribing to the event. If the code inside the handler won't run anyway, subscribing is just unnecessary overhead.
+
+I think this little snippet of code belongs in almost every app, and I'll definitely use it in most of mine.
 
 *Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*
