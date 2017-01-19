@@ -75,6 +75,14 @@ nofollow:
   enable: true
   exclude: 
 
+imagemin:
+  enable: true
+  interlaced: true
+  multipass: true
+  optimizationLevel: 3
+  pngquant: false
+  progressive: false
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
