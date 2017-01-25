@@ -77,7 +77,7 @@ nofollow:
 
 imagemin:
   enable: true
-  interlaced: true
+  interlaced: false
   multipass: true
   optimizationLevel: 3
   pngquant: false
