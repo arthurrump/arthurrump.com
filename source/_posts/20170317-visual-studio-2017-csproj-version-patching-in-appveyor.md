@@ -1,13 +1,15 @@
 ---
 title: Visual Studio 2017 .csproj version patching in AppVeyor
 category:
-- .NET
+  - .NET
 tags:
-- .NET
-- .csproj
-- AppVeyor
-- Continuous Deployment
+  - .NET
+  - .csproj
+  - AppVeyor
+  - Continuous Deployment
+date: 2017-03-17 19:10:16
 ---
+
 
 After the debacle with project.json and .xproj, Microsoft settled on a simpler, more modern version of the old .csproj project system with Visual Studio 2017. One of the changes advanced users will notice when creating a new project in Visual Studio 2017, is the absence of AssemblyInfo.cs. You can add it back yourself, if you want to use some advanced options that aren't available in .csproj, like the ability to make internal types visible to other assemblies, but by default, it's gone.
 
