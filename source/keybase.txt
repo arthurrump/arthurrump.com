@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/arthurrump
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.arthurrump.com
+  * I am arthurrump (https://keybase.io/arthurrump) on keybase.
+  * I have a public key with fingerprint 57D5 3A28 6D09 D83A C46E  ADCE C7D1 0EA2 ADD5 900B
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120efbd0c73d0e82d6fe193ba31f086a208ae43cc6b320abf55cf495baf8ad460a80a",
+            "fingerprint": "57d53a286d09d83ac46eadcec7d10ea2add5900b",
+            "host": "keybase.io",
+            "key_id": "c7d10ea2add5900b",
+            "kid": "0101fa722d0343f56286f2c3f4c72245d738c6a8d3d0e5db44a38bdf769da46a5eae0a",
+            "uid": "75abbc7002a87b83c3b471c9ea305f19",
+            "username": "arthurrump"
+        },
+        "service": {
+            "hostname": "www.arthurrump.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1493921548,
+    "expire_in": 157680000,
+    "prev": "77a0485cdf7aefa1e6304c4bf8c99406f2abbe597a03173a2f085de46298f5ac",
+    "seqno": 10,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.70
+Comment: https://keybase.io/crypto
+
+yMNzAnicbVJ9TFVlGL9X0K3LRzYrCQTpNImv4fn+oMaAZoA3giJBvMn1Pee8B04X
+7r2dey4flw9NsDWn1GLaAkV3QW18wyCQpemVoQ4tLDBtakJZl42yRSwH03UO0/VP
+7z/v3uf9/X7P83ueZywkwGAyXrwW6u2e/iTIOHH+uNtQGOQIrkZ4h1iFJFcjNrhy
+wVIRulSrTRaRZATFcBRKvIgKDCGikMVFWoIYR/CAwCSUpQGOsgCShCDQPIGjgJco
+SpBIjuKBxAKRpFHAogBJRCTZXgwVpyLbVU2WYkSKADhLiygnsgQQSBoCUYACI2Io
+BDgQRYpDUV4jljhcOkMrjgcumCQ7tJj2sK6U9z/4J3WjmAQYHBdRgiQkitZySbhA
+SKSgBUlKZAhWoAEr6q4okSdJQLC8KDE0JwKSBhQEcKVu94ocQwGeFxgUxQHL8Cwh
+EDzJYAIHAYFSEsbpQBdU7KAMamigqCVuRXGXOZHaRESLl8sC1Fure3mMqaioSPoP
+lyQ4yjQNp+JQHYKjVPsvUVWnK1nnq1XOFQLkrY+lrLxsF7V+aoxyqLhkhx1JxjSk
+oMq6NkZyBIdjFMkmIrDSKSvQKusIiqFZVDt6Hliuu2IASrKUoNkGUAIYpAmUFEhe
+YgWOI1GtYZprSHEajMAYbV7axCkRkjTOsRIFBEQ3977doWlroioo1jRdcrEdqG4F
+IrW+8+8GGowmw5rVq/RFM5ieWvtk/Tpi1xrOZJ6uaa3cMpO7wZq1ztP0zuSHz40Y
+zXmLd6fi1tdXf2M3GRYrZ/1jnfv9wVfHDCduFc5+0LtpZ3u4lyqLppf9k8P/3PC1
+2aan4dx+b+jUiPuPV7pT6+29e451+yND6bDlhPs3W0YeDHjjj9bsO5c2dQhmpX/v
+uxAS8/wvbee6exoi/X119fP2FNtoa9NBMf3gxg2deWt7Ug69QAUWfdl0LaPHEv5i
+f92VHQXwI/ansPC51uNplr7VA0zNHjXj0vKxLQvPgNNHhogic1B8e9ftH9/69b2H
+4RdyGrO8bYPjRGOvd9uJmJylJLm12ZYnDO4aTuzoukdIjV8v7L7cHH9qMjvw7ETs
+qxEja/7s23UmxHLWF7vV4Ny8L7IzbtSweHOUa4DP5re8aQ47YLhd9dUgNp/VkXvr
+L+/M3bdPfqdGFNGN26LmZ2qEKk927GJ7Ef7G2L3DL4M8b8LneKEyfWWyxPhxWDy5
+Ny0s1WkLWO59KWfdgSl+e6k5va/6KNuSkNHvtw1Heybx9ScfzVlMC8aJmJj8gsov
+rnax3GZzx8XaBxGzO1IXfoj6dG//QEBdcNVvg08vDXksu33U/J2GktYj95d+/7kh
+auOmzqFLndnY+I3r45Fb86874xY8/tro1wK2r3K/zn/2rblgcMqy8/LDfFPueEpc
+ptNnqsm803w4UCkb+vuR59S/8vXF4A==
+=dn35
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/arthurrump
+
+==================================================================
