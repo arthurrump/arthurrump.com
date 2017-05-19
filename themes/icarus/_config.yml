@@ -58,9 +58,8 @@ share: default # options: jiathis, bdshare, addtoany, default
 # Plugins
 plugins:
     lightgallery: false # options: true, false
-    google_analytics: # enter the tracking ID for your Google Analytics
+    piwik_analytics: analytics.arthurrump.com # enter the url for your Piwik instance
     google_site_verification: # enter Google site verification code
-    baidu_analytics: # enter Baidu Analytics hash key
 
 # Miscellaneous
 miscellaneous:

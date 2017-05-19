@@ -2,14 +2,11 @@
     <% if (theme.plugins.lightgallery) { %>
         <%- css('vendor/lightgallery/css/lightgallery.min') %>
     <% } %>
-    <% if (theme.plugins.google_analytics) { %>
-        <%- partial('plugin/google-analytics') %>
+    <% if (theme.plugins.piwik_analytics) { %>
+        <%- partial('plugin/piwik-analytics') %>
     <% } %>
     <% if (theme.plugins.google_site_verification) { %>
         <meta name="google-site-verification" content="<%= theme.plugins.google_site_verification %>" />
-    <% } %>
-    <% if (theme.plugins.baidu_analytics) { %>
-        <%- partial('plugin/baidu-analytics') %>
     <% } %>
 <% } else { %>
     <% if (theme.plugins.lightgallery) { %>
