@@ -22,7 +22,6 @@ customize:
     highlight: monokai
     sidebar: right # sidebar position, options: left, right
     thumbnail: false # enable posts thumbnail, options: true, false
-    favicon: # path to favicon
     social_links:
         twitter: https://twitter.com/arthurrump
         github: https://github.com/arthurrump
