@@ -29,19 +29,20 @@
     }) %>
     <%- meta(page) %>
 
+    <link rel="canonical" href="<%- _.trimEnd(url, 'index.html') %>" />
     <% if (theme.customize && theme.customize.social_links && theme.customize.social_links.rss) { %>
         <link rel="alternate" href="<%- theme.customize.social_links.rss %>" title="<%= config.title %>" type="application/atom+xml" />
     <% } %>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="apple-mobile-web-app-title" content="Arthur Rump">
-    <meta name="application-name" content="Arthur Rump">
-    <meta name="msapplication-TileColor" content="#64ab1e">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-    <meta name="theme-color" content="#64ab1e">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-title" content="Arthur Rump" />
+    <meta name="application-name" content="Arthur Rump" />
+    <meta name="msapplication-TileColor" content="#64ab1e" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="theme-color" content="#64ab1e" />
 
     <%- css('vendor/font-awesome/css/font-awesome.min') %>
     <%- css('vendor/open-sans/styles') %>
