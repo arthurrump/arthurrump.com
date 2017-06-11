@@ -69,7 +69,7 @@ feed:
   type: rss2
   path: feed.xml
   limit: 0
-  hub:
+  hub: http://arthurrump.superfeedr.com/
 
 nofollow:
   enable: true
