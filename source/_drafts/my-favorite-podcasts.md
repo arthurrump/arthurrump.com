@@ -12,12 +12,12 @@ I enjoy listening to podcasts. Where others listen to music with everything they
 There are a ton of developer podcasts out there, but there are four that I keep listening to:
 
 ### Hanselminutes
-Subtitled *Fresh Air for Developers*, Hanselminutes by Scott Hanselman is exactly that. Every week a new 30 minutes episode gets published, in which Scott interviews, developers, other people in the tech-industry, or his wife. Sometimes that leads to a great technical discussion, at other times it's more of a lifestyle podcast. Scott asks all the right questions and makes sure his audience is staying with him, by clarifying all acronyms. A very refreshing podcast.
+Subtitled *Fresh Air for Developers*, Hanselminutes by Scott Hanselman is exactly that. Every week a new 30 minutes episode gets published, in which Scott interviews, developers, other people in the tech industry, or his wife. Sometimes that leads to a great technical discussion, at other times it's more of a lifestyle podcast. Scott asks all the right questions and makes sure his audience is staying with him, by clarifying all acronyms. A very refreshing podcast.
 
 Listen to Hanselminutes: [website](https://hanselminutes.com/), [feed](https://hanselminutes.com/subscribe)
 
 ### The Stack Overflow Podcast
-Hosted by Joel Spolsky, the CEO of Stack Overflow, and his team, the Stack Overflow Podcast gives insight into the inner workings of the Stack Overflow company and every time there are great interviews with SO employees or developers outside the company, as a part of the Developer Story promotion. With returning segments like Joel's rant, the one-minute tech review (which is rarely 1 minute), discussion of the news, the preperation of a Stack Overflow Constitution (you can vote too!), and games like Start-up or Shut up or Stump Nick Craver, this podcast is an hilarious addition to every developer's podcast library.
+Hosted by Joel Spolsky, the CEO of Stack Overflow, and his team, the Stack Overflow Podcast gives insight into the inner workings of the Stack Overflow company and great interviews with SO employees or developers outside the company, as a part of the Developer Story. With returning segments like Joel's rant, the one-minute tech review (which is rarely 1 minute), discussion of the news, the preparation of a Stack Overflow Constitution (you can vote too!), and games like Start-up or Shut up or Stump Nick Craver, this podcast is an hilarious addition to every developer's podcast library.
 
 Listen to The Stack Overflow Podcast: [website](https://stackoverflow.blog/podcasts/), [SoundCloud](https://soundcloud.com/stack-exchange), [feed](http://blog.stackoverflow.com/feed/podcast/)
 
@@ -27,7 +27,7 @@ In over 1400 episodes since 2002, thanks to their rapid release schedule of 2, p
 Listen to .NET Rocks: [website](http://dotnetrocks.com/), [feed](http://www.pwop.com/feed.aspx?show=dotnetrocks&filetype=master)
 
 ### MS Dev Show
-Every week Carl Schweitzer and Jason Young discuss everything related to development on the Microsoft stack. With coverage of the latest technology news and a game for 4-year-olds at the end, the MS Dev Show is a very complete podcast to stay up to date with everything happening in the Microsoft development world. For those who prefer to see faces of the people talking, a video version is hosted on [Channel 9](https://channel9.msdn.com/Shows/msdevshow).
+Every week Carl Schweitzer and Jason Young discuss everything related to development on the Microsoft stack with their guests. With coverage of the latest technology news and a game for 4-year-olds at the end, the MS Dev Show is a complete podcast to stay up to date with everything happening in the Microsoft development world. For those who prefer to see faces of the people talking, a video version is hosted on [Channel 9](https://channel9.msdn.com/Shows/msdevshow).
 
 Listen to the MS Dev Show: [website](http://msdevshow.com/), [feed](http://msdevshow.libsyn.com/rss)
 
@@ -35,7 +35,7 @@ Listen to the MS Dev Show: [website](http://msdevshow.com/), [feed](http://msdev
 With a great variety of technology and science.
 
 ### The New Screen Savers
-I'm not old enough, nor American enough, to remember The Screen Savers show on the TechTV channel, but I'm still happy that Leo Laporte revived the show on TWiT.tv with The New Screen Savers. Hosted by Leo, other members of the TWiT crew, and guests, this podcast features the latest in science and technology. Technology questions from listeners get answered in the Call for Help segments, and throughout the show segments with tips on technology get played. I recommend watching the show, as it's more of a TV-show than a podcast, even though it's distributed that way.
+I’m not old enough, nor American enough, to remember The Screen Savers show on the TechTV channel, but I’m still happy that Leo Laporte revived the show on TWiT.tv with The New Screen Savers. Hosted by Leo, other members of the TWiT crew, and guests, this podcast features the latest in science and technology. Technology questions from listeners get answered in the Call for Help segments, and throughout the show, small segments with tips on technology get shown. I recommend watching the show, as it’s more of a TV-show than a podcast, even though it’s distributed that way.
 
 Watch The New Screen Savers: [website](https://twit.tv/shows/new-screen-savers)
 
@@ -48,12 +48,12 @@ Listen to .NET Rocks Geek Outs: [website](http://dotnetrocks.com/), [feed](http:
 With four of my favorite Windows-journalists.
 
 ### Windows Weekly
-With Leo Laporte, one of the best podcast producers, and Paul Thuorrott and Mary Jo Foley, two of the best Microsoft-journalists, this podcast has been the podcast to stay up to date with Microsoft for many years. They focus mostly on the consumer side of Microsoft products, but don't be surprised when Mary Jo sneaks in some enterprise news. I usually watch the show live, on [TWiT Live](https://twit.tv/live).
+With Leo Laporte, one of the best podcast producers, and Paul Thurrott and Mary Jo Foley, two of the best Microsoft-journalists, this podcast has been the podcast to stay up to date with Microsoft for many years. They focus mostly on the consumer side of Microsoft products, but don't be surprised when Mary Jo sneaks in some enterprise news. I usually watch the show live, on [TWiT Live](https://twit.tv/live).
 
 Listen to Windows Weekly: [website](https://twit.tv/shows/windows-weekly), [feed](http://feeds.twit.tv/ww.xml)
 
 ### Windows Central Podcast
-[Windows Central](https://www.windowscentral.com) is my go-to site for Windows coverage and I love their podcast. Daniel Rubino and Zac Bowden talk about the latest Windows Insider builds and the newest laptop reviews, and of course the occasional scoop about an unreleased Surface or Lumia. You can watch the show live on their [Mixer channel](https://mixer.com/windowscentral) and stay around till the end to ask your questions. But please, don't ask about the Surface Phone.
+[Windows Central](https://www.windowscentral.com) is my go-to site for Windows coverage and I love their podcast. Daniel Rubino and Zac Bowden talk about the latest Windows Insider builds and the newest laptop reviews, and of course the occasional scoop about an unreleased Surface or Lumia. You can watch the show live on their [Mixer channel](https://mixer.com/windowscentral) and stay around untill the end to ask your questions. But please, don't ask about the Surface Phone.
 
 Listen to the Windows Central Podcast: [website](https://www.windowscentral.com/podcast), [feed](http://windowscentral.libsyn.com/rss)
 
@@ -69,7 +69,7 @@ Listen to The Bugle: [website](http://thebuglepodcast.com/), [feed](http://feeds
 The Dutch podcast scene isn't that big, but I've found some very good ones.
 
 ### De Rudi & Freddie Show
-Rutger Bregman and Jesse Frederik of the Dutch journalism platform De Correspondent discuss politics, economics, and the workings of the world, in a new episode roughly every other week. They provide genuine insights and suggest improvements that should be made to make the world work better. They can explain the most ridicilous things so everyone understands and sketch a world that you don't see in the news. This is a podcast everyone should listen to, no matter what your interests are. (As long as you understand Dutch.)
+Rutger Bregman and Jesse Frederik of the Dutch journalism platform De Correspondent discuss politics, economics, and the workings of the world, in a new episode roughly every other week. They provide genuine insights and suggest improvements that should be made to make the world work better. They can explain the most ridiculous things so everyone understands and sketch a world that you don't see in the news. This is a podcast everyone should listen to, no matter what your interests are. (As long as you understand Dutch.)
 
 Listen to De Rudi & Freddie Show: [website](https://decorrespondent.nl/podcasts), [SoundCloud](https://soundcloud.com/rudifreddieshow), [feed](http://feeds.soundcloud.com/users/soundcloud:users:264167152/sounds.rss)
 
