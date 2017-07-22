@@ -1,6 +1,6 @@
 <div class="timeline timeline-wrap">
     <% var last;
-    page.posts.each(function(post, i) {
+    site.posts.sort('date', -1).each(function(post, i) {
         var year = post.date.year();
         if (last != year) {
             last = year; %>
@@ -22,11 +22,3 @@
         </div>
     <% }); %>
 </div>
-<% if (page.total > 1) { %>
-    <nav id="page-nav">
-        <%- paginator({
-            prev_text: '&laquo; ' + __('nav.prev'),
-            next_text: __('nav.next') + ' &raquo;'
-        }) %>
-    </nav>
-<% } %>
