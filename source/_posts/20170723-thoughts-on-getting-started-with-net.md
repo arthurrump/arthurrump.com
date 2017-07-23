@@ -1,5 +1,6 @@
 ---
 title: "\"Good explanation, but now what?\" - Thoughts on getting people started with .NET"
+date: 2017-07-23 21:41:14
 category: 
   - .NET
 tags:
