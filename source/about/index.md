@@ -7,6 +7,6 @@ Being born in the last year of the previous millennium, Arthur has been using co
 
 After some fiddling with GameMaker and Visual Basic, Arthur has been programming in C# since his fourteenth. Up to today, C# remains his favorite programming language, despite various experiments with other languages. Most of his time is spent programming for UWP, even though he enjoys working with ASP.NET Core too.
 
-Other than programming languages, Arthur also speaks Dutch (natively), English (reasonably well) and German (quite okay) and when he's not programming he enjoys to read fantasy and science fiction, listen to [a good podcast](/2017/07/10/my-favorite-podcasts), play with his dogs, or write about himself in the third person.
+Other than programming languages, Arthur also speaks Dutch, English and a tiny bit of German. When he's not programming he enjoys to read fantasy and science fiction, listen to [a good podcast](/2017/07/10/my-favorite-podcasts), play with his dogs, or write about himself in the third person.
 
-You can reach Arthur on Twitter: [@ArthurRump](https://twitter.com/ArthurRump).
+You can reach Arthur on Twitter ([@ArthurRump](https://twitter.com/ArthurRump)) or <hello@arthurrump.com>.
