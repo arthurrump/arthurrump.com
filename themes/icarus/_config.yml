@@ -16,8 +16,8 @@ customize:
         avatar: 
         gravatar: arthurrump@outlook.com
         author: Arthur Rump
-        short_bio: Writing C# for Windows and the web, while also spending time on some thing called school.
-        location: Groningen, the Netherlands
+        short_bio: Always writing C#, and sometimes studying Technical Computer Science.
+        location: Enschede, the Netherlands
         follow: https://twitter.com/arthurrump/
     highlight: monokai
     sidebar: right # sidebar position, options: left, right
