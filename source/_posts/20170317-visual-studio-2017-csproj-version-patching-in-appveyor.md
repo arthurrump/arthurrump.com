@@ -12,6 +12,7 @@ date: 2017-03-17 19:10:16
 
 
 After the debacle with project.json and .xproj, Microsoft settled on a simpler, more modern version of the old .csproj project system with Visual Studio 2017. One of the changes advanced users will notice when creating a new project in Visual Studio 2017, is the absence of AssemblyInfo.cs. You can add it back yourself, if you want to use some advanced options that aren't available in .csproj, like the ability to make internal types visible to other assemblies, but by default, it's gone.
+<!-- more -->
 
 This brings us to the topic of this post: the awesome [AppVeyor](https://www.appveyor.com/) Continuous Delivery service. One of the features offered by AppVeyor is so-called AssemblyInfo patching, which could change the version of your assembly to the one set in `appveyor.yml`, so the build number could be included, for example. However, with AssemblyInfo.cs no longer there, this feature, of course, won't work and you'll have to change your version number manually. Luckily, it's pretty easy:
 

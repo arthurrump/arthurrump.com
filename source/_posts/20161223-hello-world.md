@@ -13,6 +13,7 @@ Console.WriteLine("Hello world!");
 ```
 
 I'd like to use the opportunity of this first post to tell about the technology behind this blog, as that's something I'm always interested in myself. This website is build using the [Hexo](https://hexo.io/) static site generator, hosted on [GitLab Pages](https://pages.gitlab.io/). The theme is based on Icarus, which can be found [here on GitHub](https://github.com/ppoffice/hexo-theme-icarus) (MIT License). All the changes I've made are available via [the repo](https://gitlab.com/arthurrump/arthurrump.gitlab.io) for this site.
+<!-- more -->
 
 Using a static site generator isn't a choice I expected to make. I've tried lots of other options before going with Hexo, and with all of them, there was something I just didn't like. And there's always the problem of hosting. I was looking for something highly customizable, but simple to use. A really great writing experience was also a big priority, as that's what I'm hoping to do a lot.
 
