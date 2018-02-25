@@ -4,8 +4,6 @@ category:
   - Tales from Wasp Podcatcher
 tags:
   - Wasp Podcatcher
-  - Xamarin
-  - Azure Mobile App Service
 date: 2018-02-10 21:55:51
 ---
 
