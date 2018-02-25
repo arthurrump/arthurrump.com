@@ -1,12 +1,15 @@
 ---
 title: >-
-  Tales from the Development of Wasp Podcatcher - Episode 3: Figuring out Anchor Modeling
-category: 
+  Tales from the Development of Wasp Podcatcher - Episode 3: Figuring out Anchor
+  Modeling
+category:
   - Tales from Wasp Podcatcher
 tags:
   - Wasp Podcatcher
   - Anchor Modeling
+date: 2018-02-25 21:22:58
 ---
+
 
 Last week I waved goodbye to Entity Framework and talked about the data scheme I was thinking about. This week I threw most of that scheme away as I started playing with a new tool to model the data.
 
