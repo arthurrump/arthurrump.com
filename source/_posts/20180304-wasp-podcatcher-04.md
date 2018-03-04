@@ -1,13 +1,14 @@
 ---
-title: >-
-  Tales from the Development of Wasp Podcatcher - Episode 4: Go GraphQL
+title: 'Tales from the Development of Wasp Podcatcher - Episode 4: Go GraphQL'
 category:
   - Tales from Wasp Podcatcher
 tags:
   - Wasp Podcatcher
   - GraphQL
-  - F#
+  - 'F#'
+date: 2018-03-04 22:46:03
 ---
+
 
 Last week I introduced Anchor Modeling and the model for the server I created with that. This week I wrote some stored procedures to insert new data into the database with all the proper timestamps and ties. Then I started thinking about querying the data and what the API should look like. Then I came across [GraphQL](https://graphql.org).
 
