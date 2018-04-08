@@ -1,4 +1,4 @@
-image: node:4.2.2
+image: node
 
 pages:
   cache:
@@ -8,7 +8,6 @@ pages:
   script:
   - npm config set loglevel warn
   - npm install hexo-cli -g
-  - npm install hexo --save
   - npm install
   - hexo deploy
   artifacts:
