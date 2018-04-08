@@ -6,8 +6,9 @@ pages:
     - node_modules/
     
   script:
-  - npm install hexo -g
+  - npm config set loglevel warn
   - npm install hexo-cli -g
+  - npm install hexo --save
   - npm install
   - hexo deploy
   artifacts:
