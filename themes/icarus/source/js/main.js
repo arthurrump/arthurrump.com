@@ -9,12 +9,4 @@
         });
 
     });
-    if (lightGallery) {
-        var options = {
-            selector: '.gallery-item',
-        };
-        lightGallery($('.article-entry')[0], options);
-        lightGallery($('.article-gallery')[0], options);
-    }
-
 })(jQuery);
