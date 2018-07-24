@@ -107,7 +107,7 @@ A Visual has a method to start an animation on one of its properties. The first 
 
 And that's the result:
 
-{% asset_img 04-firstresult.gif "The rectangle is now animated, but it's not the lovely experience we're shooting for" %}
+{% asset_img 04-firstresult.gif "The rectangle is now animated, but it\'s not the lovely experience we\'re shooting for" %}
 
 The animation works. But there are some problems design-wise: the animation plays oriented from the upper left corner, so the rectangle seems to expand on the right and bottom side, not from the center; and the hover border of the GridViewItem is shown inside the rectangle.
 
