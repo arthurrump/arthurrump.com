@@ -1,7 +1,3 @@
-# arthurrump.gitlab.io
+# arthurrump.com
 
-My website.
-
-- Hosted on GitLab Pages
-- Build with [Hexo](http://hexo.io)
-- Theme: [Icarus](https://github.com/ppoffice/hexo-theme-icarus)
+My personal website.
