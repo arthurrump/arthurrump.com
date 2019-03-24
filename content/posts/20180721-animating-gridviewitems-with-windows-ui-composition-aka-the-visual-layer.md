@@ -8,12 +8,12 @@ date = 2018-07-21 22:01:39
 
 If you've ever used the beta version of [myTube!](https://www.microsoft.com/en-us/p/mytube/9wzdncrcwf3l) (and you should), you're probably familiar with the effect I wanted to create:
 
-{% asset_img 01-mytube.gif "In myTube Beta, the thumbnail pops out of the item, which creates a lovely experience" %}
+![Example of animation in myTube Beta: video thumbnails pop out on hovering over them](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/01-mytube.gif "In myTube Beta, the thumbnail pops out of the item, which creates a lovely experience")
 
 I absolutely love this effect, and when I accidentally open the non-beta version of myTube, where it's not yet implemented, I miss it, often to the point of closing the app and opening the beta. It really makes for a great experience, so I wanted to create something like it myself. Here's the result of what we'll build in this post:
 <!-- more -->
 
-{% asset_img 02-finalresult.gif "The GridViewItems scale up and show a shadow when the mouse hovers over them" %}
+![The final result: GridViewItems scale up and show a shadow when the mouse hovers over them](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/02-finalresult.gif "The GridViewItems scale up and show a shadow when the mouse hovers over them")
 
 ## XAML
 Let's start with the XAML we'll use to define the GridView:
@@ -45,7 +45,7 @@ This creates a GridView with three rectangles in the colors defined in `GridView
 ## The Visual Layer
 Before we go on and animate the GridViewItems, its worth to take a look at the technology we're going to use. The Visual layer is the part of the Windows UI stack that supports the XAML Framework. This means that every XAML element has a representation in the Visual layer, but also that you could draw your entire application using the Composition API (the API surface of the Visual layer) without ever touching any XAML. Or build an alternative UI framework, if that's your type of thing. The Visual layer also provides a way to do animations, lighting and shadows, and numerous effects.
 
-{% asset_img 03-visual-layer-diagram.png "The Visual layer sits between the Framework layer (XAML) and the Graphics layer (DirectX) - Source: Microsoft" %}
+![A diagram showing the position of the Visual layer between the Framework layer (XAML) and the Graphics layer (DirectX)](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/03-visual-layer-diagram.png "The Visual layer sits between the Framework layer (XAML) and the Graphics layer (DirectX) - Source: Microsoft")
 
 Of course, there's a way to get the Visual of any XAML element, which can then be used with all the magic of the Composition API. This is done using the `ElementCompositionPreview.GetElementVisual()` method, which returns the backing Visual for any XAML element. Besides the generic `Visual` type (which `GetElementVisual()` returns) there are two deriving classes: a `ContainerVisual`, which is a Visual that has the ability to create children; and a `SpriteVisual`, which can be associated with a brush, so that it can render images, solid colors, effects etc. The latter two are more useful when creating Visuals using Composition, rather than manipulating XAML generated Visuals.
 
@@ -103,7 +103,7 @@ A Visual has a method to start an animation on one of its properties. The first 
 
 And that's the result:
 
-{% asset_img 04-firstresult.gif "The rectangle is now animated, but it is not the lovely experience we are shooting for" %}
+![The rectangles now scale up when the mouse hovers over them](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/04-firstresult.gif "The rectangle is now animated, but it is not the lovely experience we are shooting for")
 
 The animation works. But there are some problems design-wise: the animation plays oriented from the upper left corner, so the rectangle seems to expand on the right and bottom side, not from the center; and the hover border of the GridViewItem is shown inside the rectangle.
 
@@ -130,7 +130,7 @@ Next, I decided to entirely remove the hover and reveal borders of the GridViewI
 </GridView.ItemContainerStyle>
 ```
 
-{% asset_img 05-betterresult.gif "That looks much better" %}
+![The rectangles scale up from the center and the hover and reveal borders are removed](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/05-betterresult.gif "That looks much better")
 
 ## Adding a shadow
 To really give a sense of depth when scaling up the rectangle, I wanted to add a shadow. To create a shadow you need a XAML element of the same size as and behind the element that casts the shadow. Then using the Composition API you can create a SpriteVisual, to which you add the shadow. Finally the shadow visual is added to the XAML element.
@@ -184,7 +184,7 @@ shadowVisual.StartAnimation("Size", bindSizeAnimation);
 
 With this code we have added shadows to our rectangles:
 
-{% asset_img 06-staticshadows.gif "Animated rectangles with static shadows" %}
+![The rectangles now have static shadows that scale with the rectangle](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/06-staticshadows.gif "Animated rectangles with static shadows")
 
 The next step is, of course, to animate the shadow, so that it doesn't show when the Scale of the rectangle is 1.0, and it shows increasingly when the rectangle is scaled up. To achieve this we can animate the `BlurRadius` property of the shadow. And to do this we'll have to use an ExpressionAnimation, so let's take a look at how those work.
 
@@ -209,7 +209,7 @@ shadow.StartAnimation("BlurRadius", shadowAnimation);
 
 And that's what it looks like:
 
-{% asset_img 02-finalresult.gif "The shadow is now hidden by default and animates with the scale" %}
+![The shadow now only appears when the rectangle is scaled up](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/02-finalresult.gif "The shadow is now hidden by default and animates with the scale")
 
 ## Closing remarks
 The complete source for the final version is available in [this Gist](https://gist.github.com/arthurrump/43c2b18e638ff380da4c579f72d525ab#file-mainpage-xaml).
@@ -218,7 +218,7 @@ If you don't want to scale uniformly, you might want to change the shadow expres
 
 If you were planning to use this in combination with a [SwipeControl](https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/swipe), I'm sad to say that I couldn't get it working. The SwipeControl somehow prevents its content from scaling out of its own size so the edges will be cropped. My solution is to instead use the deprecated [SlidableListItem](https://docs.microsoft.com/en-us/windows/communitytoolkit/controls/slidablelistitem) from the Windows Community Toolkit and it works wonderfully:
 
-{% asset_img 07-slidablelistitem.gif "The animation combines nicely with a SlidableListItem" %}
+![The image in the ListItem pops out when it is dragged to the side](2018/07/21/animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/07-slidablelistitem.gif "The animation combines nicely with a SlidableListItem")
 
 Finally, Composition is not an easy topic and good resources are rather scarce, so I recommend experimenting a lot to get a grasp on how it works. Here are some resources that might help you:
 

@@ -9,7 +9,7 @@ date = 2017-01-10 22:21:07
 Windows 10 Mobile has lost a lot of the awesome UI/UX from the good ol' Windows Phone 7 era, but there's one thing that they kept around: the enormous amount of space the statusbar takes up in landscape view. I still love the look and feel of the old Windows Phone, but this thing has been bugging me since, well, my first smartphone.
 <!-- more -->
 
-{% asset_img wp7.jpg "The StatusBar on WP7 (screenshots were impossible, back then)" %}
+![Windows Phone 7 also had a wide landscape statusbar on the side](/2017/01/10/how-to-hide-the-statusbar-in-landscape-on-uwp/wp7.jpg "The StatusBar on WP7 (screenshots were impossible, back then)")
 
 In my apps, I prefer to hide the statusbar when the user goes into landscape mode, but just let it stay where it is when in portrait mode. It includes some useful information, after all, and in portrait the amount of used space is acceptable. Here's my solution:
 
@@ -32,7 +32,7 @@ if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
 
 To get access to the statusbar, we first need to reference the Mobile Extensions, as Mobile's the only SKU of Windows 10 where the statusbar is available. This can be done using the 'Add reference' dialog, which can be found by right-clicking 'References' in the Solution Explorer in Visual Studio. After navigating to Universal Windows - Extensions in the left menu, make sure you **check the checkbox** before the version of the Mobile Extensions you're targeting:
 
-{% asset_img references.png "The 'Add reference' dialog" %}
+![Windows Mobile Extensions for the UWP selected in the 'Add reference' dialog](/2017/01/10/how-to-hide-the-statusbar-in-landscape-on-uwp/references.png "The 'Add reference' dialog")
 
 Now we can get access to the statusbar, how do we do that? The `StatusBar` class has a static method called `GetForCurrentView()` to get access to the statusbar, so this is easy:
 

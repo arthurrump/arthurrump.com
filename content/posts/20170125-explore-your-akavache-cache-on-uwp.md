@@ -11,11 +11,11 @@ date = 2017-01-25 20:07:37
 
 There are no binaries of the Akavache Explorer available for download, so you'll have to compile it yourself. The README mentions Visual Studio 2010 is required (yes, this application is old), but it compiles just fine in Visual Studio 2017 RC. After starting the application, things get a little harder: the explorer needs a path to the cache file in order to work. However, you've probably never specified a location for that file in your code, so where can you find it?
 
-{% asset_img akavache_explorer.png "Akavache Explorer asks for a path" %}
+![Screenshot of the Akavache Explorer asking for a file path](/2017/01/25/explore-your-akavache-cache-on-uwp/akavache_explorer.png "Akavache Explorer asks for a path")
 
 The application data for a UWP app is stored in the `<user>\AppData\Local\Packages\<package name>` folder, which can be quickly found using the `%LocalAppData%\Packages\<package name>` shortcut. If you're unsure what the name of your package is, you can look it up in the Package.appxmanifest file, on the Packaging tab.
 
-{% asset_img package_name.png "The package name can be found in the Package.appxmanifest file" %}
+![The Packaging tab of Package.appxmanifest](/2017/01/25/explore-your-akavache-cache-on-uwp/package_name.png "The package name can be found in the Package.appxmanifest file")
 
 The different types of cache all have their own cache file:
 - LocalMachine: `\LocalState\BlobCache\blobs.db`

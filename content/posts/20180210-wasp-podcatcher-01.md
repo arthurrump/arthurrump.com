@@ -16,7 +16,7 @@ Granted, I found two options that were close: the very popular [PocketCasts](htt
 ## Wasp Podcatcher
 That's when I decided to build something myself. I've been pretty busy in the last months, but recently I've found more time and started developing Wasp Podcatcher, which will consist of a Xamarin Forms application and an Azure Mobile App Service to enable synchronization and lift the burden of checking for new episodes from the clients and let the server push new episodes to them. That's at least how I'm currently planning it to be.
 
-{% asset_img wasp-podcatcher.png "Wasp Podcatcher" %}
+![The Wasp Podcatcher logo, with a wasp sitting on a microphone](2018/02/10/wasp-podcatcher-01/wasp-podcatcher.png "Wasp Podcatcher")
 
 It's still very early days for this project and I have only worked on the server yet, which is also far from finished, so there's quite a lot that still has to be done. I've been thinking quite a bit on how I want to store the data and synchronize it between the server and multiple clients, and the models for that are mostly done. I'll explain it when I've done some more work on it
 
