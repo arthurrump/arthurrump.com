@@ -1,11 +1,8 @@
 ---
-title: How to hide the StatusBar in Landscape on UWP
-category:
-  - UWP
-tags:
-  - UWP
-  - Windows 10 Mobile
-date: 2017-01-10 22:21:07
+title = "How to hide the StatusBar in Landscape on UWP"
+category = "UWP"
+tags = [ "UWP", "Windows 10 Mobile" ]
+date = 2017-01-10 22:21:07
 ---
 
 

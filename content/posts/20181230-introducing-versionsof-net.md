@@ -1,13 +1,8 @@
 ---
-title: Introducing versionsof.net
-category:
-  - .NET
-tags:
-  - .NET
-  - 'F#'
-  - Fable
-  - Elmish
-date: 2018-12-30 17:39:25
+title = "Introducing versionsof.net"
+category = ".NET"
+tags = [ ".NET", "F#", "Fable", "Elmish" ]
+date = 2018-12-30 17:39:25
 ---
 
 

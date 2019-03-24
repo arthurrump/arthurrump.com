@@ -1,12 +1,8 @@
 ---
-title: "\"Good explanation, but now what?\" - Thoughts on getting people started with .NET"
-date: 2017-07-23 21:41:14
-category: 
-  - .NET
-tags:
-  - .NET
-  - .NET Renaissance
-  - Teaching
+title = "\"Good explanation, but now what?\" - Thoughts on getting people started with .NET"
+category = ".NET"
+tags = [ ".NET", ".NET Renaissance", "Teaching" ]
+date = 2017-07-23 21:41:14
 ---
 
 I was listening to a .NET Rocks! [episode with Ian Cooper](http://dotnetrocks.com/?show=1458) about starting a .NET Renaissance, analogous to the Java Renaissance started in 2011 after the decline in usage of the language. Ian lists plenty of evidence for a similar decline in C# usage, and what might have replaced it, in [his blog post](https://medium.com/altdotnet/on-the-need-for-a-c-renaissance-634078d4e865), so I won't get into that, but there is another aspect which I want to talk about. One of the problems briefly mentioned in the podcast is the 'leaky bucket' problem: it is inevitable to 'lose' some developers to other platforms, so unless we fill up the bucket with new ones, usage of C# is going to decline to zero at some point.

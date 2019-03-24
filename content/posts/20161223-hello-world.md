@@ -1,10 +1,8 @@
 ---
-title: Hello world!
-category:
-  - Metablog
-tags:
-  - Hello world
-date: 2016-12-23 19:32:26
+title = "Hello world!"
+category = "Metablog"
+tags = [ "Hello world" ]
+date = 2016-12-23 19:32:26
 ---
 
 

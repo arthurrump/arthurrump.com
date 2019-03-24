@@ -1,11 +1,8 @@
 ---
-title: 'Tales from the Development of Wasp Podcatcher - Episode 5: I''m still here'
-category:
-  - Tales from Wasp Podcatcher
-tags:
-  - Wasp Podcatcher
-  - 'F#'
-date: 2018-04-08 16:40:52
+title = "Tales from the Development of Wasp Podcatcher - Episode 5: I'm still here"
+category = "Tales from Wasp Podcatcher"
+tags = [ "Wasp Podcatcher", "F#" ]
+date = 2018-04-08 16:40:52
 ---
 
 

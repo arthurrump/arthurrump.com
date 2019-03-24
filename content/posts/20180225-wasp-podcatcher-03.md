@@ -1,13 +1,8 @@
 ---
-title: >-
-  Tales from the Development of Wasp Podcatcher - Episode 3: Figuring out Anchor
-  Modeling
-category:
-  - Tales from Wasp Podcatcher
-tags:
-  - Wasp Podcatcher
-  - Anchor Modeling
-date: 2018-02-25 21:22:58
+title = "Tales from the Development of Wasp Podcatcher - Episode 3: Figuring out Anchor Modeling"
+category = "Tales from Wasp Podcatcher"
+tags = [ "Wasp Podcatcher", "Anchor Modeling" ]
+date = 2018-02-25 21:22:58
 ---
 
 
