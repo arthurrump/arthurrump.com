@@ -1,9 +1,9 @@
----
++++
 title = "Animating GridViewItems with Windows.UI.Composition (aka the Visual Layer)"
 category = "UWP"
 tags = [ "UWP", "Windows.UI.Composition", "Animation" ]
 date = 2018-07-21 22:01:39
----
++++
 
 
 If you've ever used the beta version of [myTube!](https://www.microsoft.com/en-us/p/mytube/9wzdncrcwf3l) (and you should), you're probably familiar with the effect I wanted to create:

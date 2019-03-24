@@ -1,9 +1,9 @@
----
++++
 title = "Tales from the Development of Wasp Podcatcher - Episode 5: I'm still here"
 category = "Tales from Wasp Podcatcher"
 tags = [ "Wasp Podcatcher", "F#" ]
 date = 2018-04-08 16:40:52
----
++++
 
 
 Time flies when you're having fun. It has already been over a month since the last post, which is quite long since I intended this to be a weekly series. But don't worry, I'm still here. I had some trouble with satellite television which took up quite some time for a week or two, and study is never standing still, but Wasp Podcatcher is progressing.

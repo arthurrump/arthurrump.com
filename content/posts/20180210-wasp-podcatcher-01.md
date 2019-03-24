@@ -1,9 +1,9 @@
----
++++
 title = "Tales from the Development of Wasp Podcatcher - Episode 1: Kicking it off"
 category = "Tales from Wasp Podcatcher"
 tags = [ "Wasp Podcatcher" ]
 date = 2018-02-10 21:55:51
----
++++
 
 
 Late last year I made a big decision. I bought an Android phone, as a replacement for my Lumia 950. As we all know, Windows 10 Mobile wasn't too alive anymore and when I left, the last Insider build had already shipped. And then I got a very good deal on a Nokia 8, so it was hard to say no. But my Lumia is still with me most of the time, for two big reasons: first of all is the camera on the 950 way better than that dual camera joke on the back of the Nokia 8. Secondly, and most importantly for this post, it is still my podcast player.

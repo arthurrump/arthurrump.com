@@ -1,7 +1,7 @@
----
++++
 title = "About me"
 date = 2016-10-15 19:50:28
----
++++
 
 Being born in the last year of the previous millennium, Arthur has been using computers for about as long as he can remember. It all started with an Acer Veriton FP2 all-in-one running Windows ME. He has used almost every version of Windows since then, except for Vista, and Windows has remained his OS of choice up to today, to the point of even using a Windows phone in 2017.
 

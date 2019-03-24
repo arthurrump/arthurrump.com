@@ -1,9 +1,9 @@
----
++++
 title = "Introducing versionsof.net"
 category = ".NET"
 tags = [ ".NET", "F#", "Fable", "Elmish" ]
 date = 2018-12-30 17:39:25
----
++++
 
 
 .NET Core versioning is a mess. There are lots and lots and lots of version numbers, from runtime to SDK, from Visual Studio to languages and of course .NET Standard. So what SDK corresponds to which runtime again? I know there some sort of a system, but it differs per release. Here's my solution:

@@ -1,9 +1,9 @@
----
++++
 title = "How to hide the StatusBar in Landscape on UWP"
 category = "UWP"
 tags = [ "UWP", "Windows 10 Mobile" ]
 date = 2017-01-10 22:21:07
----
++++
 
 
 Windows 10 Mobile has lost a lot of the awesome UI/UX from the good ol' Windows Phone 7 era, but there's one thing that they kept around: the enormous amount of space the statusbar takes up in landscape view. I still love the look and feel of the old Windows Phone, but this thing has been bugging me since, well, my first smartphone.
