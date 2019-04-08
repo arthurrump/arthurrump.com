@@ -26,6 +26,11 @@ open System.IO
 
 let strf fmt = Printf.ksprintf str fmt
 
+type Config =
+    { Title : string
+      Author : string
+      Description : string }
+
 type Page =
     | Page of title : string * htmlContent : string
     | Post of Post
@@ -38,6 +43,12 @@ and Post =
       HtmlContent : string }
 
 let postChooser page = match page.Content with Post post -> Some { Url = page.Url; Content = post } | _ -> None
+
+let parseConfig config =
+    let toml = Toml.ReadString(config)
+    { Title = toml.["title"].Get()
+      Author = toml.["author"].Get()
+      Description = toml.["description"].Get() }
 
 let parsePage path (Some frontmatter) renderedMarkdown =
     let slug = path |> Path.GetFileNameWithoutExtension
@@ -60,7 +71,7 @@ let parsePost path (Some frontmatter) renderedMarkdown =
     { Url = sprintf "%i/%i/%i/%s" post.Date.Year post.Date.Month post.Date.Day slug
       Content = Post post }
 
-let template site page = 
+let template (site : StaticSite<Config, Page>) page = 
     let titleText =
         match page.Content with
         | Page (title, _) -> title
@@ -71,12 +82,23 @@ let template site page =
         | Page (_, content) -> rawText content
         | Post post -> rawText post.HtmlContent
 
-    html [] [
-        head [ ] [ title [] [ strf "%s - Arthur Rump" titleText ] ]
-        body [ ] [ content ]
-    ]
+    let keywords = 
+        match page.Content with
+        | Post post -> post.Tags |> String.concat ","
+        | Page _ -> ""
 
-let rssFeed (site : StaticSite<unit, Page>) =
+    html [] [
+        head [ ] [ 
+            title [] [ strf "%s - %s" titleText site.Config.Title ]
+            meta [ _name "author"; _content site.Config.Author ]
+            meta [ _name "description"; _content site.Config.Description ]
+            meta [ _name "keywords"; _content keywords ]
+            meta [ _name "generator"; _content "Fake.StaticGen" ]
+            meta [ _name "viewport"; _content "width=device-width, initial-scale=1" ]
+            link [ _rel "canonical"; _content (site.AbsoluteUrl page.Url) ] ]
+        body [ ] [ content ] ]
+
+let rssFeed (site : StaticSite<Config, Page>) =
     let now = DateTime.UtcNow
 
     let items = 
@@ -91,9 +113,9 @@ let rssFeed (site : StaticSite<unit, Page>) =
                 pubDate = post.Content.Date))
 
     Rss.Channel(
-        title = "Arthur Rump",
+        title = site.Config.Title,
         link = site.BaseUrl,
-        description = "TODO",
+        description = site.Config.Description,
         copyright = sprintf "Copyright (c) %i, Arthur Rump" now.Year,
         generator = "Fake.StaticGen",
         pubDate = now,
@@ -107,7 +129,7 @@ let withMarkdownPages files parse =
     StaticSite.withPagesFromCustomMarkdown pipeline files parse
 
 Target.create "Generate" <| fun _ ->
-    StaticSite.fromConfig "https://www.arthurrump.com" ()
+    StaticSite.fromConfigFile "https://www.arthurrump.com" "config.toml" parseConfig
     |> withMarkdownPages (!! "content/*.md") parsePage
     |> withMarkdownPages (!! "content/posts/*.md") parsePost
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
