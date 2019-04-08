@@ -3,6 +3,7 @@ nuget Fake.Core.Target
 nuget Fake.StaticGen
 nuget Fake.StaticGen.Html
 nuget Fake.StaticGen.Markdown
+nuget Fake.StaticGen.Rss
 nuget Nett //"
 #load "./.fake/build.fsx/intellisense.fsx"
 #if !FAKE
@@ -15,6 +16,7 @@ open Fake.StaticGen
 open Fake.StaticGen.Html
 open Fake.StaticGen.Html.ViewEngine
 open Fake.StaticGen.Markdown
+open Fake.StaticGen.Rss
 
 open Markdig
 open Nett
@@ -34,6 +36,8 @@ and Post =
       Tags : string []
       Date : DateTime
       HtmlContent : string }
+
+let postChooser page = match page.Content with Post post -> Some { Url = page.Url; Content = post } | _ -> None
 
 let parsePage path (Some frontmatter) renderedMarkdown =
     let slug = path |> Path.GetFileNameWithoutExtension
@@ -72,6 +76,29 @@ let template site page =
         body [ ] [ content ]
     ]
 
+let rssFeed (site : StaticSite<unit, Page>) =
+    let now = DateTime.UtcNow
+
+    let items = 
+        site.Pages
+        |> Seq.choose postChooser
+        |> Seq.sortByDescending (fun p -> p.Content.Date)
+        |> Seq.map (fun post ->
+            Rss.Item(
+                title = post.Content.Title,
+                link = site.AbsoluteUrl post.Url,
+                guid = Rss.Guid(site.AbsoluteUrl post.Url, isPermaLink = true),
+                pubDate = post.Content.Date))
+
+    Rss.Channel(
+        title = "Arthur Rump",
+        link = site.BaseUrl,
+        description = "TODO",
+        copyright = sprintf "Copyright (c) %i, Arthur Rump" now.Year,
+        generator = "Fake.StaticGen",
+        pubDate = now,
+        items = (items |> Seq.toList))
+
 let withMarkdownPages files parse =
     let pipeline =
         MarkdownPipelineBuilder()
@@ -83,6 +110,7 @@ Target.create "Generate" <| fun _ ->
     StaticSite.fromConfig "https://www.arthurrump.com" ()
     |> withMarkdownPages (!! "content/*.md") parsePage
     |> withMarkdownPages (!! "content/posts/*.md") parsePost
+    |> StaticSite.withRssFeed rssFeed "/feed.xml"
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.generateFromHtml "public" template
