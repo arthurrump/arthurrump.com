@@ -25,8 +25,6 @@ open Nett
 open System
 open System.IO
 
-let strf fmt = Printf.ksprintf str fmt
-
 type Config =
     { Title : string
       Author : string
