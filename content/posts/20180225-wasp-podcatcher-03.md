@@ -17,7 +17,7 @@ The database scheme the Anchor tool creates is in the sixth normal form, which m
 
 This is the model I came up with:
 
-![A graph overview of the database structure](2018/02/25/wasp-podcatcher-03/wasp-database.svg "The Wasp database structure")
+![A graph overview of the database structure](/assets/20180225-wasp-podcatcher-03/wasp-database.svg "The Wasp database structure")
 
 In an Anchor Model, a red square is an anchor, which would be an entity in a normal database. The circles connected to these squares are the attributes of that anchor; if it's a double circle it means that it is a historized attribute, meaning that all its changes will be stored. The grey diamond is a tie, which is a relation between two or more anchors. The symbols on the connections from an anchor to a tie indicate if that anchor is an identifier for that tie. Three horizontal bars means it is, one vertical means it isn't.
 

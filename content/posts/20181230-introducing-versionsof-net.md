@@ -8,7 +8,7 @@ date = 2018-12-30 17:39:25
 
 .NET Core versioning is a mess. There are lots and lots and lots of version numbers, from runtime to SDK, from Visual Studio to languages and of course .NET Standard. So what SDK corresponds to which runtime again? I know there some sort of a system, but it differs per release. Here's my solution:
 
-![Screenshot of the versionsof.net website](/2018/12/30/introducing-versionsof-net/screenshot.png "Bringing clarity to versions of .NET")
+![Screenshot of the versionsof.net website](/assets/20181230-introducing-versionsof-net/screenshot.png "Bringing clarity to versions of .NET")
 
 I called it [versionsof.net](https://versionsof.net).
 <!-- more -->
