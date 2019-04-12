@@ -25,6 +25,14 @@ open Nett
 open System
 open System.IO
 
+let slugify (text : string) =
+    text.ToLowerInvariant()
+        .Replace(" ", "-")
+        .Replace("#", "sharp")
+        .ToCharArray()
+        |> Array.filter (fun c -> (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c = '-')
+        |> String.Concat
+
 type Config =
     { Title : string
       Author : string
@@ -36,6 +44,8 @@ type Page =
     | Post of Post
     | PostsOverview of Overview<Post>
     | PostsArchive of Page<Post> seq
+    | TagsOverview of (string * string) seq
+    | TagPage of tag: string * posts: Page<Post> seq
 
 and Post =
     { Title : string
@@ -51,7 +61,15 @@ Overview<'page> =
       PreviousUrl : string option
       Pages : Page<'page> seq }
 
-let postChooser page = match page.Content with Post post -> Some { Url = page.Url; Content = post } | _ -> None
+let postChooser page = 
+    match page.Content with 
+    | Post post -> Some { Url = page.Url; Content = post }
+    | _ -> None
+
+let posts (site : StaticSite<Config, Page>) = 
+    site.Pages
+    |> Seq.choose postChooser
+    |> Seq.sortByDescending (fun p -> p.Content.Date)
 
 let parseConfig config =
     let toml = Toml.ReadString(config)
@@ -82,11 +100,7 @@ let parsePost path (Some frontmatter) renderedMarkdown =
 
 let postsOverview (site : StaticSite<Config, Page>) =
     let url index = if index = 0 then "/" else sprintf "/page/%i" (index + 1)
-    let chunks =
-        site.Pages
-        |> Seq.choose postChooser
-        |> Seq.sortByDescending (fun p -> p.Content.Date)
-        |> Seq.chunkBySize 6
+    let chunks = posts site |> Seq.chunkBySize 6
     chunks
     |> Seq.mapi (fun i posts ->
         let content = 
@@ -97,11 +111,22 @@ let postsOverview (site : StaticSite<Config, Page>) =
         { Url = url i; Content = PostsOverview content })
 
 let postsArchive (site : StaticSite<Config, Page>) =
-    let posts = 
-        site.Pages 
-        |> Seq.choose postChooser
-        |> Seq.sortByDescending (fun p -> p.Content.Date)
-    { Url = "/archives"; Content = PostsArchive posts }
+    { Url = "/archives"; Content = PostsArchive (posts site) }
+
+let tagsOverview (site : StaticSite<Config, Page>) =
+    let url tag = sprintf "/tags/%s" (slugify tag)
+    let tags = 
+        posts site 
+        |> Seq.collect (fun p -> p.Content.Tags) 
+        |> Seq.distinct
+    let overview = tags |> Seq.map (fun t -> t, url t)
+    let overviewPage = { Url = "/tags"; Content = TagsOverview overview }
+    let tagPages = 
+        tags
+        |> Seq.map (fun tag ->
+            let posts = posts site |> Seq.filter (fun p -> p.Content.Tags |> Array.contains tag)
+            { Url = url tag; Content = TagPage (tag, posts) })
+    Seq.singleton overviewPage |> Seq.append tagPages
 
 let template (site : StaticSite<Config, Page>) page = 
     let titleText =
@@ -110,14 +135,19 @@ let template (site : StaticSite<Config, Page>) page =
         | Post post -> post.Title
         | PostsOverview o -> if o.Index = 0 then "Blog" else sprintf "Page %i" o.Index
         | PostsArchive _ -> "Archives"
+        | TagsOverview _ -> "Tags"
+        | TagPage (tag, _) -> sprintf "Tag: %s" tag
 
     let content = 
         match page.Content with
         | Page (_, content) -> rawText content
         | Post post -> rawText post.HtmlContent
         | PostsOverview { Pages = posts }
-        | PostsArchive posts ->
-            ul [] [ for p in posts -> li [ ] [ a [ _href p.Url ] [ str p.Content.Title ] ] ]
+        | PostsArchive posts
+        | TagPage (_, posts) ->
+            ul [] [ for p in posts -> li [] [ a [ _href p.Url ] [ str p.Content.Title ] ] ]
+        | TagsOverview tags ->
+            ul [] [ for (t, url) in tags -> li [] [ a [ _href url ] [ str t ] ] ]
 
     let keywords = 
         match page.Content with
@@ -171,6 +201,7 @@ Target.create "Generate" <| fun _ ->
     |> withMarkdownPages (!! "content/posts/*.md") parsePost
     |> StaticSite.withOverviewPages postsOverview
     |> StaticSite.withOverviewPage postsArchive
+    |> StaticSite.withOverviewPages tagsOverview
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
