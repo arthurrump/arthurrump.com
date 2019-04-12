@@ -12,6 +12,7 @@ nuget Nett //"
 #endif
 
 open Fake.Core
+open Fake.IO
 open Fake.IO.Globbing.Operators
 open Fake.StaticGen
 open Fake.StaticGen.Html
@@ -24,14 +25,6 @@ open Nett
 
 open System
 open System.IO
-
-let slugify (text : string) =
-    text.ToLowerInvariant()
-        .Replace(" ", "-")
-        .Replace("#", "sharp")
-        .ToCharArray()
-        |> Array.filter (fun c -> (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c = '-')
-        |> String.Concat
 
 type Config =
     { Title : string
@@ -95,7 +88,7 @@ let parsePost path (Some frontmatter) renderedMarkdown =
           Date = toml.["date"].Get()
           HtmlContent = renderedMarkdown }
 
-    { Url = sprintf "%i/%i/%i/%s" post.Date.Year post.Date.Month post.Date.Day slug
+    { Url = sprintf "%04i/%02i/%02i/%s" post.Date.Year post.Date.Month post.Date.Day slug
       Content = Post post }
 
 let postsOverview (site : StaticSite<Config, Page>) =
@@ -114,7 +107,7 @@ let postsArchive (site : StaticSite<Config, Page>) =
     { Url = "/archives"; Content = PostsArchive (posts site) }
 
 let tagsOverview (site : StaticSite<Config, Page>) =
-    let url tag = sprintf "/tags/%s" (slugify tag)
+    let url (tag : string) = sprintf "/tags/%s" (tag.Replace("#", "sharp") |> Url.slugify)
     let tags = 
         posts site 
         |> Seq.collect (fun p -> p.Content.Tags) 
@@ -188,11 +181,26 @@ let rssFeed (site : StaticSite<Config, Page>) =
         pubDate = now,
         items = (items |> Seq.toList))
 
+let assetUrlRewrite (filename : string) =
+    let dir = filename |> Path.getLowestDirectory
+    let file = filename |> Path.GetFileName
+    sprintf "/%s/%s/%s/%s/%s"
+        dir.[0..3]
+        dir.[4..5]
+        dir.[6..7]
+        dir.[9..]
+        file
+
 let withMarkdownPages files parse =
     let pipeline =
         MarkdownPipelineBuilder()
             .UseEmphasisExtras()
+            .UseLinkUrlRewrite(fun link ->
+                if link.Url.TrimStart('/').StartsWith("assets/") 
+                then assetUrlRewrite link.Url
+                else link.Url)
             .Build()
+
     StaticSite.withPagesFromCustomMarkdown pipeline files parse
 
 Target.create "Generate" <| fun _ ->
@@ -203,6 +211,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withOverviewPage postsArchive
     |> StaticSite.withOverviewPages tagsOverview
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
+    |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*") assetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.generateFromHtml "public" template
