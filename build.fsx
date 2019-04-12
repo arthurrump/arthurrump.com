@@ -30,9 +30,12 @@ type Config =
       Author : string
       Description : string }
 
+[<NoComparison>]
 type Page =
     | Page of title : string * htmlContent : string
     | Post of Post
+    | PostsOverview of Overview<Post>
+    | PostsArchive of Page<Post> seq
 
 and Post =
     { Title : string
@@ -40,6 +43,13 @@ and Post =
       Tags : string []
       Date : DateTime
       HtmlContent : string }
+
+and [<NoComparison>]
+Overview<'page> =
+    { Index : int
+      NextUrl : string option
+      PreviousUrl : string option
+      Pages : Page<'page> seq }
 
 let postChooser page = match page.Content with Post post -> Some { Url = page.Url; Content = post } | _ -> None
 
@@ -70,21 +80,49 @@ let parsePost path (Some frontmatter) renderedMarkdown =
     { Url = sprintf "%i/%i/%i/%s" post.Date.Year post.Date.Month post.Date.Day slug
       Content = Post post }
 
+let postsOverview (site : StaticSite<Config, Page>) =
+    let url index = if index = 0 then "/" else sprintf "/page/%i" (index + 1)
+    let chunks =
+        site.Pages
+        |> Seq.choose postChooser
+        |> Seq.sortByDescending (fun p -> p.Content.Date)
+        |> Seq.chunkBySize 6
+    chunks
+    |> Seq.mapi (fun i posts ->
+        let content = 
+            { Index = i
+              PreviousUrl = if i = 0 then None else Some (url (i - 1))
+              NextUrl = if i = Seq.length chunks - 1 then None else Some (url (i + 1))
+              Pages = posts }
+        { Url = url i; Content = PostsOverview content })
+
+let postsArchive (site : StaticSite<Config, Page>) =
+    let posts = 
+        site.Pages 
+        |> Seq.choose postChooser
+        |> Seq.sortByDescending (fun p -> p.Content.Date)
+    { Url = "/archives"; Content = PostsArchive posts }
+
 let template (site : StaticSite<Config, Page>) page = 
     let titleText =
         match page.Content with
         | Page (title, _) -> title
         | Post post -> post.Title
+        | PostsOverview o -> if o.Index = 0 then "Blog" else sprintf "Page %i" o.Index
+        | PostsArchive _ -> "Archives"
 
     let content = 
         match page.Content with
         | Page (_, content) -> rawText content
         | Post post -> rawText post.HtmlContent
+        | PostsOverview { Pages = posts }
+        | PostsArchive posts ->
+            ul [] [ for p in posts -> li [ ] [ a [ _href p.Url ] [ str p.Content.Title ] ] ]
 
     let keywords = 
         match page.Content with
         | Post post -> post.Tags |> String.concat ","
-        | Page _ -> ""
+        | _ -> ""
 
     html [] [
         head [ ] [ 
@@ -131,6 +169,8 @@ Target.create "Generate" <| fun _ ->
     StaticSite.fromConfigFile "https://www.arthurrump.com" "config.toml" parseConfig
     |> withMarkdownPages (!! "content/*.md") parsePage
     |> withMarkdownPages (!! "content/posts/*.md") parsePost
+    |> StaticSite.withOverviewPages postsOverview
+    |> StaticSite.withOverviewPage postsArchive
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
