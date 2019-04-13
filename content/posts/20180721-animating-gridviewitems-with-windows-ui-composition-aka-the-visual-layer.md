@@ -2,6 +2,8 @@
 title = "Animating GridViewItems with Windows.UI.Composition (aka the Visual Layer)"
 tags = [ "UWP", "Windows.UI.Composition", "Animation" ]
 date = 2018-07-21 22:01:39
+image = "/assets/20180721-animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/02-finalresult.gif"
+blurb = "How to create a great UWP experience using the Windows.UI.Composition API."
 +++
 
 
@@ -10,7 +12,6 @@ If you've ever used the beta version of [myTube!](https://www.microsoft.com/en-u
 ![Example of animation in myTube Beta: video thumbnails pop out on hovering over them](/assets/20180721-animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/01-mytube.gif "In myTube Beta, the thumbnail pops out of the item, which creates a lovely experience")
 
 I absolutely love this effect, and when I accidentally open the non-beta version of myTube, where it's not yet implemented, I miss it, often to the point of closing the app and opening the beta. It really makes for a great experience, so I wanted to create something like it myself. Here's the result of what we'll build in this post:
-<!-- more -->
 
 ![The final result: GridViewItems scale up and show a shadow when the mouse hovers over them](/assets/20180721-animating-gridviewitems-with-windows-ui-composition-aka-the-visual-layer/02-finalresult.gif "The GridViewItems scale up and show a shadow when the mouse hovers over them")
 

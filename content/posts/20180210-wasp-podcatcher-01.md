@@ -2,11 +2,11 @@
 title = "Tales from the Development of Wasp Podcatcher - Episode 1: Kicking it off"
 tags = [ "Wasp Podcatcher" ]
 date = 2018-02-10 21:55:51
+image = "/assets/20180210-wasp-podcatcher-01/wasp-podcatcher.png"
 +++
 
 
 Late last year I made a big decision. I bought an Android phone, as a replacement for my Lumia 950. As we all know, Windows 10 Mobile wasn't too alive anymore and when I left, the last Insider build had already shipped. And then I got a very good deal on a Nokia 8, so it was hard to say no. But my Lumia is still with me most of the time, for two big reasons: first of all is the camera on the 950 way better than that dual camera joke on the back of the Nokia 8. Secondly, and most importantly for this post, it is still my podcast player.
-<!-- more -->
 
 I've been using the [Podcasts (beta)](https://www.microsoft.com/en-us/store/p/podcasts-beta/9nblggh1zj3r) UWP app for a long time and even though it's still in beta (and will probably be forever), it's a very solid app. The thing I love most about it is the synchronization of subscriptions and episode states to OneDrive, so I have the same data across all my devices. Except for my new phone. I've been looking around for apps that can synchronize between my devices, but even with the vast amount of podcast apps available on Android, I haven't found a single one that also has a UWP (or even a traditional Windows) counterpart.
 

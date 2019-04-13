@@ -44,6 +44,8 @@ and Post =
     { Title : string
       Tags : string []
       Date : DateTime
+      Blurb : string option
+      Image : string option
       HtmlContent : string }
 
 and [<NoComparison>]
@@ -62,6 +64,21 @@ let posts (site : StaticSite<Config, Page>) =
     site.Pages
     |> Seq.choose postChooser
     |> Seq.sortByDescending (fun p -> p.Content.Date)
+
+let assetUrlRewrite (filename : string) =
+    let dir = filename |> Path.getLowestDirectory
+    let file = filename |> Path.GetFileName
+    sprintf "/%s/%s/%s/%s/%s"
+        dir.[0..3]
+        dir.[4..5]
+        dir.[6..7]
+        dir.[9..]
+        file
+
+let tomlTryGet key (toml : TomlTable) =
+    if toml.ContainsKey(key) 
+    then Some (toml.[key].Get())
+    else None
 
 let parseConfig config =
     let toml = Toml.ReadString(config)
@@ -84,7 +101,11 @@ let parsePost path (Some frontmatter) renderedMarkdown =
         { Title = toml.["title"].Get()
           Tags = toml.["tags"].Get()
           Date = toml.["date"].Get()
+          Blurb = toml |> tomlTryGet "blurb"
+          Image = toml |> tomlTryGet "image" |> Option.map assetUrlRewrite
           HtmlContent = renderedMarkdown }
+
+    printfn "%A" post.Image
 
     { Url = sprintf "%04i/%02i/%02i/%s" post.Date.Year post.Date.Month post.Date.Day slug
       Content = Post post }
@@ -178,16 +199,6 @@ let rssFeed (site : StaticSite<Config, Page>) =
         generator = "Fake.StaticGen",
         pubDate = now,
         items = (items |> Seq.toList))
-
-let assetUrlRewrite (filename : string) =
-    let dir = filename |> Path.getLowestDirectory
-    let file = filename |> Path.GetFileName
-    sprintf "/%s/%s/%s/%s/%s"
-        dir.[0..3]
-        dir.[4..5]
-        dir.[6..7]
-        dir.[9..]
-        file
 
 let withMarkdownPages files parse =
     let pipeline =

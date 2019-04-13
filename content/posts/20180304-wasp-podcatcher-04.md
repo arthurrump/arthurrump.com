@@ -9,7 +9,6 @@ Last week I introduced Anchor Modeling and the model for the server I created wi
 
 I first heard of GraphQL in July 2017 on [a .NET Rocks episode](https://dotnetrocks.com/?show=1462) with Steve Faulkner. I didn't really have a use for it at the time, maybe only when integrating with an API that was built on it. And there aren't many of those, with GitHub as a notable exception. Today, however, I'm going to build an API that's involved with multiple objects and relationships between them, and that's exactly where GraphQL shines.
 
-<!-- more -->
 
 ## What is GraphQL?
 GraphQL is a query-language that can be used as an alternative to REST APIs. Instead of telling the server what you want depending on the endpoint and HTTP method, there is just one endpoint to which you can send your query. In that query, you can also detail exactly which properties to include with an object, so there's no bandwidth wasted on information the client doesn't need. The thing I like most is the strong typing it gives your API: you'll always get the objects and properties you query for, or an error if you got your types wrong. This also makes it very easy to add information to objects in your API without breaking any clients.

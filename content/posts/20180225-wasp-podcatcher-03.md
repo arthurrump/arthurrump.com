@@ -10,7 +10,6 @@ Last week I waved goodbye to Entity Framework and talked about the data scheme I
 ## Anchor Modeling
 That tool is called [Anchor Modeling](http://www.anchormodeling.com/), and it's not really that new as the first presentation on it was given in 2007. It was new for me though, and I discovered it in [Steph Locke's talk at NDC London](https://www.youtube.com/watch?v=2176f9K-cC4). The reason I became interested in the tool is its first class support for modeling changes of data over time, exactly what I need to send only changes in the data when synchronizing multiple devices. Storing the history of an attribute is as simple as toggling the historized property in the graphical tool. 
 
-<!-- more -->
 
 The database scheme the Anchor tool creates is in the sixth normal form, which means that for every attribute and for every relation there is a separate table. This results in a scheme that looks like a total mess, but it makes it easy to set timestamps for every attribute separately. Fortunately, the Anchor tool also generates views to just get the latest version of an anchor and table-valued functions for getting historical versions, both returning the data in a more conventional way (i.e. all attributes in one table).
 

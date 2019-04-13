@@ -9,7 +9,6 @@ Time flies when you're having fun. It has already been over a month since the la
 
 When I had free time last month I have been trying to get FSharp.Data.GraphQL to talk to the database, without having to specify all the types in the database again. Luckily F# has a really cool thing called Type Providers, which allow you to do compile-time checking of types inferred from other places, in my case a SQL database. This way I don't have to specify the SQL tables again in the F# type system, but I do get the compile-time type check I can't live without.
 
-<!-- more -->
 
 I came across two big type providers for databases: [FSharp.Data.SqlClient](fsprojects.github.io/FSharp.Data.SqlClient/) and [SQLProvider](fsprojects.github.io/SQLProvider/). I chose to go with the latter because it works with other databases instead of only SQL Server. Even though it looks like I will use an Azure SQL database for this project, I might go to a PostgreSQL database on AWS if that's cheaper (i.e. AWS gives me more credit for free, because I'm a student). However, to allow the SQL type provider to make sense of my Anchor modelled database, I did write some views in SQL. I'm not sure if those can easily be ported PostgreSQL, but I don't think it will be too hard.
 

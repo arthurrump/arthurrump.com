@@ -2,6 +2,8 @@
 title = "Introducing versionsof.net"
 tags = [ ".NET", "F#", "Fable", "Elmish" ]
 date = 2018-12-30 17:39:25
+image = "/assets/20181230-introducing-versionsof-net/screenshot.png"
+blurb = ".NET Core versioning is a complicated beast, so an overview of all the versions in existence can be really helpful. With this tool I try to do exactly that."
 +++
 
 
@@ -10,7 +12,6 @@ date = 2018-12-30 17:39:25
 ![Screenshot of the versionsof.net website](/assets/20181230-introducing-versionsof-net/screenshot.png "Bringing clarity to versions of .NET")
 
 I called it [versionsof.net](https://versionsof.net).
-<!-- more -->
 
 And people seem to like it:
 

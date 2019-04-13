@@ -2,11 +2,9 @@
 title = "My favorite podcasts"
 tags = [ "My favorites", "Podcasts" ]
 date = 2017-07-10 12:14:22
+blurb = "I enjoy listening to podcasts. Where others listen to music with everything they do, I much prefer people talking and learning something along the way. Here's a list of my favorite podcasts, for developers, for techies and some for everyone."
 +++
 
-
-I enjoy listening to podcasts. Where others listen to music with everything they do, I much prefer people talking and learning something along the way. Here's a list of my favorite podcasts, for developers, for techies and some for everyone.
-<!-- more -->
 
 ## For developers
 There are a ton of developer podcasts out there, but there are four that I keep listening to:

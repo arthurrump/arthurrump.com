@@ -2,11 +2,11 @@
 title = "Explore your Akavache cache on UWP"
 tags = [ "UWP", "Akavache" ]
 date = 2017-01-25 20:07:37
+blurb = "Where you can find the Akavache cache-database in a UWP application."
 +++
 
 
 [Akavache](https://github.com/akavache/akavache) is an awesome library for almost every .NET desktop and mobile application platform to store both important user data and expiring local cache data. I've been using Akavache in a UWP app to cache results from a web service. In the Akavache README, the [Akavache Explorer](https://github.com/paulcbetts/AkavacheExplorer) application is recommended for debugging the cache.
-<!-- more -->
 
 There are no binaries of the Akavache Explorer available for download, so you'll have to compile it yourself. The README mentions Visual Studio 2010 is required (yes, this application is old), but it compiles just fine in Visual Studio 2017 RC. After starting the application, things get a little harder: the explorer needs a path to the cache file in order to work. However, you've probably never specified a location for that file in your code, so where can you find it?
 

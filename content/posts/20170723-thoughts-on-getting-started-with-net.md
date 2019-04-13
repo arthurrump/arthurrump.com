@@ -2,10 +2,10 @@
 title = "\"Good explanation, but now what?\" - Thoughts on getting people started with .NET"
 tags = [ ".NET", ".NET Renaissance", "Teaching" ]
 date = 2017-07-23 21:41:14
+blurb = "On what I think are the biggest problems with education about .NET, and how I would do things different if I were to create a tutorial on C# today."
 +++
 
 I was listening to a .NET Rocks! [episode with Ian Cooper](http://dotnetrocks.com/?show=1458) about starting a .NET Renaissance, analogous to the Java Renaissance started in 2011 after the decline in usage of the language. Ian lists plenty of evidence for a similar decline in C# usage, and what might have replaced it, in [his blog post](https://medium.com/altdotnet/on-the-need-for-a-c-renaissance-634078d4e865), so I won't get into that, but there is another aspect which I want to talk about. One of the problems briefly mentioned in the podcast is the 'leaky bucket' problem: it is inevitable to 'lose' some developers to other platforms, so unless we fill up the bucket with new ones, usage of C# is going to decline to zero at some point.
-<!-- more -->
 
 There are multiple ways to fill that bucket: showing people who left that we can do all the cool stuff (running on Linux, being blazingly fast, being open source) now too, or showing people who failed with other problems that we can deliver what they need. But the way I want to focus on is getting people completely new to programming to use .NET, since it is something I've tried to do before and something I feel C# has lacked in since forever. Yes, there are people who start their programming journey with .NET: my first real programming language was Visual Basic, but I don't think we should count on people being like me. It's 2017 and I use a Lumia; I rest my case.
 
