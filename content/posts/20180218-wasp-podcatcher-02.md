@@ -1,6 +1,5 @@
 +++
 title = "Tales from the Development of Wasp Podcatcher - Episode 2: Stop fighting Entity Framework"
-category = "Tales from Wasp Podcatcher"
 tags = [ "Wasp Podcatcher", "Entity Framework" ]
 date = 2018-02-18 23:14:45
 +++

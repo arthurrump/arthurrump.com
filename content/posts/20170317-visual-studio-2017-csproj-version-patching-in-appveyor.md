@@ -1,6 +1,5 @@
 +++
 title = "Visual Studio 2017 .csproj version patching in AppVeyor"
-category = ".NET"
 tags = [ ".NET", ".csproj", "AppVeyor", "Continuous Deployment" ]
 date = 2017-03-17 19:10:16
 +++

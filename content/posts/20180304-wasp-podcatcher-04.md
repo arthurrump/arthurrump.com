@@ -1,6 +1,5 @@
 +++
 title = "Tales from the Development of Wasp Podcatcher - Episode 4: Go GraphQL"
-category = "Tales from Wasp Podcatcher"
 tags = [ "Wasp Podcatcher", "GraphQL", "F#" ]
 date = 2018-03-04 22:46:03
 +++

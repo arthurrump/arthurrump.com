@@ -1,7 +1,6 @@
 +++
 title = "Hello world!"
-category = "Metablog"
-tags = [ "Hello world" ]
+tags = [ "Metablog", "Hello world" ]
 date = 2016-12-23 19:32:26
 +++
 

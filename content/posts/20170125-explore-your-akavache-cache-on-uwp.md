@@ -1,6 +1,5 @@
 +++
 title = "Explore your Akavache cache on UWP"
-category = "UWP"
 tags = [ "UWP", "Akavache" ]
 date = 2017-01-25 20:07:37
 +++

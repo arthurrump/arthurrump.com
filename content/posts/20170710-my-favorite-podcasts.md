@@ -1,6 +1,5 @@
 +++
 title = "My favorite podcasts"
-category = "My favorites"
 tags = [ "My favorites", "Podcasts" ]
 date = 2017-07-10 12:14:22
 +++

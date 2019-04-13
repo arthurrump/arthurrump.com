@@ -1,6 +1,5 @@
 +++
 title = "\"Good explanation, but now what?\" - Thoughts on getting people started with .NET"
-category = ".NET"
 tags = [ ".NET", ".NET Renaissance", "Teaching" ]
 date = 2017-07-23 21:41:14
 +++

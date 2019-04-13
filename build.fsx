@@ -42,7 +42,6 @@ type Page =
 
 and Post =
     { Title : string
-      Category : string
       Tags : string []
       Date : DateTime
       HtmlContent : string }
@@ -83,7 +82,6 @@ let parsePost path (Some frontmatter) renderedMarkdown =
     let toml = Toml.ReadString(frontmatter)
     let post = 
         { Title = toml.["title"].Get()
-          Category = toml.["category"].Get()
           Tags = toml.["tags"].Get()
           Date = toml.["date"].Get()
           HtmlContent = renderedMarkdown }
