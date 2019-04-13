@@ -125,22 +125,45 @@ let postsOverview (site : StaticSite<Config, Page>) =
 let postsArchive (site : StaticSite<Config, Page>) =
     { Url = "/archives"; Content = PostsArchive (posts site) }
 
+let tagUrl (tag : string) = sprintf "/tags/%s" (tag.Replace("#", "sharp") |> Url.slugify)
+
 let tagsOverview (site : StaticSite<Config, Page>) =
-    let url (tag : string) = sprintf "/tags/%s" (tag.Replace("#", "sharp") |> Url.slugify)
     let tags = 
         posts site 
         |> Seq.collect (fun p -> p.Content.Tags) 
         |> Seq.distinct
-    let overview = tags |> Seq.map (fun t -> t, url t)
+    let overview = tags |> Seq.map (fun t -> t, tagUrl t)
     let overviewPage = { Url = "/tags"; Content = TagsOverview overview }
     let tagPages = 
         tags
         |> Seq.map (fun tag ->
             let posts = posts site |> Seq.filter (fun p -> p.Content.Tags |> Array.contains tag)
-            { Url = url tag; Content = TagPage (tag, posts) })
+            { Url = tagUrl tag; Content = TagPage (tag, posts) })
     Seq.singleton overviewPage |> Seq.append tagPages
 
 let template (site : StaticSite<Config, Page>) page = 
+    let postListItem (post : Page<Post>) =
+        article [] [
+            match post.Content.Image with Some link -> yield a [ _href post.Url ] [ img [ _src link ] ] | _ -> ()
+            yield a [ _href post.Url ] [ h1 [] [ str post.Content.Title ] ]
+            yield span [] [
+                yield str (post.Content.Date.ToShortDateString())
+                yield str " | Tags: "
+                yield! post.Content.Tags |> Seq.map (fun t -> a [ _href (tagUrl t) ] [ str t ])
+            ]
+            match post.Content.Blurb with Some blurb -> yield p [] [ str blurb ] | _ -> ()
+        ]
+
+    let shortPostListItem (post : Page<Post>) =
+        article [] [
+            a [ _href post.Url ] [ h1 [] [ str post.Content.Title ] ]
+            span [] [ 
+                yield str (post.Content.Date.ToShortDateString())
+                yield str " | Tags: "
+                yield! post.Content.Tags |> Seq.map (fun t -> a [ _href (tagUrl t) ] [ str t ])
+            ]
+        ]
+
     let titleText =
         match page.Content with
         | Page (title, _) -> title
@@ -155,9 +178,15 @@ let template (site : StaticSite<Config, Page>) page =
         | Page (_, content) -> rawText content
         | Post post -> rawText post.HtmlContent
         | PostsOverview { Pages = posts }
-        | PostsArchive posts
         | TagPage (_, posts) ->
-            ul [] [ for p in posts -> li [] [ a [ _href p.Url ] [ str p.Content.Title ] ] ]
+            ul [] [ for p in posts -> li [] [ postListItem p ] ]
+        | PostsArchive posts ->
+            let perYear = posts |> Seq.groupBy (fun p -> p.Content.Date.Year)
+            ul [] [ 
+                for (year, posts) in perYear do
+                    yield li [ _class "year-subheader" ] [ strf "%i" year ]
+                    yield! [ for p in posts -> li [] [ shortPostListItem p ] ]
+            ]
         | TagsOverview tags ->
             ul [] [ for (t, url) in tags -> li [] [ a [ _href url ] [ str t ] ] ]
 
