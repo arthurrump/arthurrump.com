@@ -144,30 +144,30 @@ let tagsOverview (site : StaticSite<Config, Page>) =
     Seq.singleton overviewPage |> Seq.append tagPages
 
 let template (site : StaticSite<Config, Page>) page = 
-    let postDetailSpan (post : Page<Post>) =
+    let postDetailSpan (post : Post) =
         let tagList = 
-            post.Content.Tags 
+            post.Tags 
             |> Seq.map (fun t -> [ a [ _href (tagUrl t) ] [ str t ]; str ", " ])
             |> Seq.concat
         let tagList = tagList |> Seq.take ((tagList |> Seq.length) - 1)
         span [ _class "post-details" ] [ 
-            yield str (post.Content.Date.ToString("MMMM dd, yyyy", CultureInfo.GetCultureInfo("en")))
+            yield str (post.Date.ToString("MMMM dd, yyyy", CultureInfo.GetCultureInfo("en")))
             yield rawText " &boxv; "
             yield! tagList
         ]
 
     let postListItem (post : Page<Post>) =
-        article [] [
+        li [ _class "post" ] [
             match post.Content.Image with Some link -> yield a [ _href post.Url; _class "image-link" ] [ img [ _src link ] ] | _ -> ()
             yield h1 [] [ a [ _href post.Url ] [ str post.Content.Title ] ]
-            yield postDetailSpan post
+            yield postDetailSpan post.Content
             match post.Content.Blurb with Some blurb -> yield p [] [ str blurb ] | _ -> ()
         ]
 
     let shortPostListItem (post : Page<Post>) =
-        article [] [
+        li [ _class "post" ] [
             h1 [] [ a [ _href post.Url ] [ str post.Content.Title ] ]
-            postDetailSpan post
+            postDetailSpan post.Content
         ]
 
     let titleText =
@@ -181,37 +181,51 @@ let template (site : StaticSite<Config, Page>) page =
 
     let content = 
         match page.Content with
-        | Page (_, content) -> [ rawText content ]
-        | Post post -> [ rawText post.HtmlContent ]
+        | Page (_, content) -> 
+            rawText content
+        | Post post -> 
+            div [ _class "post" ] [
+                article [] [ 
+                    h1 [] [ str post.Title ]
+                    postDetailSpan post
+                    rawText post.HtmlContent 
+                ]
+            ]
         | PostsOverview overview ->
             let pagination = 
                 let older = overview.NextUrl |> Option.map (fun n -> a [ _href n; _class "older" ] [ rawText "Older &#x276F;" ])
                 let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ rawText "&#x276E; Newer" ])
                 let buttons = [ newer; older ] |> List.choose id
                 div [ _class "pagination" ] buttons
-            [ if overview.Index <> 0 then yield pagination
-              yield ul [ _class "post-overview" ] [ 
-                for p in overview.Pages -> 
-                    li [ _class "post" ] [ postListItem p ] 
-              ]
-              yield pagination
+            div [ _class "overview-container" ] [ 
+                if overview.Index <> 0 then yield pagination
+                yield ul [ _class "post-overview" ] [ 
+                    for p in overview.Pages -> 
+                        postListItem p
+                ]
+                yield pagination
             ]
         | TagPage (tag, posts) ->
-            [ ul [ _class "post-overview" ] [ 
-                for p in posts -> 
-                    li [ _class "post" ] [ postListItem p ] 
-              ]
+            div [ _class "overview-container" ] [
+                ul [ _class "post-overview" ] [ 
+                    for p in posts -> 
+                        postListItem p
+                ]
             ]
         | PostsArchive posts ->
             let perYear = posts |> Seq.groupBy (fun p -> p.Content.Date.Year)
-            [ ul [ _class "post-overview" ] [ 
-                for (year, posts) in perYear do
-                    yield li [ _class "year-header" ] [ strf "%i" year ]
-                    yield! [ for p in posts -> li [ _class "post" ] [ shortPostListItem p ] ] 
-              ] 
+            div [ _class "overview-container" ] [
+                ul [ _class "post-overview" ] [ 
+                    for (year, posts) in perYear do
+                        yield li [ _class "year-header" ] [ strf "%i" year ]
+                        yield! [ for p in posts -> shortPostListItem p ]
+                ]
             ]
         | TagsOverview tags ->
-            [ ul [] [ for (t, url, count) in tags -> li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] ] ]
+            ul [] [ 
+                for (t, url, count) in tags -> 
+                    li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] 
+            ]
 
     let keywords = 
         match page.Content with
@@ -231,9 +245,9 @@ let template (site : StaticSite<Config, Page>) page =
             link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ] 
         ]
         body [ ] [ 
-            div [ _id "content" ] [ 
+            div [ _id "background" ] [ 
                 // yield! pageHeader
-                div [ _id "container" ] content
+                div [ _id "container" ] [ content ]
             ]
             footer [] [
                 span [] [ rawText "&copy; "; strf "%i Arthur Rump" now.Year ]

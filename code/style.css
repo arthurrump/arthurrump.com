@@ -1,21 +1,28 @@
 /* General layout */
 body {
-    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-body > #content {
-    padding: .6rem .6rem 2rem .6rem;
+body > #background {
+    padding: .6rem .6rem 2rem;
     background: #f2f2f2;
     color: #171717;
 }
 
-    body > #content > #container {
-        max-width: 960px;
+    @media (max-width: 700px) {
+        body > #background {
+            padding: .6rem 0 2rem;
+        }
+    }
+
+    body > #background > #container {
+        max-width: 1020px;
         margin: auto;
     }
 
+/* Footer */
 body > footer {
     color: #565656;
     font-size: .85rem;
@@ -31,7 +38,78 @@ body > footer {
         color: #565656;
     }
 
+/* Post view */
+.post {
+    background-color: #fff;
+    padding: 2.4rem 1rem;
+    margin: 1rem 0;
+}
+
+    @media (max-width: 700px) {
+        .post {
+            padding: 1rem;
+        }
+    }
+
+    .post > article {
+        max-width: 680px;
+        margin: auto;
+    }
+
+    .post a {
+        text-decoration: none;
+        color: #0078d4;
+    }
+
+        .post a:hover {
+            text-decoration: underline;
+        }
+
+    .post h1 {
+        margin-top: 0;
+        margin-bottom: .2rem;
+        font-size: 1.8rem;
+    }
+    
+    .post h1, .post h2, .post h3, .post h4 {
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    
+    .post h2, .post h3, .post h4, .post h5, .post h6 {
+        margin-bottom: 0;
+    }
+
+    .post h2 + p, .post h3 + p, .post h4 + p, .post h5 + p, .post h6 + p {
+        margin-top: .1rem;
+    }
+
+    .post .post-details {
+        font-size: .9rem;
+    }
+
+    .post p {
+        margin-bottom: 0;
+    }
+
+    .post img, .post .twitter-tweet {
+        max-width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .post pre {
+        overflow: auto;
+    }
+
 /* Post overviews */
+.overview-container {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 ul.post-overview {
     list-style-type: none;
     margin: 0;
@@ -39,25 +117,13 @@ ul.post-overview {
 }
 
     ul.post-overview > li.post {
-        background-color: #fff;
-        box-shadow: 0px 2px 4px rgba(0,0,0,0.06), 0px 0.5px 1px rgba(0,0,0,0.05);
         padding: 1rem;
-        margin: 1rem 0;
     }
 
-        ul.post-overview > li.post > article {
+        ul.post-overview > li.post article {
             display: flex;
             flex-direction: column;
         }
-
-        ul.post-overview > li.post a {
-            text-decoration: none;
-            color: #0078d4;
-        }
-
-            ul.post-overview > li.post a:hover {
-                text-decoration: underline;
-            }
 
         ul.post-overview > li.post a.image-link {
             align-self: center;
@@ -66,36 +132,28 @@ ul.post-overview {
         }
         
         ul.post-overview > li.post img {
-            max-width: 100%;
             max-height: 80vh;
         }
 
         ul.post-overview > li.post h1 {
-            margin-top: 0;
-            margin-bottom: .2rem;
+            overflow: hidden;
+        }
+
+        ul.post-overview > li.year-header {
+            font-size: 2rem;
             font-weight: 600;
-            font-size: 1.8rem;
+            margin-top: 1.4rem;
+            margin-bottom: -.6rem;
         }
-
-        ul.post-overview > li.post .post-details {
-            font-size: .9rem;
-        }
-
-        ul.post-overview > li.post p {
-            margin-bottom: 0;
-        }
-
-    ul.post-overview > li.year-header {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-top: 1.4rem;
-        margin-bottom: -.6rem;
-    }
 
 .pagination {
     width: 100%;
-    height: 1.3rem;
     font-size: 1.1rem;
+
+    /* clearfix */
+    content: "";
+    display: table;
+    clear: both;
 }
 
     .pagination > a {
@@ -105,8 +163,10 @@ ul.post-overview {
 
     .pagination > a.newer {
         float: left;
+        margin-left: .6rem;
     }
 
     .pagination > a.older {
         float: right;
+        margin-right: .6rem;
     }
