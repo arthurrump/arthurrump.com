@@ -35,5 +35,3 @@ As I said, I hope to directly link to the JSON files instead of my own fork. If 
 As for features on the website, I'm planning to show the release notes directly on the website, but for that I'll first want to rebuild the table, this time also keeping mobile usability in mind. Another thing I want to add is URL handling for the selected filter. URL handling is also something that is necessary when multiple pages are added. I'll first look into adding .NET Standard, but if there's a good data source for .NET Framework or Mono releases, those would be interesting additions too.
 
 These suggestions are also in the [GitHub Issues](https://github.com/arthurrump/versionsof.net/issues), which is also the place to add your own ideas. And don't forget to bookmark [versionsof.net](https://versionsof.net)!
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

@@ -88,5 +88,3 @@ Window.Current.SizeChanged -= HideStatusBarIfLandscape; // Disabling by unsubscr
 In this case, you should also check for availability of the statusbar, before subscribing to the event. If the code inside the handler won't run anyway, subscribing is just unnecessary overhead.
 
 I think this little snippet of code belongs in almost every app, and I'll definitely use it in most of mine.
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

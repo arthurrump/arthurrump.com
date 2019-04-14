@@ -32,5 +32,3 @@ The regular course should focus heavily on examples and code, and in the case of
 So what can we build as a command line application, later progress into a web app, start really simple and build out to a complicated program? Chatbots! They work well on the command line, they can be built out into web apps, we could introduce the [Bot Framework](https://dev.botframework.com/), but even Hello world! can be considered a (pretty dumb) bot. Bots might even pass the 'cool' test (even though Microsoft is investing in it), making it the ideal category for examples in our 'cool' tutorial.
 
 Now we just need to make something like that. If you have any suggestions or want to help, please let me know! I'll see what I can do, stay tuned. 😉
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

@@ -25,5 +25,3 @@ The biggest problem thus far: hosting. When looking at the blogs of other people
 Just one thing left: why [Hexo](https://hexo.io/)? When scrolling through [staticgen.com](http://www.staticgen.com/) there are lots of options and there are probably many more out there that aren't on that list. Why did I pick Hexo? First of all, it's one of the demos on the [GitLab Pages account](https://gitlab.com/pages), so I could just copy their build file, instead of trying to configure something myself. It's also very easy to install Hexo using [npm](https://www.npmjs.com/) and, to be honest, the site just gave me a good feeling. Sometimes that's all it takes.
 
 So there you have it: this is the technology stack supporting this blog. I hope this time everything works out well and I'll be able to use this blog for a very long time.
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

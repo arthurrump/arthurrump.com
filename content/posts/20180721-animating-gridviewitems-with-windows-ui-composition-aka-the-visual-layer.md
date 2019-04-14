@@ -226,5 +226,3 @@ Finally, Composition is not an easy topic and good resources are rather scarce, 
 * I recommend letting the [WindowsUIDevLabs](https://github.com/Microsoft/WindowsUIDevLabs) Sample Gallery wait until you have a good grasp of what's going on, but the [Reference Demos](https://github.com/Microsoft/WindowsUIDevLabs/tree/master/Demos/Reference%20Demos) might be helpful.
 * Mike Taulty's [blog posts](https://mtaulty.com/category/composition/) on experiments he did are really helpful.
 * More resources are listed [here](https://github.com/Microsoft/WindowsUIDevLabs/wiki/Resources#windows-ui). I've not looked at all of them, but some might be useful to you.
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

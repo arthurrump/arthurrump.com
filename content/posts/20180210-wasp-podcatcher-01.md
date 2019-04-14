@@ -30,5 +30,3 @@ I also registered a domain name and created a simple website, on which I will al
 In the coming time, I'm of course going back to the actual implementation, first getting the server to somewhat reliably store and return all the data. And I'll keep pondering if I will open source this project, keep that off until a later moment, or keep it as my private pet project. I'm not sure yet, but we'll see.
 
 In the meantime, follow [me](https://twitter.com/arthurrump) and [Wasp](https://twitter.com/wasppodcatcher) on Twitter to stay up to date. See you in the next one!
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

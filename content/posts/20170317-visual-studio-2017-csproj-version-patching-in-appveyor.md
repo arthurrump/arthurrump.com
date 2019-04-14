@@ -27,5 +27,3 @@ dotnet build /p:Version=$Env:APPVEYOR_BUILD_VERSION
 ```
 
 It feels like this is the right solution for the problem, instead of fiddling around and changing files.
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

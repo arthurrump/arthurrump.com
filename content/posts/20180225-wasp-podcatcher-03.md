@@ -31,5 +31,3 @@ This week GitLab [finally rolled out](https://about.gitlab.com/2018/02/21/pages-
 
 ## What's next
 In the coming week, I'll try to get a better grasp of Anchor Modeling and hopefully write most of the stored procedures to do all of the database operations. Since most of the logic of the server will now be written in SQL instead of beautiful LINQ-queries I'm thinking about switching to a more lightweight framework instead of the large ASP.NET MVC with Azure Mobile App Service integration I was planning on. Maybe I'll even use F# and/or go serverless, who knows? See you next week!
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

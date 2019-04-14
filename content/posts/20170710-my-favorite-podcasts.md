@@ -75,6 +75,3 @@ Listen to De Rudi & Freddie Show: [website](https://decorrespondent.nl/podcasts)
 Because the after-election election hype can go on for months in the Netherlands, Joost Vullings and Max van Weezel give their latest thoughts on the elections of March 2017, and with the results in, they comment on the formation of the new administration. Yes, that's still going on, and it isn't done anytime soon either. Highly recommended for those interested in Dutch politics.
 
 Listen to De stemming van Vullings en Van Weezel: [website](https://www.nporadio1.nl/podcasts/de-stemming-van-vullings-en-van-weezel), [SoundCloud](https://soundcloud.com/methetoogopmorgen/sets/de-stemming-van-vullings-en), [feed](http://feeds.nos.nl/DeStemmingVanVullingsEnVanWeezel)
-
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*

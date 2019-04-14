@@ -26,5 +26,3 @@ So in order to explore your LocalMachine cache, you'll have to enter `%LocalAppD
 Notice that both the UserAccount and Secure caches are stored in the `RoamingState` folder, which means that these files are automatically synced across all Windows 10 devices logged in with the same Microsoft account. In other words, you shouldn't use these for caching web requests, but they are great for storing settings and authentication.
 
 If you know where to look, debugging your Akavache cache is a rather easy task.
-
-*Thanks for reading! Enjoyed this post? Please share it with your friends using the buttons below! Have some questions? Comments can be found below too! And on a final note: grammar corrections are always welcome! English is not my primary language, but that's not a reason to don't learn how to use the language correctly.*
