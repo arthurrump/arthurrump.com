@@ -11,8 +11,9 @@ ul.post-overview {
 
     ul.post-overview > li.post {
         background-color: #fff;
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.06), 0px 0.5px 1px rgba(0,0,0,0.05);
         padding: 1rem;
-        margin: .8rem 0;
+        margin: 1rem 0;
     }
 
         ul.post-overview > li.post a {
@@ -34,10 +35,22 @@ ul.post-overview {
 
         ul.post-overview > li.post h1 {
             margin-top: 0;
+            margin-bottom: .2rem;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        ul.post-overview > li.post .post-details {
+            font-size: .9rem;
+        }
+
+        ul.post-overview > li.post p {
+            margin-bottom: 0;
         }
 
     ul.post-overview > li.year-header {
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: 600;
         margin-top: 1.4rem;
+        margin-bottom: -.6rem;
     }

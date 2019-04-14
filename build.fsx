@@ -146,23 +146,23 @@ let template (site : StaticSite<Config, Page>) page =
             |> Seq.map (fun t -> [ a [ _href (tagUrl t) ] [ str t ]; str ", " ])
             |> Seq.concat
         let tagList = tagList |> Seq.take ((tagList |> Seq.length) - 1)
-        span [] [ 
+        span [ _class "post-details" ] [ 
             yield str (post.Content.Date.ToShortDateString())
-            yield str " | Tags: "
+            yield rawText " &boxv; "
             yield! tagList
         ]
 
     let postListItem (post : Page<Post>) =
         article [] [
             match post.Content.Image with Some link -> yield a [ _href post.Url ] [ img [ _src link ] ] | _ -> ()
-            yield a [ _href post.Url ] [ h1 [] [ str post.Content.Title ] ]
+            yield h1 [] [ a [ _href post.Url ] [ str post.Content.Title ] ]
             yield postDetailSpan post
             match post.Content.Blurb with Some blurb -> yield p [] [ str blurb ] | _ -> ()
         ]
 
     let shortPostListItem (post : Page<Post>) =
         article [] [
-            a [ _href post.Url ] [ h1 [] [ str post.Content.Title ] ]
+            h1 [] [ a [ _href post.Url ] [ str post.Content.Title ] ]
             postDetailSpan post
         ]
 
