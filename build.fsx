@@ -180,20 +180,36 @@ let template (site : StaticSite<Config, Page>) page =
 
     let content = 
         match page.Content with
-        | Page (_, content) -> rawText content
-        | Post post -> rawText post.HtmlContent
-        | PostsOverview { Pages = posts }
-        | TagPage (_, posts) ->
-            ul [ _class "post-overview" ] [ for p in posts -> li [ _class "post" ] [ postListItem p ] ]
+        | Page (_, content) -> [ rawText content ]
+        | Post post -> [ rawText post.HtmlContent ]
+        | PostsOverview overview ->
+            let pagination = 
+                let older = overview.NextUrl |> Option.map (fun n -> a [ _href n; _class "older" ] [ rawText "Older &#x276F;" ])
+                let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ rawText "&#x276E; Newer" ])
+                let buttons = [ newer; older ] |> List.choose id
+                div [ _class "pagination" ] buttons
+            [ ul [ _class "post-overview" ] [ 
+                for p in overview.Pages -> 
+                    li [ _class "post" ] [ postListItem p ] 
+              ]
+              pagination
+            ]
+        | TagPage (tag, posts) ->
+            [ ul [ _class "post-overview" ] [ 
+                for p in posts -> 
+                    li [ _class "post" ] [ postListItem p ] 
+              ]
+            ]
         | PostsArchive posts ->
             let perYear = posts |> Seq.groupBy (fun p -> p.Content.Date.Year)
-            ul [ _class "post-overview" ] [ 
+            [ ul [ _class "post-overview" ] [ 
                 for (year, posts) in perYear do
                     yield li [ _class "year-header" ] [ strf "%i" year ]
-                    yield! [ for p in posts -> li [ _class "post" ] [ shortPostListItem p ] ]
+                    yield! [ for p in posts -> li [ _class "post" ] [ shortPostListItem p ] ] 
+              ] 
             ]
         | TagsOverview tags ->
-            ul [] [ for (t, url, count) in tags -> li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] ]
+            [ ul [] [ for (t, url, count) in tags -> li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] ] ]
 
     let keywords = 
         match page.Content with
@@ -213,7 +229,7 @@ let template (site : StaticSite<Config, Page>) page =
             link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ] 
         ]
         body [ ] [ 
-            div [ _id "content" ] [ content ]
+            div [ _id "content" ] content
             footer [] [
                 span [] [ rawText "&copy; "; strf "%i Arthur Rump" now.Year ]
                 span [] [ 
