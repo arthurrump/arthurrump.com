@@ -24,6 +24,7 @@ open Markdig
 open Nett
 
 open System
+open System.Globalization
 open System.IO
 
 let now = DateTime.UtcNow
@@ -150,7 +151,7 @@ let template (site : StaticSite<Config, Page>) page =
             |> Seq.concat
         let tagList = tagList |> Seq.take ((tagList |> Seq.length) - 1)
         span [ _class "post-details" ] [ 
-            yield str (post.Content.Date.ToShortDateString())
+            yield str (post.Content.Date.ToString("MMMM dd, yyyy", CultureInfo.GetCultureInfo("en")))
             yield rawText " &boxv; "
             yield! tagList
         ]
