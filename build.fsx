@@ -105,8 +105,6 @@ let parsePost path (Some frontmatter) renderedMarkdown =
           Image = toml |> tomlTryGet "image" |> Option.map assetUrlRewrite
           HtmlContent = renderedMarkdown }
 
-    printfn "%A" post.Image
-
     { Url = sprintf "%04i/%02i/%02i/%s" post.Date.Year post.Date.Month post.Date.Day slug
       Content = Post post }
 
@@ -142,26 +140,30 @@ let tagsOverview (site : StaticSite<Config, Page>) =
     Seq.singleton overviewPage |> Seq.append tagPages
 
 let template (site : StaticSite<Config, Page>) page = 
+    let postDetailSpan (post : Page<Post>) =
+        let tagList = 
+            post.Content.Tags 
+            |> Seq.map (fun t -> [ a [ _href (tagUrl t) ] [ str t ]; str ", " ])
+            |> Seq.concat
+        let tagList = tagList |> Seq.take ((tagList |> Seq.length) - 1)
+        span [] [ 
+            yield str (post.Content.Date.ToShortDateString())
+            yield str " | Tags: "
+            yield! tagList
+        ]
+
     let postListItem (post : Page<Post>) =
         article [] [
             match post.Content.Image with Some link -> yield a [ _href post.Url ] [ img [ _src link ] ] | _ -> ()
             yield a [ _href post.Url ] [ h1 [] [ str post.Content.Title ] ]
-            yield span [] [
-                yield str (post.Content.Date.ToShortDateString())
-                yield str " | Tags: "
-                yield! post.Content.Tags |> Seq.map (fun t -> a [ _href (tagUrl t) ] [ str t ])
-            ]
+            yield postDetailSpan post
             match post.Content.Blurb with Some blurb -> yield p [] [ str blurb ] | _ -> ()
         ]
 
     let shortPostListItem (post : Page<Post>) =
         article [] [
             a [ _href post.Url ] [ h1 [] [ str post.Content.Title ] ]
-            span [] [ 
-                yield str (post.Content.Date.ToShortDateString())
-                yield str " | Tags: "
-                yield! post.Content.Tags |> Seq.map (fun t -> a [ _href (tagUrl t) ] [ str t ])
-            ]
+            postDetailSpan post
         ]
 
     let titleText =
