@@ -39,7 +39,7 @@ type Page =
     | Post of Post
     | PostsOverview of Overview<Post>
     | PostsArchive of Page<Post> seq
-    | TagsOverview of (string * string) seq
+    | TagsOverview of (string * string * int) seq
     | TagPage of tag: string * posts: Page<Post> seq
 
 and Post =
@@ -131,12 +131,13 @@ let tagsOverview (site : StaticSite<Config, Page>) =
     let tags = 
         posts site 
         |> Seq.collect (fun p -> p.Content.Tags) 
-        |> Seq.distinct
-    let overview = tags |> Seq.map (fun t -> t, tagUrl t)
+        |> Seq.countBy id
+        |> Seq.sortByDescending snd
+    let overview = tags |> Seq.map (fun (t, count) -> t, tagUrl t, count)
     let overviewPage = { Url = "/tags"; Content = TagsOverview overview }
     let tagPages = 
         tags
-        |> Seq.map (fun tag ->
+        |> Seq.map (fun (tag, count) ->
             let posts = posts site |> Seq.filter (fun p -> p.Content.Tags |> Array.contains tag)
             { Url = tagUrl tag; Content = TagPage (tag, posts) })
     Seq.singleton overviewPage |> Seq.append tagPages
@@ -192,7 +193,7 @@ let template (site : StaticSite<Config, Page>) page =
                     yield! [ for p in posts -> li [ _class "post" ] [ shortPostListItem p ] ]
             ]
         | TagsOverview tags ->
-            ul [] [ for (t, url) in tags -> li [] [ a [ _href url ] [ str t ] ] ]
+            ul [] [ for (t, url, count) in tags -> li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] ]
 
     let keywords = 
         match page.Content with
@@ -201,6 +202,7 @@ let template (site : StaticSite<Config, Page>) page =
 
     html [] [
         head [ ] [ 
+            meta [ _httpEquiv "Content-Type"; _content "text/html; charset=utf-8" ]
             title [] [ strf "%s - %s" titleText site.Config.Title ]
             link [ _rel "stylesheet"; _type "text/css"; _href "/style.css" ]
             meta [ _name "author"; _content site.Config.Author ]
