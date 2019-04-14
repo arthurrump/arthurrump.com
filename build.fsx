@@ -26,6 +26,8 @@ open Nett
 open System
 open System.IO
 
+let now = DateTime.UtcNow
+
 type Config =
     { Title : string
       Author : string
@@ -206,12 +208,22 @@ let template (site : StaticSite<Config, Page>) page =
             meta [ _name "keywords"; _content keywords ]
             meta [ _name "generator"; _content "Fake.StaticGen" ]
             meta [ _name "viewport"; _content "width=device-width, initial-scale=1" ]
-            link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ] ]
-        body [ ] [ content ] ]
+            link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ] 
+        ]
+        body [ ] [ 
+            div [ _id "content" ] [ content ]
+            footer [] [
+                span [] [ rawText "&copy; "; strf "%i Arthur Rump" now.Year ]
+                span [] [ 
+                    str "Powered by " 
+                    a [ _href "https://github.com/arthurrump/Fake.StaticGen" ] [ str "Fake.StaticGen" ]
+                    str " and themed with handwritten CSS"
+                ]
+            ]
+        ] 
+    ]
 
 let rssFeed (site : StaticSite<Config, Page>) =
-    let now = DateTime.UtcNow
-
     let items = 
         site.Pages
         |> Seq.choose postChooser
