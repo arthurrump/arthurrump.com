@@ -189,11 +189,12 @@ let template (site : StaticSite<Config, Page>) page =
                 let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ rawText "&#x276E; Newer" ])
                 let buttons = [ newer; older ] |> List.choose id
                 div [ _class "pagination" ] buttons
-            [ ul [ _class "post-overview" ] [ 
+            [ if overview.Index <> 0 then yield pagination
+              yield ul [ _class "post-overview" ] [ 
                 for p in overview.Pages -> 
                     li [ _class "post" ] [ postListItem p ] 
               ]
-              pagination
+              yield pagination
             ]
         | TagPage (tag, posts) ->
             [ ul [ _class "post-overview" ] [ 
