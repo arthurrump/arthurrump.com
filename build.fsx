@@ -158,7 +158,7 @@ let template (site : StaticSite<Config, Page>) page =
 
     let postListItem (post : Page<Post>) =
         article [] [
-            match post.Content.Image with Some link -> yield a [ _href post.Url ] [ img [ _src link ] ] | _ -> ()
+            match post.Content.Image with Some link -> yield a [ _href post.Url; _class "image-link" ] [ img [ _src link ] ] | _ -> ()
             yield h1 [] [ a [ _href post.Url ] [ str post.Content.Title ] ]
             yield postDetailSpan post
             match post.Content.Blurb with Some blurb -> yield p [] [ str blurb ] | _ -> ()
@@ -231,7 +231,10 @@ let template (site : StaticSite<Config, Page>) page =
             link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ] 
         ]
         body [ ] [ 
-            div [ _id "content" ] content
+            div [ _id "content" ] [ 
+                // yield! pageHeader
+                div [ _id "container" ] content
+            ]
             footer [] [
                 span [] [ rawText "&copy; "; strf "%i Arthur Rump" now.Year ]
                 span [] [ 

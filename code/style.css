@@ -1,3 +1,4 @@
+/* General layout */
 body {
     font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0;
@@ -10,6 +11,27 @@ body > #content {
     color: #171717;
 }
 
+    body > #content > #container {
+        max-width: 960px;
+        margin: auto;
+    }
+
+body > footer {
+    color: #565656;
+    font-size: .85rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 0;
+    padding: 0.8rem;
+}
+
+    body > footer a {
+        color: #565656;
+    }
+
+/* Post overviews */
 ul.post-overview {
     list-style-type: none;
     margin: 0;
@@ -23,6 +45,11 @@ ul.post-overview {
         margin: 1rem 0;
     }
 
+        ul.post-overview > li.post > article {
+            display: flex;
+            flex-direction: column;
+        }
+
         ul.post-overview > li.post a {
             text-decoration: none;
             color: #0078d4;
@@ -32,12 +59,15 @@ ul.post-overview {
                 text-decoration: underline;
             }
 
+        ul.post-overview > li.post a.image-link {
+            align-self: center;
+            padding: 0;
+            margin-bottom: .8rem;
+        }
+        
         ul.post-overview > li.post img {
             max-width: 100%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: .8rem;
+            max-height: 80vh;
         }
 
         ul.post-overview > li.post h1 {
@@ -67,6 +97,7 @@ ul.post-overview {
     height: 1.3rem;
     font-size: 1.1rem;
 }
+
     .pagination > a {
         color: #171717;
         text-decoration: none;
@@ -78,19 +109,4 @@ ul.post-overview {
 
     .pagination > a.older {
         float: right;
-    }
-
-body > footer {
-    color: #565656;
-    font-size: .85rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    margin: 0;
-    padding: 0.8rem;
-}
-
-    body > footer a {
-        color: #565656;
     }
