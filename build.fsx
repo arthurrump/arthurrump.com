@@ -181,13 +181,13 @@ let template (site : StaticSite<Config, Page>) page =
         | Post post -> rawText post.HtmlContent
         | PostsOverview { Pages = posts }
         | TagPage (_, posts) ->
-            ul [] [ for p in posts -> li [] [ postListItem p ] ]
+            ul [ _class "post-overview" ] [ for p in posts -> li [ _class "post" ] [ postListItem p ] ]
         | PostsArchive posts ->
             let perYear = posts |> Seq.groupBy (fun p -> p.Content.Date.Year)
-            ul [] [ 
+            ul [ _class "post-overview" ] [ 
                 for (year, posts) in perYear do
-                    yield li [ _class "year-subheader" ] [ strf "%i" year ]
-                    yield! [ for p in posts -> li [] [ shortPostListItem p ] ]
+                    yield li [ _class "year-header" ] [ strf "%i" year ]
+                    yield! [ for p in posts -> li [ _class "post" ] [ shortPostListItem p ] ]
             ]
         | TagsOverview tags ->
             ul [] [ for (t, url) in tags -> li [] [ a [ _href url ] [ str t ] ] ]
@@ -200,12 +200,13 @@ let template (site : StaticSite<Config, Page>) page =
     html [] [
         head [ ] [ 
             title [] [ strf "%s - %s" titleText site.Config.Title ]
+            link [ _rel "stylesheet"; _type "text/css"; _href "/style.css" ]
             meta [ _name "author"; _content site.Config.Author ]
             meta [ _name "description"; _content site.Config.Description ]
             meta [ _name "keywords"; _content keywords ]
             meta [ _name "generator"; _content "Fake.StaticGen" ]
             meta [ _name "viewport"; _content "width=device-width, initial-scale=1" ]
-            link [ _rel "canonical"; _content (site.AbsoluteUrl page.Url) ] ]
+            link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ] ]
         body [ ] [ content ] ]
 
 let rssFeed (site : StaticSite<Config, Page>) =
@@ -254,6 +255,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*") assetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
+    |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
     |> StaticSite.generateFromHtml "public" template
 
 Target.runOrDefault "Generate"
