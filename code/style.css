@@ -43,6 +43,7 @@ body > footer {
     background-color: #fff;
     padding: 2.4rem 1rem;
     margin: 1rem 0;
+    overflow-wrap: break-word;
 }
 
     @media (max-width: 700px) {
@@ -133,10 +134,6 @@ ul.post-overview {
         
         ul.post-overview > li.post img {
             max-height: 80vh;
-        }
-
-        ul.post-overview > li.post h1 {
-            overflow: hidden;
         }
 
         ul.post-overview > li.year-header {
