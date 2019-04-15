@@ -179,6 +179,20 @@ let template (site : StaticSite<Config, Page>) page =
         | TagsOverview _ -> "Tags"
         | TagPage (tag, _) -> sprintf "Tag: %s" tag
 
+    let pageHeader =
+        let navItem (text : string) url = 
+            span [ _class "nav-item" ] [ a [ _href url ] [ str text ] ]
+
+        header [] [
+            nav [ _id "main-nav"] [
+                span [ _id "title" ] [ a [ _href "/" ] [ str "Arthur Rump" ] ]
+                navItem "Blog" "/"
+                navItem "Archives" "/archives"
+                navItem "Projects" "/projects"
+                navItem "About" "/about"
+            ]
+        ]
+
     let content = 
         match page.Content with
         | Page (_, content) -> 
@@ -246,8 +260,10 @@ let template (site : StaticSite<Config, Page>) page =
         ]
         body [ ] [ 
             div [ _id "background" ] [ 
-                // yield! pageHeader
-                div [ _id "container" ] [ content ]
+                div [ _id "container" ] [ 
+                    pageHeader
+                    content 
+                ]
             ]
             footer [] [
                 span [] [ rawText "&copy; "; strf "%i Arthur Rump" now.Year ]
