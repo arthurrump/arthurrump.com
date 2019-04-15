@@ -71,6 +71,10 @@ body > footer {
         margin-bottom: .2rem;
         font-size: 1.8rem;
     }
+
+        .post h1 a {
+            color: #171717;
+        }
     
     .post h1, .post h2, .post h3, .post h4 {
         font-weight: 600;
