@@ -134,6 +134,7 @@ ul.post-overview {
         
         ul.post-overview > li.post img {
             max-height: 80vh;
+            margin-bottom: 1rem;
         }
 
         ul.post-overview > li.year-header {
