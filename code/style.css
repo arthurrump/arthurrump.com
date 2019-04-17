@@ -239,11 +239,17 @@ ul.post-overview {
         }
 
         ul.post-overview > li.year-header {
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 500;
             margin-top: 1.4rem;
             margin-bottom: -.6rem;
         }
+
+            @media (max-width: 700px) {
+                ul.post-overview > li.year-header {
+                    margin-left: .6rem;
+                }
+            }
 
 .pagination {
     width: 100%;
