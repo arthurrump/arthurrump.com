@@ -183,9 +183,17 @@ let template (site : StaticSite<Config, Page>) page =
         let navItem (text : string) url = 
             span [ _class "nav-item" ] [ a [ _href url ] [ str text ] ]
 
-        header [] [
+        header [ _id "main-header" ] [
+            span [ _id "title" ] [ a [ _href "/" ] [ str "Arthur Rump" ] ]
+            button [ _id "menu-toggle"
+                     _onclick ("var img = document.querySelector('#menu-toggle > img');"
+                        + "var nav = document.getElementById('main-nav');"
+                        + "if (nav.classList.contains('opened')) {"
+                        + "  nav.classList.remove('opened'); img.setAttribute('src', '/ionicons/md-menu.svg'); }"
+                        + "else { nav.classList.add('opened'); img.setAttribute('src', '/ionicons/md-close.svg'); }") ] [
+                img [ _alt "Menu"; _src "/ionicons/md-menu.svg" ] 
+            ]
             nav [ _id "main-nav"] [
-                span [ _id "title" ] [ a [ _href "/" ] [ str "Arthur Rump" ] ]
                 navItem "Blog" "/"
                 navItem "Archives" "/archives"
                 navItem "Projects" "/projects"
@@ -270,7 +278,7 @@ let template (site : StaticSite<Config, Page>) page =
                 span [] [ 
                     str "Powered by " 
                     a [ _href "https://github.com/arthurrump/Fake.StaticGen" ] [ str "Fake.StaticGen" ]
-                    str " and themed with handwritten CSS"
+                    rawText " and themed with handwritten CSS&trade;"
                 ]
             ]
         ] 
@@ -321,6 +329,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
+    |> StaticSite.withFilesFromSources (!! "ionicons/*") (fun path -> "ionicons/" + (Path.GetFileName path))
     |> StaticSite.generateFromHtml "public" template
 
 Target.runOrDefault "Generate"
