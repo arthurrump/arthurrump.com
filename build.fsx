@@ -195,9 +195,8 @@ let template (site : StaticSite<Config, Page>) page =
             ]
             nav [ _id "main-nav"] [
                 navItem "Blog" "/"
-                navItem "Archives" "/archives"
                 navItem "Projects" "/projects"
-                navItem "About" "/about"
+                navItem "About me" "/about"
             ]
         ]
 
