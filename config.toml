@@ -1,3 +1,13 @@
 title = "Arthur Rump"
 author = "Arthur Rump"
 description = "Always writing F#, and sometimes studying Technical Computer Science."
+
+[[nav]]
+name = "Blog"
+url = "/"
+[[nav]]
+name = "Projects"
+url = "/projects"
+[[nav]]
+name = "About me"
+url = "/about"

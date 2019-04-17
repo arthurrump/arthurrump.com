@@ -32,7 +32,11 @@ let now = DateTime.UtcNow
 type Config =
     { Title : string
       Author : string
-      Description : string }
+      Description : string
+      Navigation : NavItem list }
+and NavItem = 
+    { Name : string
+      Url : string }
 
 [<NoComparison>]
 type Page =
@@ -87,7 +91,13 @@ let parseConfig config =
     let toml = Toml.ReadString(config)
     { Title = toml.["title"].Get()
       Author = toml.["author"].Get()
-      Description = toml.["description"].Get() }
+      Description = toml.["description"].Get()
+      Navigation = 
+        toml.["nav"].Get<TomlTableArray>().Items 
+        |> Seq.map (fun navItem -> 
+            { Name = navItem.["name"].Get() 
+              Url = navItem.["url"].Get() }) 
+        |> Seq.toList }
 
 let parsePage path (Some frontmatter) renderedMarkdown =
     let slug = path |> Path.GetFileNameWithoutExtension
@@ -180,8 +190,8 @@ let template (site : StaticSite<Config, Page>) page =
         | TagPage (tag, _) -> sprintf "Tag: %s" tag
 
     let pageHeader =
-        let navItem (text : string) url = 
-            span [ _class "nav-item" ] [ a [ _href url ] [ str text ] ]
+        let navItem item = 
+            span [ _class "nav-item" ] [ a [ _href item.Url ] [ str item.Name ] ]
 
         header [ _id "main-header" ] [
             span [ _id "title" ] [ a [ _href "/" ] [ str "Arthur Rump" ] ]
@@ -193,11 +203,7 @@ let template (site : StaticSite<Config, Page>) page =
                         + "else { nav.classList.add('opened'); img.setAttribute('src', '/ionicons/md-close.svg'); }") ] [
                 img [ _alt "Menu"; _src "/ionicons/md-menu.svg" ] 
             ]
-            nav [ _id "main-nav"] [
-                navItem "Blog" "/"
-                navItem "Projects" "/projects"
-                navItem "About me" "/about"
-            ]
+            nav [ _id "main-nav"] (site.Config.Navigation |> List.map navItem)
         ]
 
     let content = 
