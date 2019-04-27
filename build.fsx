@@ -154,6 +154,8 @@ let tagsOverview (site : StaticSite<Config, Page>) =
     Seq.singleton overviewPage |> Seq.append tagPages
 
 let template (site : StaticSite<Config, Page>) page = 
+    let _property = XmlEngine.attr "property"
+
     let postDetailSpan (post : Post) =
         let tagList = 
             post.Tags 
@@ -161,7 +163,7 @@ let template (site : StaticSite<Config, Page>) page =
             |> Seq.concat
         let tagList = tagList |> Seq.take ((tagList |> Seq.length) - 1)
         span [ _class "post-details" ] [ 
-            yield str (post.Date.ToString("MMMM dd, yyyy", CultureInfo.GetCultureInfo("en")))
+            yield span [ _class "dateline" ] [ str (post.Date.ToString("MMMM dd, yyyy", CultureInfo.GetCultureInfo("en"))) ]
             yield rawText " &boxv; "
             yield! tagList
         ]
@@ -254,23 +256,38 @@ let template (site : StaticSite<Config, Page>) page =
                     li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] 
             ]
 
-    let keywords = 
+    let headerTags =
         match page.Content with
-        | Post post -> post.Tags |> String.concat ","
-        | _ -> ""
+        | Post post ->
+            [ yield meta [ _name "keywords"; _content (post.Tags |> String.concat ",") ]
+              yield meta [ _name "title"; _content post.Title ]
+              yield meta [ _name "description"; _content (post.Blurb |> Option.defaultValue site.Config.Description) ]
+              yield meta [ _property "og:title"; _content post.Title ]
+              yield meta [ _property "og:type"; _content "article" ]
+              yield meta [ _property "og:image"; _content (site.AbsoluteUrl (post.Image |> Option.defaultValue "")) ] // TODO: default image
+              yield meta [ _property "og:description"; _content (post.Blurb |> Option.defaultValue site.Config.Description) ]
+              yield meta [ _property "article:author"; _content site.Config.Author ]
+              yield meta [ _property "article:published_time"; _content (post.Date.ToString("s")) ]
+              for t in post.Tags -> meta [ _property "article:tag"; _content t ] ]
+        | _ ->
+            [ meta [ _name "description"; _content site.Config.Description ]
+              meta [ _property "og:title"; _content titleText ]
+              meta [ _property "og:type"; _content "website" ] ]
 
     html [] [
-        head [ ] [ 
+        head [ ] ([ 
             meta [ _httpEquiv "Content-Type"; _content "text/html; charset=utf-8" ]
             title [] [ strf "%s - %s" titleText site.Config.Title ]
             link [ _rel "stylesheet"; _type "text/css"; _href "/style.css" ]
             meta [ _name "author"; _content site.Config.Author ]
+            meta [ _name "copyright"; _content (sprintf "Copyright %i %s" now.Year site.Config.Author) ]
             meta [ _name "description"; _content site.Config.Description ]
-            meta [ _name "keywords"; _content keywords ]
             meta [ _name "generator"; _content "Fake.StaticGen" ]
             meta [ _name "viewport"; _content "width=device-width, initial-scale=1" ]
-            link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ] 
-        ]
+            link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ]
+            meta [ _property "og:url"; _content (site.AbsoluteUrl page.Url) ]
+            meta [ _property "og:site_name"; _content site.Config.Title ] 
+        ] @ headerTags)
         body [ ] [ 
             div [ _id "background" ] [ 
                 div [ _id "container" ] [ 
@@ -279,7 +296,7 @@ let template (site : StaticSite<Config, Page>) page =
                 ]
             ]
             footer [] [
-                span [] [ rawText "&copy; "; strf "%i Arthur Rump" now.Year ]
+                span [] [ rawText "&copy; "; strf "%i %s" now.Year site.Config.Author ]
                 span [] [ 
                     str "Powered by " 
                     a [ _href "https://github.com/arthurrump/Fake.StaticGen" ] [ str "Fake.StaticGen" ]
