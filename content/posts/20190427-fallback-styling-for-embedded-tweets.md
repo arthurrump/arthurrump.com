@@ -1,15 +1,14 @@
 +++
 title = "Fallback styling for embedded Tweets"
-tags = [ "CSS", "Twitter" ]
+tags = [ "CSS", "Twitter", "Embed Tweet" ]
 date = 2019-04-27 14:29:31
-blurb = "Sometimes you want to embed a Tweet in your blog posts. At least I do. With a bit of CSS you won't have to depend on an external script to make your embedded Tweet recognizable as a Tweet."
+blurb = "Sometimes you want to embed a Tweet in your blog posts. At least I do. With a bit of CSS, you won't have to depend on an external script to make your embedded Tweet recognizable as a Tweet."
 image = "/assets/20190427-fallback-styling-for-embedded-tweets/fallback-shanselman.png"
-
 +++
 
 Embedding a Tweet on your website is easy to do. Find the tweet, click on Embed Tweet, copy, paste, done.
 
-But let's just take a look at the code you just copied:
+Let's first take a look at the code you just copied:
 
 ```html
 <blockquote class="twitter-tweet" data-dnt="true">
@@ -21,21 +20,21 @@ But let's just take a look at the code you just copied:
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
 
-> Sidenote: please add the `data-dnt="true"` attribute to tell Twitter not to track your visitors.
+> Sidenote: please add the `data-dnt="true"` attribute to tell Twitter you don't want them to track your visitors.
 
-Note how all the actual content of the Tweet is just text in a blockquote. That's great, because if the script does not load, the content you wanted to share is still there and readable. This could happen in situations were Twitter is blocked by a firewall (whether by a company or a nation state), the user has JavaScript disabled, or because the script is blocked by Content Blocking in Firefox. However, the result of that is not ideal by default. Here's a screenshot from my website with two embedded tweets:
+Note how all the actual content of the Tweet is just text in a blockquote. That's great because if the script does not load, the content you wanted to share is still there and readable. This could happen in situations where Twitter is entirely blocked (whether by a company or a nation-state), the user has JavaScript disabled, or because the script is blocked by Content Blocking in Firefox. However, this means that Tweets will be rendered as blockquotes by default. Here's a screenshot from my website with two embedded tweets:
 
 ![Two embedded tweets formatted with standard blockquote styling](assets/20190427-fallback-styling-for-embedded-tweets/blockquotes.png "Tweets styled like quotes with my old website theme")
 
-These are simply styled as every other blockquote, which is not a problem in itself, but it does not give the reader an obvious clue to the source of the content. Sure, they will probably figure it out from the use of t.co links and @username, but I'm often a bit confused when I see a tweet presented like this, especially since you're expecting to see the normal embed view with embedded tweets.
+These are simply styled as every other blockquote, which is not a problem in itself, but it does not give the reader an obvious clue to the source of the content. Sure, they will probably figure it out from the use of t.co links and @username, but I'm often a bit confused when I see a tweet presented like this, especially since you're expecting the Tweet to be displayed in the widget as created by Twitter's script.
 
-This is the reason I decided to add some distinct styling for Tweets when redoing the design for this site. Here's a comparison between my styling and widget rendered by Twitter:
+This is the reason I decided to add some distinct styling for Tweets when redoing the design for this site. Here's a comparison between my styling and the widget as rendered by Twitter:
 
 ![Comparison between my custom styling of the blockquote and Twitter's widget, with a Tweet by Scott Hanselman](assets/20190427-fallback-styling-for-embedded-tweets/fallback-shanselman.png "My custom blockquote styling on the left, the Twitter widget on the right")
 
 ![Another comparison, this time by Immo Landwerth](assets/20190427-fallback-styling-for-embedded-tweets/fallback-terrajobst.png "My custom blockquote styling on the left, the Twitter widget on the right")
 
-All that is required is a little bit of CSS:
+We only need a little bit of CSS:
 
 ```css
 blockquote.twitter-tweet {
@@ -53,7 +52,7 @@ blockquote.twitter-tweet > p {
 }
 ```
 
-Restricting the selector to only elements of type `blockquote` makes sure to only apply the styling in case the script has not loaded. The script will replace the blockquote with an `iframe` containing Twitter's own layout and I don't want to mess that up. Then the Twitter bird is added as a background image in the upper right corner and the text is padded to make sure it doesn't flow over the logo. The `border` and `border-radius` properties match the values the script would also set.
+Restricting the selector to only elements of type `blockquote` makes sure to only apply the styling in case the script has not loaded. The script will replace the blockquote with an `iframe` containing Twitter's widget and I don't want to mess that up. The Twitter bird is added as a background image in the upper right corner and the text is padded to make sure it doesn't flow over the logo. The `border` and `border-radius` properties match the values the script would set.
 
 Since I'm already using [Ionicons](https://ionicons.com/) on this site, I just linked to the logo provided by Ionicons (with a little modification to set the color), but if you want a pure CSS solution, you can of course embed the SVG directly:
 
