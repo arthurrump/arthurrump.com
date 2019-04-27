@@ -287,6 +287,7 @@ let template (site : StaticSite<Config, Page>) page =
             link [ _rel "canonical"; _href (site.AbsoluteUrl page.Url) ]
             meta [ _property "og:url"; _content (site.AbsoluteUrl page.Url) ]
             meta [ _property "og:site_name"; _content site.Config.Title ] 
+            meta [ _name "twitter:dnt"; _content "on" ]
         ] @ headerTags)
         body [ ] [ 
             div [ _id "background" ] [ 
