@@ -331,7 +331,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withOverviewPage postsArchive
     |> StaticSite.withOverviewPages tagsOverview
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
-    |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*") assetUrlRewrite
+    |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*" --"content/posts/assets/**/ignore/**/*") assetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
