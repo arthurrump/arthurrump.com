@@ -208,6 +208,8 @@ body > footer {
     .post blockquote {
         padding-left: 1rem;
         border-left: 4px solid #505050;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
     }
 
         .post blockquote.twitter-tweet {
