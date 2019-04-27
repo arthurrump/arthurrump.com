@@ -314,6 +314,7 @@ let withMarkdownPages files parse =
     let pipeline =
         MarkdownPipelineBuilder()
             .UseEmphasisExtras()
+            .UseGenericAttributes()
             .UseLinkUrlRewrite(fun link ->
                 if link.Url.TrimStart('/').StartsWith("assets/") 
                 then assetUrlRewrite link.Url
