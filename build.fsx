@@ -220,8 +220,8 @@ let template (site : StaticSite<Config, Page>) page =
             ]
         | PostsOverview overview ->
             let pagination = 
-                let older = overview.NextUrl |> Option.map (fun n -> a [ _href n; _class "older" ] [ rawText "Older &#x276F;" ])
-                let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ rawText "&#x276E; Newer" ])
+                let older = overview.NextUrl |> Option.map (fun n -> a [ _href n; _class "older" ] [ str "Older"; img [ _src "/ionicons/md-arrow-forward.svg" ] ])
+                let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ img [ _src "/ionicons/md-arrow-back.svg" ]; str "Newer" ])
                 let buttons = [ newer; older ] |> List.choose id
                 div [ _class "pagination" ] buttons
             div [ _class "overview-container" ] [ 

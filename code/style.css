@@ -282,14 +282,40 @@ ul.post-overview {
 
     .pagination > a {
         color: #171717;
+        display: flex;
+        align-items: center;
     }
+    
+        .pagination > a > img {
+            height: 1.3em;
+            display: inline-block;
+            transition: all 250ms ease-in-out 0s;
+        }
 
-    .pagination > a.newer {
-        float: left;
-        margin-left: .6rem;
-    }
+        .pagination > a.newer {
+            float: left;
+            margin-left: .6rem;
+        }
+        
+            .pagination > a.newer > img {
+                margin-right: .4rem;
+            }
 
-    .pagination > a.older {
-        float: right;
-        margin-right: .6rem;
-    }
+            .pagination > a.newer:hover > img {
+                margin-right: .7rem;
+                margin-left: -.3rem;
+            }
+
+        .pagination > a.older {
+            float: right;
+            margin-right: .6rem;
+        }
+
+            .pagination > a.older > img {
+                margin-left: .4rem;
+            }
+
+            .pagination > a.older:hover > img {
+                margin-left: .7rem;
+                margin-right: -.3rem;
+            }
