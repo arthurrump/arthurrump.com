@@ -205,6 +205,25 @@ body > footer {
         overflow: auto;
     }
 
+    .post blockquote {
+        padding-left: 1rem;
+        border-left: 4px solid #505050;
+    }
+
+        .post blockquote.twitter-tweet {
+            background-image: url("/ionicons/logo-twitter.svg");
+            background-repeat: no-repeat;
+            background-position: top 0.5rem right 0.5rem;
+            background-size: 1.25rem 1.25rem;
+            padding: 1rem 2rem 1rem 1rem;
+            border: 1px solid #e1e8ed;
+            border-radius: 5px;
+        }
+
+            .post blockquote.twitter-tweet > p {
+                margin: 0;
+            }
+
 /* Post overviews */
 .overview-container {
     max-width: 720px;
