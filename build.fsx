@@ -4,6 +4,8 @@ nuget Fake.StaticGen
 nuget Fake.StaticGen.Html
 nuget Fake.StaticGen.Markdown
 nuget Fake.StaticGen.Rss
+nuget MarkdigExtensions.UrlRewriter
+nuget MarkdigExtensions.ImageAsFigure
 nuget Nett //"
 #load "./.fake/build.fsx/intellisense.fsx"
 #if !FAKE
@@ -337,7 +339,8 @@ let withMarkdownPages files parse =
         MarkdownPipelineBuilder()
             .UseEmphasisExtras()
             .UseGenericAttributes()
-            .UseLinkUrlRewrite(fun link ->
+            .UseImageAsFigure(onlyWithTitle = true)
+            .UseUrlRewriter(fun link ->
                 if link.Url.TrimStart('/').StartsWith("assets/") 
                 then assetUrlRewrite link.Url
                 else link.Url)

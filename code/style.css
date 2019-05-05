@@ -201,6 +201,18 @@ body > footer {
         margin-right: auto;
     }
 
+    .post figure {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+        .post figure figcaption {
+            text-align: center;
+            font-size: .85rem;
+            color: #505050;
+            margin-top: .6em;
+        }
+
     .post pre {
         overflow: auto;
     }
