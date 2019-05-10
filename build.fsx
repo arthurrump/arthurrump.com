@@ -37,6 +37,7 @@ type Config =
       Author : string
       AuthorTwitter : string
       Description : string
+      DefaultImage : string
       Navigation : NavItem list }
 and NavItem = 
     { Name : string
@@ -97,6 +98,7 @@ let parseConfig config =
       Author = toml.["author"].Get()
       AuthorTwitter = toml.["author-twitter"].Get()
       Description = toml.["description"].Get()
+      DefaultImage = toml.["default-image"].Get()
       Navigation = 
         toml.["nav"].Get<TomlTableArray>().Items 
         |> Seq.map (fun navItem -> 
@@ -271,7 +273,7 @@ let template (site : StaticSite<Config, Page>) page =
               yield meta [ _name "twitter:creator"; _content site.Config.AuthorTwitter ]
               yield meta [ _property "og:title"; _content post.Title ]
               yield meta [ _property "og:type"; _content "article" ]
-              yield meta [ _property "og:image"; _content (site.AbsoluteUrl (post.Image |> Option.defaultValue "")) ] // TODO: default image
+              yield meta [ _property "og:image"; _content (site.AbsoluteUrl (post.Image |> Option.defaultValue site.Config.DefaultImage)) ]
               yield meta [ _property "og:description"; _content (post.Blurb |> Option.defaultValue site.Config.Description) ]
               yield meta [ _property "article:author"; _content site.Config.Author ]
               yield meta [ _property "article:published_time"; _content (post.Date.ToString("s")) ]

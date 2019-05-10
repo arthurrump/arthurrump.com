@@ -3,6 +3,9 @@ author = "Arthur Rump"
 author-twitter = "@arthurrump"
 description = "Always writing F#, and sometimes studying Technical Computer Science."
 
+# Social image used for posts without an header image
+default-image = "/default-social-image.png"
+
 [[nav]]
 name = "Blog"
 url = "/"
