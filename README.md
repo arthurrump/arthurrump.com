@@ -5,8 +5,8 @@ My personal website.
 ## Todo:
 
 Markdig extensions:
-- [ ] Syntax highlighting for code blocks
-- [ ] Image title as caption
+- [x] [Syntax highlighting for code blocks](https://github.com/arthurrump/MarkdigExtensions#markdigextensionsimageasfigure)
+- [x] [Image title as caption](https://github.com/arthurrump/MarkdigExtensions#markdigextensionssyntaxhighlighting)
 
 Pages:
 - [ ] Fix about page layout
