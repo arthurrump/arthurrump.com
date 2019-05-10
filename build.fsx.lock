@@ -2,6 +2,11 @@ STORAGE: NONE
 RESTRICTION: == netstandard2.0
 NUGET
   remote: https://api.nuget.org/v3/index.json
+    ColorCode.Core (2.0.6)
+      NETStandard.Library (>= 1.6.1)
+    ColorCode.HTML (2.0.6)
+      ColorCode.Core (>= 2.0.6)
+      NETStandard.Library (>= 1.6.1)
     Fake.Core.CommandLineParsing (5.13.5)
       FParsec (>= 1.0.3)
       FSharp.Core (>= 4.3.4)
@@ -69,6 +74,10 @@ NUGET
     FSharp.Core (4.6.2)
     Markdig (0.16)
     MarkdigExtensions.ImageAsFigure (1.0)
+      FSharp.Core (>= 4.5.2)
+      Markdig (>= 0.16)
+    MarkdigExtensions.SyntaxHighlighting (1.0.1)
+      ColorCode.HTML (>= 2.0.6)
       FSharp.Core (>= 4.5.2)
       Markdig (>= 0.16)
     MarkdigExtensions.UrlRewriter (1.0)

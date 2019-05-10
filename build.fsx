@@ -6,6 +6,7 @@ nuget Fake.StaticGen.Markdown
 nuget Fake.StaticGen.Rss
 nuget MarkdigExtensions.UrlRewriter
 nuget MarkdigExtensions.ImageAsFigure
+nuget MarkdigExtensions.SyntaxHighlighting
 nuget Nett //"
 #load "./.fake/build.fsx/intellisense.fsx"
 #if !FAKE
@@ -344,6 +345,7 @@ let withMarkdownPages files parse =
                 if link.Url.TrimStart('/').StartsWith("assets/") 
                 then assetUrlRewrite link.Url
                 else link.Url)
+            .UseSyntaxHighlighting()
             .Build()
 
     StaticSite.withPagesFromCustomMarkdown pipeline files parse
