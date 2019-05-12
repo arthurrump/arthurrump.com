@@ -38,9 +38,14 @@ type Config =
       AuthorTwitter : string
       Description : string
       DefaultImage : string
-      Navigation : NavItem list }
+      Navigation : NavItem list
+      SocialLinks : SocialLink list }
 and NavItem = 
     { Name : string
+      Url : string }
+and SocialLink =
+    { Name : string
+      Icon : string
       Url : string }
 
 [<NoComparison>]
@@ -104,6 +109,13 @@ let parseConfig config =
         |> Seq.map (fun navItem -> 
             { Name = navItem.["name"].Get() 
               Url = navItem.["url"].Get() }) 
+        |> Seq.toList
+      SocialLinks = 
+        toml.["social-links"].Get<TomlTableArray>().Items
+        |> Seq.map (fun navItem ->
+            { Name = navItem.["name"].Get()
+              Icon = navItem.["icon"].Get()
+              Url = navItem.["url"].Get() })
         |> Seq.toList }
 
 let parsePage path (Some frontmatter) renderedMarkdown =
@@ -145,19 +157,21 @@ let postsArchive (site : StaticSite<Config, Page>) =
 
 let tagUrl (tag : string) = sprintf "/tags/%s" (tag.Replace("#", "sharp") |> Url.slugify)
 
+let tags site = 
+    posts site 
+    |> Seq.collect (fun p -> p.Content.Tags) 
+    |> Seq.countBy id
+    |> Seq.sortByDescending snd
+    |> Seq.map (fun (t, count) -> t, tagUrl t, count)
+
 let tagsOverview (site : StaticSite<Config, Page>) =
-    let tags = 
-        posts site 
-        |> Seq.collect (fun p -> p.Content.Tags) 
-        |> Seq.countBy id
-        |> Seq.sortByDescending snd
-    let overview = tags |> Seq.map (fun (t, count) -> t, tagUrl t, count)
-    let overviewPage = { Url = "/tags"; Content = TagsOverview overview }
+    let tags = tags site
+    let overviewPage = { Url = "/tags"; Content = TagsOverview tags }
     let tagPages = 
         tags
-        |> Seq.map (fun (tag, count) ->
+        |> Seq.map (fun (tag, url, _) ->
             let posts = posts site |> Seq.filter (fun p -> p.Content.Tags |> Array.contains tag)
-            { Url = tagUrl tag; Content = TagPage (tag, posts) })
+            { Url = url; Content = TagPage (tag, posts) })
     Seq.singleton overviewPage |> Seq.append tagPages
 
 let template (site : StaticSite<Config, Page>) page = 
@@ -199,7 +213,7 @@ let template (site : StaticSite<Config, Page>) page =
         | TagPage (tag, _) -> sprintf "Tag: %s" tag
 
     let pageHeader =
-        let navItem item = 
+        let navItem (item : NavItem) = 
             span [ _class "nav-item" ] [ a [ _href item.Url ] [ str item.Name ] ]
 
         header [ _id "main-header" ] [
@@ -215,12 +229,32 @@ let template (site : StaticSite<Config, Page>) page =
             nav [ _id "main-nav"] (site.Config.Navigation |> List.map navItem)
         ]
 
+    let profile =
+        aside [ _class "profile" ] [
+            img [ _class "profile-pic"; _src "/android-chrome-192x192.png" ]
+            span [ _class "name" ] [ str site.Config.Author ]
+            span [ _class "motto" ] [ str site.Config.Description ]
+            ul [ _class "social-links" ] [ 
+                for link in site.Config.SocialLinks ->
+                    li [] [
+                        a [ _href link.Url ] [
+                            img [ _src (sprintf "/simpleicons/%s.svg" link.Icon) ]
+                            str link.Name 
+                        ]
+                    ]
+            ]
+        ]
+    
+    let tagList tags =
+        ul [ _class "tag-list" ] [ 
+            for (t, url, count) in tags -> 
+                li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] 
+        ]
+
     let content = 
         match page.Content with
         | Page (_, content) -> 
-            div [ _class "text" ] [
-                rawText content
-            ]
+            div [ _class "text" ] [ rawText content ]
         | Post post -> 
             div [ _class "text" ] [
                 article [] [ 
@@ -236,6 +270,7 @@ let template (site : StaticSite<Config, Page>) page =
                 let buttons = [ newer; older ] |> List.choose id
                 div [ _class "pagination" ] buttons
             div [ _class "overview-container" ] [ 
+                yield h1 [] [ str "Blog" ]
                 if overview.Index <> 0 then yield pagination
                 yield ul [ _class "post-overview" ] [ 
                     for p in overview.Pages -> 
@@ -245,6 +280,7 @@ let template (site : StaticSite<Config, Page>) page =
             ]
         | TagPage (tag, posts) ->
             div [ _class "overview-container" ] [
+                h1 [] [ str tag ]
                 ul [ _class "post-overview" ] [ 
                     for p in posts -> 
                         postListItem p
@@ -260,10 +296,18 @@ let template (site : StaticSite<Config, Page>) page =
                 ]
             ]
         | TagsOverview tags ->
-            ul [] [ 
-                for (t, url, count) in tags -> 
-                    li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] 
-            ]
+            tagList tags
+
+    let frame content =
+        match page.Content with
+        | Post _ ->
+            content
+        | Page _ | PostsOverview _ ->
+            div [ _class "columns" ] [ content; profile ]
+        | TagPage _ | PostsArchive _ ->
+            div [ _class "columns" ] [ content; tagList (tags site) ]
+        | TagsOverview _ ->
+            content
 
     let headerTags =
         match page.Content with
@@ -304,7 +348,7 @@ let template (site : StaticSite<Config, Page>) page =
             div [ _id "background" ] [ 
                 div [ _id "container" ] [ 
                     pageHeader
-                    content 
+                    frame content 
                 ]
             ]
             footer [] [
@@ -312,7 +356,7 @@ let template (site : StaticSite<Config, Page>) page =
                 span [] [ 
                     str "Powered by " 
                     a [ _href "https://github.com/arthurrump/Fake.StaticGen" ] [ str "Fake.StaticGen" ]
-                    rawText " and themed with handwritten CSS&trade;"
+                    str " and themed with handwritten CSS"
                 ]
             ]
         ] 
@@ -367,6 +411,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "ionicons/*") (fun path -> "ionicons/" + (Path.GetFileName path))
+    |> StaticSite.withFilesFromSources (!! "simpleicons/*") (fun path -> "simpleicons/" + (Path.GetFileName path))
     |> StaticSite.generateFromHtml "public" template
 
 Target.runOrDefault "Generate"

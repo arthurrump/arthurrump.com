@@ -15,3 +15,36 @@ url = "/projects"
 [[nav]]
 name = "About me"
 url = "/about"
+
+[[social-links]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/arthurrump"
+# [[social-links]]
+# name = "Mastodon"
+# icon = "mastodon"
+# url = "https://mastodon.utwente.nl/@arthurrump"
+[[social-links]]
+name = "Keybase"
+icon = "keybase"
+url = "https://keybase.io/arthurrump"
+[[social-links]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/arthurrump"
+[[social-links]]
+name = "GitLab"
+icon = "gitlab"
+url = "https://gitlab.com/arthurrump"
+[[social-links]]
+name = "StackOverflow"
+icon = "stackoverflow"
+url = "https://stackoverflow.com/story/arthurrump"
+[[social-links]]
+name = "Reddit"
+icon = "reddit"
+url = "https://www.reddit.com/user/arthurrump"
+[[social-links]]
+name = "LinkedIn"
+icon = "linkedin"
+url = "https://www.linkedin.com/in/arthurrump"
