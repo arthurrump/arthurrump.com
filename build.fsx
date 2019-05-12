@@ -176,7 +176,7 @@ let template (site : StaticSite<Config, Page>) page =
         ]
 
     let postListItem (post : Page<Post>) =
-        li [ _class "post" ] [
+        li [ _class "post text" ] [
             match post.Content.Image with Some link -> yield a [ _href post.Url; _class "image-link" ] [ img [ _src link ] ] | _ -> ()
             yield h1 [] [ a [ _href post.Url ] [ str post.Content.Title ] ]
             yield postDetailSpan post.Content
@@ -184,7 +184,7 @@ let template (site : StaticSite<Config, Page>) page =
         ]
 
     let shortPostListItem (post : Page<Post>) =
-        li [ _class "post" ] [
+        li [ _class "post text" ] [
             h1 [] [ a [ _href post.Url ] [ str post.Content.Title ] ]
             postDetailSpan post.Content
         ]
@@ -218,9 +218,11 @@ let template (site : StaticSite<Config, Page>) page =
     let content = 
         match page.Content with
         | Page (_, content) -> 
-            rawText content
+            div [ _class "text" ] [
+                rawText content
+            ]
         | Post post -> 
-            div [ _class "post" ] [
+            div [ _class "text" ] [
                 article [] [ 
                     h1 [] [ str post.Title ]
                     postDetailSpan post
