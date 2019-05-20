@@ -242,18 +242,20 @@ img.profile-pic {
 /* Footer */
 body > footer {
     color: #565656;
-    font-size: .85rem;
-    text-align: center;
+    font-size: .75rem;
     display: flex;
-    flex-direction: column;
-    align-content: center;
+    flex-flow: row wrap;
+    justify-content: flex-end;
     margin: 0;
     padding: 0.8rem;
 }
 
+    body > footer > span {
+        margin: .2em .6em;
+    }
+
     body > footer a {
         color: #565656;
-        text-decoration: underline;
     }
 
 /* Page */
