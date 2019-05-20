@@ -253,8 +253,13 @@ let template (site : StaticSite<Config, Page>) page =
 
     let content = 
         match page.Content with
-        | Page (_, content) -> 
-            div [ _class "text" ] [ rawText content ]
+        | Page (title, content) -> 
+            div [ _class "titeled-container" ] [
+                h1 [] [ str title ]
+                div [ _class "page text" ] [ 
+                    rawText content 
+                ]
+            ]
         | Post post -> 
             div [ _class "text" ] [
                 article [] [ 
@@ -269,7 +274,7 @@ let template (site : StaticSite<Config, Page>) page =
                 let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ img [ _src "/ionicons/md-arrow-back.svg" ]; str "Newer" ])
                 let buttons = [ newer; older ] |> List.choose id
                 div [ _class "pagination" ] buttons
-            div [ _class "overview-container" ] [ 
+            div [ _class "titeled-container overview-container" ] [ 
                 yield h1 [] [ str "Blog" ]
                 if overview.Index <> 0 then yield pagination
                 yield ul [ _class "post-overview" ] [ 
@@ -279,7 +284,7 @@ let template (site : StaticSite<Config, Page>) page =
                 yield pagination
             ]
         | TagPage (tag, posts) ->
-            div [ _class "overview-container" ] [
+            div [ _class "titeled-container overview-container" ] [
                 h1 [] [ str tag ]
                 ul [ _class "post-overview" ] [ 
                     for p in posts -> 
@@ -288,7 +293,8 @@ let template (site : StaticSite<Config, Page>) page =
             ]
         | PostsArchive posts ->
             let perYear = posts |> Seq.groupBy (fun p -> p.Content.Date.Year)
-            div [ _class "overview-container" ] [
+            div [ _class "titeled-container overview-container" ] [
+                h1 [] [ str "Archive" ]
                 ul [ _class "post-overview" ] [ 
                     for (year, posts) in perYear do
                         yield li [ _class "year-header" ] [ strf "%i" year ]
