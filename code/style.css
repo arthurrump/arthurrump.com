@@ -78,6 +78,7 @@ a {
     margin: 0;
     padding: 0;
     line-height: 0;
+    cursor: pointer;
 }
 
     #menu-toggle img {
@@ -179,6 +180,7 @@ img.profile-pic {
         display: none;
         color: #0078d4;
         margin-top: .4rem;
+        cursor: pointer;
     }
 
         @media (max-width: 700px) {
