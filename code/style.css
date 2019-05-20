@@ -148,17 +148,22 @@ img.profile-pic {
     @media (max-width: 700px) {
         .profile {
             order: -1;
+            align-self: center;
+            margin-left: .6rem;
+            margin-right: .6rem;
         }
-
-            .profile ul.social-links {
-                display: none;
-            }
     }
 
     .profile img.profile-pic {
         margin: 1rem;
         width: 65%;
     }
+
+        @media (max-width: 700px) {
+            .profile img.profile-pic {
+                width: 30%;
+            }
+        }
 
     .profile .name {
         font-size: 1.5rem;
@@ -170,14 +175,37 @@ img.profile-pic {
         text-align: center;
     }
 
+    .profile a.expand-social-links {
+        display: none;
+        color: #0078d4;
+        margin-top: .4rem;
+    }
+
+        @media (max-width: 700px) {
+            .profile a.expand-social-links {
+                display: initial;
+            }
+        }
+
     .profile ul.social-links {
         list-style-type: none;
         padding: 0;
-        margin: 1.6em .6em;
+        margin: 1.6em .6em .6em;
         font-size: 1.1rem;
         width: 65%;
         align-self: flex-start;
     }
+
+        @media (max-width: 700px) {
+            .profile ul.social-links {
+                display: none;
+                align-self: auto;
+            }
+
+                .profile ul.social-links.opened {
+                    display: initial;
+                }
+        }
 
         .profile ul.social-links > li {
             margin: 0 0 1em;

@@ -234,6 +234,12 @@ let template (site : StaticSite<Config, Page>) page =
             img [ _class "profile-pic"; _src "/android-chrome-192x192.png" ]
             span [ _class "name" ] [ str site.Config.Author ]
             span [ _class "motto" ] [ str site.Config.Description ]
+            a [ _class "expand-social-links"
+                Accessibility._roleButton
+                _onclick ("var sl = document.querySelector('ul.social-links');"
+                   + "sl.classList.toggle('opened');") ] [ 
+                str "Find me elsewhere" 
+            ]
             ul [ _class "social-links" ] [ 
                 for link in site.Config.SocialLinks ->
                     li [] [
