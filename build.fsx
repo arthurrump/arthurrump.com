@@ -270,11 +270,14 @@ let template (site : StaticSite<Config, Page>) page =
                 ]
             ]
         | Post post -> 
-            div [ _class "text" ] [
-                article [] [ 
-                    h1 [] [ str post.Title ]
-                    postDetailSpan post
-                    rawText post.HtmlContent 
+            div [ _class "titeled-container post-container" ] [
+                match post.Blurb with | Some blurb -> yield p [ _class "blurb" ] [ str blurb ] | _ -> ()
+                yield h1 [] [ str post.Title ]
+                yield postDetailSpan post
+                yield div [ _class "text" ] [
+                    article [] [ 
+                        rawText post.HtmlContent 
+                    ]
                 ]
             ]
         | PostsOverview overview ->

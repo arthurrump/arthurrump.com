@@ -36,6 +36,7 @@ a {
 @media (max-width: 700px) {
     .titeled-container > h1 {
         margin-left: .6rem;
+        margin-right: .6rem;
     }
 }
 
@@ -269,11 +270,42 @@ body > footer {
     }
 
 /* Post view */
+.post-container {
+    text-align: center;
+}
+
+    .post-container .blurb {
+        font-style: italic;
+        font-size: 1.1rem;
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-container h1 {
+        margin-bottom: .4rem;
+    }
+
+    .post-container .post-details {
+        display: block;
+        margin-bottom: 1.33rem;
+    }
+
+    @media (max-width: 700px) {
+        .post-container .post-details, .post-container .blurb {
+            margin: .6rem inherit;
+        }
+    }
+
+.post-details {
+    font-size: .9rem;
+}
+
 .text {
     background-color: #fff;
     padding: 2.4rem 1rem;
     margin: 1rem 0;
     overflow-wrap: break-word;
+    text-align: start;
 }
 
     @media (max-width: 700px) {
@@ -294,7 +326,7 @@ body > footer {
     .text h1 {
         margin-top: 0;
         margin-bottom: .2rem;
-        font-size: 1.8rem;
+        /* font-size: 1.8rem; */
     }
 
         .text h1 a {
@@ -312,10 +344,6 @@ body > footer {
 
     .text h2 + p, .text h3 + p, .text h4 + p, .text h5 + p, .text h6 + p {
         margin-top: .1rem;
-    }
-
-    .text .post-details {
-        font-size: .9rem;
     }
 
     .text p {
