@@ -252,9 +252,12 @@ let template (site : StaticSite<Config, Page>) page =
         ]
     
     let tagList tags =
-        ul [ _class "tag-list" ] [ 
-            for (t, url, count) in tags -> 
-                li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] 
+        div [ _class "titeled-container" ] [
+            h1 [] [ str "Tags" ]
+            ul [ _class "tag-list" ] [ 
+                for (t, url, count) in tags -> 
+                    li [] [ a [ _href url ] [ str t ]; strf " (%i)" count ] 
+            ]
         ]
 
     let content = 
