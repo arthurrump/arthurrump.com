@@ -29,6 +29,7 @@ open Nett
 open System
 open System.Globalization
 open System.IO
+open System.Net
 
 let now = DateTime.UtcNow
 
@@ -260,6 +261,21 @@ let template (site : StaticSite<Config, Page>) page =
             ]
         ]
 
+    let shareBox url title = 
+        let enc = WebUtility.UrlEncode
+        let url = url |> site.AbsoluteUrl |> enc
+        let title = enc title
+        let sharelink icon url = a [ _href url; _target "blank"; _rel "noopener noreferrer" ] [ img [ _src (sprintf "/simpleicons/%s.svg" icon); _alt icon ] ]
+        div [ _class "sharebox" ] [
+            span [] [ str "Share this:" ]
+            div [ _class "links" ] [
+                sharelink "Facebook" (sprintf "https://www.facebook.com/sharer/sharer.php?u=%s" url)
+                sharelink "Twitter" (sprintf "https://twitter.com/intent/tweet?text=%s&url=%s&via=%s" title url (enc (site.Config.AuthorTwitter.TrimStart('@'))))
+                sharelink "LinkedIn" (sprintf "https://www.linkedin.com/sharing/share-offsite/?url=%s" url)
+                sharelink "Reddit" (sprintf "http://www.reddit.com/submit?url=%s&title=%s" url title)
+            ]
+        ]
+
     let content = 
         match page.Content with
         | Page (title, content) -> 
@@ -279,6 +295,7 @@ let template (site : StaticSite<Config, Page>) page =
                         rawText post.HtmlContent 
                     ]
                 ]
+                yield shareBox page.Url post.Title
             ]
         | PostsOverview overview ->
             let pagination = 

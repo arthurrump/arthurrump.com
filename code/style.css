@@ -401,6 +401,26 @@ body > footer {
                 margin: 0;
             }
 
+/* Share pane */
+.sharebox {
+    font-size: 1.1rem;
+    margin: 2rem 0;
+}
+
+    .sharebox .links {
+        margin-top: 1em;
+        display: flex;
+        justify-content: center;
+    }
+
+        .sharebox .links a {
+            margin: .4em;
+        }
+
+        .sharebox .links img {
+            height: 1.6em;
+        }
+
 /* Post overviews */
 .overview-container {
     max-width: 720px;
