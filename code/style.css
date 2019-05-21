@@ -272,6 +272,7 @@ body > footer {
 /* Post view */
 .post-container {
     text-align: center;
+    overflow-wrap: break-word;
 }
 
     .post-container .blurb {
@@ -292,7 +293,8 @@ body > footer {
 
     @media (max-width: 700px) {
         .post-container .post-details, .post-container .blurb {
-            margin: .6rem inherit;
+            margin-left: .6rem;
+            margin-right: .6rem;
         }
     }
 
