@@ -1,0 +1,16 @@
+image: mcr.microsoft.com/dotnet/core/sdk:2.2
+
+pages:
+  cache:
+    paths:
+    - ./.fake/
+    - ~/.nuget/packages
+    
+  script:
+  - dotnet tool install fake-cli -g
+  - fake build
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
