@@ -3,8 +3,7 @@ image: mcr.microsoft.com/dotnet/core/sdk:2.2
 pages:
   cache:
     paths:
-    - ./.fake/
-    - ~/.nuget/packages
+    - /root/.nuget/packages
     
   script:
   - export PATH="$PATH:/root/.dotnet/tools"
