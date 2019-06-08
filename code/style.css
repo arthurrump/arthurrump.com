@@ -472,6 +472,7 @@ body > footer {
 
 /* Post overviews */
 .overview-container {
+    width: 100%;
     max-width: 720px;
 }
 
@@ -563,3 +564,37 @@ ul.post-overview {
                 margin-left: .7rem;
                 margin-right: -.3rem;
             }
+
+/* Tags */
+ul.tag-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+    @media (max-width: 700px) {
+        ul.tag-list {
+            margin: 0 .6rem;
+        }
+    }
+
+    ul.tag-list > li {
+        background-color: #fff;
+        padding: .6rem;
+        margin: 0 .6rem .6rem 0;
+    }
+
+        ul.tag-list > li a {
+            color: #000;
+        }
+
+        ul.tag-list > li .page-count {
+            float: right;
+            margin-left: .5em;
+        }
+
+.columns ul.tag-list {
+    flex-flow: column nowrap;
+}
