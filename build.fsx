@@ -410,6 +410,7 @@ let template (site : StaticSite<Config, Page>) page =
             footer [] [
                 span [] [ a [ _href "/archives" ] [ str "Archive" ] ]
                 span [] [ a [ _href "/tags" ] [ str "Tags" ] ]
+                span [] [ a [ _href "/feed.xml" ] [ str "RSS Feed" ] ]
                 span [] [ a [ _href "https://github.com/arthurrump/Fake.StaticGen" ] [ str "Generated with Fake.StaticGen" ] ]
                 span [] [ rawText "&copy; "; strf "%i %s" now.Year site.Config.Author ]
             ]
