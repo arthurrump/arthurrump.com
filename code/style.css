@@ -273,26 +273,27 @@ body > footer {
 .post-container {
     text-align: center;
     overflow-wrap: break-word;
+    word-break: break-word;
 }
 
-    .post-container .blurb {
+    .post-container > .blurb {
         font-style: italic;
         font-size: 1.1rem;
         max-width: 680px;
         margin: 0 auto;
     }
 
-    .post-container h1 {
+    .post-container > h1 {
         margin-bottom: .4rem;
     }
 
-    .post-container .post-details {
+    .post-container > .post-details {
         display: block;
         margin-bottom: 1.33rem;
     }
 
     @media (max-width: 700px) {
-        .post-container .post-details, .post-container .blurb {
+        .post-container > .post-details, .post-container > .blurb {
             margin-left: .6rem;
             margin-right: .6rem;
         }
@@ -307,6 +308,7 @@ body > footer {
     padding: 2.4rem 1rem;
     margin: 1rem 0;
     overflow-wrap: break-word;
+    word-break: break-word;
     text-align: left;
 }
 
@@ -378,6 +380,7 @@ body > footer {
         .text pre > code.wrap {
             white-space: pre-wrap;
             overflow-wrap: break-word;
+            word-break: break-word;
         }
 
     .text blockquote {
@@ -404,7 +407,7 @@ body > footer {
 /* Share pane */
 .sharebox {
     font-size: 1.1rem;
-    margin: 2rem 0;
+    margin: 2rem 0 1rem;
 }
 
     .sharebox .links {
@@ -420,6 +423,40 @@ body > footer {
         .sharebox .links img {
             height: 1.6em;
         }
+
+/* Read also */
+.readalsobox {
+    margin: .6rem 0;
+}
+
+    .readalsobox > span {
+        font-size: 1.1rem;
+    }
+
+    .readalsobox ul.post-overview {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: .6rem;
+    }
+
+        @media (max-width: 700px) {
+            .readalsobox ul.post-overview {
+                flex-flow: column nowrap;
+                align-items: center;
+            }
+        }
+
+        .readalsobox ul.post-overview > li.post {
+            margin: .6rem;
+            max-width: 550px;
+        }
+        
+            .readalsobox ul.post-overview > li.post h1 {
+                font-size: 1.6rem;
+                word-wrap: break-word;
+            }
 
 /* Post overviews */
 .overview-container {

@@ -265,7 +265,7 @@ let template (site : StaticSite<Config, Page>) page =
         let enc = WebUtility.UrlEncode
         let url = url |> site.AbsoluteUrl |> enc
         let title = enc title
-        let sharelink icon url = a [ _href url; _target "blank"; _rel "noopener noreferrer" ] [ img [ _src (sprintf "/simpleicons/%s.svg" icon); _alt icon ] ]
+        let sharelink icon url = a [ _href url; _target "blank"; _rel "noopener noreferrer" ] [ img [ _src (sprintf "/simpleicons/%s.svg" icon); _title icon; _alt icon ] ]
         div [ _class "sharebox" ] [
             span [] [ str "Share this:" ]
             div [ _class "links" ] [
@@ -274,6 +274,25 @@ let template (site : StaticSite<Config, Page>) page =
                 sharelink "LinkedIn" (sprintf "https://www.linkedin.com/sharing/share-offsite/?url=%s" url)
                 sharelink "Reddit" (sprintf "http://www.reddit.com/submit?url=%s&title=%s" url title)
             ]
+        ]
+
+    let readAlsoBox url tags =
+        let related = 
+            posts site
+            |> Seq.filter (fun p -> p.Url <> url)
+            |> Seq.map (fun p -> p, p.Content.Tags |> Seq.filter (fun t -> tags |> Seq.contains t) |> Seq.length)
+            |> Seq.sortByDescending snd
+            |> Seq.truncate 3
+            |> Seq.takeWhile (fun (_, rel) -> rel > 0)
+            |> Seq.map fst
+        let related = 
+            if related |> Seq.isEmpty 
+            then posts site |> Seq.filter (fun p -> p.Url <> url) |> Seq.truncate 3 
+            else related
+        Trace.tracefn "Related %s: %s" url (related |> Seq.map (fun p -> p.Url) |> String.concat ", ")
+        div [ _class "readalsobox" ] [
+            span [] [ str "Read also:" ]
+            ul [ _class "post-overview" ] (related |> Seq.map postListItem |> Seq.toList)
         ]
 
     let content = 
@@ -296,6 +315,8 @@ let template (site : StaticSite<Config, Page>) page =
                     ]
                 ]
                 yield shareBox page.Url post.Title
+                yield readAlsoBox page.Url post.Tags
+                // yield commentsBox page.Url
             ]
         | PostsOverview overview ->
             let pagination = 
