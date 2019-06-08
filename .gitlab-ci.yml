@@ -7,6 +7,7 @@ pages:
     - ~/.nuget/packages
     
   script:
+  - export PATH="$PATH:/root/.dotnet/tools"
   - dotnet tool install fake-cli -g
   - fake build
   artifacts:
