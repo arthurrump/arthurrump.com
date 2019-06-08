@@ -295,6 +295,25 @@ let template (site : StaticSite<Config, Page>) page =
             ul [ _class "post-overview" ] (related |> Seq.map postListItem |> Seq.toList)
         ]
 
+    let commentsBox url = 
+        div [ _class "commentsbox" ] [
+            rawText (sprintf """<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = '%s';
+this.page.identifier = '%s';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://arthurrump.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+"""             (site.AbsoluteUrl url) url) ]
+
     let content = 
         match page.Content with
         | Page (title, content) -> 
@@ -315,8 +334,8 @@ let template (site : StaticSite<Config, Page>) page =
                     ]
                 ]
                 yield shareBox page.Url post.Title
+                yield commentsBox page.Url
                 yield readAlsoBox page.Url post.Tags
-                // yield commentsBox page.Url
             ]
         | PostsOverview overview ->
             let pagination = 

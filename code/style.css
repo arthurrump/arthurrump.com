@@ -426,7 +426,7 @@ body > footer {
 
 /* Read also */
 .readalsobox {
-    margin: .6rem 0;
+    margin: 1.2rem 0;
 }
 
     .readalsobox > span {
@@ -457,6 +457,18 @@ body > footer {
                 font-size: 1.6rem;
                 word-wrap: break-word;
             }
+
+/* Comments */
+.commentsbox {
+    background-color: #fff;
+    padding: 2.4rem .6rem;
+    margin: .6rem 0;
+}
+
+    .commentsbox #disqus_thread {
+        max-width: 680px;
+        margin: auto;
+    }
 
 /* Post overviews */
 .overview-container {
