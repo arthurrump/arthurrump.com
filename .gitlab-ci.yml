@@ -8,6 +8,7 @@ pages:
   script:
   - export PATH="$PATH:/root/.dotnet/tools"
   - dotnet tool install fake-cli -g
+  - rm -rf ./.fake
   - fake build
   artifacts:
     paths:
