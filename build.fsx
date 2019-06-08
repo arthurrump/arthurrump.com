@@ -39,6 +39,7 @@ type Config =
       AuthorTwitter : string
       Description : string
       DefaultImage : string
+      DisqusId : string
       Navigation : NavItem list
       SocialLinks : SocialLink list }
 and NavItem = 
@@ -105,6 +106,7 @@ let parseConfig config =
       AuthorTwitter = toml.["author-twitter"].Get()
       Description = toml.["description"].Get()
       DefaultImage = toml.["default-image"].Get()
+      DisqusId = toml.["disqus-id"].Get()
       Navigation = 
         toml.["nav"].Get<TomlTableArray>().Items 
         |> Seq.map (fun navItem -> 
@@ -306,13 +308,13 @@ this.page.identifier = '%s';
 
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://arthurrump.disqus.com/embed.js';
+s.src = 'https://%s.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-"""             (site.AbsoluteUrl url) url) ]
+"""             (site.AbsoluteUrl url) url (site.Config.DisqusId)) ]
 
     let content = 
         match page.Content with
