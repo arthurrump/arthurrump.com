@@ -390,6 +390,7 @@ s.setAttribute('data-timestamp', +new Date());
         rawText """<script type="text/javascript">
   var _paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["disableCookies"]);
   _paq.push(["setDomains", ["*.www.arthurrump.com","*.arthurrump.gitlab.io"]]);
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
