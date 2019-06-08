@@ -9,9 +9,9 @@ default-image = "/default-social-image.png"
 [[nav]]
 name = "Blog"
 url = "/"
-[[nav]]
-name = "Projects"
-url = "/projects"
+# [[nav]]
+# name = "Projects"
+# url = "/projects"
 [[nav]]
 name = "About me"
 url = "/about"
