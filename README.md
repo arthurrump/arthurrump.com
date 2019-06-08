@@ -11,5 +11,5 @@ Markdig extensions:
 Pages:
 - [x] Fix about page layout
 - [x] Add sidebar
-- [ ] Add some bottom filler to posts: author image+info, links to other posts (latest, or similar tags), comments
+- [x] Add some bottom filler to posts: author image+info, links to other posts (latest, or similar tags), comments
 - [ ] Projects page
