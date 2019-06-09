@@ -451,6 +451,7 @@ body > footer {
         .readalsobox ul.post-overview > li.post {
             margin: .6rem;
             max-width: 550px;
+            min-width: 0;
         }
         
             .readalsobox ul.post-overview > li.post h1 {
