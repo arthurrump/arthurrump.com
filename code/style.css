@@ -609,3 +609,23 @@ ul.tag-list {
 .columns ul.tag-list {
     flex-flow: column nowrap;
 }
+
+/* Error page */
+#error-page {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    text-align: center;
+}
+
+    #error-page .status-code, #error-page .status-text {
+        font-weight: 600;
+    }
+
+    #error-page .status-code {
+        font-size: 8rem;
+    }
+
+    #error-page .status-text {
+        font-size: 2.4rem;
+    }

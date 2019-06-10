@@ -58,6 +58,7 @@ type Page =
     | PostsArchive of Page<Post> seq
     | TagsOverview of (string * string * int) seq
     | TagPage of tag: string * posts: Page<Post> seq
+    | ErrorPage of code: string * text: string
 
 and Post =
     { Title : string
@@ -214,6 +215,7 @@ let template (site : StaticSite<Config, Page>) page =
         | PostsArchive _ -> "Archives"
         | TagsOverview _ -> "Tags"
         | TagPage (tag, _) -> sprintf "Tag: %s" tag
+        | ErrorPage (code, text) -> code + " " + text
 
     let pageHeader =
         let navItem (item : NavItem) = 
@@ -281,7 +283,7 @@ let template (site : StaticSite<Config, Page>) page =
             ]
         ]
 
-    let readAlsoBox url tags =
+    let readAlsoBox text url tags =
         let related = 
             posts site
             |> Seq.filter (fun p -> p.Url <> url)
@@ -294,9 +296,8 @@ let template (site : StaticSite<Config, Page>) page =
             if related |> Seq.isEmpty 
             then posts site |> Seq.filter (fun p -> p.Url <> url) |> Seq.truncate 3 
             else related
-        Trace.tracefn "Related %s: %s" url (related |> Seq.map (fun p -> p.Url) |> String.concat ", ")
         div [ _class "readalsobox" ] [
-            span [] [ str "Read also:" ]
+            span [] [ str text ]
             ul [ _class "post-overview" ] (related |> Seq.map postListItem |> Seq.toList)
         ]
 
@@ -340,7 +341,7 @@ s.setAttribute('data-timestamp', +new Date());
                 ]
                 yield shareBox page.Url post.Title
                 yield commentsBox page.Url
-                yield readAlsoBox page.Url post.Tags
+                yield readAlsoBox "Read also:" page.Url post.Tags
             ]
         | PostsOverview overview ->
             let pagination = 
@@ -377,17 +378,21 @@ s.setAttribute('data-timestamp', +new Date());
             ]
         | TagsOverview tags ->
             tagList tags
+        | ErrorPage (code, text) ->
+            div [ _id "error-page" ] [
+                span [ _class "status-code" ] [ str code ]
+                span [ _class "status-text" ] [ str text ]
+                readAlsoBox "Maybe you find this interesting:" page.Url []
+            ]
 
     let frame content =
         match page.Content with
-        | Post _ ->
+        | Post _ | TagsOverview _ | ErrorPage _ ->
             content
         | Page _ | PostsOverview _ ->
             div [ _class "columns" ] [ content; profile ]
         | TagPage _ | PostsArchive _ ->
             div [ _class "columns" ] [ content; tagList (tags site) ]
-        | TagsOverview _ ->
-            content
 
     let matomo =
         rawText """<script type="text/javascript">
@@ -509,6 +514,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "ionicons/*") (fun path -> "ionicons/" + (Path.GetFileName path))
     |> StaticSite.withFilesFromSources (!! "simpleicons/*") (fun path -> "simpleicons/" + (Path.GetFileName path))
+    |> StaticSite.withPage (ErrorPage ("404", "Not Found")) "/404.html"
     |> StaticSite.generateFromHtml "public" template
 
 Target.runOrDefault "Generate"
