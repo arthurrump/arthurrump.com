@@ -41,11 +41,11 @@ type Config =
       DefaultImage : string
       DisqusId : string
       Navigation : NavItem list
-      SocialLinks : SocialLink list }
+      SocialLinks : Link list }
 and NavItem = 
     { Name : string
       Url : string }
-and SocialLink =
+and Link =
     { Name : string
       Icon : string
       Url : string }
@@ -58,6 +58,8 @@ type Page =
     | PostsArchive of Page<Post> seq
     | TagsOverview of (string * string * int) seq
     | TagPage of tag: string * posts: Page<Post> seq
+    | Project of Project
+    | ProjectOverview of Project list
     | ErrorPage of code: string * text: string
 
 and Post =
@@ -74,6 +76,13 @@ Overview<'page> =
       NextUrl : string option
       PreviousUrl : string option
       Pages : Page<'page> seq }
+
+and Project =
+    { Title : string
+      Tagline : string
+      Color : string
+      Image : string option
+      Links : Link list }
 
 let postChooser page = 
     match page.Content with 
