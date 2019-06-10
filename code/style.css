@@ -453,6 +453,16 @@ body > footer {
             max-width: 550px;
             min-width: 0;
         }
+
+            @media (min-width: 700px) {
+                .readalsobox ul.post-overview > li.post:first-of-type {
+                    margin-left: 0;
+                }
+
+                .readalsobox ul.post-overview > li.post:last-of-type {
+                    margin-right: 0;
+                }
+            }
         
             .readalsobox ul.post-overview > li.post h1 {
                 font-size: 1.6rem;
