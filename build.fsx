@@ -59,7 +59,7 @@ type Page =
     | TagsOverview of (string * string * int) seq
     | TagPage of tag: string * posts: Page<Post> seq
     | Project of Project
-    | ProjectOverview of Project list
+    | ProjectsOverview of Page<Project> seq
     | ErrorPage of code: string * text: string
 
 and Post =
@@ -93,6 +93,16 @@ let posts (site : StaticSite<Config, Page>) =
     site.Pages
     |> Seq.choose postChooser
     |> Seq.sortByDescending (fun p -> p.Content.Date)
+
+let projectChooser page =
+    match page.Content with
+    | Project project -> Some { Url = page.Url; Content = project }
+    | _ -> None
+
+let projects (site : StaticSite<Config, Page>) =
+    site.Pages
+    |> Seq.choose projectChooser
+    // TODO: sorting
 
 let assetUrlRewrite (filename : string) =
     let dir = filename |> Path.getLowestDirectory
@@ -186,6 +196,26 @@ let tagsOverview (site : StaticSite<Config, Page>) =
             let posts = posts site |> Seq.filter (fun p -> p.Content.Tags |> Array.contains tag)
             { Url = url; Content = TagPage (tag, posts) })
     Seq.singleton overviewPage |> Seq.append tagPages
+
+let parseProject path (Some frontmatter) renderedMarkdown =
+    let toml = Toml.ReadString frontmatter
+    let project =
+        { Title = toml.["title"].Get()
+          Tagline = toml.["tagline"].Get()
+          Color = toml.["color"].Get()
+          Image = toml |> tomlTryGet "color"
+          Links = 
+            toml.["links"].Get<TomlTableArray>().Items
+            |> Seq.map (fun link -> 
+                { Name = link.["name"].Get()
+                  Icon = link.["icon"].Get()
+                  Url = link.["url"].Get() })
+            |> Seq.toList }
+    { Url = path |> Path.GetFileNameWithoutExtension |> sprintf "/projects/%s"
+      Content = Project project }
+
+let projectsOverview (site : StaticSite<Config, Page>) =
+    { Url = "/projects"; Content = ProjectsOverview (projects site) }
 
 let template (site : StaticSite<Config, Page>) page = 
     let _property = XmlEngine.attr "property"
@@ -517,6 +547,8 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withOverviewPage postsArchive
     |> StaticSite.withOverviewPages tagsOverview
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
+    |> withMarkdownPages (!! "content/projects.md") parseProject
+    |> StaticSite.withOverviewPage projectsOverview
     |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*" --"content/posts/assets/**/ignore/**/*") assetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
