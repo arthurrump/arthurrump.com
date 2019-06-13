@@ -104,7 +104,7 @@ let projects (site : StaticSite<Config, Page>) =
     |> Seq.choose projectChooser
     // TODO: sorting
 
-let assetUrlRewrite (filename : string) =
+let postAssetUrlRewrite (filename : string) =
     let dir = filename |> Path.getLowestDirectory
     let file = filename |> Path.GetFileName
     sprintf "/%s/%s/%s/%s/%s"
@@ -113,6 +113,11 @@ let assetUrlRewrite (filename : string) =
         dir.[6..7]
         dir.[9..]
         file
+
+let projectAssetUrlRewrite (filename : string) =
+    let dir = filename |> Path.getLowestDirectory
+    let file = filename |> Path.GetFileName
+    sprintf "/projects/%s/%s" dir file
 
 let tomlTryGet key (toml : TomlTable) =
     if toml.ContainsKey(key) 
@@ -157,7 +162,7 @@ let parsePost path (Some frontmatter) renderedMarkdown =
           Tags = toml.["tags"].Get()
           Date = toml.["date"].Get()
           Blurb = toml |> tomlTryGet "blurb"
-          Image = toml |> tomlTryGet "image" |> Option.map assetUrlRewrite
+          Image = toml |> tomlTryGet "image" |> Option.map postAssetUrlRewrite
           HtmlContent = renderedMarkdown }
 
     { Url = sprintf "%04i/%02i/%02i/%s" post.Date.Year post.Date.Month post.Date.Day slug
@@ -203,7 +208,7 @@ let parseProject path (Some frontmatter) renderedMarkdown =
         { Title = toml.["title"].Get()
           Tagline = toml.["tagline"].Get()
           Color = toml.["color"].Get()
-          Image = toml |> tomlTryGet "color"
+          Image = toml |> tomlTryGet "image" |> Option.map projectAssetUrlRewrite
           Links = 
             toml.["links"].Get<TomlTableArray>().Items
             |> Seq.map (fun link -> 
@@ -254,6 +259,8 @@ let template (site : StaticSite<Config, Page>) page =
         | PostsArchive _ -> "Archives"
         | TagsOverview _ -> "Tags"
         | TagPage (tag, _) -> sprintf "Tag: %s" tag
+        | Project project -> project.Title
+        | ProjectsOverview _ -> "Projects"
         | ErrorPage (code, text) -> code + " " + text
 
     let pageHeader =
@@ -284,7 +291,7 @@ let template (site : StaticSite<Config, Page>) page =
                    + "sl.classList.toggle('opened');") ] [ 
                 str "Find me elsewhere" 
             ]
-            ul [ _class "social-links" ] [ 
+            ul [ _class "social-links links-list" ] [ 
                 for link in site.Config.SocialLinks ->
                     li [] [
                         a [ _href link.Url ] [
@@ -359,6 +366,25 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 """             (site.AbsoluteUrl url) url (site.Config.DisqusId)) ]
 
+    let projectHeader titleWrapper imgWrapper project =
+        div [ _class "project-header"
+              _style (sprintf "background-color: %s;" project.Color) ] [
+            match project.Image with Some i -> yield imgWrapper (img [ _src i ]) | _ -> ()
+            yield div [ _class "text-part" ] [ 
+                titleWrapper (h1 [] [ str project.Title ])
+                span [ _class "tagline" ] [ str project.Tagline ]
+                ul [ _class "links-list" ] [
+                    for link in project.Links ->
+                        li [] [
+                        a [ _href link.Url ] [
+                            img [ _src (sprintf "/simpleicons/%s.svg" link.Icon) ]
+                            str link.Name 
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
     let content = 
         match page.Content with
         | Page (title, content) -> 
@@ -417,6 +443,17 @@ s.setAttribute('data-timestamp', +new Date());
             ]
         | TagsOverview tags ->
             tagList tags
+        | Project project ->
+            projectHeader id id project
+        | ProjectsOverview projects ->
+            div [ _class "projects-overview" ] [
+                for p in projects -> section [] [ 
+                    projectHeader 
+                        (fun h -> a [ _href p.Url ] [ h ]) 
+                        (fun img -> a [ _href p.Url; _class "image-link" ] [ img ])
+                        p.Content 
+                ]
+            ]
         | ErrorPage (code, text) ->
             div [ _id "error-page" ] [
                 span [ _class "status-code" ] [ str code ]
@@ -426,7 +463,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     let frame content =
         match page.Content with
-        | Post _ | TagsOverview _ | ErrorPage _ ->
+        | Post _ | TagsOverview _ | Project _ | ProjectsOverview _ | ErrorPage _  ->
             content
         | Page _ | PostsOverview _ ->
             div [ _class "columns" ] [ content; profile ]
@@ -532,7 +569,7 @@ let withMarkdownPages files parse =
             .UseImageAsFigure(onlyWithTitle = true)
             .UseUrlRewriter(fun link ->
                 if link.Url.TrimStart('/').StartsWith("assets/") 
-                then assetUrlRewrite link.Url
+                then postAssetUrlRewrite link.Url
                 else link.Url)
             .UseSyntaxHighlighting()
             .Build()
@@ -547,9 +584,10 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withOverviewPage postsArchive
     |> StaticSite.withOverviewPages tagsOverview
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
-    |> withMarkdownPages (!! "content/projects.md") parseProject
+    |> withMarkdownPages (!! "content/projects/*.md") parseProject
     |> StaticSite.withOverviewPage projectsOverview
-    |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*" --"content/posts/assets/**/ignore/**/*") assetUrlRewrite
+    |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*" --"content/posts/assets/**/ignore/**/*") postAssetUrlRewrite
+    |> StaticSite.withFilesFromSources (!! "content/projects/assets/**/*" --"content/projects/assets/**/ignore/**/*") projectAssetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName

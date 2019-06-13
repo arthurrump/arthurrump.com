@@ -191,12 +191,9 @@ img.profile-pic {
         }
 
     .profile ul.social-links {
-        list-style-type: none;
-        padding: 0;
         margin: 1.6em .6em .6em;
         font-size: 1.1rem;
         width: 65%;
-        align-self: flex-start;
     }
 
         @media (max-width: 700px) {
@@ -210,20 +207,36 @@ img.profile-pic {
                 }
         }
 
-        .profile ul.social-links > li {
-            margin: 0 0 1em;
+        .profile ul.social-links > li a {
+            color: #505050;
         }
 
-            .profile ul.social-links > li a {
-                color: #505050;
-                display: flex;
-                align-items: center;
-            }
+        .profile ul.social-links > li img {
+            height: 1.6em;
+            margin-right: .8em;
+        }
 
-            .profile ul.social-links > li img {
-                height: 1.6em;
-                margin-right: .8em;
-            }
+/* Links with icons */
+ul.links-list {
+    margin-left: .6rem;
+    list-style-type: none;
+    padding: 0;
+    align-self: flex-start;
+}
+
+    ul.links-list > li {
+        margin: 0 0 1em;
+    }
+
+        ul.links-list > li a {
+            display: flex;
+            align-items: center;
+        }
+
+        ul.links-list > li img {
+            height: 1.2em;
+            margin-right: .6em;
+        }
 
 /* Column layout */
 .columns {
@@ -608,6 +621,48 @@ ul.tag-list {
 
 .columns ul.tag-list {
     flex-flow: column nowrap;
+}
+
+/* Project */
+.project-header {
+    color: #fff;
+    display: flex;
+    flex-flow: row nowrap;
+    min-height: 80vh;
+}
+
+    .project-header a {
+        color: #fff;
+    }
+
+        .project-header > a.image-link {
+            padding: 0;
+            max-width: 50%;
+            line-height: 0;
+        }
+
+            .project-header > a.image-link > img {
+                max-width: 100%;
+            }
+
+    .project-header > img {
+        max-width: 50%;
+    }
+
+    .project-header > .text-part {
+        padding: 1.2rem;
+    }
+
+    .project-header h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        line-height: 1.1;
+        margin: 0 0 .2em;
+    }
+
+/* Projects overview */
+.projects-overview section {
+    margin-bottom: 1rem;
 }
 
 /* Error page */
