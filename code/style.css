@@ -194,6 +194,7 @@ img.profile-pic {
         margin: 1.6em .6em .6em;
         font-size: 1.1rem;
         width: 65%;
+        align-self: flex-start;
     }
 
         @media (max-width: 700px) {
@@ -221,7 +222,6 @@ ul.links-list {
     margin-left: .6rem;
     list-style-type: none;
     padding: 0;
-    align-self: flex-start;
 }
 
     ul.links-list > li {
@@ -629,6 +629,7 @@ ul.tag-list {
     display: flex;
     flex-flow: row nowrap;
     min-height: 80vh;
+    padding: .6rem;
 }
 
     .project-header a {
@@ -637,20 +638,21 @@ ul.tag-list {
 
         .project-header > a.image-link {
             padding: 0;
-            max-width: 50%;
             line-height: 0;
         }
 
-            .project-header > a.image-link > img {
-                max-width: 100%;
-            }
-
-    .project-header > img {
-        max-width: 50%;
+    .project-header img.header-image {
+        width: 100%;
     }
 
-    .project-header > .text-part {
-        padding: 1.2rem;
+    .project-header > .left {
+        width: 50%;
+        align-self: center;
+    }
+    
+    .project-header > .right {
+        width: 50%;
+        padding: .6rem;
     }
 
     .project-header h1 {
@@ -664,6 +666,10 @@ ul.tag-list {
 .projects-overview section {
     margin-bottom: 1rem;
 }
+
+    .projects-overview section:nth-of-type(2n) .project-header > .left {
+        order: 2;
+    }
 
 /* Error page */
 #error-page {

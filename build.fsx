@@ -80,8 +80,10 @@ Overview<'page> =
 and Project =
     { Title : string
       Tagline : string
+      Tags : string []
       Color : string
-      Image : string option
+      Image : string
+      ImageAlt : string
       Links : Link list }
 
 let postChooser page = 
@@ -207,8 +209,10 @@ let parseProject path (Some frontmatter) renderedMarkdown =
     let project =
         { Title = toml.["title"].Get()
           Tagline = toml.["tagline"].Get()
+          Tags = toml.["tags"].Get()
           Color = toml.["color"].Get()
-          Image = toml |> tomlTryGet "image" |> Option.map projectAssetUrlRewrite
+          Image = toml.["image"].Get() |> projectAssetUrlRewrite
+          ImageAlt = toml.["image-alt"].Get()
           Links = 
             toml.["links"].Get<TomlTableArray>().Items
             |> Seq.map (fun link -> 
@@ -369,8 +373,8 @@ s.setAttribute('data-timestamp', +new Date());
     let projectHeader titleWrapper imgWrapper project =
         div [ _class "project-header"
               _style (sprintf "background-color: %s;" project.Color) ] [
-            match project.Image with Some i -> yield imgWrapper (img [ _src i ]) | _ -> ()
-            yield div [ _class "text-part" ] [ 
+            div [ _class "left" ] [ imgWrapper (img [ _class "header-image"; _src project.Image; _alt project.ImageAlt ]) ]
+            div [ _class "right" ] [ 
                 titleWrapper (h1 [] [ str project.Title ])
                 span [ _class "tagline" ] [ str project.Tagline ]
                 ul [ _class "links-list" ] [
@@ -446,7 +450,8 @@ s.setAttribute('data-timestamp', +new Date());
         | Project project ->
             projectHeader id id project
         | ProjectsOverview projects ->
-            div [ _class "projects-overview" ] [
+            div [ _class "titeled-container projects-overview" ] [
+                yield h1 [] [ str "Projects" ]
                 for p in projects -> section [] [ 
                     projectHeader 
                         (fun h -> a [ _href p.Url ] [ h ]) 
@@ -502,6 +507,16 @@ s.setAttribute('data-timestamp', +new Date());
               yield meta [ _property "article:author"; _content site.Config.Author ]
               yield meta [ _property "article:published_time"; _content (post.Date.ToString("s")) ]
               for t in post.Tags -> meta [ _property "article:tag"; _content t ] ]
+        | Project project ->
+            [ meta [ _name "keywords"; _content (project.Tags |> String.concat ",") ]
+              meta [ _name "title"; _content project.Title ]
+              meta [ _name "description"; _content project.Tagline ]
+              meta [ _name "twitter:card"; _content "summary_large_image" ]
+              meta [ _name "twitter:creator"; _content site.Config.AuthorTwitter ]
+              meta [ _property "og:title"; _content project.Title ]
+              meta [ _property "og:type"; _content "website" ]
+              meta [ _property "og:image"; _content (site.AbsoluteUrl project.Image) ]
+              meta [ _property "og:description"; _content project.Tagline ] ]
         | _ ->
             [ meta [ _name "description"; _content site.Config.Description ]
               meta [ _property "og:title"; _content titleText ]
