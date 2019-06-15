@@ -404,7 +404,7 @@ body > footer {
     }
 
         .text blockquote.twitter-tweet {
-            background-image: url("/ionicons/logo-twitter.svg");
+            background-image: url("/icons/logo-twitter.svg");
             background-repeat: no-repeat;
             background-position: top 0.5rem right 0.5rem;
             background-size: 1.25rem 1.25rem;

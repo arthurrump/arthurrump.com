@@ -20,6 +20,7 @@ open Fake.IO.Globbing.Operators
 open Fake.StaticGen
 open Fake.StaticGen.Html
 open Fake.StaticGen.Html.ViewEngine
+open Fake.StaticGen.Html.ViewEngine.Accessibility
 open Fake.StaticGen.Markdown
 open Fake.StaticGen.Rss
 
@@ -85,6 +86,9 @@ and Project =
       Image : string
       ImageAlt : string
       Links : Link list }
+
+let icon name = img [ _src (sprintf "/icons/%s.svg" name); _ariaHidden "true" ]
+let iconTitle name title = img [ _src (sprintf "/icons/%s.svg" name); _alt title; _title title ]
 
 let postChooser page = 
     match page.Content with 
@@ -274,12 +278,13 @@ let template (site : StaticSite<Config, Page>) page =
         header [ _id "main-header" ] [
             span [ _id "title" ] [ a [ _href "/" ] [ str "Arthur Rump" ] ]
             button [ _id "menu-toggle"
+                     _roleButton
                      _onclick ("var img = document.querySelector('#menu-toggle > img');"
                         + "var nav = document.getElementById('main-nav');"
                         + "if (nav.classList.contains('opened')) {"
-                        + "  nav.classList.remove('opened'); img.setAttribute('src', '/ionicons/md-menu.svg'); }"
-                        + "else { nav.classList.add('opened'); img.setAttribute('src', '/ionicons/md-close.svg'); }") ] [
-                img [ _alt "Menu"; _src "/ionicons/md-menu.svg" ] 
+                        + "  nav.classList.remove('opened'); img.setAttribute('src', '/icons/md-menu.svg'); }"
+                        + "else { nav.classList.add('opened'); img.setAttribute('src', '/icons/md-close.svg'); }") ] [
+                iconTitle "md-menu" "Menu" 
             ]
             nav [ _id "main-nav"] (site.Config.Navigation |> List.map navItem)
         ]
@@ -299,7 +304,7 @@ let template (site : StaticSite<Config, Page>) page =
                 for link in site.Config.SocialLinks ->
                     li [] [
                         a [ _href link.Url ] [
-                            img [ _src (sprintf "/simpleicons/%s.svg" link.Icon) ]
+                            icon link.Icon
                             str link.Name 
                         ]
                     ]
@@ -322,7 +327,7 @@ let template (site : StaticSite<Config, Page>) page =
         let enc = WebUtility.UrlEncode
         let url = url |> site.AbsoluteUrl |> enc
         let title = enc title
-        let sharelink icon text url = a [ _href url; _target "blank"; _rel "noopener noreferrer" ] [ img [ _src (sprintf "/simpleicons/%s.svg" icon); _title text; _alt text ] ]
+        let sharelink icon text url = a [ _href url; _target "blank"; _rel "noopener noreferrer" ] [ iconTitle icon text ]
         div [ _class "sharebox" ] [
             span [] [ str "Share this:" ]
             div [ _class "links" ] [
@@ -381,7 +386,7 @@ s.setAttribute('data-timestamp', +new Date());
                     for link in project.Links ->
                         li [] [
                         a [ _href link.Url ] [
-                            img [ _src (sprintf "/simpleicons/%s.svg" link.Icon) ]
+                            icon link.Icon
                             str link.Name 
                         ]
                     ]
@@ -414,8 +419,8 @@ s.setAttribute('data-timestamp', +new Date());
             ]
         | PostsOverview overview ->
             let pagination = 
-                let older = overview.NextUrl |> Option.map (fun n -> a [ _href n; _class "older" ] [ str "Older"; img [ _src "/ionicons/md-arrow-forward.svg" ] ])
-                let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ img [ _src "/ionicons/md-arrow-back.svg" ]; str "Newer" ])
+                let older = overview.NextUrl |> Option.map (fun n -> a [ _href n; _class "older" ] [ str "Older"; icon "md-arrow-forward" ])
+                let newer = overview.PreviousUrl |> Option.map (fun p -> a [ _href p; _class "newer" ] [ icon "md-arrow-back"; str "Newer" ])
                 let buttons = [ newer; older ] |> List.choose id
                 div [ _class "pagination" ] buttons
             div [ _class "titeled-container overview-container" ] [ 
@@ -606,8 +611,8 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
-    |> StaticSite.withFilesFromSources (!! "ionicons/*") (fun path -> "ionicons/" + (Path.GetFileName path))
-    |> StaticSite.withFilesFromSources (!! "simpleicons/*") (fun path -> "simpleicons/" + (Path.GetFileName path))
+    |> StaticSite.withFilesFromSources (!! "ionicons/*") (fun path -> "icons/" + (Path.GetFileName path))
+    |> StaticSite.withFilesFromSources (!! "simpleicons/*") (fun path -> "icons/" + (Path.GetFileName path))
     |> StaticSite.withPage (ErrorPage ("404", "Not Found")) "/404.html"
     |> StaticSite.generateFromHtml "public" template
 
