@@ -4,6 +4,7 @@ tagline = "Bringing clarity to versions of .NET"
 tags = [ ".NET", ".NET Versions", "F#", "Fable", "Elmish" ]
 color = "#512bd4"
 image = "assets/versionsof-net/screenshot.png"
+image-alt = "A tablet showing the versionsof.net website"
 
 [[links]]
 name = "Website"

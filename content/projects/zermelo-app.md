@@ -4,6 +4,7 @@ tagline = "The Windows 10 app for viewing Zermelo school timetables"
 tags = [ "Zermelo", "schoolrooster", "C#", "UWP" ]
 color = "#dc1528"
 image = "/assets/zermelo-app/phone_schedule.png"
+image-alt = "A Windows Phone showing the timetable for June 28th 2017"
 
 [[links]]
 name = "Website"
