@@ -1,6 +1,7 @@
 +++
 title = "Schoolrooster voor Zermelo"
 tagline = "The Windows 10 app for viewing Zermelo school timetables"
+tech = [ "UWP", "XAML", "Template10", "C#" ]
 tags = [ "Zermelo", "schoolrooster", "C#", "UWP" ]
 color = "#dc1528"
 image = "/assets/zermelo-app/phone_schedule.png"

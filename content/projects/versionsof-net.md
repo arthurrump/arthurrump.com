@@ -1,6 +1,7 @@
 +++
 title = "versionsof.net"
 tagline = "Bringing clarity to versions of .NET"
+tech = [ "F#", "Fable", "Elmish" ]
 tags = [ ".NET", ".NET Versions", "F#", "Fable", "Elmish" ]
 color = "#512bd4"
 image = "assets/versionsof-net/screenshot.png"

@@ -83,6 +83,7 @@ Overview<'page> =
 and Project =
     { Title : string
       Tagline : string
+      Tech : string []
       Tags : string []
       Color : string
       Image : string
@@ -212,6 +213,7 @@ let parseProject path (Some frontmatter) renderedMarkdown =
     let project =
         { Title = toml.["title"].Get()
           Tagline = toml.["tagline"].Get()
+          Tech = toml.["tech"].Get()
           Tags = toml.["tags"].Get()
           Color = toml.["color"].Get()
           Image = toml.["image"].Get() |> projectAssetUrlRewrite
