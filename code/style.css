@@ -695,6 +695,14 @@ ul.tag-list {
         margin: 0 0 .2em;
     }
 
+    .project-header ul.links-list {
+        margin-left: 0;
+    }
+
+        .project-header ul.links-list > li {
+            margin: .6em 0 0;
+        }
+
 /* Projects overview */
 .projects-overview section {
     margin-bottom: 1rem;

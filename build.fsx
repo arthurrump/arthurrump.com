@@ -88,7 +88,8 @@ and Project =
       Color : string
       Image : string
       ImageAlt : string
-      Links : Link list }
+      Links : Link list
+      Paragraphs : string list }
 
 let postChooser page = 
     match page.Content with 
@@ -224,7 +225,8 @@ let parseProject path (Some frontmatter) renderedMarkdown =
                 { Name = link.["name"].Get()
                   Icon = link.["icon"].Get()
                   Url = link.["url"].Get() })
-            |> Seq.toList }
+            |> Seq.toList
+          Paragraphs = renderedMarkdown |> String.splitStr "<hr />" }
     { Url = path |> Path.GetFileNameWithoutExtension |> sprintf "/projects/%s"
       Content = Project project }
 
@@ -406,7 +408,9 @@ s.setAttribute('data-timestamp', +new Date());
             div [ _class "right" ] [ 
                 titleWrapper (h1 [] [ str project.Title ])
                 span [ _class "tagline" ] [ str project.Tagline ]
+                rawText project.Paragraphs.Head
                 ul [ _class "links-list" ] [
+                    yield str "Links:"
                     for link in project.Links ->
                         li [] [
                         a [ _href link.Url ] [
