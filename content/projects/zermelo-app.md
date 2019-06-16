@@ -8,7 +8,7 @@ image-alt = "A Windows Phone showing the timetable for June 28th 2017"
 
 [[links]]
 name = "Website"
-icon = "microsoft"
+icon = "ios-globe"
 url = "http://schoolrooster.arthurrump.com/"
 [[links]]
 name = "Microsoft Store"

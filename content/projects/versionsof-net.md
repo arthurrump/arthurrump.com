@@ -8,7 +8,7 @@ image-alt = "A tablet showing the versionsof.net website"
 
 [[links]]
 name = "Website"
-icon = "microsoft"
+icon = "ios-globe"
 url = "https://versionsof.net/"
 [[links]]
 name = "GitHub repository"
