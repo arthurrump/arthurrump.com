@@ -82,11 +82,12 @@ a {
     cursor: pointer;
 }
 
-    #menu-toggle img {
+    #menu-toggle .icon {
         height: 2rem;
         width: 2rem;
         margin: 0;
         padding: 0;
+        fill: #171717;
     }
 
     @media (max-width: 700px) {
@@ -212,9 +213,11 @@ img.profile-pic {
             color: #505050;
         }
 
-        .profile ul.social-links > li img {
+        .profile ul.social-links > li .icon {
             height: 1.6em;
+            width: 1.6em;
             margin-right: .8em;
+            fill: #171717;
         }
 
 /* Links with icons */
@@ -230,11 +233,14 @@ ul.links-list {
 
         ul.links-list > li a {
             display: inline-flex;
+            flex-flow: row nowrap;
             align-items: center;
+            justify-content: flex-start;
         }
 
-        ul.links-list > li img {
+        ul.links-list > li .icon {
             height: 1.2em;
+            width: 1.2em;
             margin-right: .6em;
         }
 
@@ -433,8 +439,10 @@ body > footer {
             margin: .4em;
         }
 
-        .sharebox .links img {
+        .sharebox .links .icon {
             height: 1.6em;
+            width: 1.6em;
+            fill: #171717;
         }
 
 /* Read also */
@@ -555,10 +563,12 @@ ul.post-overview {
         align-items: center;
     }
     
-        .pagination > a > img {
+        .pagination > a > .icon {
             height: 1.3em;
+            width: 1.3em;
             display: inline-block;
             transition: all 250ms ease-in-out 0s;
+            fill: #171717;
         }
 
         .pagination > a.newer {
@@ -566,11 +576,11 @@ ul.post-overview {
             margin-left: .6rem;
         }
         
-            .pagination > a.newer > img {
+            .pagination > a.newer > .icon {
                 margin-right: .4rem;
             }
 
-            .pagination > a.newer:hover > img {
+            .pagination > a.newer:hover > .icon {
                 margin-right: .7rem;
                 margin-left: -.3rem;
             }
@@ -580,11 +590,11 @@ ul.post-overview {
             margin-right: .6rem;
         }
 
-            .pagination > a.older > img {
+            .pagination > a.older > .icon {
                 margin-left: .4rem;
             }
 
-            .pagination > a.older:hover > img {
+            .pagination > a.older:hover > .icon {
                 margin-left: .7rem;
                 margin-right: -.3rem;
             }
@@ -633,6 +643,10 @@ ul.tag-list {
     overflow-wrap: break-word;
     word-break: break-word;
 }
+
+    .project-header .icon {
+        fill: #fff;
+    }
 
     .project-header > .left {
         width: 50%;

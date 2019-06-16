@@ -1,3 +1,5 @@
+open System.Text
+open System.Xml
 #r "paket:
 nuget Fake.Core.Target 
 nuget Fake.StaticGen
@@ -86,9 +88,6 @@ and Project =
       Image : string
       ImageAlt : string
       Links : Link list }
-
-let icon name = img [ _src (sprintf "/icons/%s.svg" name); _ariaHidden "true" ]
-let iconTitle name title = img [ _src (sprintf "/icons/%s.svg" name); _alt title; _title title ]
 
 let postChooser page = 
     match page.Content with 
@@ -233,6 +232,28 @@ let projectsOverview (site : StaticSite<Config, Page>) =
 let template (site : StaticSite<Config, Page>) page = 
     let _property = XmlEngine.attr "property"
 
+    let mutable iconList = set [ "md-close" ]
+    let icon name = 
+        iconList <- Set.add name iconList
+        XmlEngine.tag "svg" [ _class "icon"; _ariaHidden "true" ] [ 
+            XmlEngine.tag "use" [ XmlEngine.attr "xlink:href" ("#icon-" + name) ] [] ]
+
+    let iconsCombined () =
+        XmlEngine.tag "svg" [
+            XmlEngine.attr "xmlns" "http://www.w3.org/2000/svg"
+            _style "display: none;" 
+        ] (iconList 
+           |> Set.map (fun icon -> 
+                site.Files 
+                |> Seq.find (fun p -> p.Url |> Path.GetFileNameWithoutExtension = icon) 
+                |> fun p -> p.Content 
+                |> Encoding.UTF8.GetString
+                |> String.replace "xmlns=\"http://www.w3.org/2000/svg\"" ""
+                |> String.replace "<svg" ("<symbol id=\"icon-" + icon + "\"")
+                |> String.replace "</svg" "</symbol"
+                |> rawText)
+           |> Set.toList)
+
     let postDetailSpan (post : Post) =
         let tagList = 
             post.Tags 
@@ -279,17 +300,18 @@ let template (site : StaticSite<Config, Page>) page =
             span [ _id "title" ] [ a [ _href "/" ] [ str "Arthur Rump" ] ]
             button [ _id "menu-toggle"
                      _roleButton
-                     _onclick ("var img = document.querySelector('#menu-toggle > img');"
+                     _ariaLabel "Menu"
+                     _onclick ("var img = document.querySelector('#menu-toggle > svg > use');"
                         + "var nav = document.getElementById('main-nav');"
                         + "if (nav.classList.contains('opened')) {"
-                        + "  nav.classList.remove('opened'); img.setAttribute('src', '/icons/md-menu.svg'); }"
-                        + "else { nav.classList.add('opened'); img.setAttribute('src', '/icons/md-close.svg'); }") ] [
-                iconTitle "md-menu" "Menu" 
+                        + "  nav.classList.remove('opened'); img.setAttribute('xlink:href', '#icon-md-menu'); }"
+                        + "else { nav.classList.add('opened'); img.setAttribute('xlink:href', '#icon-md-close'); }") ] [
+                icon "md-menu"
             ]
             nav [ _id "main-nav"] (site.Config.Navigation |> List.map navItem)
         ]
 
-    let profile =
+    let profile () =
         aside [ _class "profile" ] [
             img [ _class "profile-pic"; _src "/android-chrome-192x192.png" ]
             span [ _class "name" ] [ str site.Config.Author ]
@@ -327,7 +349,7 @@ let template (site : StaticSite<Config, Page>) page =
         let enc = WebUtility.UrlEncode
         let url = url |> site.AbsoluteUrl |> enc
         let title = enc title
-        let sharelink icon text url = a [ _href url; _target "blank"; _rel "noopener noreferrer" ] [ iconTitle icon text ]
+        let sharelink iconName text url = a [ _href url; _title text; _ariaLabel text; _target "blank"; _rel "noopener noreferrer" ] [ icon iconName ]
         div [ _class "sharebox" ] [
             span [] [ str "Share this:" ]
             div [ _class "links" ] [
@@ -476,7 +498,7 @@ s.setAttribute('data-timestamp', +new Date());
         | Post _ | TagsOverview _ | Project _ | ProjectsOverview _ | ErrorPage _  ->
             content
         | Page _ | PostsOverview _ ->
-            div [ _class "columns" ] [ content; profile ]
+            div [ _class "columns" ] [ content; profile () ]
         | TagPage _ | PostsArchive _ ->
             div [ _class "columns" ] [ content; tagList (tags site) ]
 
@@ -527,6 +549,14 @@ s.setAttribute('data-timestamp', +new Date());
               meta [ _property "og:title"; _content titleText ]
               meta [ _property "og:type"; _content "website" ] ]
 
+    let fullBody = 
+        div [ _id "background" ] [ 
+            div [ _id "container" ] [ 
+                pageHeader
+                frame content 
+            ]
+        ]
+
     html [] [
         head [ ] ([ 
             meta [ _httpEquiv "Content-Type"; _content "text/html; charset=utf-8" ]
@@ -544,12 +574,8 @@ s.setAttribute('data-timestamp', +new Date());
             matomo
         ] @ headerTags)
         body [ ] [ 
-            div [ _id "background" ] [ 
-                div [ _id "container" ] [ 
-                    pageHeader
-                    frame content 
-                ]
-            ]
+            iconsCombined ()
+            fullBody
             footer [] [
                 span [] [ a [ _href "/archives" ] [ str "Archive" ] ]
                 span [] [ a [ _href "/tags" ] [ str "Tags" ] ]
