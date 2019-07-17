@@ -692,6 +692,10 @@ ul.tag-list {
             line-height: 0;
         }
 
+    .project-header p a {
+        text-decoration: underline;
+    }
+
     .project-header h1 {
         font-size: 3rem;
         font-weight: 600;
