@@ -35,6 +35,10 @@ name = "Twitter"
 icon = "twitter"
 url = "https://twitter.com/arthurrump"
 [[social-links]]
+name = "NuGet"
+icon = "nuget"
+url = "https://www.nuget.org/profiles/arthurrump"
+[[social-links]]
 name = "GitLab"
 icon = "gitlab"
 url = "https://gitlab.com/arthurrump"
