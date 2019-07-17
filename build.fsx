@@ -481,7 +481,16 @@ s.setAttribute('data-timestamp', +new Date());
         | TagsOverview tags ->
             tagList tags
         | Project project ->
-            projectHeader id id project
+            div [ _class "project" ] [
+                projectHeader id id project
+                div [ _class "tech"] [
+                    span [] [ str "Built with" ]
+                    ul [ _class "tag-list" ] [
+                        for t in project.Tech ->
+                            li [] [ str t ]
+                    ]
+                ]
+            ]
         | ProjectsOverview projects ->
             div [ _class "titeled-container projects-overview" ] [
                 yield h1 [] [ str "Projects" ]

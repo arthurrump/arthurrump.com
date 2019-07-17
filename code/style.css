@@ -644,6 +644,10 @@ ul.tag-list {
     word-break: break-word;
 }
 
+    .project-header .tagline {
+        font-style: italic;
+    }
+
     .project-header .icon {
         fill: #fff;
     }
@@ -701,6 +705,20 @@ ul.tag-list {
 
         .project-header ul.links-list > li {
             margin: .6em 0 0;
+        }
+
+.project .tech {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+    .project .tech .tag-list {
+        margin-top: .6rem;
+        justify-content: center;
+    }
+
+        .project .tech .tag-list > li {
+            margin: .3rem;
         }
 
 /* Projects overview */
