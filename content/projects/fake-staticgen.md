@@ -6,6 +6,7 @@ tags = [ "FAKE", "static site", "staticgen", "F#" ]
 color = "#19232e"
 image = "assets/fake-staticgen/logo.png"
 image-alt = "Fake.StaticGen logo"
+order = 20
 
 [[links]]
 name = "GitHub repository"

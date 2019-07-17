@@ -6,6 +6,7 @@ tags = [ "Bing Backgrounds", "Image of the Day" ]
 color = "#ffb900"
 image = "assets/image-of-the-day/deviceshot.png"
 image-alt = "A phone showing the Image of the Day app with a picture of a fox in the snow"
+order = -10
 
 [[links]]
 name = "Microsoft Store"

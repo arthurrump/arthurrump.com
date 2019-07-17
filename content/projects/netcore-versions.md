@@ -6,6 +6,7 @@ tags = [ ".NET Core", ".NET Core Versions", ".NET Core Releases", "releases.json
 color = "#512bd4"
 image = "assets/versionsof-net/screenshot.png"
 image-alt = "..."
+order = 30
 
 [[links]]
 name = "GitHub repository"

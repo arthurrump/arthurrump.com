@@ -88,6 +88,7 @@ and Project =
       Color : string
       Image : string
       ImageAlt : string
+      Order : int
       Links : Link list
       Paragraphs : string list }
 
@@ -219,6 +220,7 @@ let parseProject path (Some frontmatter) renderedMarkdown =
           Color = toml.["color"].Get()
           Image = toml.["image"].Get() |> projectAssetUrlRewrite
           ImageAlt = toml.["image-alt"].Get()
+          Order = toml.["order"].Get()
           Links = 
             toml.["links"].Get<TomlTableArray>().Items
             |> Seq.map (fun link -> 
@@ -321,7 +323,7 @@ let template (site : StaticSite<Config, Page>) page =
             span [ _class "name" ] [ str site.Config.Author ]
             span [ _class "motto" ] [ str site.Config.Description ]
             a [ _class "expand-social-links"
-                Accessibility._roleButton
+                _roleButton
                 _onclick ("var sl = document.querySelector('ul.social-links');"
                    + "sl.classList.toggle('opened');") ] [ 
                 str "Find me elsewhere" 
@@ -496,6 +498,7 @@ s.setAttribute('data-timestamp', +new Date());
                     ]
             ]
         | ProjectsOverview projects ->
+            let projects = projects |> Seq.sortByDescending (fun p -> p.Content.Order)
             div [ _class "titeled-container projects-overview" ] [
                 yield h1 [] [ str "Projects" ]
                 for p in projects -> section [] [ 
