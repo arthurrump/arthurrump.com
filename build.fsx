@@ -634,6 +634,7 @@ let withMarkdownPages files parse =
         MarkdownPipelineBuilder()
             .UseEmphasisExtras()
             .UseGenericAttributes()
+            .UsePipeTables()
             .UseImageAsFigure(onlyWithTitle = true)
             .UseUrlRewriter(fun link ->
                 if link.Url.TrimStart('/').StartsWith("assets/") 

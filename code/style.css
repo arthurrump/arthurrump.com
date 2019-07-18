@@ -423,6 +423,26 @@ body > footer {
                 margin: 0;
             }
 
+    .text table {
+        display: block;
+        overflow: auto;
+        overflow-wrap: normal;
+        word-break: normal;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 1em;
+    }
+
+        .text table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        .text table th, .text table td {
+            border: 1px solid #dfe2e5;
+            padding: .4rem .8rem;
+        }
+
 /* Share pane */
 .sharebox {
     font-size: 1.1rem;
