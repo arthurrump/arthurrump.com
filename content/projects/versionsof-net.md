@@ -23,7 +23,7 @@ url = "https://github.com/arthurrump/versionsof.net"
 ---
 
 ## Data from the source
-The data for this website is directly retrieved from information released by the teams developing .NET. For .NET Core, these are the releases.json files and release notes Markdown files in the [dotnet/core](https://github.com/dotnet/core) repo, see also the [NetCore.Versions](/projects/netcore-versions) project.
+The data for this website is directly retrieved from information released by the teams developing .NET. For .NET Core, these are the `releases.json` files and release notes Markdown files in the [dotnet/core](https://github.com/dotnet/core) repo, see also the [NetCore.Versions](/projects/netcore-versions) project.
 
 ---
 
