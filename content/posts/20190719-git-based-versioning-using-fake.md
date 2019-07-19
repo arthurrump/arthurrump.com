@@ -1,15 +1,16 @@
 +++
 title = "Git-based versioning using FAKE"
 tags = [ "F#", "FAKE", "Versioning", "Git" ]
-date = 2019-07-18 15:09:22
+date = 2019-07-19 12:23:25
 blurb = "How to use FAKE to automatically set version numbers based on your Git history."
+
 +++
 
-For [Fake.StaticGen](https://github.com/arthurrump/Fake.StaticGen), I wanted to have a semi-automated way of determining the version number for each release. Inspired by [Nerdbank.GitVersioning](https://github.com/AArnott/Nerdbank.GitVersioning), I really liked the idea of having a unique version for every commit, but I didn't quite like how this tool took over the build process. (Or I would have to try and integrate it into MSBuild, which seems to be possible. But MSBuild...)
+For [Fake.StaticGen](https://github.com/arthurrump/Fake.StaticGen), I wanted to have a semi-automated way of determining the version number for each release. Inspired by [Nerdbank.GitVersioning](https://github.com/AArnott/Nerdbank.GitVersioning), I liked the idea of having a unique version for every commit, but I didn't quite like how this tool took over the build process. (Or I would have to try and integrate it into MSBuild, which seems to be possible. But MSBuild...)
 
 ## The versioning system
 
-I came up with the following system, which would be relatively easy to do with the [FAKE](https://fake.build) build script that I was already using. Version information is provided in two files, `version` and `version-pre` in the root of the repository. In `version` the base version for the current commit is specified and `version-pre` contains the prerelease tag (the "-text" part of a version) if the version is a prerelease. The actual version is calculated based on the 'distance' of the commit to the last commit where the `version` file was changed.
+I came up with the following system, which would be relatively easy to do with the [FAKE](https://fake.build) build script that I was already using. Version information is provided in two files, *version* and *version-pre* in the root of the repository. In *version* the base version for the current commit is specified and *version-pre* contains the prerelease tag (the "-text" part of a version) if the version is a prerelease. The actual version is calculated based on the 'distance' of the commit to the last commit where the *version* file was changed.
 
 Example:
 
@@ -28,7 +29,7 @@ These are the versions as they are built on the master branch or a tagged commit
 
 ## Some helper functions
 
-FAKE comes with a wide set of modules, two of which are particularly useful for our scenario: [Fake.Core.SemVer](https://fake.build/apidocs/v5/fake-core-semver.html) for working with versions, and [Fake.Tools.Git](https://fake.build/apidocs/v5/index.html#Fake.Tools.Git) for executing Git commands. To use some functions of these modules more easily, we'll define a couple of helper functions.
+FAKE comes with a wide variety of modules, two of which are particularly useful for our scenario: [Fake.Core.SemVer](https://fake.build/apidocs/v5/fake-core-semver.html) for working with versions, and [Fake.Tools.Git](https://fake.build/apidocs/v5/index.html#Fake.Tools.Git) for executing Git commands. To use some functions of these modules more easily, we'll define a couple of helper functions.
 
 Let's start with some helper functions to get the relevant information from Git:
 
@@ -48,7 +49,7 @@ module GitHelpers =
 ```
 
 - `isTagged` checks if the current commit is associated with a tag. If there is no tag, the command fails and `directRunGitCommand` returns false.
-- `previousChangeCommit` gets the commit where a file was last changed. It requests the log for this file, printing only the commit hash using the `%H` formatter and limiting the amount of commits to 1. `runSimpleGitCommand` returns the output of the command as a string.
+- `previousChangeCommit` gets the commit where a file was last changed. It requests the log for this file, printing only the commit hash using the `%H` format string and limiting the number of commits to 1. `runSimpleGitCommand` returns the output of the command as a string.
 - `fileChanged` checks if a file is changed in the working copy and not yet committed.
 
 We'll also define some helper functions for modifying versions:
@@ -99,9 +100,9 @@ module Version =
         version |> withPatch (uint32 height) |> appendPrerelease pre
 ```
 
-The most interesting part is the calculation of the 'git height', the amount of commits between the current commit and the commit where the `version` file was last changed. If the file is changed in the current working copy, we reset the height to 0. Otherwise we retrieve the commit where `version` was last changed, using our `previousChangeCommit` helper function. Then we use the built in FAKE function `revisionsBetween` to get the 'height' of our current commit. If the working directory is clean, this is the result, otherwise we add 1.
+The most interesting part is the calculation of the 'git height', the number of commits between the current commit and the commit where the *version* file was last changed. If the file is changed in the current working copy, we reset the height to 0. Otherwise, we retrieve the commit where *version* was last changed, using our `previousChangeCommit` helper function. Then we use the built-in FAKE function `revisionsBetween` to get the 'height' of our current commit. If the working directory is clean, this is the result, otherwise, we add 1.
 
-The height is set as the patch number of the version read from the `version` file (don't forget to convert to an unsigned integer) and combined with the prerelease flags read from `version-pre` to create the correct version.
+The height is set as the patch number of the version read from the *version* file (don't forget to convert to an unsigned integer) and combined with the prerelease flags read from *version-pre* to create the correct version.
 
 ### Other branch rules
 
@@ -126,13 +127,13 @@ module Version =
         getCleanVersion () |> appendPrerelease pre
 ```
 
-First we get the name of the branch, where Git returning "NoBranch" means that there is no branch checked out. If we are in a clean working copy (i.e. there are no changes since the last commit) and the branch is the master branch or the current commit is tagged, we don't add any prerelease tags.
+First, we get the name of the branch, where Git returning "NoBranch" means that there is no branch checked out. If we are in a clean working copy (i.e. there are no changes since the last commit) and the branch is the master branch or the current commit is tagged, then we don't add any prerelease tags.
 
 If that condition does not hold, we get the abbreviated commit hash, set the dirty flag if necessary and put them together into a dash-separated string. The prerelease flag is then appended onto the 'clean' version.
 
 That's it. Now we can retrieve the calculated version by calling `Version.getVersionWithPrerelease ()`.
 
-You can of course use this process with any type of application, but chances are you're using FAKE with a .NET project. So let's look at how we can set the version to our calculated value as well.
+You can, of course, use this process with any type of application, but chances are you're using FAKE with a .NET project. So let's look at how we can set the correct version when building with the dotnet CLI.
 
 ## Setting the version in a .NET project
 
@@ -169,9 +170,9 @@ DotNet.build
 
 ## Using with Azure DevOps Pipelines
 
-When you're running you're builds on Azure Pipelines, there are two more things to consider:
+When you're running your builds on Azure Pipelines, there are two more things to consider:
 
-- When your Git repo is cloned, the commit is checked out and not a branch, so `getBranchName` will always return "NoBranch".
+- When your Git repo is cloned, the commit is checked out, not the branch, so `getBranchName` will always return "NoBranch".
 - You might want to set the build number to match your calculated version.
 
 To do these two things, here are a couple more helper functions:
@@ -209,4 +210,5 @@ DotNet.build
     projectOrSolutionPath
 ```
 
-Now we have a fully reproducible version numbering system that will automatically assign a version to every commit, and the versions are directly used as the build number in Azure DevOps.
+Now we have a fully reproducible version numbering system that will automatically assign a version to every commit, and the versions are directly used as the build number in Azure DevOps. If you'd like to see the complete code, it's available in [this Gist](https://gist.github.com/arthurrump/5cc9005e4d817f7d36c2c4ad736fd894).
+
