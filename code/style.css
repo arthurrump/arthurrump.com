@@ -1,3 +1,91 @@
+/* All colors */
+body > #background {
+    background: #f2f2f2;
+    color: #171717;
+}
+
+#title a { color: #171717; }
+#menu-toggle .icon { fill: #171717; }
+#main-nav a { color: #505050;}
+
+.profile { color: #171717; }
+.profile a.expand-social-links { color: #0078d4; }
+.profile ul.social-links > li a { color: #505050; }
+.profile ul.social-links > li .icon { fill: #171717; }
+
+body > footer { color: #565656; }
+body > footer a { color: #565656; }
+
+.post-details a { color: #0078d4; }
+
+.text { background-color: #fff; }
+.text a { color: #0078d4; }
+.text h1 a { color: #171717; }
+.text figure figcaption { color: #505050; }
+.text blockquote { border-left-color: #505050; }
+.text blockquote.twitter-tweet { border-color: #e1e8ed; }
+.text table tr:nth-child(2n) { background-color: #f6f8fa; }
+.text table th, .text table td { border-color: #dfe2e5; }
+
+.sharebox .links .icon { fill: #171717; }
+
+.commentsbox { background-color: #fff; }
+
+.pagination > a { color: #171717; }
+.pagination > a > .icon { fill: #171717; }
+
+ul.tag-list > li { background-color: #fff; }
+ul.tag-list > li a { color: #000; }
+
+.project-header { color: #fff; }
+.project-header .icon { fill: #fff; }
+.project-header a { color: #fff; }
+
+@media (prefers-color-scheme: dark) {
+    body { background-color: #000; }
+    body > #background {
+        background: #212121;
+        color: #f5f5f5;
+    }
+    
+    #title a { color: #f5f5f5; }
+    #menu-toggle .icon { fill: #f5f5f5; }
+    #main-nav a { color: #eee;}
+    
+    .profile { color: #f5f5f5; }
+    .profile a.expand-social-links { color: #0078d4; }
+    .profile ul.social-links > li a { color: #eee; }
+    .profile ul.social-links > li .icon { fill: #f5f5f5; }
+    
+    body > footer { color: #eee; }
+    body > footer a { color: #eee; }
+
+    .post-details a { color: #0078d4; }
+    
+    .text { background-color: #000; }
+    .text a { color: #0078d4; }
+    .text h1 a { color: #f5f5f5; }
+    .text figure figcaption { color: #eee; }
+    .text blockquote { border-left-color: #eee; }
+    .text blockquote.twitter-tweet { border-color: #e1e8ed; }
+    .text table tr:nth-child(2n) { background-color: #212121; }
+    .text table th, .text table td { border-color: #454545; }
+    
+    .sharebox .links .icon { fill: #f5f5f5; }
+    
+    .commentsbox { background-color: #000; color: #f5f5f5; }
+    
+    .pagination > a { color: #f5f5f5; }
+    .pagination > a > .icon { fill: #f5f5f5; }
+    
+    ul.tag-list > li { background-color: #000; }
+    ul.tag-list > li a { color: #f5f5f5; }
+    
+    .project-header { color: #f5f5f5; }
+    .project-header .icon { fill: #f5f5f5; }
+    .project-header a { color: #f5f5f5; }
+}
+
 /* General layout */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -8,8 +96,6 @@ body {
 
 body > #background {
     padding: .6rem .6rem 2rem;
-    background: #f2f2f2;
-    color: #171717;
     min-height: calc(100vh - 2.6rem - 1.6rem - 1.4 * 2 * 0.85rem); /* Put the footer at the bottom if there's not enough content. */
 }
 
@@ -67,10 +153,6 @@ a {
     float: left;
 }
 
-    #title a {
-        color: #171717;
-    }
-
 #menu-toggle {
     float: right;
     display: none;
@@ -87,7 +169,6 @@ a {
         width: 2rem;
         margin: 0;
         padding: 0;
-        fill: #171717;
     }
 
     @media (max-width: 700px) {
@@ -103,10 +184,6 @@ a {
     flex-flow: row nowrap;
     align-items: baseline;
 }
-
-    #main-nav a {
-        color: #505050;
-    }
 
     #main-nav span {
         margin-right: 1.5rem;
@@ -142,7 +219,6 @@ img.profile-pic {
     /* background-color: #fafafa; */
     max-width: 280px;
     margin-left: 20px;
-    color: #171717;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -180,7 +256,6 @@ img.profile-pic {
 
     .profile a.expand-social-links {
         display: none;
-        color: #0078d4;
         margin-top: .4rem;
         cursor: pointer;
     }
@@ -209,15 +284,10 @@ img.profile-pic {
                 }
         }
 
-        .profile ul.social-links > li a {
-            color: #505050;
-        }
-
         .profile ul.social-links > li .icon {
             height: 1.6em;
             width: 1.6em;
             margin-right: .8em;
-            fill: #171717;
         }
 
 /* Links with icons */
@@ -261,7 +331,6 @@ ul.links-list {
 
 /* Footer */
 body > footer {
-    color: #565656;
     font-size: .75rem;
     display: flex;
     flex-flow: row wrap;
@@ -272,10 +341,6 @@ body > footer {
 
     body > footer > span {
         margin: .2em .6em;
-    }
-
-    body > footer a {
-        color: #565656;
     }
 
 /* Page */
@@ -323,7 +388,6 @@ body > footer {
 }
 
 .text {
-    background-color: #fff;
     padding: 2.4rem 1rem;
     margin: 1rem 0;
     overflow-wrap: break-word;
@@ -342,19 +406,11 @@ body > footer {
         margin: auto;
     }
 
-    .text a {
-        color: #0078d4;
-    }
-
     .text h1 {
         margin-top: 0;
         margin-bottom: .2rem;
         /* font-size: 1.8rem; */
     }
-
-        .text h1 a {
-            color: #171717;
-        }
     
     .text h1, .text h2, .text h3, .text h4 {
         font-weight: 600;
@@ -388,7 +444,6 @@ body > footer {
         .text figure figcaption {
             text-align: center;
             font-size: .85rem;
-            color: #505050;
             margin-top: .6em;
         }
 
@@ -404,7 +459,8 @@ body > footer {
 
     .text blockquote {
         padding-left: 1rem;
-        border-left: 4px solid #505050;
+        border-left-width: 4px;
+        border-left-style: solid;
         margin-inline-start: 0;
         margin-inline-end: 0;
     }
@@ -415,7 +471,8 @@ body > footer {
             background-position: top 0.5rem right 0.5rem;
             background-size: 1.25rem 1.25rem;
             padding: 1rem 2rem 1rem 1rem;
-            border: 1px solid #e1e8ed;
+            border-width: 1px;
+            border-style: solid;
             border-radius: 5px;
         }
 
@@ -434,12 +491,9 @@ body > footer {
         margin-top: 1em;
     }
 
-        .text table tr:nth-child(2n) {
-            background-color: #f6f8fa;
-        }
-
         .text table th, .text table td {
-            border: 1px solid #dfe2e5;
+            border-width: 1px;
+            border-style: solid;
             padding: .4rem .8rem;
         }
 
@@ -462,7 +516,6 @@ body > footer {
         .sharebox .links .icon {
             height: 1.6em;
             width: 1.6em;
-            fill: #171717;
         }
 
 /* Read also */
@@ -512,7 +565,6 @@ body > footer {
 
 /* Comments */
 .commentsbox {
-    background-color: #fff;
     padding: 2.4rem .6rem;
     margin: .6rem 0;
 }
@@ -578,7 +630,6 @@ ul.post-overview {
 }
 
     .pagination > a {
-        color: #171717;
         display: flex;
         align-items: center;
     }
@@ -588,7 +639,6 @@ ul.post-overview {
             width: 1.3em;
             display: inline-block;
             transition: all 250ms ease-in-out 0s;
-            fill: #171717;
         }
 
         .pagination > a.newer {
@@ -635,14 +685,9 @@ ul.tag-list {
     }
 
     ul.tag-list > li {
-        background-color: #fff;
         padding: .6rem;
         margin: 0 .6rem .6rem 0;
     }
-
-        ul.tag-list > li a {
-            color: #000;
-        }
 
         ul.tag-list > li .page-count {
             float: right;
@@ -655,7 +700,6 @@ ul.tag-list {
 
 /* Project */
 .project-header {
-    color: #fff;
     display: flex;
     flex-flow: row nowrap;
     min-height: 80vh;
@@ -666,10 +710,6 @@ ul.tag-list {
 
     .project-header .tagline {
         font-style: italic;
-    }
-
-    .project-header .icon {
-        fill: #fff;
     }
 
     .project-header > .left {
@@ -707,14 +747,10 @@ ul.tag-list {
         }
     }
 
-    .project-header a {
-        color: #fff;
+    .project-header > a.image-link {
+        padding: 0;
+        line-height: 0;
     }
-
-        .project-header > a.image-link {
-            padding: 0;
-            line-height: 0;
-        }
 
     .project-header p a {
         text-decoration: underline;
