@@ -76,7 +76,7 @@ NUGET
     MarkdigExtensions.ImageAsFigure (1.0)
       FSharp.Core (>= 4.5.2)
       Markdig (>= 0.16)
-    MarkdigExtensions.SyntaxHighlighting (1.0.2)
+    MarkdigExtensions.SyntaxHighlighting (1.0.3)
       ColorCode.HTML (>= 2.0.6)
       FSharp.Core (>= 4.5.2)
       Markdig (>= 0.16)

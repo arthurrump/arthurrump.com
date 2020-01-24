@@ -1,5 +1,3 @@
-open System.Text
-open System.Xml
 #r "paket:
 nuget Fake.Core.Target 
 nuget Fake.StaticGen
@@ -33,6 +31,8 @@ open System
 open System.Globalization
 open System.IO
 open System.Net
+open System.Text
+open System.Text.RegularExpressions
 
 let now = DateTime.UtcNow
 
@@ -584,6 +584,7 @@ s.setAttribute('data-timestamp', +new Date());
             meta [ _httpEquiv "Content-Type"; _content "text/html; charset=utf-8" ]
             title [] [ strf "%s - %s" titleText site.Config.Title ]
             link [ _rel "stylesheet"; _type "text/css"; _href "/style.css" ]
+            link [ _rel "stylesheet"; _type "text/css"; _href "/colorcode.css" ]
             meta [ _name "author"; _content site.Config.Author ]
             meta [ _name "copyright"; _content (sprintf "Copyright %i %s" now.Year site.Config.Author) ]
             meta [ _name "description"; _content site.Config.Description ]
@@ -629,6 +630,12 @@ let rssFeed (site : StaticSite<Config, Page>) =
         pubDate = now,
         items = (items |> Seq.toList))
 
+let colorCodeCss =
+    let removeBodyRule (css : string) = Regex.Replace(css, "body\s*\{[^\}]*\}", "")
+    let lightCss = ColorCode.HtmlClassFormatter(ColorCode.Styling.StyleDictionary.DefaultLight).GetCSSString()
+    let darkCss = ColorCode.HtmlClassFormatter(ColorCode.Styling.StyleDictionary.DefaultDark).GetCSSString()
+    sprintf "%s @media (prefers-color-scheme: dark) { %s }" (removeBodyRule lightCss) (removeBodyRule darkCss)
+
 let withMarkdownPages files parse =
     let pipeline =
         MarkdownPipelineBuilder()
@@ -640,7 +647,7 @@ let withMarkdownPages files parse =
                 if link.Url.TrimStart('/').StartsWith("assets/") 
                 then postAssetUrlRewrite link.Url
                 else link.Url)
-            .UseSyntaxHighlighting()
+            .UseSyntaxHighlighting(ColorCode.Styling.StyleDictionary.DefaultLight, false)
             .Build()
 
     StaticSite.withPagesFromCustomMarkdown pipeline files parse
@@ -655,6 +662,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
     |> withMarkdownPages (!! "content/projects/*.md") parseProject
     |> StaticSite.withOverviewPage projectsOverview
+    |> StaticSite.withFileFromString colorCodeCss "/colorcode.css"
     |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*" --"content/posts/assets/**/ignore/**/*") postAssetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "content/projects/assets/**/*" --"content/projects/assets/**/ignore/**/*") projectAssetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
