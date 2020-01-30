@@ -53,17 +53,17 @@ ul.tag-list > li a { color: #000; }
     #main-nav a { color: #eee;}
     
     .profile { color: #f5f5f5; }
-    .profile a.expand-social-links { color: #0078d4; }
+    .profile a.expand-social-links { color: #1291f3; }
     .profile ul.social-links > li a { color: #eee; }
     .profile ul.social-links > li .icon { fill: #f5f5f5; }
     
     body > footer { color: #eee; }
     body > footer a { color: #eee; }
 
-    .post-details a { color: #0078d4; }
+    .post-details a { color: #1291f3; }
     
     .text { background-color: #000; }
-    .text a { color: #0078d4; }
+    .text a { color: #1291f3; }
     .text h1 a { color: #f5f5f5; }
     .text figure figcaption { color: #eee; }
     .text blockquote { border-left-color: #eee; }
