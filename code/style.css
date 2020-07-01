@@ -722,6 +722,10 @@ ul.tag-list {
         padding: .6rem;
     }
 
+    .project-header > .full {
+        padding: .6rem;
+    }
+
     .project-header img.header-image {
         display: block;
         margin-left: auto;

@@ -87,8 +87,8 @@ and Project =
       Tech : string []
       Tags : string []
       Color : string
-      Image : string
-      ImageAlt : string
+      Image : string option
+      ImageAlt : string option
       Order : int
       Links : Link list
       Paragraphs : string list }
@@ -243,8 +243,8 @@ let parseProject type' path (Some frontmatter) renderedMarkdown =
           Tech = toml.["tech"].Get()
           Tags = toml.["tags"].Get()
           Color = toml.["color"].Get()
-          Image = toml.["image"].Get() |> (projectAssetUrlRewrite type')
-          ImageAlt = toml.["image-alt"].Get()
+          Image = toml |> tomlTryGet "image" |> Option.map (projectAssetUrlRewrite type')
+          ImageAlt = toml |> tomlTryGet "image-alt"
           Order = toml.["order"].Get()
           Links = 
             toml.["links"].Get<TomlTableArray>().Items
@@ -434,8 +434,18 @@ s.setAttribute('data-timestamp', +new Date());
     let projectHeader titleWrapper imgWrapper project =
         div [ _class "project-header"
               _style (sprintf "background-color: %s;" project.Color) ] [
-            div [ _class "left" ] [ imgWrapper (img [ _class "header-image"; _src project.Image; _alt project.ImageAlt ]) ]
-            div [ _class "right" ] [ 
+            match project.Image with
+            | Some image ->
+                div [ _class "left" ] [ 
+                    imgWrapper (img [ 
+                        _class "header-image"; 
+                        _src image; 
+                        _alt (project.ImageAlt |> Option.defaultValue "")
+                    ]) 
+                ]
+            | None -> 
+                ()
+            div [ _class (if project.Image.IsSome then "right" else "full") ] [ 
                 titleWrapper (h1 [] [ str project.Title ])
                 span [ _class "tagline" ] [ str project.Tagline ]
                 rawText project.Paragraphs.Head
@@ -596,7 +606,7 @@ s.setAttribute('data-timestamp', +new Date());
               meta [ _name "twitter:creator"; _content site.Config.AuthorTwitter ]
               meta [ _property "og:title"; _content project.Title ]
               meta [ _property "og:type"; _content "website" ]
-              meta [ _property "og:image"; _content (site.AbsoluteUrl project.Image) ]
+              match project.Image with Some image -> meta [ _property "og:image"; _content (site.AbsoluteUrl image) ] | None -> ()
               meta [ _property "og:description"; _content project.Tagline ] ]
         | _ ->
             [ meta [ _name "description"; _content site.Config.Description ]
