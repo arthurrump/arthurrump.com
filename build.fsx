@@ -62,7 +62,7 @@ type Page =
     | TagsOverview of (string * string * int) seq
     | TagPage of tag: string * posts: Page<Post> seq
     | Project of Project
-    | ProjectsOverview of Page<Project> seq
+    | ProjectsOverview of ProjectType * Page<Project> seq
     | ErrorPage of code: string * text: string
 
 and Post =
@@ -258,10 +258,10 @@ let parseProject type' path (Some frontmatter) renderedMarkdown =
       Content = Project project }
 
 let projectsOverview (site : StaticSite<Config, Page>) =
-    { Url = "/projects"; Content = ProjectsOverview (projects site) }
+    { Url = "/projects"; Content = ProjectsOverview (ProjectType.Project, projects site) }
 
 let researchOverview (site : StaticSite<Config, Page>) =
-    { Url = "/research"; Content = ProjectsOverview (research site) }
+    { Url = "/research"; Content = ProjectsOverview (ProjectType.Research, research site) }
 
 let template (site : StaticSite<Config, Page>) page = 
     let _property = XmlEngine.attr "property"
@@ -525,10 +525,14 @@ s.setAttribute('data-timestamp', +new Date());
                         rawText par
                     ]
             ]
-        | ProjectsOverview projects ->
+        | ProjectsOverview (type', projects) ->
             let projects = projects |> Seq.sortByDescending (fun p -> p.Content.Order)
+            let title = 
+                match type' with
+                | ProjectType.Project -> "Projects"
+                | ProjectType.Research -> "Research"
             div [ _class "titeled-container projects-overview" ] [
-                yield h1 [] [ str "Projects" ]
+                yield h1 [] [ str title ]
                 for p in projects -> section [] [ 
                     projectHeader 
                         (fun h -> a [ _href p.Url ] [ h ]) 
