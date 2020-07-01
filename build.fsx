@@ -81,7 +81,8 @@ Overview<'page> =
       Pages : Page<'page> seq }
 
 and Project =
-    { Title : string
+    { Type : ProjectType
+      Title : string
       Tagline : string
       Tech : string []
       Tags : string []
@@ -91,6 +92,11 @@ and Project =
       Order : int
       Links : Link list
       Paragraphs : string list }
+
+and [<RequireQualifiedAccess>]
+ProjectType =
+    | Project
+    | Research
 
 let postChooser page = 
     match page.Content with 
@@ -104,12 +110,26 @@ let posts (site : StaticSite<Config, Page>) =
 
 let projectChooser page =
     match page.Content with
-    | Project project -> Some { Url = page.Url; Content = project }
-    | _ -> None
+    | Project project when project.Type = ProjectType.Project -> 
+        Some { Url = page.Url; Content = project }
+    | _ -> 
+        None
 
 let projects (site : StaticSite<Config, Page>) =
     site.Pages
     |> Seq.choose projectChooser
+    // TODO: sorting
+
+let researchChooser page =
+    match page.Content with
+    | Project project when project.Type = ProjectType.Research -> 
+        Some { Url = page.Url; Content = project }
+    | _ -> 
+        None
+
+let research (site : StaticSite<Config, Page>) =
+    site.Pages
+    |> Seq.choose researchChooser
     // TODO: sorting
 
 let postAssetUrlRewrite (filename : string) =
@@ -122,10 +142,14 @@ let postAssetUrlRewrite (filename : string) =
         dir.[9..]
         file
 
-let projectAssetUrlRewrite (filename : string) =
+let projectUrl = function
+    | ProjectType.Project -> "project"
+    | ProjectType.Research -> "research"
+
+let projectAssetUrlRewrite type' (filename : string) =
     let dir = filename |> Path.getLowestDirectory
     let file = filename |> Path.GetFileName
-    sprintf "/projects/%s/%s" dir file
+    sprintf "/%s/%s/%s" (projectUrl type') dir file
 
 let tomlTryGet key (toml : TomlTable) =
     if toml.ContainsKey(key) 
@@ -210,15 +234,16 @@ let tagsOverview (site : StaticSite<Config, Page>) =
             { Url = url; Content = TagPage (tag, posts) })
     Seq.singleton overviewPage |> Seq.append tagPages
 
-let parseProject path (Some frontmatter) renderedMarkdown =
+let parseProject type' path (Some frontmatter) renderedMarkdown =
     let toml = Toml.ReadString frontmatter
     let project =
-        { Title = toml.["title"].Get()
+        { Type = type'
+          Title = toml.["title"].Get()
           Tagline = toml.["tagline"].Get()
           Tech = toml.["tech"].Get()
           Tags = toml.["tags"].Get()
           Color = toml.["color"].Get()
-          Image = toml.["image"].Get() |> projectAssetUrlRewrite
+          Image = toml.["image"].Get() |> (projectAssetUrlRewrite type')
           ImageAlt = toml.["image-alt"].Get()
           Order = toml.["order"].Get()
           Links = 
@@ -229,11 +254,14 @@ let parseProject path (Some frontmatter) renderedMarkdown =
                   Url = link.["url"].Get() })
             |> Seq.toList
           Paragraphs = renderedMarkdown |> String.splitStr "<hr />" }
-    { Url = path |> Path.GetFileNameWithoutExtension |> sprintf "/projects/%s"
+    { Url = path |> Path.GetFileNameWithoutExtension |> sprintf "/%s/%s" (projectUrl type')
       Content = Project project }
 
 let projectsOverview (site : StaticSite<Config, Page>) =
     { Url = "/projects"; Content = ProjectsOverview (projects site) }
+
+let researchOverview (site : StaticSite<Config, Page>) =
+    { Url = "/research"; Content = ProjectsOverview (research site) }
 
 let template (site : StaticSite<Config, Page>) page = 
     let _property = XmlEngine.attr "property"
@@ -660,11 +688,14 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withOverviewPage postsArchive
     |> StaticSite.withOverviewPages tagsOverview
     |> StaticSite.withRssFeed rssFeed "/feed.xml"
-    |> withMarkdownPages (!! "content/projects/*.md") parseProject
+    |> withMarkdownPages (!! "content/projects/*.md") (parseProject ProjectType.Project)
     |> StaticSite.withOverviewPage projectsOverview
+    |> withMarkdownPages (!! "content/research/*.md") (parseProject ProjectType.Research)
+    |> StaticSite.withOverviewPage researchOverview
     |> StaticSite.withFileFromString colorCodeCss "/colorcode.css"
     |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*" --"content/posts/assets/**/ignore/**/*") postAssetUrlRewrite
-    |> StaticSite.withFilesFromSources (!! "content/projects/assets/**/*" --"content/projects/assets/**/ignore/**/*") projectAssetUrlRewrite
+    |> StaticSite.withFilesFromSources (!! "content/projects/assets/**/*" --"content/projects/assets/**/ignore/**/*") (projectAssetUrlRewrite ProjectType.Project)
+    |> StaticSite.withFilesFromSources (!! "content/research/assets/**/*" --"content/research/assets/**/ignore/**/*") (projectAssetUrlRewrite ProjectType.Research)
     |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName

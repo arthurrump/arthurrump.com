@@ -15,6 +15,9 @@ url = "/"
 name = "Projects"
 url = "/projects"
 [[nav]]
+name = "Research"
+url = "/research"
+[[nav]]
 name = "About me"
 url = "/about"
 

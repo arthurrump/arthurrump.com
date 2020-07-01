@@ -38,7 +38,7 @@ ul.tag-list > li { background-color: #fff; }
 ul.tag-list > li a { color: #000; }
 
 .project-header { color: #fff; }
-.project-header .icon { fill: #fff; }
+.project-header .icon { fill: #fff; stroke: #fff; }
 .project-header a { color: #fff; }
 
 @media (prefers-color-scheme: dark) {
@@ -82,7 +82,7 @@ ul.tag-list > li a { color: #000; }
     ul.tag-list > li a { color: #f5f5f5; }
     
     .project-header { color: #f5f5f5; }
-    .project-header .icon { fill: #f5f5f5; }
+    .project-header .icon { fill: #f5f5f5; stroke: #f5f5f5; }
     .project-header a { color: #f5f5f5; }
 }
 
