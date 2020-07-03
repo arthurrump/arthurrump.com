@@ -11,6 +11,10 @@ name = "Paper (local copy)"
 icon = "document-outline"
 url = "/research/bsc/paper.pdf"
 [[links]]
+name = "Paper (UTwente library)"
+icon = "document-outline"
+url = "http://purl.utwente.nl/essays/81970"
+[[links]]
 name = "Conference Presentation"
 icon = "vimeo"
 url = "https://vimeo.com/435049487"
