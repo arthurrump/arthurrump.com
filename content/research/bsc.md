@@ -11,6 +11,10 @@ name = "Paper (local copy)"
 icon = "document-outline"
 url = "/research/bsc/paper.pdf"
 [[links]]
+name = "Conference Presentation"
+icon = "vimeo"
+url = "https://vimeo.com/435049487"
+[[links]]
 name = "Apollo Source"
 icon = "github"
 url = "https://github.com/arthurrump/apollo"
