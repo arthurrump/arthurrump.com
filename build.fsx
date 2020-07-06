@@ -146,6 +146,10 @@ let projectUrl = function
     | ProjectType.Project -> "project"
     | ProjectType.Research -> "research"
 
+let projectsPageTitle = function
+    | ProjectType.Project -> "Projects"
+    | ProjectType.Research -> "Research"
+
 let projectAssetUrlRewrite type' (filename : string) =
     let dir = filename |> Path.getLowestDirectory
     let file = filename |> Path.GetFileName
@@ -323,7 +327,7 @@ let template (site : StaticSite<Config, Page>) page =
         | TagsOverview _ -> "Tags"
         | TagPage (tag, _) -> sprintf "Tag: %s" tag
         | Project project -> project.Title
-        | ProjectsOverview _ -> "Projects"
+        | ProjectsOverview (type', _) -> projectsPageTitle type'
         | ErrorPage (code, text) -> code + " " + text
 
     let pageHeader =
@@ -537,12 +541,8 @@ s.setAttribute('data-timestamp', +new Date());
             ]
         | ProjectsOverview (type', projects) ->
             let projects = projects |> Seq.sortByDescending (fun p -> p.Content.Order)
-            let title = 
-                match type' with
-                | ProjectType.Project -> "Projects"
-                | ProjectType.Research -> "Research"
             div [ _class "titeled-container projects-overview" ] [
-                yield h1 [] [ str title ]
+                yield h1 [] [ str (projectsPageTitle type') ]
                 for p in projects -> section [] [ 
                     projectHeader 
                         (fun h -> a [ _href p.Url ] [ h ]) 
