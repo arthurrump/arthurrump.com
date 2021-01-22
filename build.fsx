@@ -40,6 +40,7 @@ type Config =
     { Title : string
       Author : string
       AuthorTwitter : string
+      ProfileImage : string
       Description : string
       DefaultImage : string
       DisqusId : string
@@ -165,6 +166,7 @@ let parseConfig config =
     { Title = toml.["title"].Get()
       Author = toml.["author"].Get()
       AuthorTwitter = toml.["author-twitter"].Get()
+      ProfileImage = toml.["profile-image"].Get()
       Description = toml.["description"].Get()
       DefaultImage = toml.["default-image"].Get()
       DisqusId = toml.["disqus-id"].Get()
@@ -351,7 +353,7 @@ let template (site : StaticSite<Config, Page>) page =
 
     let profile () =
         aside [ _class "profile" ] [
-            img [ _class "profile-pic"; _src "/android-chrome-192x192.png" ]
+            img [ _class "profile-pic"; _src site.Config.ProfileImage ]
             span [ _class "name" ] [ str site.Config.Author ]
             span [ _class "motto" ] [ str site.Config.Description ]
             a [ _class "expand-social-links"
@@ -627,6 +629,11 @@ s.setAttribute('data-timestamp', +new Date());
             title [] [ strf "%s - %s" titleText site.Config.Title ]
             link [ _rel "stylesheet"; _type "text/css"; _href "/style.css" ]
             link [ _rel "stylesheet"; _type "text/css"; _href "/colorcode.css" ]
+            link [ _rel "icon"; _href "favicon.ico" ]
+            link [ _rel "icon"; _href "favicon-16x16.png"; _type "image/png"; _sizes "16x16" ]
+            link [ _rel "icon"; _href "favicon-32x32.png"; _type "image/png"; _sizes "32x32" ]
+            link [ _rel "icon"; _href "icon_192.png"; _type "image/png"; _sizes "192x192" ]
+            link [ _rel "apple-touch-icon"; _href "apple-touch-icon.png"; _type "image/png"; _sizes "180x180" ]
             meta [ _name "author"; _content site.Config.Author ]
             meta [ _name "copyright"; _content (sprintf "Copyright %i %s" now.Year site.Config.Author) ]
             meta [ _name "description"; _content site.Config.Description ]
@@ -710,11 +717,9 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withFilesFromSources (!! "content/posts/assets/**/*" --"content/posts/assets/**/ignore/**/*") postAssetUrlRewrite
     |> StaticSite.withFilesFromSources (!! "content/projects/assets/**/*" --"content/projects/assets/**/ignore/**/*") (projectAssetUrlRewrite ProjectType.Project)
     |> StaticSite.withFilesFromSources (!! "content/research/assets/**/*" --"content/research/assets/**/ignore/**/*") (projectAssetUrlRewrite ProjectType.Research)
-    |> StaticSite.withFilesFromSources (!! "rootfiles/*") Path.GetFileName
-    |> StaticSite.withFilesFromSources (!! "icons/*") Path.GetFileName
+    |> StaticSite.withFilesFromSources (!! "assets/**/*") (String.regex_replace ".*assets[/\\\\]" "")
     |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
-    |> StaticSite.withFilesFromSources (!! "ionicons/*") (fun path -> "icons/" + (Path.GetFileName path))
-    |> StaticSite.withFilesFromSources (!! "simpleicons/*") (fun path -> "icons/" + (Path.GetFileName path))
+    |> StaticSite.withFilesFromSources (!! "icons/**/*") (fun path -> "icons/" + (Path.GetFileName path))
     |> StaticSite.withPage (ErrorPage ("404", "Not Found")) "/404.html"
     |> StaticSite.generateFromHtml "public" template
 

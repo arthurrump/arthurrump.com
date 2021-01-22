@@ -1,10 +1,11 @@
 title = "Arthur Rump"
 author = "Arthur Rump"
 author-twitter = "@arthurrump"
-description = "Always writing F#, and sometimes studying Technical Computer Science."
+profile-image = "/profile/profile_full_256.jpg"
+description = "Tells computers what to do. Makes things. Studies Computer Science and Science Education."
 
 # Social image used for posts without an header image
-default-image = "/default-social-image.png"
+default-image = "/icon_512.png"
 
 disqus-id = "arthurrump"
 
@@ -38,13 +39,13 @@ url = "https://vimeo.com/arthurrump"
 # icon = "mastodon"
 # url = "https://mastodon.utwente.nl/@arthurrump"
 [[social-links]]
-name = "Keybase"
-icon = "keybase"
-url = "https://keybase.io/arthurrump"
-[[social-links]]
 name = "Twitter"
 icon = "twitter"
 url = "https://twitter.com/arthurrump"
+[[social-links]]
+name = "Keybase"
+icon = "keybase"
+url = "https://keybase.io/arthurrump"
 [[social-links]]
 name = "NuGet"
 icon = "nuget"
