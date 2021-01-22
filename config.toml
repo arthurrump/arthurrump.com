@@ -25,6 +25,14 @@ url = "/about"
 name = "GitHub"
 icon = "github"
 url = "https://github.com/arthurrump"
+[[social-links]]
+name = "YouTube"
+icon = "youtube"
+url = "https://www.youtube.com/channel/UCUTcNWxjKLUj9JFyHvaynCQ"
+[[social-links]]
+name = "Vimeo"
+icon = "vimeo"
+url = "https://vimeo.com/arthurrump"
 # [[social-links]]
 # name = "Mastodon"
 # icon = "mastodon"
