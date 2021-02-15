@@ -365,7 +365,7 @@ let template (site : StaticSite<Config, Page>) page =
             ul [ _class "social-links links-list" ] [ 
                 for link in site.Config.SocialLinks ->
                     li [] [
-                        a [ _href link.Url ] [
+                        a [ _href link.Url; _rel "me" ] [
                             icon link.Icon
                             str link.Name 
                         ]
