@@ -352,9 +352,9 @@ let template (site : StaticSite<Config, Page>) page =
         ]
 
     let profile () =
-        aside [ _class "profile" ] [
-            img [ _class "profile-pic"; _src site.Config.ProfileImage ]
-            span [ _class "name" ] [ str site.Config.Author ]
+        aside [ _class "profile h-card" ] [
+            img [ _class "profile-pic u-photo"; _src site.Config.ProfileImage ]
+            a [ _href site.BaseUrl; _class "u-url" ] [ span [ _class "name p-name" ] [ str site.Config.Author ] ]
             span [ _class "motto" ] [ str site.Config.Description ]
             a [ _class "expand-social-links"
                 _roleButton

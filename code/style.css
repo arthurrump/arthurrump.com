@@ -8,7 +8,7 @@ body > #background {
 #menu-toggle .icon { fill: #171717; }
 #main-nav a { color: #505050;}
 
-.profile { color: #171717; }
+.profile, .profile a { color: #171717; }
 .profile a.expand-social-links { color: #0078d4; }
 .profile ul.social-links > li a { color: #505050; }
 .profile ul.social-links > li .icon { fill: #171717; }
@@ -52,7 +52,7 @@ ul.tag-list > li a { color: #000; }
     #menu-toggle .icon { fill: #f5f5f5; }
     #main-nav a { color: #eee;}
     
-    .profile { color: #f5f5f5; }
+    .profile, .profile a { color: #f5f5f5; }
     .profile a.expand-social-links { color: #1291f3; }
     .profile ul.social-links > li a { color: #eee; }
     .profile ul.social-links > li .icon { fill: #f5f5f5; }
