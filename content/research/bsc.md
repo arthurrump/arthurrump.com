@@ -3,7 +3,7 @@ title = "Automated Assessment of Learning Objectives in Programming Assignments"
 tagline = "Bachelor Thesis"
 tech = [ "PMD", "Java", "Kotlin", "Processing" ]
 tags = [ "Atelier", "Education", "Programming Education", "Static Analysis" ]
-color = "#2c7a74"
+color = "#5f918c"
 order = 0
 
 [[links]]
