@@ -34,6 +34,10 @@ url = "https://www.youtube.com/channel/UCUTcNWxjKLUj9JFyHvaynCQ"
 name = "Vimeo"
 icon = "vimeo"
 url = "https://vimeo.com/arthurrump"
+[[social-links]]
+name = "ORCID Registry"
+icon = "orcid"
+url = "https://orcid.org/0000-0002-4880-4994"
 # [[social-links]]
 # name = "Mastodon"
 # icon = "mastodon"
