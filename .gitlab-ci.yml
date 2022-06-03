@@ -2,10 +2,8 @@ image: mcr.microsoft.com/dotnet/sdk:6.0
 
 pages:
   script:
-  - export PATH="$PATH:/root/.dotnet/tools"
-  - dotnet tool install fake-cli -g
-  - rm -rf ./.fake
-  - fake build
+  - dotnet tool install
+  - dotnet fake build
   artifacts:
     paths:
     - public
