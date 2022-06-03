@@ -2,7 +2,7 @@ image: mcr.microsoft.com/dotnet/sdk:6.0
 
 pages:
   script:
-  - dotnet tool install
+  - dotnet tool restore
   - dotnet fake build
   artifacts:
     paths:
