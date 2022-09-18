@@ -568,23 +568,6 @@ s.setAttribute('data-timestamp', +new Date());
         | TagPage _ | PostsArchive _ ->
             div [ _class "columns" ] [ content; tagList (tags site) ]
 
-    let matomo =
-        rawText """<script type="text/javascript">
-  var _paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["disableCookies"]);
-  _paq.push(["setDomains", ["*.www.arthurrump.com","*.arthurrump.gitlab.io"]]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.arthurrump.com/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '2']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>"""
-
     let headerTags =
         match page.Content with
         | Post post ->
@@ -643,7 +626,6 @@ s.setAttribute('data-timestamp', +new Date());
             meta [ _property "og:url"; _content (site.AbsoluteUrl page.Url) ]
             meta [ _property "og:site_name"; _content site.Config.Title ] 
             meta [ _name "twitter:dnt"; _content "on" ]
-            matomo
         ] @ headerTags)
         body [ ] [ 
             iconsCombined ()
