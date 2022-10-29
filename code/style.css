@@ -23,6 +23,7 @@ body > footer a { color: #565656; }
 .text h1 a { color: #171717; }
 .text figure figcaption { color: #505050; }
 .text blockquote { border-left-color: #505050; }
+.text hr { color: #505050; }
 .text blockquote.twitter-tweet { border-color: #e1e8ed; }
 .text table tr:nth-child(2n) { background-color: #f6f8fa; }
 .text table th, .text table td { border-color: #dfe2e5; }
@@ -67,6 +68,7 @@ ul.tag-list > li a { color: #000; }
     .text h1 a { color: #f5f5f5; }
     .text figure figcaption { color: #eee; }
     .text blockquote { border-left-color: #eee; }
+    .text hr { color: #eee; }
     .text blockquote.twitter-tweet { border-color: #e1e8ed; }
     .text table tr:nth-child(2n) { background-color: #212121; }
     .text table th, .text table td { border-color: #454545; }
@@ -496,6 +498,10 @@ body > footer {
             border-style: solid;
             padding: .4rem .8rem;
         }
+
+    .text hr {
+        margin: 2rem 0;
+    }
 
 /* Share pane */
 .sharebox {
