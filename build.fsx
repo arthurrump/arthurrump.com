@@ -43,7 +43,6 @@ type Config =
       ProfileImage : string
       Description : string
       DefaultImage : string
-      DisqusId : string
       Navigation : NavItem list
       SocialLinks : Link list }
 and NavItem = 
@@ -169,7 +168,6 @@ let parseConfig config =
       ProfileImage = toml.["profile-image"].Get()
       Description = toml.["description"].Get()
       DefaultImage = toml.["default-image"].Get()
-      DisqusId = toml.["disqus-id"].Get()
       Navigation = 
         toml.["nav"].Get<TomlTableArray>().Items 
         |> Seq.map (fun navItem -> 
