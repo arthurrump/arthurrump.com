@@ -418,24 +418,26 @@ let template (site : StaticSite<Config, Page>) page =
             ul [ _class "post-overview" ] (related |> Seq.map postListItem |> Seq.toList)
         ]
 
-    let commentsBox url = 
+    let commentsBox = 
         div [ _class "commentsbox" ] [
-            rawText (sprintf """<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = '%s';
-this.page.identifier = '%s';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://%s.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-"""             (site.AbsoluteUrl url) url (site.Config.DisqusId)) ]
+            rawText """
+                <script src="https://giscus.app/client.js"
+                        data-repo="arthurrump/arthurrump.com"
+                        data-repo-id="MDEwOlJlcG9zaXRvcnkxODE5MzE3NDg="
+                        data-category="Comments"
+                        data-category-id="DIC_kwDOCtgO5M4CTOBa"
+                        data-mapping="og:title"
+                        data-strict="1"
+                        data-reactions-enabled="0"
+                        data-emit-metadata="0"
+                        data-input-position="top"
+                        data-theme="preferred_color_scheme"
+                        data-lang="en"
+                        data-loading="lazy"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            """ ]
 
     let projectHeader titleWrapper imgWrapper project =
         div [ _class "project-header"
@@ -488,7 +490,7 @@ s.setAttribute('data-timestamp', +new Date());
                     ]
                 ]
                 yield shareBox page.Url post.Title
-                yield commentsBox page.Url
+                yield commentsBox
                 yield readAlsoBox "Read also:" page.Url post.Tags
             ]
         | PostsOverview overview ->

@@ -7,8 +7,6 @@ description = "Tells computers what to do. Tells others how to do that too. Make
 # Social image used for posts without an header image
 default-image = "/icon_512.png"
 
-disqus-id = "arthurrump"
-
 [[nav]]
 name = "Blog"
 url = "/"
