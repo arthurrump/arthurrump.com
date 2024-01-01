@@ -700,7 +700,7 @@ Target.create "Generate" <| fun _ ->
     |> StaticSite.withFilesFromSources (!! "content/projects/assets/**/*" --"content/projects/assets/**/ignore/**/*") (projectAssetUrlRewrite ProjectType.Project)
     |> StaticSite.withFilesFromSources (!! "content/research/assets/**/*" --"content/research/assets/**/ignore/**/*") (projectAssetUrlRewrite ProjectType.Research)
     |> StaticSite.withFilesFromSources (!! "assets/**/*") (String.regex_replace ".*assets[/\\\\]" "")
-    |> StaticSite.withFilesFromSources (!! "code/*") Path.GetFileName
+    |> StaticSite.withFilesFromSources (!! "code/**/*") Path.GetFileName
     |> StaticSite.withFilesFromSources (!! "icons/**/*") (fun path -> "icons/" + (Path.GetFileName path))
     |> StaticSite.withPage (ErrorPage ("404", "Not Found")) "/404.html"
     |> StaticSite.generateFromHtml "public" template
