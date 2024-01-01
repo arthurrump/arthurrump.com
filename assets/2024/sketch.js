@@ -16,8 +16,8 @@ let fontPlayfair;
 let fontPlayfairBoldItalic;
 
 function preload() {
-  fontPlayfair = loadFont("fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf");
-  fontPlayfairBoldItalic = loadFont("fonts/PlayfairDisplay/PlayfairDisplay-BoldItalic.ttf");
+  fontPlayfair = loadFont("fonts/playfairdisplay/playfairdisplay-regular.ttf");
+  fontPlayfairBoldItalic = loadFont("fonts/playfairdisplay/playfairdisplay-bolditalic.ttf");
 }
 
 function setup() {
