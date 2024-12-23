@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.css"],
+  "sourcesContent": ["html, body {\n  margin: 0;\n  padding: 0;\n}\n\n@media (prefers-color-scheme: dark) {\n  body {\n    background-color: #1e1e1e;\n  }\n}\n\nmain {\n  position: relative;\n  height: 100vh;\n}\n\ncanvas {\n  display: block;\n\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n\n  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);\n}\n"],
+  "mappings": "AAAA,KAAM,KAAN,OACU,EADV,QAEW,CACX,CAEA,OAAO,CAAC,oBAAoB,EAAE,MAC5B,KACE,iBAAkB,OACpB,CACF,CAEA,KACE,SAAU,SACV,OAAQ,KACV,CAEA,OACE,QAAS,MAET,SAAU,SACV,IAAK,IACL,KAAM,IACN,UAAW,UAAU,IAAI,CAAE,MAE3B,WAAY,EAAE,KAAK,KAAO,KAAe,CAAE,EAAE,IAAI,KAAO,SAC1D",
+  "names": []
+}
