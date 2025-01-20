@@ -1,6 +1,7 @@
 +++
 title = "Requirements for an Automated Assessment Tool for Learning Programming by Doing"
 tagline = "Conference paper for ICST 2025 - with Vadim Zaytsev and Angelika Mader"
+tech = []
 tags = [ "Atelier", "Education", "Programming Education", "Static Analysis" ]
 color = "#604ebf"
 order = 5
