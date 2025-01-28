@@ -1,0 +1,24 @@
+{
+  inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  };
+
+  outputs = inputs@{ self, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+      perSystem = { config, self', inputs', pkgs, system, ... }: 
+      let 
+        tools = with pkgs; [
+          pandoc
+          haskellPackages.pandoc-crossref
+          python312Packages.pelican
+          python312Packages.typogrify
+        ];
+      in {
+        devShells.default = pkgs.mkShell {
+          packages = tools;
+        };
+      };
+    };
+}
