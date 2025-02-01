@@ -9,11 +9,13 @@
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: 
       let 
-        tools = with pkgs; [
+        tools = with pkgs; with python312Packages; [
           pandoc
           haskellPackages.pandoc-crossref
-          python312Packages.pelican
-          python312Packages.typogrify
+          pelican
+          typogrify
+          beautifulsoup4
+          ruamel-yaml
         ];
       in {
         devShells.default = pkgs.mkShell {
