@@ -9,7 +9,7 @@
       {% if SITESUBTITLE %}
         <meta name="description" content="{{ SITESUBTITLE }}" />
       {% endif %}
-      <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+      <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
       {% if STYLESHEET_URL %}
         <link rel="stylesheet" type="text/css" href="{{ STYLESHEET_URL }}" />
       {% endif %}
@@ -42,7 +42,7 @@
 
   <body>
     {% block body %}
-      <header class="container">
+      <header>
         {% block header %}
           <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
         {% endblock header %}
@@ -62,11 +62,11 @@
           </ul></nav>
         {% endblock nav %}
       </header>
-      <main class="container">
+      <main>
         {% block content %}
         {% endblock content %}
       </main>
-      <footer class="container">
+      <footer>
         {% block footer %}
         <nav>
           <ul>
@@ -76,7 +76,7 @@
             {% if FEED_RSS %}
               <li><a href="{{ FEED_DOMAIN }}/{% if FEED_RSS_URL %}{{ FEED_RSS_URL }}{% else %}{{ FEED_RSS }}{% endif %}">RSS Feed</a></li>
             {% endif %}
-            <li>&copy; {{ AUTHOR }}</li>
+            <li>&copy;&nbsp;{{ AUTHOR }}</li>
           </ul>
         </nav>
         {% endblock footer %}

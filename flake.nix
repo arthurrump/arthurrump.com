@@ -21,6 +21,10 @@
           typogrify
           beautifulsoup4
           ruamel-yaml
+
+          nodejs
+          pnpm
+          dart-sass
         ];
       in {
         devShells.default = pkgs.mkShell {
