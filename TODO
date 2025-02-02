@@ -1,6 +1,12 @@
-- [ ] Add styling
+- [x] Add styling
   - [ ] Syntax highlighting
+  - [ ] Meta-tags handling (see old version and 2025 card)
+  - [ ] Feed links in category, tag pages; page with all feeds?
+  - [ ] Do something with social links (or just put that in the about page?)
+  - [ ] Possibly a nice reading font for articles (although Commit Mono is quite nice)
 - [ ] Move over (some) old content
+- [ ] Build script
+- [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
 - [ ] Plugin for aliasing of old URLs to the new
 - [ ] Pandoc plugin with configurable filters/arguments per post
 - [ ] Reader for HTML content, handling:
@@ -11,3 +17,4 @@
     but maybe still handling the head, or are these full custom content with a custom template?
 - [ ] Item templates
 - [ ] Importers
+- [ ] Search, e.g. with https://www.fusejs.io/
