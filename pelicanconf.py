@@ -4,6 +4,9 @@ import os
 SITENAME = "Arthur Rump"
 AUTHOR = "Arthur Rump"
 
+MENU_PAGES = [ "about" ]
+MENU_CATEGORIES = [ "posts", "publications" ]
+
 LINKS = ( # Links in the header
     ("Pelican", "https://getpelican.com/"),
     ("Python.org", "https://www.python.org/"),
@@ -25,6 +28,7 @@ PLUGINS = [ "pandoc_reader" ]
 PATH = "content"
 STATIC_PATHS = [ ]
 
+SLUGIFY_SOURCE = "basename" # should only be used by pages, with posts matching the formats below
 FILENAME_METADATA = r"(?P<date>\d{8})_(?P<slug>[^.]*)(\.(?P<lang>[a-z]{2}))?"
 PATH_METADATA = r"(?P<date>\d{8})_(?P<slug>[^.]*)/index(\.(?P<lang>[a-z]{2}))?\."
 

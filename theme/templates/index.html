@@ -1,22 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-    {% block content_title %}
-        <h2>All articles</h2>
-    {% endblock %}
-
 
     {% for article in articles_page.object_list %}
         <article>
-            <header> <h2><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
-            <section>{{ article.summary }}</section>
-            <footer>
-                <p>Published: <time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time></p>
-                <address>By
-                    {% for author in article.authors %}
-                        <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-                    {% endfor %}
-                </address>
-            </footer>
+            <header>
+                {% if article.category %}
+                    <small class="label">{{ article.category }}</small>
+                {% endif %}
+                <h1><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="{{ article.title|striptags }}">{{ article.title }}</a></h1>
+                {% if article.subtitle %}
+                    <p class="subtitle">{{ article.subtitle }}</p>
+                {% endif %}
+                <ul class="details">
+                    <li><time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time></li>
+                    {% if article.authors | length > 1 or article.authors | first != AUTHOR %}
+                        <li> By 
+                            {% for author in article.authors %}
+                                <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{{ " and " if loop.revindex == 2 else ", " if not loop.last else "" }}
+                            {% endfor %}
+                        </li>
+                    {% endif %}
+                </ul>
+            </header>
+            {{ article.summary }}
         </article>
     {% endfor %}
 

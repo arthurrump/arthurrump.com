@@ -9,6 +9,7 @@
       {% if SITESUBTITLE %}
         <meta name="description" content="{{ SITESUBTITLE }}" />
       {% endif %}
+      <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
       {% if STYLESHEET_URL %}
         <link rel="stylesheet" type="text/css" href="{{ STYLESHEET_URL }}" />
       {% endif %}
@@ -41,38 +42,43 @@
 
   <body>
     {% block body %}
-      <header>
+      <header class="container">
         {% block header %}
-          <hgroup><h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>{% if SITESUBTITLE %}<p>{{ SITESUBTITLE }}</p>{% endif %}</hgroup>
+          <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
         {% endblock header %}
         {% block nav %}
           <nav><ul>
-            {% for title, link in MENUITEMS %}
+            {% for title, link in MENU_ITEMS %}
               <li><a href="{{ link }}">{{ title }}</a></li>
             {% endfor %}
-            {% if DISPLAY_PAGES_ON_MENU %}
-              {% for p in pages %}
-                <li><a href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
-              {% endfor %}
-            {% endif %}
-            {% if DISPLAY_CATEGORIES_ON_MENU %}
-              {% for cat, null in categories %}
-                <li><a href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
-              {% endfor %}
-            {% endif %}
+            {% for slug in MENU_CATEGORIES %}
+              {% set cat, _ = categories | selectattr("0.slug", "equalto", slug) | first %}
+              <li><a href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat }}</a></li>
+            {% endfor %}
+            {% for slug in MENU_PAGES %}
+              {% set p = pages | selectattr("slug", "equalto", slug) | first %}
+              <li><a href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+            {% endfor %}
           </ul></nav>
         {% endblock nav %}
       </header>
-      <main>
+      <main class="container">
         {% block content %}
         {% endblock content %}
       </main>
-      <footer>
+      <footer class="container">
         {% block footer %}
-          <address>
-            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
-            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
-          </address>
+        <nav>
+          <ul>
+            {% if ARCHIVES_URL %}
+              <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
+            {% endif %}
+            {% if FEED_RSS %}
+              <li><a href="{{ FEED_DOMAIN }}/{% if FEED_RSS_URL %}{{ FEED_RSS_URL }}{% else %}{{ FEED_RSS }}{% endif %}">RSS Feed</a></li>
+            {% endif %}
+            <li>&copy; {{ AUTHOR }}</li>
+          </ul>
+        </nav>
         {% endblock footer %}
       </footer>
     {% endblock body %}
