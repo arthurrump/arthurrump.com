@@ -2,6 +2,11 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    pelican-plugins = {
+      url = "github:getpelican/pelican-plugins";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, flake-parts, ... }:
@@ -20,6 +25,8 @@
       in {
         devShells.default = pkgs.mkShell {
           packages = tools;
+
+          PELICAN_PLUGINS = "${inputs.pelican-plugins}";
         };
       };
     };

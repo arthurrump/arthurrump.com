@@ -1,3 +1,5 @@
+import os
+
 # Basic information
 SITENAME = "Arthur Rump"
 AUTHOR = "Arthur Rump"
@@ -17,7 +19,7 @@ SOCIAL = ( # Links in the "social" section
 # Theme, plugins, layout
 THEME = "./theme"
 
-PLUGIN_PATHS = [ "./plugins" ]
+PLUGIN_PATHS = [ "./plugins", os.environ["PELICAN_PLUGINS"] ]
 PLUGINS = [ "pandoc_reader" ]
 
 PATH = "content"

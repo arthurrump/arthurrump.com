@@ -46,10 +46,27 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/e9b51731911566bbf7e4895475a87fe06961de0b.tar.gz"
       }
     },
+    "pelican-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736687337,
+        "narHash": "sha256-ftD24SEHfMQ0yC0rPZsX7NT+60qnYbLnzdljf08DmII=",
+        "owner": "getpelican",
+        "repo": "pelican-plugins",
+        "rev": "a58561bfa204b8dbd61858cf9de400f99825c83e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "getpelican",
+        "repo": "pelican-plugins",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pelican-plugins": "pelican-plugins"
       }
     }
   },
