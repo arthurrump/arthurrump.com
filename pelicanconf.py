@@ -90,8 +90,8 @@ PAGINATION_PATTERNS = [
 ]
 
 # Feed generation
-FEED_ALL_ATOM = "feed.atom.xml"
-FEED_ALL_RSS = "feed.xml"
+FEED_ATOM = "feed.atom.xml"
+FEED_RSS = "feed.xml"
 
 TRANSLATION_FEED_ATOM = "{lang}/feed.atom.xml"
 TRANSLATION_FEED_RSS = "{lang}/feed.xml"
