@@ -1,0 +1,14 @@
+- [ ] Try full multilingual, so that posts can be in one language and don't show up on the other lists
+- [ ] Add styling
+  - [ ] Syntax highlighting
+- [ ] Move over (some) old content
+- [ ] Plugin for aliasing of old URLs to the new
+- [ ] Pandoc plugin with configurable filters/arguments per post
+- [ ] Reader for HTML content, handling:
+  - just content, like Markdown, but in HTML
+  - without any framing, for
+    - Reveal.js slides
+    - cards with p5.js
+    but maybe still handling the head, or are these full custom content with a custom template?
+- [ ] Item templates
+- [ ] Importers
