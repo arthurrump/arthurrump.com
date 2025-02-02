@@ -14,7 +14,12 @@
     --pico-font-family: "Commit Mono", monospace, var(--pico-font-family-emoji);
 }
 
-header a, footer a, header a.contrast, footer a.contrast {
+header a,
+header a.secondary,
+header a.contrast,
+footer a,
+footer a.secondary,
+footer a.contrast {
     --pico-text-decoration: none;
 
     :hover {
@@ -50,16 +55,14 @@ body>footer {
     justify-content: flex-end;
 }
 
+.label::after {
+    content: ": ";
+}
+
 article {
     padding: var(--pico-block-spacing-vertical) 0;
     margin: 0;
     border-bottom: 1px solid;
-
-    header {
-        .label::after {
-            content: ":";
-        }
-    }
 
     &>p:first-of-type {
         margin-top: var(--pico-block-spacing-vertical);
@@ -68,4 +71,14 @@ article {
     &>:last-child {
         margin-bottom: 0;
     }
+
+    footer {
+        padding-top: var(--pico-block-spacing-vertical);
+        border-top: 1px solid;
+    }
+}
+
+main>nav {
+    margin: var(--pico-block-spacing-vertical) 0;
+    text-align: center;
 }

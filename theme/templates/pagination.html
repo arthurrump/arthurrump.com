@@ -4,13 +4,13 @@
   <nav>
     <ul>
       {% if articles_page.has_previous() %}
-        <li><a href="{{ SITEURL }}/{{ first_page.url }}">&Lang;</a></li>
-        <li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}">&lang;</a></li>
+        <li><a aria-label="first page" href="{{ SITEURL }}/{{ first_page.url }}">&lt;=</a></li>
+        <li><a aria-label="previous page" href="{{ SITEURL }}/{{ articles_previous_page.url }}">&lt;-</a></li>
       {% endif %}
       <li>Page {{ articles_page.number }} / {{ articles_paginator.num_pages }}</li>
       {% if articles_page.has_next() %}
-        <li><a href="{{ SITEURL }}/{{ articles_next_page.url }}">&rang;</a></li>
-        <li><a href="{{ SITEURL }}/{{ last_page.url }}">&Rang;</a></li>
+        <li><a aria-label="next page" href="{{ SITEURL }}/{{ articles_next_page.url }}">-&gt;</a></li>
+        <li><a aria-label="last page" href="{{ SITEURL }}/{{ last_page.url }}">=&gt;</a></li>
       {% endif %}
     </ul>
   </nav>

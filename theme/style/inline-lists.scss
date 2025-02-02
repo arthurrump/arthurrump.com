@@ -10,15 +10,15 @@ nav>ul, ul.inline {
     }
 }
 
-nav>ul li:not(:first-child)::before {
+nav>ul li:not(:first-child)::before, ul.inline li:not(:first-child)::before {
     content: "|\00a0";
 }
 
-ul.inline li:not(:first-child)::before {
+ul.inline-slash li:not(:first-child)::before {
     content: "/\00a0";
 }
 
-ul.inline.brackets {
+nav>ul.brackets, ul.inline.brackets {
     & li:first-child::before {
         content: "[\00a0";
     }

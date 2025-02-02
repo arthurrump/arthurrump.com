@@ -15,19 +15,11 @@
 {% block content %}
   <article>
     <header>
-      <h2>{{ page.title }}</h2>
+      <h1>{{ page.title }}</h1>
     </header>
     {% import 'translations.html' as translations with context %}
     {{ translations.translations_for(page) }}
 
     {{ page.content }}
-
-    {% if page.modified %}
-      <footer>
-        <p>
-          Last updated: {{ page.locale_modified }}
-        </p>
-      </footer>
-    {% endif %}
   </article>
 {% endblock %}

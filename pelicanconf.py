@@ -81,15 +81,16 @@ AUTHORS_URL = "authors/"
 AUTHORS_SAVE_AS = "authors/index.html"
 TAGS_URL = "tags/"
 TAGS_SAVE_AS = "tags/index.html"
-CATEGORIES_SAVE_AS = "" # Don't create a page for categories
+CATEGORIES_URL = "categories/"
+CATEGORIES_SAVE_AS = "categories/index.html"
 
 YEAR_ARCHIVE_URL = "archives/{date:%Y}/"
 YEAR_ARCHIVE_SAVE_AS = "archives/{date:%Y}/index.html"
 
 DEFAULT_PAGINATION = 10
-DEFAULT_ORPHANS = 5
+DEFAULT_ORPHANS = 2
 PAGINATION_PATTERNS = [
-    (1, "{url}/", "{save_as}"),
+    (1, "{base_name}/", "{save_as}"),
     (2, "{base_name}/page/{number}/", "{base_name}/page/{number}/index{extension}")
 ]
 
