@@ -54,14 +54,14 @@
       {% endif %}
       {% if article.category %}
         <li>
-          Read all <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+          Find all <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category | lower }}</a>
         </li>
       {% endif %}
       {% if article.tags %}
         <li>
-          Read more about 
+          Learn more about 
           {% for tag in article.tags %}
-            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{{ " or " if loop.revindex == 2 else ", " if not loop.last else "" }}
+            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | lower }}</a>{{ " or " if loop.revindex == 2 else ", " if not loop.last else "" }}
           {% endfor %}
         </li>
       {% endif %}
