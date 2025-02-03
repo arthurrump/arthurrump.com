@@ -1,6 +1,11 @@
 @use "../node_modules/@picocss/pico/scss/pico" with (
     $enable-semantic-container: true,
     $theme-color: "jade",
+    $breakpoints: (
+      lg: (root-font-size: 118.75%),
+      xl: (root-font-size: 118.75%),
+      xxl: (root-font-size: 118.75%)
+    ),
     $modules: (
         // Theme
         "themes/default": true,
