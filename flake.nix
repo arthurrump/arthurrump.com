@@ -34,6 +34,24 @@
           packages = tools;
           inherit PELICAN_PLUGINS;
         };
+
+        packages.default = pkgs.stdenv.mkDerivation {
+          name = "site";
+          src = ./.;
+          buildInputs = tools;
+          phases = [ "unpackPhase" "buildPhase" "installPhase" ];
+          buildPhase = ''
+            cd theme
+            pnpm install
+            pnpm build
+            cd ..
+            pelican -s publishconf.py
+          '';
+          installPhase = ''
+            mkdir -p $out
+            cp -r ./output $out
+          '';
+        };
       };
     };
 }
