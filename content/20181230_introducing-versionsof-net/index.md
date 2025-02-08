@@ -2,6 +2,8 @@
 title: "Introducing versionsof.net"
 tags: [ ".NET" ]
 category: Posts
+aliases:
+- /2018/12/30/introducing-versionsof-net
 ---
 
 

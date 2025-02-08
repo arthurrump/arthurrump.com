@@ -8,7 +8,7 @@
 - [x] Move over (some) old content
   - [x] Fix all links, x-links, images
   - [x] Reconsider tags
-  - [ ] Add old urls to all pages
+  - [x] Add old urls to all pages
 - [x] Build script
 - [ ] Fix image captions
 - [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages

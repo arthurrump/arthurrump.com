@@ -2,6 +2,8 @@
 title: "Fallback styling for embedded Tweets"
 tags: [ "CSS", "Metasite" ]
 category: Posts
+aliases:
+- /2019/04/27/fallback-styling-for-embedded-tweets
 ---
 
 Sometimes you want to embed a Tweet in your blog posts. At least I do. With a bit of CSS, you won't have to depend on an external script to make your embedded Tweet recognizable as a Tweet.

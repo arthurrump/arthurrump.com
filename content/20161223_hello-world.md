@@ -2,6 +2,8 @@
 title: "Hello world!"
 tags: [ "Metasite" ]
 category: Posts
+aliases:
+- /2016/12/23/hello-world
 ---
 
 

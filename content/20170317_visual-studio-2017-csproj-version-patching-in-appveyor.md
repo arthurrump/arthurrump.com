@@ -2,6 +2,8 @@
 title: "Visual Studio 2017 .csproj version patching in AppVeyor"
 tags: [ ".NET" ]
 category: Posts
+aliases:
+- /2017/03/17/visual-studio-2017-csproj-version-patching-in-appveyor
 ---
 
 How to set your package versions dynamically without creating an AssemblyInfo.cs file.

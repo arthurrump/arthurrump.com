@@ -2,6 +2,8 @@
 title: "A Meta Perspective on a Refined Model of Ill-definedness"
 tags: [ "Apollo++", "Automated Assessment" ]
 category: Posts
+aliases: 
+- /2022/11/03/a-meta-perspective-on-a-refined-model-of-ill-definedness
 ---
 
 Last week my co-author [Vadim Zaytsev](https://grammarware.net) presented our paper [A Refined Model of Ill-definedness in Project-Based Learning]({filename}/20221029_models2022/index.md) at the [Educators Symposium of MODELS 2022](https://conf.researchr.org/track/models-2022/models-2022-educators-symposium). Go read that paper first, or this won't make much sense. In this post I try to answer a question we got afterwards.

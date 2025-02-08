@@ -2,6 +2,8 @@
 title: "Explore your Akavache cache on UWP"
 tags: [ "UWP" ]
 category: Posts
+aliases:
+- /2017/01/25/explore-your-akavache-cache-on-uwp
 ---
 
 [Akavache](https://github.com/akavache/akavache) is an awesome library for almost every .NET desktop and mobile application platform to store both important user data and expiring local cache data. I've been using Akavache in a UWP app to cache results from a web service. In the Akavache README, the [Akavache Explorer](https://github.com/paulcbetts/AkavacheExplorer) application is recommended for debugging the cache.

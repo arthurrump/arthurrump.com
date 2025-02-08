@@ -4,6 +4,8 @@ subtitle: "Conference paper for the Educators Symposium at MODELS 2022"
 authors: [ "Arthur Rump", "Vadim Zaytsev" ]
 tags: [ "Apollo++", "Automated Assessment" ]
 category: Publications
+aliases:
+- https://www.arthurrump.com/research/ill-definedness_edusymp2022
 ---
 
 Project-based courses are crucial to gain practically relevant knowledge in

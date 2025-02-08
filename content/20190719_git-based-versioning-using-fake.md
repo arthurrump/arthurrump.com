@@ -2,6 +2,8 @@
 title: "Git-based versioning using FAKE"
 tags: [ ".NET", "F#", "FAKE" ]
 category: Posts
+aliases:
+- /2019/07/19/git-based-versioning-using-fake
 ---
 
 How to use FAKE to automatically set version numbers based on your Git history.

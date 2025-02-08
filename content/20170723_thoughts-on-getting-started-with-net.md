@@ -2,6 +2,8 @@
 title: "\"Good explanation, but now what?\" - Thoughts on getting people started with .NET"
 tags: [ ".NET" ]
 category: Posts
+aliases:
+- /2017/07/23/thoughts-on-getting-started-with-net/
 ---
 
 On what I think are the biggest problems with education about .NET, and how I would do things different if I were to create a tutorial on C# today.

@@ -4,6 +4,8 @@ subtitle: "Conference paper for ITS 2021"
 authors: [ "Arthur Rump", "Ansgar Fehnker", "Angelika Mader"]
 tags: [ "Atelier", "Apollo", "Automated Assessment" ]
 category: Publications
+aliases:
+- /research/apollo_its2021
 ---
 
 Individual feedback is a core ingredient of a personalised learning path. However, it also is time-intensive and, as a teaching form, it is not easily scalable. In order to make individual feedback realisable for larger groups of students, we develop tool support for teaching assistants to use in the process of giving feedback. In this paper, we introduce Apollo, a tool that automatically analyses code uploaded by students with respect to their progression towards the learning objectives of the course. First, typical learning objectives in Computer Science courses are analysed on their suitability for automated assessment. A set of learning objectives is analysed further to get an understanding of what achievement of these objectives looks like in code. Finally, this is implemented in Apollo, a tool that assesses the achievement of learning objectives in Processing projects. Early results suggest an agreement in assessment between Apollo and teaching assistants.
