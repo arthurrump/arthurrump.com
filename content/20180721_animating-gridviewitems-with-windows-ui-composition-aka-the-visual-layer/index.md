@@ -1,6 +1,6 @@
 ---
 title: "Animating GridViewItems with Windows.UI.Composition (aka the Visual Layer)"
-tags: [ "UWP", "Windows.UI.Composition", "Animation" ]
+tags: [ "UWP" ]
 category: Posts
 ---
 

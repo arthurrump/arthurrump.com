@@ -2,7 +2,7 @@
 title: "Atelier: An Online Platform for Programming Tutorials"
 subtitle: "Poster for CSERC 2020"
 authors: [ "Ansgar Fehnker", "Angelika Mader", "Arthur Rump", "Margot Rutgers", "Lotte Steenmeijer", "Chris Witteveen" ]
-tags: [ "Atelier", "Education", "Programming Education" ]
+tags: [ "Atelier" ]
 category: Publications
 ---
 
@@ -10,6 +10,6 @@ The aim of the Atelier project is to develop an online platform that creates an 
 
 Links:
 
-- [Poster (local copy)](/research/atelier_cserc2020/poster.pdf)
+- [Paper (local copy)]({attach}poster.pdf)
 - [Paper (ACM Digital Library)](https://doi.org/10.1145/3442481.3442511)
 - [Presentation](https://www.youtube.com/watch?v=YY5uVYpuasw)

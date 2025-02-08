@@ -2,7 +2,7 @@
 title: "A Refined Model of Ill-definedness in Project-Based Learning"
 subtitle: "Conference paper for the Educators Symposium at MODELS 2022"
 authors: [ "Arthur Rump", "Vadim Zaytsev" ]
-tags: [ "Apollo", "Education" ]
+tags: [ "Apollo++", "Automated Assessment" ]
 category: Publications
 ---
 

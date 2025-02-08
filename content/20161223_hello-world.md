@@ -1,6 +1,6 @@
 ---
 title: "Hello world!"
-tags: [ "Metablog", "Hello world" ]
+tags: [ "Metasite" ]
 category: Posts
 ---
 

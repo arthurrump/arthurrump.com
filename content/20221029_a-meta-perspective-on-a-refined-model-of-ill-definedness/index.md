@@ -1,10 +1,10 @@
 ---
 title: "A Meta Perspective on a Refined Model of Ill-definedness"
-tags: [ "Apollo", "Education" ]
+tags: [ "Apollo++", "Automated Assessment" ]
 category: Posts
 ---
 
-Last week my co-author [Vadim Zaytsev](https://grammarware.net) presented our paper [A Refined Model of Ill-definedness in Project-Based Learning](/research/ill-definedness_edusymp2022) at the [Educators Symposium of MODELS 2022](https://conf.researchr.org/track/models-2022/models-2022-educators-symposium). Go read that paper first, or this won't make much sense. In this post I try to answer a question we got afterwards.
+Last week my co-author [Vadim Zaytsev](https://grammarware.net) presented our paper [A Refined Model of Ill-definedness in Project-Based Learning]({filename}/20221029_models2022/index.md) at the [Educators Symposium of MODELS 2022](https://conf.researchr.org/track/models-2022/models-2022-educators-symposium). Go read that paper first, or this won't make much sense. In this post I try to answer a question we got afterwards.
 
 If you need some convincing to read the paper, or just want a short summary: the goal of the paper is to shed some light on what it means for an educational task to be ill-defined. For an ill-defined task there are many possible solutions; experts can disagree on which solution is better and there is no formal theory to determine or test outcomes; reaching the goal requires the design of new artefacts or analysis of new information; and the problem can not be subdivided into independent subproblems. We recognize that there is a spectrum of ill-definedness and extend an existing two-dimensional (verifiability and solution space) classification. We then consider the assessment criteria for two programming projects at the University of Twente and place them in the classification. See the image below for an example.
 

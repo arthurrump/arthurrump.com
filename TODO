@@ -6,8 +6,8 @@
   - [ ] Do something with social links (or just put that in the about page?)
   - [ ] Possibly a nice reading font for articles (although Commit Mono is quite nice)
 - [x] Move over (some) old content
-  - [ ] Fix all links, x-links, images
-  - [ ] Reconsider tags
+  - [x] Fix all links, x-links, images
+  - [x] Reconsider tags
   - [ ] Add old urls to all pages
 - [x] Build script
 - [ ] Fix image captions

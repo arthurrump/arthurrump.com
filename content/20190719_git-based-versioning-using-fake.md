@@ -1,6 +1,6 @@
 ---
 title: "Git-based versioning using FAKE"
-tags: [ "F#", "FAKE", "Versioning", "Git" ]
+tags: [ ".NET", "F#", "FAKE" ]
 category: Posts
 ---
 
@@ -33,7 +33,7 @@ FAKE comes with a wide variety of modules, two of which are particularly useful 
 
 Let's start with some helper functions to get the relevant information from Git:
 
-```f#
+```fsharp
 let [<Literal>] repo = "."
 
 module GitHelpers =
@@ -54,7 +54,7 @@ module GitHelpers =
 
 We'll also define some helper functions for modifying versions:
 
-```f#
+```fsharp
 module Version =
     let withPatch patch version =
         { version with Patch = patch; Original = None }
@@ -75,7 +75,7 @@ module Version =
 
 Now we can write our logic to calculate the correct version. We'll start with the simple version, which does not care about the branch rules yet:
 
-```f#
+```fsharp
 let [<Literal>] versionFile = "version"
 let [<Literal>] versionPreFile = "version-pre"
 
@@ -108,7 +108,7 @@ The height is set as the patch number of the version read from the *version* fil
 
 To keep things a bit orderly we'll set the correct dirty- and branch-flags in a new function:
 
-```f#
+```fsharp
 module Version =
     let getVersionWithPrerelease () =
         let pre = 
@@ -139,7 +139,7 @@ You can, of course, use this process with any type of application, but chances a
 
 There are some nested records involved when configuring a .NET build in FAKE, so we'll first define some helper functions on the MSBuild parameters:
 
-```f#
+```fsharp
 [<AutoOpen>]
 module MSBuildParamHelpers =
     let withVersion version (param : MSBuild.CliArguments) =
@@ -161,7 +161,7 @@ The `withDefaults` function sets the version and adds a flag to disable warnings
 
 Now you can build a project with the correct version:
 
-```f#
+```fsharp
 let version = Version.getVersionWithPrerelease ()
 DotNet.build 
     (fun o -> { o with MSBuildParams = o.MSBuildParams |> withDefaults version })
@@ -177,7 +177,7 @@ When you're running your builds on Azure Pipelines, there are two more things to
 
 To do these two things, here are a couple more helper functions:
 
-```f#
+```fsharp
 module AzureDevOps =
     let tryGetSourceBranch () =
         System.Environment.GetEnvironmentVariable("BUILD_SOURCEBRANCHNAME") 
@@ -193,7 +193,7 @@ module AzureDevOps =
 
 We'll need to use `tryGetSourceBranch` at the point where we try to read the branch from Git in `getVersionWithPrerelease`. The updated code to get the branch looks like this:
 
-```f#
+```fsharp
 let branch = 
     match Git.Information.getBranchName repo with
     | "NoBranch" -> AzureDevOps.tryGetSourceBranch ()
@@ -202,7 +202,7 @@ let branch =
 
 You can call `updateBuildNumber` at any point, for example just before doing the build:
 
-```f#
+```fsharp
 let version = Version.getVersionWithPrerelease ()
 AzureDevOps.updateBuildNumber version
 DotNet.build 

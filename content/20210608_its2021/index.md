@@ -2,7 +2,7 @@
 title: "Automated Assessment of Learning Objectives in Programming Assignments"
 subtitle: "Conference paper for ITS 2021"
 authors: [ "Arthur Rump", "Ansgar Fehnker", "Angelika Mader"]
-tags: [ "Atelier", "Education", "Programming Education", "Static Analysis" ]
+tags: [ "Atelier", "Apollo", "Automated Assessment" ]
 category: Publications
 ---
 
@@ -10,7 +10,7 @@ Individual feedback is a core ingredient of a personalised learning path. Howeve
 
 Links:
 
-- [Paper (local preprint)](/research/apollo_its2021/paper_preprint.pdf)
+- [Paper (local preprint)]({attach}paper_preprint.pdf)
 - [Paper (published version at SpringerLink)](https://doi.org/10.1007/978-3-030-80421-3_33)
 - [Paper (University of Twente repository)](https://research.utwente.nl/en/publications/automated-assessment-of-learning-objectives-in-programming-assign)
 - [Apollo Source](https://github.com/creativeprogrammingatelier/apollo)

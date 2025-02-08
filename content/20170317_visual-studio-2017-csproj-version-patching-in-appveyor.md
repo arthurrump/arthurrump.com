@@ -1,6 +1,6 @@
 ---
 title: "Visual Studio 2017 .csproj version patching in AppVeyor"
-tags: [ ".NET", ".csproj", "AppVeyor", "Continuous Deployment" ]
+tags: [ ".NET" ]
 category: Posts
 ---
 

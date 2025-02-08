@@ -1,6 +1,6 @@
 ---
 title: "Explore your Akavache cache on UWP"
-tags: [ "UWP", "Akavache" ]
+tags: [ "UWP" ]
 category: Posts
 ---
 

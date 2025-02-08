@@ -2,7 +2,7 @@
 title: "Requirements for an Automated Assessment Tool for Learning Programming by Doing"
 subtitle: "Conference paper for ICST 2025"
 authors: [ "Arthur Rump", "Vadim Zaytsev", "Angelika Mader" ]
-tags: [ "Atelier", "Education", "Programming Education", "Static Analysis" ]
+tags: [ "Apollo++", "Automated Assessment" ]
 category: Publications
 ---
 

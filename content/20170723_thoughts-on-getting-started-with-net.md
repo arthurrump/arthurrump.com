@@ -1,6 +1,6 @@
 ---
 title: "\"Good explanation, but now what?\" - Thoughts on getting people started with .NET"
-tags: [ ".NET", ".NET Renaissance", "Teaching" ]
+tags: [ ".NET" ]
 category: Posts
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: "Schoolrooster voor Zermelo"
 tagline: "The Windows 10 app for viewing Zermelo school timetables"
-tags: [ "Zermelo", "schoolrooster", "C#", "UWP" ]
+tags: [ "UWP" ]
 category: Projects
 ---
 
 *Schoolrooster voor Zermelo* is an app that allows students and teachers to check their timetables on all their Windows 10 devices. The app works with all schools and organizations that use the Zermelo portal technology to manage the timetabling process. The app is built on the Universal Windows Platform with support for both phone and desktop. An older version is also available for Windows Phone 8.1.
 
-![A Windows Phone showing the timetable for June 28th 2017](phone_schedule.png)
+![A Windows Phone showing the timetable for June 28th 2017]({attach}phone_schedule.png)
 
 Links:
 

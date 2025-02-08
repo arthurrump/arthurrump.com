@@ -1,6 +1,6 @@
 ---
 title: "Introducing versionsof.net"
-tags: [ ".NET", "F#", "Fable", "Elmish" ]
+tags: [ ".NET" ]
 category: Posts
 ---
 

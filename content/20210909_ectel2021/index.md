@@ -2,7 +2,7 @@
 title: "Atelier – Tutor Moderated Comments in Programming Education"
 subtitle: "Poster for EC-TEL 2021"
 authors: [ "Ansgar Fehnker", "Angelika Mader", "Arthur Rump" ]
-tags: [ "Atelier", "Education", "Programming Education" ]
+tags: [ "Atelier" ]
 category: Publications
 ---
 
@@ -10,5 +10,5 @@ In the programming course of our engineering design degree tutorials are the foc
 
 Links:
 
-- [Poster (local preprint)]({attach}poster_preprint.pdf)
+- [Paper (local preprint)]({attach}poster_preprint.pdf)
 - [Paper (published version at SpringerLink)](https://doi.org/10.1007/978-3-030-86436-1_39)

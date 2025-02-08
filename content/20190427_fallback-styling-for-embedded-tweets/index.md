@@ -1,6 +1,6 @@
 ---
 title: "Fallback styling for embedded Tweets"
-tags: [ "CSS", "Twitter", "Embed Tweet" ]
+tags: [ "CSS", "Metasite" ]
 category: Posts
 ---
 
