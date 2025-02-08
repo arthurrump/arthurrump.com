@@ -5,8 +5,12 @@
   - [ ] Feed links in category, tag pages; page with all feeds?
   - [ ] Do something with social links (or just put that in the about page?)
   - [ ] Possibly a nice reading font for articles (although Commit Mono is quite nice)
-- [ ] Move over (some) old content
+- [x] Move over (some) old content
+  - [ ] Fix all links, x-links, images
+  - [ ] Reconsider tags
+  - [ ] Add old urls to all pages
 - [x] Build script
+- [ ] Fix image captions
 - [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
 - [ ] Plugin for aliasing of old URLs to the new
 - [ ] Pandoc plugin with configurable filters/arguments per post
