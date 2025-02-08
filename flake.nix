@@ -18,6 +18,7 @@
           pandoc
           haskellPackages.pandoc-crossref
           pelican
+          markdown
           typogrify
           beautifulsoup4
           ruamel-yaml
@@ -26,11 +27,12 @@
           pnpm
           dart-sass
         ];
+
+        PELICAN_PLUGINS = "${inputs.pelican-plugins}";
       in {
         devShells.default = pkgs.mkShell {
           packages = tools;
-
-          PELICAN_PLUGINS = "${inputs.pelican-plugins}";
+          inherit PELICAN_PLUGINS;
         };
       };
     };
