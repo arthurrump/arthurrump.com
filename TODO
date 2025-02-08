@@ -1,0 +1,21 @@
+- [x] Add styling
+  - [x] Syntax highlighting
+    - [x] Line number support
+  - [ ] Meta-tags handling (see old version and 2025 card)
+  - [ ] Feed links in category, tag pages; page with all feeds?
+  - [ ] Do something with social links (or just put that in the about page?)
+  - [ ] Possibly a nice reading font for articles (although Commit Mono is quite nice)
+- [ ] Move over (some) old content
+- [x] Build script
+- [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
+- [ ] Plugin for aliasing of old URLs to the new
+- [ ] Pandoc plugin with configurable filters/arguments per post
+- [ ] Reader for HTML content, handling:
+  - just content, like Markdown, but in HTML
+  - without any framing, for
+    - Reveal.js slides
+    - cards with p5.js
+    but maybe still handling the head, or are these full custom content with a custom template?
+- [ ] Item templates
+- [ ] Importers
+- [ ] Search, e.g. with https://www.fusejs.io/

@@ -1,0 +1,21 @@
+{% macro translations_for(article) %}
+  {% if article.translations %}
+  <nav>
+    Translations:
+    <ul class="brackets">
+      <li><a aria-current="page" href="{{ SITEURL }}/{{ article.url }}" hreflang="{{ article.lang }}">{{ article.lang }}</a></li>
+      {% for translation in article.translations %}
+        <li><a href="{{ SITEURL }}/{{ translation.url }}" hreflang="{{ translation.lang }}">{{ translation.lang }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+{% endmacro %}
+
+{% macro entry_hreflang(entry) %}
+  {% if entry.translations %}
+    {% for translation in entry.translations %}
+      <link rel="alternate" hreflang="{{ translation.lang }}" href="{{ SITEURL }}/{{ translation.url }}">
+    {% endfor %}
+  {% endif %}
+{% endmacro %}

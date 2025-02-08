@@ -1,0 +1,44 @@
+@use "colors" as *;
+
+@mixin theme {
+    --code-comment-color: #{$jade-550};
+    --code-documentation-color: #{$jade-550};
+    --code-regionmarker-color: #{$jade-550};
+
+    --code-alert-color: #{$azure-550};
+    --code-annotation-color: #{$azure-550};
+    --code-information-color: #{$azure-550};
+    --code-warning-color: #{$azure-550};
+    --code-commentvar-color: #{$azure-450};
+    
+    --code-keyword-color: #{$azure-550};
+    --code-datatype-color: #{$azure-550};
+    --code-variable-color: #{$azure-550};
+    --code-constant-color: #{$azure-550};
+    
+    --code-controlflow-color: #{$violet-550};
+    --code-preprocessor-color: #{$violet-550};
+    --code-extension-color: #{$violet-550};
+    --code-other-color: #{$violet-550};
+    
+    --code-builtin-color: #{$yellow-550};
+    --code-function-color: #{$yellow-550};
+    
+    --code-decval-color: #{$yellow-600};
+    --code-basen-color: #{$yellow-600};
+    --code-float-color: #{$yellow-600};
+    
+    --code-char-color: #{$orange-550};
+    --code-string-color: #{$orange-550};
+    --code-verbatimstring-color: #{$orange-550};
+    --code-import-color: #{$orange-550};
+    --code-specialchar-color: #{$orange-700};
+    --code-specialstring-color: #{$orange-700};
+
+    --code-error-color: #{$red-550};
+
+    --code-attribute-color: var(--pico-code-color);
+    --code-operator-color: var(--pico-code-color);
+
+    --code-line-number-color: #{$zinc-350};
+}

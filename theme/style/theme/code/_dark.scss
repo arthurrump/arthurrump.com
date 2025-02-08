@@ -1,0 +1,44 @@
+@use "colors" as *;
+
+@mixin theme {
+    --code-comment-color: #{$jade-350};
+    --code-documentation-color: #{$jade-350};
+    --code-regionmarker-color: #{$jade-350};
+
+    --code-alert-color: #{$azure-350};
+    --code-annotation-color: #{$azure-350};
+    --code-information-color: #{$azure-350};
+    --code-warning-color: #{$azure-350};
+    --code-commentvar-color: #{$azure-250};
+    
+    --code-keyword-color: #{$azure-350};
+    --code-datatype-color: #{$azure-350};
+    --code-variable-color: #{$azure-350};
+    --code-constant-color: #{$azure-350};
+    
+    --code-controlflow-color: #{$violet-350};
+    --code-preprocessor-color: #{$violet-350};
+    --code-extension-color: #{$violet-350};
+    --code-other-color: #{$violet-350};
+    
+    --code-builtin-color: #{$yellow-250};
+    --code-function-color: #{$yellow-250};
+    
+    --code-decval-color: #{$yellow-200};
+    --code-basen-color: #{$yellow-200};
+    --code-float-color: #{$yellow-200};
+    
+    --code-char-color: #{$orange-300};
+    --code-string-color: #{$orange-300};
+    --code-verbatimstring-color: #{$orange-300};
+    --code-import-color: #{$orange-300};
+    --code-specialchar-color: #{$orange-350};
+    --code-specialstring-color: #{$orange-350};
+
+    --code-error-color: #{$red-400};
+
+    --code-attribute-color: var(--pico-code-color);
+    --code-operator-color: var(--pico-code-color);
+
+    --code-line-number-color: #{$zinc-600};
+}

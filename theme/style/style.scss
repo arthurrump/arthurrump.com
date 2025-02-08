@@ -1,0 +1,86 @@
+@use "pico_customized";
+@use "theme/code/schemes";
+@use "code";
+@use "inline-lists";
+
+@font-face {
+    font-display: block;
+    font-family: "Commit Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-feature-settings: "ss03", "ss04", "ss05";
+    src: url('/theme/font/CommitMono.woff2') format('woff2');
+}
+
+:root {
+    --pico-font-family: "Commit Mono", monospace, var(--pico-font-family-emoji);
+}
+
+header a,
+header a.secondary,
+header a.contrast,
+footer a,
+footer a.secondary,
+footer a.contrast {
+    --pico-text-decoration: none;
+
+    :hover {
+        --pico-text-decoration: underline;
+    }
+}
+
+body>header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: var(--pico-spacing-vertical);
+
+    white-space: nowrap;
+    overflow-y: scroll;
+
+    nav {
+        margin-left: calc(1.5 * var(--pico-block-spacing-horizontal));
+        text-align: right;
+    }
+
+    >a {
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+}
+
+body>footer {
+    margin-top: var(--spacing-vertical);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.label::after {
+    content: ": ";
+}
+
+article {
+    padding: var(--pico-block-spacing-vertical) 0;
+    margin: 0;
+    border-bottom: 1px solid;
+
+    &>p:first-of-type {
+        margin-top: var(--pico-block-spacing-vertical);
+    }
+
+    &>:last-child {
+        margin-bottom: 0;
+    }
+
+    footer {
+        padding-top: var(--pico-block-spacing-vertical);
+        border-top: 1px solid;
+    }
+}
+
+main>nav {
+    margin: var(--pico-block-spacing-vertical) 0;
+    text-align: center;
+}

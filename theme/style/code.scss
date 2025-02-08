@@ -1,0 +1,62 @@
+pre, code, kbd {
+  .kw { color: var(--code-keyword-color); }
+  .dt { color: var(--code-datatype-color); }
+  .dv { color: var(--code-decval-color); }
+  .bn { color: var(--code-basen-color); }
+  .fl { color: var(--code-float-color); }
+  .ch { color: var(--code-char-color); }
+  .st { color: var(--code-string-color); }
+  .co { color: var(--code-comment-color); }
+  .ot { color: var(--code-other-color); }
+  .al { color: var(--code-alert-color); }
+  .fu { color: var(--code-function-color); }
+  .re { color: var(--code-regionmarker-color); }
+  .er { color: var(--code-error-color); }
+  .cn { color: var(--code-constant-color); }
+  .sc { color: var(--code-specialchar-color); }
+  .vs { color: var(--code-verbatimstring-color); }
+  .ss { color: var(--code-specialstring-color); }
+  .im { color: var(--code-import-color); }
+  .do { color: var(--code-documentation-color); }
+  .an { color: var(--code-annotation-color); }
+  .cv { color: var(--code-commentvar-color); }
+  .va { color: var(--code-variable-color); }
+  .cf { color: var(--code-controlflow-color); }
+  .op { color: var(--code-operator-color); }
+  .bu { color: var(--code-builtin-color); }
+  .ex { color: var(--code-extension-color); }
+  .pp { color: var(--code-preprocessor-color); }
+  .at { color: var(--code-attribute-color); }
+  .in { color: var(--code-information-color); }
+  .wa { color: var(--code-warning-color); }
+}
+
+// Line numbers
+pre.numberSource code {
+  counter-reset: source-line 0;
+}
+
+pre.numberSource code>span {
+  counter-increment: source-line;
+}
+
+pre.numberSource code>span>a:first-child {
+  --pico-text-decoration: none;
+  text-align: right;
+  display: inline-block;
+  width: 3em;
+}
+
+pre.numberSource code>span>a:first-child::before {
+  content: counter(source-line);
+  vertical-align: baseline;
+  padding-right: 1.5em;
+  color: var(--code-line-number-color);
+
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
