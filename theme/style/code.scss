@@ -30,3 +30,33 @@ pre, code, kbd {
   .in { color: var(--code-information-color); }
   .wa { color: var(--code-warning-color); }
 }
+
+// Line numbers
+pre.numberSource code {
+  counter-reset: source-line 0;
+}
+
+pre.numberSource code>span {
+  counter-increment: source-line;
+}
+
+pre.numberSource code>span>a:first-child {
+  --pico-text-decoration: none;
+  text-align: right;
+  display: inline-block;
+  width: 3em;
+}
+
+pre.numberSource code>span>a:first-child::before {
+  content: counter(source-line);
+  vertical-align: baseline;
+  padding-right: 1.5em;
+  color: var(--code-line-number-color);
+
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

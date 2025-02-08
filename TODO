@@ -1,5 +1,6 @@
 - [x] Add styling
   - [x] Syntax highlighting
+    - [x] Line number support
   - [ ] Meta-tags handling (see old version and 2025 card)
   - [ ] Feed links in category, tag pages; page with all feeds?
   - [ ] Do something with social links (or just put that in the about page?)
