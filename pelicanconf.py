@@ -4,20 +4,8 @@ import os
 SITENAME = "Arthur Rump"
 AUTHOR = "Arthur Rump"
 
+MENU_CATEGORIES = [ "projects", "publications" ]
 MENU_PAGES = [ "about" ]
-MENU_CATEGORIES = [ "posts", "publications" ]
-
-LINKS = ( # Links in the header
-    ("Pelican", "https://getpelican.com/"),
-    ("Python.org", "https://www.python.org/"),
-    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-    ("You can modify those links in your config file", "#"),
-)
-
-SOCIAL = ( # Links in the "social" section
-    ("You can add links in your config file", "#"),
-    ("Another social link", "#"),
-)
 
 # Theme, plugins, layout
 THEME = "./theme"
