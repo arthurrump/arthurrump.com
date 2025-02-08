@@ -1,9 +1,0 @@
-{
-	"scripts": {
-		"build": "sass style/style.scss static/css/style.css --no-source-map",
-		"watch": "sass style/style.scss static/css/style.css --no-source-map --watch"
-	},
-	"dependencies": {
-		"@picocss/pico": "^2.0.6"
-	}
-}

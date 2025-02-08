@@ -7,6 +7,11 @@
       url = "github:getpelican/pelican-plugins";
       flake = false;
     };
+
+    picocss = {
+      url = "github:picocss/pico/v2.0.6";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, flake-parts, ... }:
@@ -23,28 +28,25 @@
           beautifulsoup4
           ruamel-yaml
 
-          nodejs
-          pnpm
           dart-sass
         ];
 
         PELICAN_PLUGINS = "${inputs.pelican-plugins}";
+        SASS_PATH = "${inputs.picocss}/scss/";
       in {
         devShells.default = pkgs.mkShell {
           packages = tools;
-          inherit PELICAN_PLUGINS;
+          inherit PELICAN_PLUGINS SASS_PATH;
         };
 
         packages.default = pkgs.stdenv.mkDerivation {
           name = "site";
           src = ./.;
           buildInputs = tools;
+          inherit PELICAN_PLUGINS SASS_PATH;
           phases = [ "unpackPhase" "buildPhase" "installPhase" ];
           buildPhase = ''
-            cd theme
-            pnpm install
-            pnpm build
-            cd ..
+            sass theme/style/style.scss theme/static/css/style.css --no-source-map
             pelican -s publishconf.py
           '';
           installPhase = ''
