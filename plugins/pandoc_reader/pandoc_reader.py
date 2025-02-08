@@ -315,6 +315,7 @@ class PandocReader(BaseReader):
             "--template={}".format(
                 os.path.join(TEMPLATES_PATH, PANDOC_READER_HTML_TEMPLATE)
             ),
+            f"--lua-filter={os.path.join(FILTERS_PATH, "figure_title_caption.lua")}"
         ]
         if not defaults_files:
             pandoc_cmd.extend(["--from", "markdown" + extensions, "--to", "html5"])

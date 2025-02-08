@@ -11,7 +11,7 @@
   - [x] Add old urls to all pages
   - [ ] Old static content
 - [x] Build script
-- [ ] Fix image captions
+- [x] Fix image captions
 - [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
 - [x] Plugin for aliasing of old URLs to the new
 - [ ] Pandoc plugin with configurable filters/arguments per post
