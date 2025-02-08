@@ -6,7 +6,7 @@
   - [ ] Do something with social links (or just put that in the about page?)
   - [ ] Possibly a nice reading font for articles (although Commit Mono is quite nice)
 - [ ] Move over (some) old content
-- [ ] Build script
+- [x] Build script
 - [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
 - [ ] Plugin for aliasing of old URLs to the new
 - [ ] Pandoc plugin with configurable filters/arguments per post

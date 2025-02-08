@@ -31,11 +31,19 @@
           dart-sass
         ];
 
+        sassCmd = "sass theme/style/style.scss theme/static/css/style.css --no-source-map";
+
         PELICAN_PLUGINS = "${inputs.pelican-plugins}";
         SASS_PATH = "${inputs.picocss}/scss/";
       in {
         devShells.default = pkgs.mkShell {
-          packages = tools;
+          packages = tools ++ [
+            (pkgs.writeShellScriptBin "develop" ''
+              ${sassCmd} --watch & 
+              pelican -l -r &&
+              kill $!
+            '')
+          ];
           inherit PELICAN_PLUGINS SASS_PATH;
         };
 
@@ -46,7 +54,7 @@
           inherit PELICAN_PLUGINS SASS_PATH;
           phases = [ "unpackPhase" "buildPhase" "installPhase" ];
           buildPhase = ''
-            sass theme/style/style.scss theme/static/css/style.css --no-source-map
+            ${sassCmd}
             pelican -s publishconf.py
           '';
           installPhase = ''
