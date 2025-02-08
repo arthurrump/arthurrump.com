@@ -13,12 +13,20 @@ THEME = "./theme"
 PLUGIN_PATHS = [ "./plugins", os.environ["PELICAN_PLUGINS"] ]
 PLUGINS = [ "pandoc_reader", "underscore_redirects" ]
 
-PATH = "content"
-STATIC_PATHS = [ ]
+PATH = os.path.join(os.path.dirname(__file__), "content")
+ARTICLE_PATHS = [ "feed" ]
+PAGE_PATHS = [ "pages" ]
+STATIC_PATHS = [
+    "2024/",
+    "2025/",
+    "BingSiteAuth.xml",
+    "google847790fefc8861ff.html",
+    "keybase.txt"
+]
 
 SLUGIFY_SOURCE = "basename" # should only be used by pages, with posts matching the formats below
-FILENAME_METADATA = r"(?P<date>\d{8})_(?P<slug>[^.]*)(\.(?P<lang>[a-z]{2}))?"
-PATH_METADATA = r"(?P<date>\d{8})_(?P<slug>[^.]*)/index(\.(?P<lang>[a-z]{2}))?\."
+FILENAME_METADATA = r".*/?(?P<date>\d{8})_(?P<slug>[^.]*)(\.(?P<lang>[a-z]{2}))?"
+PATH_METADATA = r".*/?(?P<date>\d{8})_(?P<slug>[^.]*)/index(\.(?P<lang>[a-z]{2}))?\."
 
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = "" # Force to specify a category

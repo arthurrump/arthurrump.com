@@ -9,7 +9,7 @@
   - [x] Fix all links, x-links, images
   - [x] Reconsider tags
   - [x] Add old urls to all pages
-  - [ ] Old static content
+  - [x] Old static content
 - [x] Build script
 - [x] Fix image captions
 - [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
