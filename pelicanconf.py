@@ -11,7 +11,7 @@ MENU_PAGES = [ "about" ]
 THEME = "./theme"
 
 PLUGIN_PATHS = [ "./plugins", os.environ["PELICAN_PLUGINS"] ]
-PLUGINS = [ "pandoc_reader" ]
+PLUGINS = [ "pandoc_reader", "underscore_redirects" ]
 
 PATH = "content"
 STATIC_PATHS = [ ]

@@ -9,10 +9,11 @@
   - [x] Fix all links, x-links, images
   - [x] Reconsider tags
   - [x] Add old urls to all pages
+  - [ ] Old static content
 - [x] Build script
 - [ ] Fix image captions
 - [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
-- [ ] Plugin for aliasing of old URLs to the new
+- [x] Plugin for aliasing of old URLs to the new
 - [ ] Pandoc plugin with configurable filters/arguments per post
 - [ ] Reader for HTML content, handling:
   - just content, like Markdown, but in HTML
