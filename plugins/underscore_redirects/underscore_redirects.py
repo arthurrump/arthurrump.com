@@ -3,7 +3,7 @@ Processes `aliases` metadata and writes a _redirect file for use with Netlify or
 Cloudflare Pages
 """
 
-from os import path
+from os import makedirs, path
 from pelican import Pelican, signals
 from pelican.generators import Generator, ArticlesGenerator, PagesGenerator
 
@@ -19,6 +19,7 @@ def _write_aliases(metadata, url, redirects):
         redirects.write(" 301\n")
 
 def create_redirects(generators: list[Generator]):
+    makedirs(output_path, exist_ok = True)
     with open(path.join(output_path, "_redirects"), "w") as redirects:
         for gen in generators:
             if isinstance(gen, ArticlesGenerator):
