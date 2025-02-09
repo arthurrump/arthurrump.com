@@ -6,6 +6,7 @@ tags: [ "Apollo++", "Automated Assessment" ]
 category: Publications
 aliases:
 - /research/ill-definedness_edusymp2022
+- /research/ill-definedness_edusymp2022/
 ---
 
 Project-based courses are crucial to gain practically relevant knowledge in

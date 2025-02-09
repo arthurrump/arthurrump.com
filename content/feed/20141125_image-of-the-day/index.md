@@ -3,6 +3,7 @@ title: "Image of the Day"
 category: Projects
 aliases:
 - /project/image-of-the-day
+- /project/image-of-the-day/
 ---
 
 In 2014 I released my first app into what was then called the Windows Phone Store. It shows the latest background images used on Bing, and allows you to save them in multiple different formats, both landscape and portrait orientations. The app was built using the WinRT SDK and localized using the Multilingual App Toolkit.

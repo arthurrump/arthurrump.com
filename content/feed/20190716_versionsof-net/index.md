@@ -5,6 +5,7 @@ tags: [ ".NET" ]
 category: Projects
 aliases:
 - /project/versionsof-net
+- /project/versionsof-net/
 ---
 
 .NET Core versioning is a mess. There are lots and lots and lots of version numbers, from runtime to SDK, from Visual Studio to languages and of course .NET Standard. So what SDK corresponds to which runtime again? I know there some sort of a system, but it differs per release. I created this website based on information published in the .NET Core repo to give an overview of all the versions of .NET.

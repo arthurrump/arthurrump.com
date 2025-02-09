@@ -4,6 +4,7 @@ tags: [ ".NET" ]
 category: Projects
 aliases:
 - /project/netcore-versions
+- /project/netcore-versions/
 ---
 
 To display version information about .NET Core on [versionsof.net]({filename}../20190716_versionsof-net/index.md), I had to decode the `releases.json` files in the [dotnet/core](https://github.com/dotnet/core) repo. Not a big problem, you'd think. These are just JSON files, how hard can it be? That's fair, but the schema, nor the data of these files turned out to be really consistent. To help with this, I created the NetCore.Versions.Checks GitHub app that checks these files on every commit.

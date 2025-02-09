@@ -4,6 +4,7 @@ tags: [ "Metasite" ]
 category: Posts
 aliases:
 - /2016/12/23/hello-world
+- /2016/12/23/hello-world/
 ---
 
 
