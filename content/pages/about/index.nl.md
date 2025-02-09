@@ -1,7 +1,5 @@
 ---
 title: Over mij
-slug: about
-lang: nl
 ---
 
 Hoi, mijn naam is Arthur Rump 👋

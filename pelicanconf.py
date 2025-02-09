@@ -25,8 +25,8 @@ STATIC_PATHS = [
 ]
 
 SLUGIFY_SOURCE = "basename" # should only be used by pages, with posts matching the formats below
-FILENAME_METADATA = r".*/?(?P<date>\d{8})_(?P<slug>[^.]*)(\.(?P<lang>[a-z]{2}))?"
-PATH_METADATA = r".*/?(?P<date>\d{8})_(?P<slug>[^.]*)/index(\.(?P<lang>[a-z]{2}))?\."
+FILENAME_METADATA = r".*/?((?P<date>\d{8})_|pages/)(?P<slug>[^.]*)(\.(?P<lang>[a-z]{2}))?"
+PATH_METADATA = r".*/?((?P<date>\d{8})_|pages/)(?P<slug>[^.]*)/index(\.(?P<lang>[a-z]{2}))?\."
 
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = "" # Force to specify a category
