@@ -59,7 +59,7 @@
           '';
           installPhase = ''
             mkdir -p $out
-            cp -r ./output $out
+            cp -r ./output/* $out/
           '';
         };
       };
