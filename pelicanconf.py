@@ -37,6 +37,14 @@ TYPOGRIFY_OMIT_FILTERS = [ "amp", "caps", "initial_quotes" ]
 SUMMARY_MAX_LENGTH = 50
 SUMMARY_MAX_PARAGRAPHS = 2
 
+# Templating helpers
+def file_to_url(output_file: str):
+    return output_file.removesuffix("index.html")
+
+JINJA_FILTERS = {
+    "file_to_url": file_to_url
+}
+
 # Localization
 TIMEZONE = "Europe/Amsterdam"
 DEFAULT_DATE_FORMAT = "%Y-%m-%d"
