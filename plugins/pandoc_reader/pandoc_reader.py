@@ -20,6 +20,10 @@ ENCODED_LINKS_TO_RAW_LINKS_MAP = {
     "%7Bstatic%7D": "{static}",
     "%7Battach%7D": "{attach}",
     "%7Bfilename%7D": "{filename}",
+    "%7Bauthor%7D": "{author}",
+    "%7Bcategory%7D": "{category}",
+    "%7Bindex%7D": "{index}",
+    "%7Btag%7D": "{tag}",
 }
 FILE_EXTENSIONS = ["md", "mkd", "mkdn", "mdwn", "mdown", "markdown", "Rmd"]
 FILTERS_PATH = os.path.abspath(os.path.join(DIR_PATH, "filters"))
