@@ -66,12 +66,8 @@ article {
     margin: 0;
     border-bottom: 1px solid;
 
-    &>p:first-of-type {
+    &>header+* { // First element after the header
         margin-top: var(--pico-block-spacing-vertical);
-    }
-
-    &>:last-child {
-        margin-bottom: 0;
     }
 
     footer {
