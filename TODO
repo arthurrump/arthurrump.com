@@ -10,7 +10,7 @@
   - [x] Reconsider tags
   - [x] Add old urls to all pages
   - [x] Old static content
-- [ ] Write new about me's
+- [x] Write new about me's
 - [x] Build script
 - [ ] Build and publish (to Netlify or Cloudflare Pages)
 - [x] Fix image captions
