@@ -4,6 +4,8 @@ title: About me
 
 Hi, my name is Arthur Rump 👋
 
+![A photo of me wearing a green shirt before a dark background]({attach}DSC00131_full_512.jpg){ width=256px .profile }
+
 I tell computers what to do, and sometimes they listen. I also teach others how to do the same, and sometimes even they listen. Professionally that means:
 
 - I'm a PhD candidate at the [University of Twente](https://www.utwente.nl/en) working on automation support for the assessment of open-ended assignments

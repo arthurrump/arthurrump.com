@@ -4,6 +4,8 @@ title: Over mij
 
 Hoi, mijn naam is Arthur Rump 👋
 
+![Een foto van mij met een groen shirt voor een donkere achtergrond]({attach}DSC00131_full_512.jpg){ width=256px .profile }
+
 Ik vertel computers wat te doen, en soms luisteren ze daarnaar. Ik leer anderen hoe ze dat ook kunnen doen, en soms luisteren zelfs zij. Professioneel uit zich dat zo:
 
 - Ik ben promovendus aan de [Universiteit Twente](https://www.utwente.nl), waar ik werk aan automatisch ondersteuning voor de beoordeling van open opdrachten
