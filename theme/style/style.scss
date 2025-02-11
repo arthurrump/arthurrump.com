@@ -13,7 +13,12 @@
 }
 
 :root {
+    --pico-font-family-monospace: "Commit Mono", monospace;
     --pico-font-family: "Commit Mono", monospace, var(--pico-font-family-emoji);
+}
+
+article > :not(header, footer, h1, h2, h3, h4, h5, h6) {
+    font-family: var(--pico-font-family-sans-serif);
 }
 
 header a,

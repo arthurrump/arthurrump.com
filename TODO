@@ -3,8 +3,8 @@
     - [x] Line number support
   - [x] Meta-tags handling (see old version and 2025 card)
   - [ ] Feed links in category, tag pages; page with all feeds?
-  - [ ] Do something with social links (or just put that in the about page?)
-  - [ ] Possibly a nice reading font for articles (although Commit Mono is quite nice)
+  - [x] Do something with social links (or just put that in the about page?)
+  - [x] Possibly a nice reading font for articles (although Commit Mono is quite nice)
 - [x] Move over (some) old content
   - [x] Fix all links, x-links, images
   - [x] Reconsider tags
@@ -12,7 +12,7 @@
   - [x] Old static content
 - [x] Write new about me's
 - [x] Build script
-- [ ] Build and publish (to Netlify or Cloudflare Pages)
+- [x] Build and publish (to Netlify or Cloudflare Pages)
 - [x] Fix image captions
 - [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
 - [x] Plugin for aliasing of old URLs to the new
