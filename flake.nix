@@ -46,6 +46,9 @@
               pelican -l -r &&
               kill $!
             '')
+            (pkgs.writeShellScriptBin "cms" ''
+              python -m cms
+            '')
           ];
           inherit PELICAN_PLUGINS SASS_PATH;
         };

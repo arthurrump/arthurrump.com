@@ -3,12 +3,12 @@ import re
 import typer
 
 from datetime import date
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, PackageLoader
 from os import path, scandir, makedirs
 from sys import stderr
 
 TEMPLATES = path.join(path.dirname(__file__), "templates")
-FEED = path.join(path.dirname(__file__), "content", "feed")
+FEED = path.join(path.dirname(__file__), "..", "content", "feed")
 
 app = typer.Typer()
 
@@ -26,15 +26,13 @@ def new(template: str, slug: str, language: str = None, date: str = date.today()
             return
 
     # Initialize jinja and get the template file
-    jinja = Environment(loader = FileSystemLoader(TEMPLATES), autoescape = False)
+    jinja = Environment(loader = PackageLoader("cms", "templates"), autoescape = False)
     template_file = jinja.get_template(path.join(template, "index.md"))
     
     # Get the variables the init type (file or folder)
-    get_spec = importlib.util.spec_from_file_location(template, path.join(TEMPLATES, template, "__init__.py"))
-    get = importlib.util.module_from_spec(get_spec)
-    get_spec.loader.exec_module(get)
-    variables = get.get_variables()
-    init_type = get.get_init_type()
+    template_module = importlib.import_module(f"cms.templates.{template}")
+    variables = template_module.get_variables()
+    init_type = template_module.get_init_type()
     
     # Set the output path according to all options
     basename = f"{date}_{slug}"
@@ -47,6 +45,8 @@ def new(template: str, slug: str, language: str = None, date: str = date.today()
     makedirs(path.dirname(outpath), exist_ok = True)
     with open(outpath, mode = "x") as outfile:
         outfile.write(template_file.render(variables))
+
+    # TODO: Open file with EDITOR
 
 if __name__ == "__main__":
     app()
