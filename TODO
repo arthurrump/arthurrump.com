@@ -25,4 +25,4 @@
     but maybe still handling the head, or are these full custom content with a custom template?
 - [ ] Item templates
 - [ ] Importers
-- [ ] Search, e.g. with https://www.fusejs.io/
+- [ ] Search, e.g. with https://www.fusejs.io/ or https://github.com/pelican-plugins/search

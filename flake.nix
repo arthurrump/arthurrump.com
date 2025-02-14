@@ -28,6 +28,9 @@
           beautifulsoup4
           ruamel-yaml
 
+          typer
+          jinja2
+
           dart-sass
         ];
 
