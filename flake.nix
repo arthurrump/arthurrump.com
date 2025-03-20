@@ -9,7 +9,7 @@
     };
 
     picocss = {
-      url = "github:picocss/pico/v2.0.6";
+      url = "github:picocss/pico/v2.1.1";
       flake = false;
     };
   };
