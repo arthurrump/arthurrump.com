@@ -11,14 +11,12 @@ MENU_PAGES = [ "about" ]
 THEME = "./theme"
 
 PLUGIN_PATHS = [ "./plugins", os.environ["PELICAN_PLUGINS"] ]
-PLUGINS = [ "pandoc_reader", "underscore_redirects" ]
+PLUGINS = [ "pandoc_reader", "underscore_redirects", "dot_static_directories" ]
 
 PATH = os.path.join(os.path.dirname(__file__), "content")
 ARTICLE_PATHS = [ "feed" ]
 PAGE_PATHS = [ "pages" ]
 STATIC_PATHS = [
-    "2024/",
-    "2025/",
     "BingSiteAuth.xml",
     "google847790fefc8861ff.html",
     "keybase.txt"
