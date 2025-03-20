@@ -15,3 +15,7 @@ Links:
 
 - [Paper (local copy)]({attach}paper.pdf)
 - [Companion package (Zenodo)](https://doi.org/10.5281/zenodo.14627201)
+
+Slides:
+
+- [As presented at the FMT Colloquium on 2024-03-20]({static}/icst2025/slides/fmt-colloquium.html)

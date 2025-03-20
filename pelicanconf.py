@@ -55,6 +55,9 @@ ARTICLE_SAVE_AS = "{slug}/index.html"
 ARTICLE_LANG_URL = "{lang}/{slug}/"
 ARTICLE_LANG_SAVE_AS = "{lang}/{slug}/index.html"
 
+STATIC_LANG_URL = "{lang}/{slug}/{source_path}"
+STATIC_LANG_SAVE_AS = "{lang}/{slug}/{source_path}"
+
 DRAFT_URL = "drafts/{slug}/"
 DRAFT_SAVE_AS = "drafts/{slug}/index.html"
 DRAFT_LANG_URL = "{lang}/drafts/{slug}/"
