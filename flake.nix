@@ -20,6 +20,7 @@
       perSystem = { config, self', inputs', pkgs, system, ... }: 
       let 
         tools = with pkgs; with python312Packages; [
+          python
           pandoc
           haskellPackages.pandoc-crossref
           pelican
