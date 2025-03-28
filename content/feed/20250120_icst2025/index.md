@@ -18,4 +18,5 @@ Links:
 
 Slides:
 
-- [As presented at the FMT Colloquium on 2024-03-20]({static}/icst2025/slides/fmt-colloquium.html)
+- [As presented at the FMT Colloquium on 2025-03-20]({static}/icst2025/slides/fmt-colloquium.html)
+- [As presented at ICST on 2025-04-02]({static}/icst2025/slides/index.html)
