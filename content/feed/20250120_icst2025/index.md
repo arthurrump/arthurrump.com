@@ -14,6 +14,7 @@ Assessment of open-ended assignments such as programming projects is a complex a
 Links:
 
 - [Paper (local copy)]({attach}paper.pdf)
+- [Paper (DOI)](https://doi.org/10.1109/icst62969.2025.10988998)
 - [Companion package (Zenodo)](https://doi.org/10.5281/zenodo.14627201)
 
 Slides:
