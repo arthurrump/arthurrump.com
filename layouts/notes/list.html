@@ -1,0 +1,6 @@
+{{- define "content" }}
+{{- range .Pages }}
+{{- partial "notes/card.html" . }}
+{{- end }}
+{{- partial "pagination.html" . }}
+{{- end }}

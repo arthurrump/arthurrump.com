@@ -1,0 +1,23 @@
+{{- /*
+  Render the main <nav> with category and page links.
+  Mirrors Pelican's MENU_CATEGORIES + MENU_PAGES logic.
+*/ -}}
+<nav><ul>
+  {{- range site.Params.menuCategories }}
+  {{- $slug := . }}
+  {{- with index site.Taxonomies.categories $slug }}
+  {{- $catPage := .Page }}
+  <li><a href="{{ $catPage.Permalink }}"
+    {{- if eq $catPage.Title ($.Page.Title | default "") }} aria-current="page"{{ end -}}
+  >{{ $catPage.Title }}</a></li>
+  {{- end }}
+  {{- end }}
+  {{- range site.Params.menuPages }}
+  {{- $slug := . }}
+  {{- with site.GetPage (printf "/%s" $slug) }}
+  <li><a href="{{ .Permalink }}"
+    {{- if eq .RelPermalink ($.Page.RelPermalink | default "") }} aria-current="page"{{ end -}}
+  >{{ .Title }}</a></li>
+  {{- end }}
+  {{- end }}
+</ul></nav>

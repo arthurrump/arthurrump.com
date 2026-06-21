@@ -49,22 +49,6 @@
         "type": "github"
       }
     },
-    "pelican-plugins": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742256688,
-        "narHash": "sha256-Bjl6by2x0fMHasQLnTq1/t2bIthne9FITa66lHvLMPE=",
-        "owner": "getpelican",
-        "repo": "pelican-plugins",
-        "rev": "4682b65f8c9343557c40ff79c42e920f9cb38a35",
-        "type": "github"
-      },
-      "original": {
-        "owner": "getpelican",
-        "repo": "pelican-plugins",
-        "type": "github"
-      }
-    },
     "picocss": {
       "flake": false,
       "locked": {
@@ -86,7 +70,6 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
-        "pelican-plugins": "pelican-plugins",
         "picocss": "picocss"
       }
     }

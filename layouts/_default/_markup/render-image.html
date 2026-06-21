@@ -1,0 +1,28 @@
+<figure>
+  {{- /* Integrate the builtin image render hook for path resolution
+         https://github.com/gohugoio/hugo/blob/d15baf53a91372843c45eef7eb5b87c25a4b6bf1/tpl/tplimpl/embedded/templates/_markup/render-image.html */ -}}
+  {{- $u := urls.Parse .Destination -}}
+  {{- $src := $u.String -}}
+  {{- if not $u.IsAbs -}}
+    {{- $path := strings.TrimPrefix "./" $u.Path -}}
+    {{- with or (.PageInner.Resources.Get $path) (resources.Get $path) -}}
+      {{- $src = .RelPermalink -}}
+      {{- with $u.RawQuery -}}
+        {{- $src = printf "%s?%s" $src . -}}
+      {{- end -}}
+      {{- with $u.Fragment -}}
+        {{- $src = printf "%s#%s" $src . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  <img src="{{ $src }}" alt="{{ .PlainText }}"
+    {{- with .Title }} title="{{ . }}" {{- end -}}
+    {{- range $k, $v := .Attributes -}}
+      {{- if $v -}}
+      {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
+      {{- end -}}
+    {{- end -}}>
+  {{- if .Title }}
+    <figcaption>{{ .Title }}</figcaption>
+  {{- end }}
+</figure>

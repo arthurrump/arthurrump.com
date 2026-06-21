@@ -1,0 +1,7 @@
+{{- /* Render hreflang link tags for the <head> */ -}}
+{{- range .Translations }}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{- end }}
+{{- with .Page }}{{ if .IsHome }}{{ else }}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{- end }}{{ end }}

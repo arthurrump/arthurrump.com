@@ -1,0 +1,95 @@
+baseURL: https://arthurrump.com
+title: Arthur Rump
+languageCode: en
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+timeZone: Europe/Amsterdam
+
+# Multilingual
+languages:
+  en:
+    languageName: English
+    weight: 1
+  nl:
+    languageName: Nederlands
+    weight: 2
+
+# Taxonomies
+taxonomies:
+  category: categories
+  tag: tags
+
+# URL patterns
+permalinks:
+  feed: /:slug/
+  notes: /notes/:year/:month/:day/:slug/
+  categories: /:slug/
+  tags: /tags/:slug/
+
+# Pagination
+pagination:
+  pagerSize: 10
+
+# Markup
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+        title: true
+      wrapStandAloneImageWithinParagraph: false
+    renderer:
+      unsafe: true
+    extensions:
+      strikethrough: true
+      table: true
+  highlight:
+    style: github
+    noClasses: false
+
+# Output formats
+mediaTypes:
+  application/atom+xml:
+    suffixes:
+      - xml
+  text/redirects:
+    suffixes:
+      - ""
+
+outputFormats:
+  redirects:
+    mediaType: text/redirects
+    baseName: _redirects
+    isPlainText: true
+    notAlternative: true
+  atom:
+    mediaType: application/atom+xml
+    baseName: feed.atom
+    isPlainText: false
+    rel: alternate
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - atom
+    - redirects
+  section:
+    - HTML
+    - RSS
+  taxonomy:
+    - HTML
+    - RSS
+  term:
+    - HTML
+    - RSS
+
+# Feeds
+params:
+  author: Arthur Rump
+  feedDomain: https://arthurrump.com
+  menuCategories:
+    - projects
+    - publications
+  menuPages:
+    - about

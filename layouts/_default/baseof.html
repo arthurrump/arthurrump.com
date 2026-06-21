@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang | default site.Language.Lang }}">
+  <head>
+    {{- block "head" . }}
+    <title>{{ block "title" . }}{{ site.Title }}{{ end }}</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+
+    {{- range .AlternativeOutputFormats }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | absURL }}" title="{{ site.Title }}">
+    {{- end }}
+
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta property="og:site_name" content="{{ site.Title }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+
+    {{- partial "hreflang.html" . }}
+    {{- end }}
+  </head>
+
+  <body>
+    {{- block "body" . }}
+    <header>
+      {{- block "header" . }}
+      <a href="{{ "/" | relLangURL }}">{{ site.Title }}</a>
+      {{- end }}
+      {{- block "nav" . }}
+      {{- partial "nav.html" (dict "Page" .) }}
+      {{- end }}
+    </header>
+    <main>
+      {{- block "content" . }}{{- end }}
+    </main>
+    <footer>
+      {{- block "footer" . }}
+      <nav>
+        <ul>
+          <li><a href="{{ "/archives/" | relLangURL }}">{{ i18n "archives" }}</a></li>
+          {{- range .AlternativeOutputFormats }}
+          {{- if eq .Name "RSS" }}
+          <li><a href="{{ .Permalink }}">{{ i18n "rssFeed" }}</a></li>
+          {{- end }}
+          {{- end }}
+          <li>&copy;&nbsp;{{ site.Params.author }}</li>
+        </ul>
+      </nav>
+      {{- end }}
+    </footer>
+    {{- end }}
+  </body>
+</html>

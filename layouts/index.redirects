@@ -1,0 +1,7 @@
+{{- /* Generate Cloudflare Pages _redirects file from page aliases */ -}}
+{{- range .Site.Pages }}
+{{- $page := . }}
+{{- range $page.Aliases }}
+{{ . }} {{ $page.RelPermalink }} 301
+{{- end }}
+{{- end }}

@@ -1,0 +1,12 @@
+{{- /* Inline translation switcher nav */ -}}
+{{- if .Translations }}
+<nav>
+  Translations:
+  <ul class="inline brackets">
+    <li><a aria-current="page" href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang }}</a></li>
+    {{- range .Translations }}
+    <li><a href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang }}</a></li>
+    {{- end }}
+  </ul>
+</nav>
+{{- end }}

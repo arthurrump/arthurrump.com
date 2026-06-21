@@ -1,3 +1,91 @@
+.chroma {
+  .x /* Other */ {  }
+  .err /* Error */ { color: var(--code-error-color); }
+  .cl /* CodeLine */ {  }
+  .lnlinks /* LineLink */ { outline:none;text-decoration:none;color:inherit }
+  .lntd /* LineTableTD */ { vertical-align:top;padding:0;margin:0;border:0; }
+  .lntable /* LineTable */ { border-spacing:0;padding:0;margin:0;border:0; }
+  .hl /* LineHighlight */ { background-color:#e5e5e5 }
+  .lnt /* LineNumbersTable */ { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color: var(--code-line-number-color); }
+  .ln /* LineNumbers */ { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color: var(--code-line-number-color); }
+  .line /* Line */ { display:flex; }
+  .k /* Keyword */ { color: var(--code-keyword-color); }
+  .kc /* KeywordConstant */ { color: var(--code-constant-color); }
+  .kd /* KeywordDeclaration */ { color: var(--code-keyword-color); }
+  .kn /* KeywordNamespace */ { color: var(--code-keyword-color); }
+  .kp /* KeywordPseudo */ { color: var(--code-keyword-color); }
+  .kr /* KeywordReserved */ { color: var(--code-keyword-color); }
+  .kt /* KeywordType */ { color: var(--code-datatype-color); }
+  .n /* Name */ {  }
+  .na /* NameAttribute */ { color: var(--code-attribute-color); }
+  .nb /* NameBuiltin */ { color: var(--code-builtin-color); }
+  .bp /* NameBuiltinPseudo */ { color: var(--code-builtin-color); }
+  .nc /* NameClass */ { color: var(--code-class-color); }
+  .no /* NameConstant */ { color: var(--code-constant-color); }
+  .nd /* NameDecorator */ { color: var(--code-other-color); }
+  .ni /* NameEntity */ { color: var(--code-builtin-color); }
+  .ne /* NameException */ { color: var(--code-alert-color); }
+  .nf /* NameFunction */ { color: var(--code-function-color); }
+  .fm /* NameFunctionMagic */ { color: var(--code-function-color); }
+  .nl /* NameLabel */ { color: var(--code-variable-color); }
+  .nn /* NameNamespace */ { color: var(--code-other-color); }
+  .nx /* NameOther */ { color: var(--code-other-color); }
+  .py /* NameProperty */ { color: var(--code-other-color); }
+  .nt /* NameTag */ { color: var(--code-other-color); }
+  .nv /* NameVariable */ { color: var(--code-variable-color); }
+  .vc /* NameVariableClass */ { color: var(--code-variable-color); }
+  .vg /* NameVariableGlobal */ { color: var(--code-variable-color); }
+  .vi /* NameVariableInstance */ { color: var(--code-variable-color); }
+  .vm /* NameVariableMagic */ { color: var(--code-variable-color); }
+  .l /* Literal */ { color: var(--code-string-color); }
+  .ld /* LiteralDate */ { color: var(--code-string-color); }
+  .s /* LiteralString */ { color: var(--code-string-color); }
+  .sa /* LiteralStringAffix */ { color: var(--code-string-color); }
+  .sb /* LiteralStringBacktick */ { color: var(--code-string-color); }
+  .sc /* LiteralStringChar */ { color: var(--code-char-color); }
+  .dl /* LiteralStringDelimiter */ { color: var(--code-string-color); }
+  .sd /* LiteralStringDoc */ { color: var(--code-documentation-color); }
+  .s2 /* LiteralStringDouble */ { color: var(--code-string-color); }
+  .se /* LiteralStringEscape */ { color: var(--code-specialchar-color); }
+  .sh /* LiteralStringHeredoc */ { color: var(--code-string-color); }
+  .si /* LiteralStringInterpol */ { color: var(--code-string-color); }
+  .sx /* LiteralStringOther */ { color: var(--code-specialstring-color); }
+  .sr /* LiteralStringRegex */ { color: var(--code-specialstring-color); }
+  .s1 /* LiteralStringSingle */ { color: var(--code-string-color); }
+  .ss /* LiteralStringSymbol */ { color: var(--code-specialstring-color); }
+  .m /* LiteralNumber */ { color: var(--code-decval-color); }
+  .mb /* LiteralNumberBin */ { color: var(--code-basen-color); }
+  .mf /* LiteralNumberFloat */ { color: var(--code-float-color); }
+  .mh /* LiteralNumberHex */ { color: var(--code-basen-color); }
+  .mi /* LiteralNumberInteger */ { color: var(--code-decval-color); }
+  .il /* LiteralNumberIntegerLong */ { color: var(--code-decval-color); }
+  .mo /* LiteralNumberOct */ { color: var(--code-basen-color); }
+  .o /* Operator */ { color: var(--code-operator-color); }
+  .ow /* OperatorWord */ { color: var(--code-operator-color); }
+  .p /* Punctuation */ {  }
+  .c /* Comment */ { color: var(--code-comment-color); }
+  .ch /* CommentHashbang */ { color: var(--code-comment-color); }
+  .cm /* CommentMultiline */ { color: var(--code-comment-color); }
+  .c1 /* CommentSingle */ { color: var(--code-comment-color); }
+  .cs /* CommentSpecial */ { color: var(--code-comment-color); }
+  .cp /* CommentPreproc */ { color: var(--code-preprocessor-color); }
+  .cpf /* CommentPreprocFile */ { color: var(--code-preprocessor-color); }
+  .g /* Generic */ {  }
+  .gd /* GenericDeleted */ {  }
+  .ge /* GenericEmph */ {  }
+  .gr /* GenericError */ { color: var(--code-error-color); }
+  .gh /* GenericHeading */ {  }
+  .gi /* GenericInserted */ {  }
+  .go /* GenericOutput */ {  }
+  .gp /* GenericPrompt */ {  }
+  .gs /* GenericStrong */ {  }
+  .gu /* GenericSubheading */ {  }
+  .gt /* GenericTraceback */ {  }
+  .gl /* GenericUnderline */ { text-decoration:underline }
+  .w /* TextWhitespace */ {  }
+}
+
+// Pandoc's highlighting codes
 pre, code, kbd {
   .kw { color: var(--code-keyword-color); }
   .dt { color: var(--code-datatype-color); }

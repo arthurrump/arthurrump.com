@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.Title }}</title>
+  <link href="{{ with .OutputFormats.Get "atom" }}{{ .Permalink }}{{ end }}"/>
+  <link rel="alternate" type="text/html" href="{{ .Permalink | absURL }}"/>
+  <id>{{ .Permalink | absURL }}</id>
+  <updated>{{ now.Format "2006-01-02T15:04:05Z07:00" }}</updated>
+  {{- $author := site.Params.author }}
+  <author>
+    <name>{{ $author }}</name>
+  </author>
+  {{- range first 50 .Pages }}
+  <entry>
+    <title>{{ .Title | plainify | htmlEscape }}</title>
+    <link href="{{ .Permalink | absURL }}"/>
+    <id>{{ .Permalink | absURL }}</id>
+    <published>{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}</published>
+    {{- with .Lastmod }}
+    <updated>{{ .Format "2006-01-02T15:04:05Z07:00" }}</updated>
+    {{- end }}
+    <summary>{{ .Summary | plainify | htmlEscape }}</summary>
+  </entry>
+  {{- end }}
+</feed>

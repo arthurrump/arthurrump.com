@@ -1,0 +1,87 @@
+{{- define "head" }}
+    <title>{{ site.Title }} / {{ .Title | plainify }}</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    {{- range .AlternativeOutputFormats }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | absURL }}" title="{{ site.Title }}">
+    {{- end }}
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta property="og:site_name" content="{{ site.Title }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    {{- partial "hreflang.html" . }}
+    <meta name="title" content="{{ .Title | plainify }}" />
+    <meta property="og:title" content="{{ .Title | plainify }}" />
+    {{- with .Params.description }}
+    <meta name="description" content="{{ . }}" />
+    <meta property="og:description" content="{{ . }}" />
+    {{- end }}
+    {{- range .Params.authors }}
+    <meta name="author" content="{{ . }}" />
+    {{- end }}
+    {{- with .Params.tags }}
+    <meta name="keywords" content="{{ delimit . "," }}" />
+    {{- range . }}
+    <meta name="tags" content="{{ . }}" />
+    <meta name="article:tag" content="{{ . }}" />
+    {{- end }}
+    {{- end }}
+    {{- with .Params.social_image }}
+    <meta property="og:image" content="{{ . | absURL }}" />
+    {{- end }}
+{{- end -}}
+
+{{- define "content" }}
+<article>
+  <header>
+    {{- with .Params.categories }}
+    <small class="label">{{ index . 0 }}</small>
+    {{- end }}
+    <h1><a class="contrast" href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a></h1>
+    {{- with .Params.subtitle }}
+    <p class="subtitle">{{ . }}</p>
+    {{- end }}
+    <ul class="inline inline-slash">
+      <li><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format ":date_medium" }}</time></li>
+      {{- $siteAuthor := site.Params.author }}
+      {{- $authors := .Params.authors | default (slice $siteAuthor) }}
+      {{- if or (gt (len $authors) 1) (ne (index $authors 0) $siteAuthor) }}
+      <li>By
+        {{- range $i, $a := $authors }}
+        {{- if gt $i 0 }}{{ if eq $i (sub (len $authors) 1) }} and {{ else }}, {{ end }}{{ end }}
+        {{ $a -}}
+        {{- end }}
+      </li>
+      {{- end }}
+    </ul>
+    {{- partial "translations.html" . }}
+  </header>
+  {{ .Content }}
+  <footer>
+    <ul class="inline inline-slash">
+      {{- with .Params.modified }}
+      <li>Last updated: <time datetime="{{ . | time.Format "2006-01-02T15:04:05Z07:00" }}">{{ . | time.Format ":date_medium" }}</time></li>
+      {{- end }}
+      {{- range .Params.categories }}
+      {{- $catName := . }}
+      {{- $catSlug := . | lower }}
+      {{- with index site.Taxonomies.categories $catSlug }}
+      <li>Find all <a href="{{ .Page.Permalink }}">{{ $catName }}</a></li>
+      {{- end }}
+      {{- end }}
+      {{- with .Params.tags }}
+      {{- $tags := . }}
+      <li>Learn more about
+        {{- range $i, $t := $tags }}
+        {{- if gt $i 0 }}{{ if eq $i (sub (len $tags) 1) }} or {{ else }}, {{ end }}{{ end }}
+        {{- with index site.Taxonomies.tags ($t | lower) }}
+        <a href="{{ .Page.Permalink }}">{{ $t }}</a>
+        {{- end }}
+        {{- end }}
+      </li>
+      {{- end }}
+    </ul>
+  </footer>
+</article>
+{{- end }}

@@ -1,0 +1,38 @@
+{{- define "title" }}{{ site.Title }} / Note{{ end -}}
+
+{{- define "content" }}
+<article class="h-entry note">
+  <header>
+    <small class="label">Note</small>
+    <ul class="inline inline-slash">
+      <li><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format ":date_medium" }}</time></li>
+    </ul>
+  </header>
+  <div class="e-content p-name">
+    {{ .Content }}
+  </div>
+  <footer>
+    <ul class="inline inline-slash">
+      {{- with .Params.tags }}
+      {{- $tags := . }}
+      <li>Learn more about
+        {{- range $i, $t := $tags }}
+        {{- if gt $i 0 }}{{ if eq $i (sub (len $tags) 1) }} or {{ else }}, {{ end }}{{ end }}
+        {{- with index site.Taxonomies.tags ($t | lower) }}
+        <a href="{{ .Page.Permalink }}">{{ $t }}</a>
+        {{- end }}
+        {{- end }}
+      </li>
+      {{- end }}
+      {{- with .Params.syndication }}
+      <li>Also on:
+        {{- range $i, $s := . }}
+        {{- if gt $i 0 }}, {{ end }}
+        <a href="{{ $s }}" rel="syndication">{{ $s }}</a>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ul>
+  </footer>
+</article>
+{{- end }}

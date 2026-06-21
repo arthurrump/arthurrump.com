@@ -1,28 +1,8 @@
-- [x] Add styling
-  - [x] Syntax highlighting
-    - [x] Line number support
-  - [x] Meta-tags handling (see old version and 2025 card)
-  - [ ] Feed links in category, tag pages; page with all feeds?
-  - [x] Do something with social links (or just put that in the about page?)
-  - [x] Possibly a nice reading font for articles (although Commit Mono is quite nice)
-- [x] Move over (some) old content
-  - [x] Fix all links, x-links, images
-  - [x] Reconsider tags
-  - [x] Add old urls to all pages
-  - [x] Old static content
-- [x] Write new about me's
-- [x] Build script
-- [x] Build and publish (to Netlify or Cloudflare Pages)
-- [x] Fix image captions
-- [ ] Additional descriptions, e.g. for tags and authors (links) https://github.com/getpelican/pelican-plugins/tree/master/autopages
-- [x] Plugin for aliasing of old URLs to the new
-- [ ] Pandoc plugin with configurable filters/arguments per post
-- [ ] Reader for HTML content, handling:
-  - just content, like Markdown, but in HTML
-  - without any framing, for
-    - Reveal.js slides
-    - cards with p5.js
-    but maybe still handling the head, or are these full custom content with a custom template?
-- [ ] Item templates
-- [ ] Importers
-- [ ] Search, e.g. with https://www.fusejs.io/ or https://github.com/pelican-plugins/search
+- [ ] Fix syntax highlighting, prefer original styling
+- [ ] Sveltia only shows Pages correctly
+- [ ] Separate collections for articles, projects, papers
+- [ ] Properly setup notes
+- [ ] Check Sveltia config, add it through nix instead of CDN
+- [ ] Clean up Pelican remnants (eg .static, the theme)
+- [ ] Syndication (ran from GitHub Actions?)
+- [ ] Search, e.g. with https://www.fusejs.io/
