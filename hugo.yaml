@@ -22,7 +22,6 @@ permalinks:
   articles: /:slug/
   projects: /:slug/
   papers: /:slug/
-  notes: /notes/:year/:month/:day/:slug/
   tags: /tags/:slug/
 pagination:
   pagerSize: 10

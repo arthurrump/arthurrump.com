@@ -89,7 +89,9 @@ collections:
     media_folder: ""
     public_folder: ""
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}"
+    # No title/identifier field: Sveltia derives {{slug}} from a random UUID
+    # fragment, so note URLs are opaque IDs like /notes/936e17d5/.
+    identifier_field: body
     summary: "{{date}} — {{body | trim | truncate 60 }}"
     fields:
       - { name: date, label: Date, widget: datetime }
