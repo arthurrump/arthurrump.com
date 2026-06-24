@@ -1,150 +1,102 @@
 .chroma {
   .x /* Other */ {  }
-  .err /* Error */ {  }
+  .err /* Error */ { color: var(--code-error-color); }
   .cl /* CodeLine */ {  }
   .lnlinks /* LineLink */ { outline:none;text-decoration:none;color:inherit }
   .lntd /* LineTableTD */ { vertical-align:top;padding:0;margin:0;border:0; }
   .lntable /* LineTable */ { border-spacing:0;padding:0;margin:0;border:0; }
-  .hl /* LineHighlight */ { background-color:#e5e5e5 }
-  .lnt /* LineNumbersTable */ { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em; }
-  .ln /* LineNumbers */ { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em; }
+  .hl /* LineHighlight */ { background-color: var(--code-line-highlight-bg); }
+  .lnt /* LineNumbersTable */ { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color: var(--code-line-number-color); }
+  .ln /* LineNumbers */ { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color: var(--code-line-number-color); }
   .line /* Line */ { display:flex; }
-  .k /* Keyword */ {  }
-  .kc /* KeywordConstant */ {  }
-  .kd /* KeywordDeclaration */ {  }
-  .kn /* KeywordNamespace */ {  }
-  .kp /* KeywordPseudo */ {  }
-  .kr /* KeywordReserved */ {  }
-  .kt /* KeywordType */ {  }
+
+  // Keywords (azure)
+  .k /* Keyword */ { color: var(--code-keyword-color); }
+  .kc /* KeywordConstant */ { color: var(--code-constant-color); }
+  .kd /* KeywordDeclaration */ { color: var(--code-keyword-color); }
+  .kn /* KeywordNamespace */ { color: var(--code-controlflow-color); }
+  .kp /* KeywordPseudo */ { color: var(--code-keyword-color); }
+  .kr /* KeywordReserved */ { color: var(--code-keyword-color); }
+  .kt /* KeywordType */ { color: var(--code-datatype-color); }
+
+  // Names
   .n /* Name */ {  }
-  .na /* NameAttribute */ {  }
-  .nb /* NameBuiltin */ {  }
-  .bp /* NameBuiltinPseudo */ {  }
-  .nc /* NameClass */ {  }
-  .no /* NameConstant */ {  }
-  .nd /* NameDecorator */ {  }
-  .ni /* NameEntity */ {  }
-  .ne /* NameException */ {  }
-  .nf /* NameFunction */ {  }
-  .fm /* NameFunctionMagic */ {  }
-  .nl /* NameLabel */ {  }
-  .nn /* NameNamespace */ {  }
-  .nx /* NameOther */ {  }
-  .py /* NameProperty */ {  }
-  .nt /* NameTag */ {  }
-  .nv /* NameVariable */ {  }
-  .vc /* NameVariableClass */ {  }
-  .vg /* NameVariableGlobal */ {  }
-  .vi /* NameVariableInstance */ {  }
-  .vm /* NameVariableMagic */ {  }
-  .l /* Literal */ {  }
-  .ld /* LiteralDate */ {  }
-  .s /* LiteralString */ {  }
-  .sa /* LiteralStringAffix */ {  }
-  .sb /* LiteralStringBacktick */ {  }
-  .sc /* LiteralStringChar */ {  }
-  .dl /* LiteralStringDelimiter */ {  }
-  .sd /* LiteralStringDoc */ {  }
-  .s2 /* LiteralStringDouble */ {  }
-  .se /* LiteralStringEscape */ {  }
-  .sh /* LiteralStringHeredoc */ {  }
-  .si /* LiteralStringInterpol */ {  }
-  .sx /* LiteralStringOther */ {  }
-  .sr /* LiteralStringRegex */ {  }
-  .s1 /* LiteralStringSingle */ {  }
-  .ss /* LiteralStringSymbol */ {  }
-  .m /* LiteralNumber */ {  }
-  .mb /* LiteralNumberBin */ {  }
-  .mf /* LiteralNumberFloat */ {  }
-  .mh /* LiteralNumberHex */ {  }
-  .mi /* LiteralNumberInteger */ {  }
-  .il /* LiteralNumberIntegerLong */ {  }
-  .mo /* LiteralNumberOct */ {  }
-  .o /* Operator */ {  }
-  .ow /* OperatorWord */ {  }
+  .na /* NameAttribute */ { color: var(--code-attribute-color); }
+  .nb /* NameBuiltin */ { color: var(--code-builtin-color); }
+  .bp /* NameBuiltinPseudo */ { color: var(--code-builtin-color); }
+  .nc /* NameClass */ { color: var(--code-datatype-color); }
+  .no /* NameConstant */ { color: var(--code-constant-color); }
+  .nd /* NameDecorator */ { color: var(--code-preprocessor-color); }
+  .ni /* NameEntity */ { color: var(--code-variable-color); }
+  .ne /* NameException */ { color: var(--code-datatype-color); }
+  .nf /* NameFunction */ { color: var(--code-function-color); }
+  .fm /* NameFunctionMagic */ { color: var(--code-function-color); }
+  .nl /* NameLabel */ { color: var(--code-variable-color); }
+  .nn /* NameNamespace */ { color: var(--code-variable-color); }
+  .nx /* NameOther */ { color: var(--code-other-color); }
+  .py /* NameProperty */ { color: var(--code-variable-color); }
+  .nt /* NameTag */ { color: var(--code-keyword-color); }
+  .nv /* NameVariable */ { color: var(--code-variable-color); }
+  .vc /* NameVariableClass */ { color: var(--code-variable-color); }
+  .vg /* NameVariableGlobal */ { color: var(--code-variable-color); }
+  .vi /* NameVariableInstance */ { color: var(--code-variable-color); }
+  .vm /* NameVariableMagic */ { color: var(--code-variable-color); }
+
+  // Literals — numbers (yellow-dark)
+  .l /* Literal */ { color: var(--code-decval-color); }
+  .ld /* LiteralDate */ { color: var(--code-decval-color); }
+
+  // Literals — strings (orange)
+  .s /* LiteralString */ { color: var(--code-string-color); }
+  .sa /* LiteralStringAffix */ { color: var(--code-string-color); }
+  .sb /* LiteralStringBacktick */ { color: var(--code-string-color); }
+  .sc /* LiteralStringChar */ { color: var(--code-char-color); }
+  .dl /* LiteralStringDelimiter */ { color: var(--code-specialchar-color); }
+  .sd /* LiteralStringDoc */ { color: var(--code-documentation-color); }
+  .s2 /* LiteralStringDouble */ { color: var(--code-string-color); }
+  .se /* LiteralStringEscape */ { color: var(--code-specialchar-color); }
+  .sh /* LiteralStringHeredoc */ { color: var(--code-string-color); }
+  .si /* LiteralStringInterpol */ { color: var(--code-specialchar-color); }
+  .sx /* LiteralStringOther */ { color: var(--code-string-color); }
+  .sr /* LiteralStringRegex */ { color: var(--code-specialstring-color); }
+  .s1 /* LiteralStringSingle */ { color: var(--code-string-color); }
+  .ss /* LiteralStringSymbol */ { color: var(--code-specialstring-color); }
+
+  // Literals — numbers (yellow-dark)
+  .m /* LiteralNumber */ { color: var(--code-decval-color); }
+  .mb /* LiteralNumberBin */ { color: var(--code-basen-color); }
+  .mf /* LiteralNumberFloat */ { color: var(--code-float-color); }
+  .mh /* LiteralNumberHex */ { color: var(--code-basen-color); }
+  .mi /* LiteralNumberInteger */ { color: var(--code-decval-color); }
+  .il /* LiteralNumberIntegerLong */ { color: var(--code-decval-color); }
+  .mo /* LiteralNumberOct */ { color: var(--code-basen-color); }
+
+  // Operators & punctuation (inherit)
+  .o /* Operator */ { color: var(--code-operator-color); }
+  .ow /* OperatorWord */ { color: var(--code-controlflow-color); }
   .p /* Punctuation */ {  }
-  .c /* Comment */ {  }
-  .ch /* CommentHashbang */ {  }
-  .cm /* CommentMultiline */ {  }
-  .c1 /* CommentSingle */ {  }
-  .cs /* CommentSpecial */ {  }
-  .cp /* CommentPreproc */ {  }
-  .cpf /* CommentPreprocFile */ {  }
+
+  // Comments (jade)
+  .c /* Comment */ { color: var(--code-comment-color); }
+  .ch /* CommentHashbang */ { color: var(--code-comment-color); }
+  .cm /* CommentMultiline */ { color: var(--code-comment-color); }
+  .c1 /* CommentSingle */ { color: var(--code-comment-color); }
+  .cs /* CommentSpecial */ { color: var(--code-annotation-color); }
+  .cp /* CommentPreproc */ { color: var(--code-preprocessor-color); }
+  .cpf /* CommentPreprocFile */ { color: var(--code-import-color); }
+
+  // Generic
   .g /* Generic */ {  }
-  .gd /* GenericDeleted */ {  }
-  .ge /* GenericEmph */ {  }
-  .gr /* GenericError */ {  }
-  .gh /* GenericHeading */ {  }
-  .gi /* GenericInserted */ {  }
+  .gd /* GenericDeleted */ { color: var(--code-generic-deleted-color); }
+  .ge /* GenericEmph */ { font-style: italic; }
+  .gr /* GenericError */ { color: var(--code-error-color); }
+  .gh /* GenericHeading */ { font-weight: bold; }
+  .gi /* GenericInserted */ { color: var(--code-generic-inserted-color); }
   .go /* GenericOutput */ {  }
-  .gp /* GenericPrompt */ {  }
-  .gs /* GenericStrong */ {  }
-  .gu /* GenericSubheading */ {  }
-  .gt /* GenericTraceback */ {  }
+  .gp /* GenericPrompt */ { color: var(--code-comment-color); font-weight: bold; }
+  .gs /* GenericStrong */ { font-weight: bold; }
+  .gu /* GenericSubheading */ { font-weight: bold; color: var(--code-comment-color); }
+  .gt /* GenericTraceback */ { color: var(--code-error-color); }
   .gl /* GenericUnderline */ { text-decoration:underline }
   .w /* TextWhitespace */ {  }
-}
-
-// Pandoc's highlighting codes
-pre, code, kbd {
-  .kw { color: var(--code-keyword-color); }
-  .dt { color: var(--code-datatype-color); }
-  .dv { color: var(--code-decval-color); }
-  .bn { color: var(--code-basen-color); }
-  .fl { color: var(--code-float-color); }
-  .ch { color: var(--code-char-color); }
-  .st { color: var(--code-string-color); }
-  .co { color: var(--code-comment-color); }
-  .ot { color: var(--code-other-color); }
-  .al { color: var(--code-alert-color); }
-  .fu { color: var(--code-function-color); }
-  .re { color: var(--code-regionmarker-color); }
-  .er { color: var(--code-error-color); }
-  .cn { color: var(--code-constant-color); }
-  .sc { color: var(--code-specialchar-color); }
-  .vs { color: var(--code-verbatimstring-color); }
-  .ss { color: var(--code-specialstring-color); }
-  .im { color: var(--code-import-color); }
-  .do { color: var(--code-documentation-color); }
-  .an { color: var(--code-annotation-color); }
-  .cv { color: var(--code-commentvar-color); }
-  .va { color: var(--code-variable-color); }
-  .cf { color: var(--code-controlflow-color); }
-  .op { color: var(--code-operator-color); }
-  .bu { color: var(--code-builtin-color); }
-  .ex { color: var(--code-extension-color); }
-  .pp { color: var(--code-preprocessor-color); }
-  .at { color: var(--code-attribute-color); }
-  .in { color: var(--code-information-color); }
-  .wa { color: var(--code-warning-color); }
-}
-
-// Line numbers
-pre.numberSource code {
-  counter-reset: source-line 0;
-}
-
-pre.numberSource code>span {
-  counter-increment: source-line;
-}
-
-pre.numberSource code>span>a:first-child {
-  --pico-text-decoration: none;
-  text-align: right;
-  display: inline-block;
-  width: 3em;
-}
-
-pre.numberSource code>span>a:first-child::before {
-  content: counter(source-line);
-  vertical-align: baseline;
-  padding-right: 1.5em;
-  
-
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
 }

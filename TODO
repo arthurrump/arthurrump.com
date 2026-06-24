@@ -1,4 +1,4 @@
-- [ ] Fix syntax highlighting, prefer original styling
+- [x] Fix syntax highlighting, prefer original styling
 - [ ] Sveltia only shows Pages correctly
 - [ ] Separate collections for articles, projects, papers
 - [ ] Properly setup notes

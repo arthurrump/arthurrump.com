@@ -40,5 +40,9 @@
     --code-attribute-color: var(--pico-code-color);
     --code-operator-color: var(--pico-code-color);
 
+
+    --code-generic-deleted-color: #{$red-400};
+    --code-generic-inserted-color: #{$jade-350};
+    --code-line-highlight-bg: #{$zinc-850};
     --code-line-number-color: #{$zinc-600};
 }
