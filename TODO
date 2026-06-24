@@ -1,8 +1,8 @@
 - [x] Fix syntax highlighting, prefer original styling
-- [ ] Sveltia only shows Pages correctly
-- [ ] Separate collections for articles, projects, papers
+- [x] Sveltia only shows Pages correctly
+- [x] Separate collections for articles, projects, papers
 - [ ] Properly setup notes
 - [ ] Check Sveltia config, add it through nix instead of CDN
 - [ ] Clean up Pelican remnants (eg .static, the theme)
-- [ ] Syndication to Mastodon, Bluesky, LinkedIn (ran from GitHub Actions?)
-- [ ] Search, e.g. with https://www.fusejs.io/
+- [ ] Syndication to Mastodon, Bluesky, LinkedIn (ran from GitHub Actions?) _[deferred — needs API credentials/design]_
+- [ ] Search, e.g. with https://www.fusejs.io/ _[deferred — separate feature work]_
