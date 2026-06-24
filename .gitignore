@@ -5,3 +5,4 @@ resources/_gen/
 .hugo_build.lock
 static/theme/css
 result
+static/admin/sveltia-cms.js

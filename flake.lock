@@ -70,7 +70,21 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
-        "picocss": "picocss"
+        "picocss": "picocss",
+        "sveltia-cms": "sveltia-cms"
+      }
+    },
+    "sveltia-cms": {
+      "flake": false,
+      "locked": {
+        "lastModified": 499162500,
+        "narHash": "sha256-09lmWrDJ5UNumwQAT5h1LrDppbIHYcqFhB4sq2WIhdg=",
+        "type": "tarball",
+        "url": "https://registry.npmjs.org/@sveltia/cms/-/cms-0.167.3.tgz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://registry.npmjs.org/@sveltia/cms/-/cms-0.167.3.tgz"
       }
     }
   },

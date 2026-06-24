@@ -7,6 +7,12 @@
       url = "github:picocss/pico/v2.1.1";
       flake = false;
     };
+
+    # Sveltia CMS prebuilt bundle, fetched from npm instead of loaded from a CDN.
+    sveltia-cms = {
+      url = "https://registry.npmjs.org/@sveltia/cms/-/cms-0.167.3.tgz";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, flake-parts, ... }:
@@ -22,11 +28,16 @@
         sassCmd = "sass theme/style/style.scss static/theme/css/style.css --no-source-map";
 
         SASS_PATH = "${inputs.picocss}/scss/";
+
+        # Copy the nix-provided Sveltia CMS bundle into static/admin/ so Hugo
+        # serves it locally instead of loading it from a CDN at runtime.
+        sveltiaCmd = "cp ${inputs.sveltia-cms}/dist/sveltia-cms.js static/admin/sveltia-cms.js";
       in {
         devShells.default = pkgs.mkShell {
           packages = tools ++ [
             (pkgs.writeShellScriptBin "develop" ''
               ${sassCmd} --watch &
+              ${sveltiaCmd}
               hugo server --buildDrafts --navigateToChanged
             '')
           ];
@@ -41,6 +52,7 @@
           phases = [ "unpackPhase" "buildPhase" "installPhase" ];
           buildPhase = ''
             ${sassCmd}
+            ${sveltiaCmd}
             hugo --minify
           '';
           installPhase = ''
