@@ -1,59 +1,44 @@
 @use "colors" as *;
 
 @mixin theme {
-    // Comments & documentation — muted green
     --code-comment-color: #{$jade-350};
-    --code-documentation-color: #{$jade-300};
+    --code-documentation-color: #{$jade-350};
     --code-regionmarker-color: #{$jade-350};
 
-    // Annotations & alerts — light blue
-    --code-alert-color: #{$azure-300};
-    --code-annotation-color: #{$azure-300};
-    --code-information-color: #{$azure-300};
-    --code-warning-color: #{$azure-300};
+    --code-alert-color: #{$azure-350};
+    --code-annotation-color: #{$azure-350};
+    --code-information-color: #{$azure-350};
+    --code-warning-color: #{$azure-350};
     --code-commentvar-color: #{$azure-250};
-
-    // Keywords & control flow — pink (VSCode Dark 2026)
-    --code-keyword-color: #{$pink-400};
-    --code-controlflow-color: #{$pink-400};
-
-    // Types & constants — light blue
-    --code-datatype-color: #{$azure-250};
-    --code-constant-color: #{$azure-300};
-
-    // Variables — light blue (VSCode Dark style)
-    --code-variable-color: #{$azure-250};
-
-    // Functions & builtins — yellow (VSCode Dark 2026)
-    --code-function-color: #{$yellow-200};
-    --code-builtin-color: #{$yellow-200};
-    --code-class-color: #{$yellow-200};
-
-    // Numbers — warm light brown (distinct from strings)
-    --code-decval-color: #{$pumpkin-250};
-    --code-basen-color: #{$pumpkin-250};
-    --code-float-color: #{$pumpkin-250};
-
-    // Strings & chars — green (VSCode 2026)
-    --code-string-color: #{$jade-250};
-    --code-char-color: #{$jade-250};
-    --code-verbatimstring-color: #{$jade-250};
-    --code-import-color: #{$jade-250};
-    --code-specialchar-color: #{$jade-300};
-    --code-specialstring-color: #{$jade-300};
-
-    // Decorators & preprocessor — light purple
+    
+    --code-keyword-color: #{$azure-350};
+    --code-datatype-color: #{$azure-350};
+    --code-variable-color: #{$azure-350};
+    --code-constant-color: #{$azure-350};
+    
+    --code-controlflow-color: #{$violet-350};
     --code-preprocessor-color: #{$violet-350};
     --code-extension-color: #{$violet-350};
     --code-other-color: #{$violet-350};
+    
+    --code-builtin-color: #{$yellow-250};
+    --code-function-color: #{$yellow-250};
+    
+    --code-decval-color: #{$yellow-200};
+    --code-basen-color: #{$yellow-200};
+    --code-float-color: #{$yellow-200};
+    
+    --code-char-color: #{$orange-300};
+    --code-string-color: #{$orange-300};
+    --code-verbatimstring-color: #{$orange-300};
+    --code-import-color: #{$orange-300};
+    --code-specialchar-color: #{$orange-350};
+    --code-specialstring-color: #{$orange-350};
 
-    // Error — red
     --code-error-color: #{$red-400};
 
-    // Operators & attributes — neutral
     --code-attribute-color: var(--pico-code-color);
-    --code-operator-color: #{$zinc-300};
+    --code-operator-color: var(--pico-code-color);
 
-    // Line numbers — muted grey
     --code-line-number-color: #{$zinc-600};
 }
