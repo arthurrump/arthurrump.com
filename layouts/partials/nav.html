@@ -1,15 +1,13 @@
 {{- /*
-  Render the main <nav> with category and page links.
-  Mirrors Pelican's MENU_CATEGORIES + MENU_PAGES logic.
+  Render the main <nav> with section and page links.
 */ -}}
 <nav><ul>
-  {{- range site.Params.menuCategories }}
+  {{- range site.Params.menuSections }}
   {{- $slug := . }}
-  {{- with index site.Taxonomies.categories $slug }}
-  {{- $catPage := .Page }}
-  <li><a href="{{ $catPage.Permalink }}"
-    {{- if eq $catPage.Title ($.Page.Title | default "") }} aria-current="page"{{ end -}}
-  >{{ $catPage.Title }}</a></li>
+  {{- with site.GetPage (printf "/%s" $slug) }}
+  <li><a href="{{ .Permalink }}"
+    {{- if eq .RelPermalink ($.Page.RelPermalink | default "") }} aria-current="page"{{ end -}}
+  >{{ .Title }}</a></li>
   {{- end }}
   {{- end }}
   {{- range site.Params.menuPages }}

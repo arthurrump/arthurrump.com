@@ -16,17 +16,14 @@ languages:
 
 # Taxonomies
 taxonomies:
-  category: categories
   tag: tags
-
 # URL patterns
 permalinks:
-  feed: /:slug/
+  articles: /:slug/
+  projects: /:slug/
+  papers: /:slug/
   notes: /notes/:year/:month/:day/:slug/
-  categories: /:slug/
   tags: /tags/:slug/
-
-# Pagination
 pagination:
   pagerSize: 10
 
@@ -88,8 +85,8 @@ outputs:
 params:
   author: Arthur Rump
   feedDomain: https://arthurrump.com
-  menuCategories:
+  menuSections:
     - projects
-    - publications
+    - papers
   menuPages:
     - about

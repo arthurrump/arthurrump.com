@@ -1,0 +1,5 @@
+---
+title: Papers
+aliases:
+- /publications/
+---

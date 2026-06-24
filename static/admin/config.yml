@@ -5,8 +5,8 @@ backend:
 
 local_backend: true
 
-media_folder: content/feed
-public_folder: ""
+media_folder: static/images
+public_folder: /images
 
 i18n:
   structure: multiple_files
@@ -15,10 +15,10 @@ i18n:
   omit_default_locale_from_file_path: true
 
 collections:
-  - name: feed
-    label: Feed
-    label_singular: Entry
-    folder: content/feed
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: content/articles
     path: "{{slug}}/index"
     media_folder: ""
     public_folder: ""
@@ -29,7 +29,50 @@ collections:
       - { name: title, label: Title, widget: string, i18n: true }
       - { name: subtitle, label: Subtitle, widget: string, required: false, i18n: true }
       - { name: date, label: Date, widget: datetime, i18n: duplicate }
-      - { name: categories, label: Category, widget: select, options: [Posts, Projects, Publications], i18n: duplicate }
+      - { name: authors, label: Authors, widget: list, required: false, i18n: duplicate, hint: "Leave empty to default to site author" }
+      - { name: tags, label: Tags, widget: list, required: false, i18n: duplicate }
+      - { name: aliases, label: Aliases, widget: list, required: false, i18n: false, hint: "Old URLs that should redirect to this page" }
+      - { name: modified, label: Last modified, widget: datetime, required: false, i18n: false }
+      - { name: description, label: Description, widget: text, required: false, i18n: true, hint: "Used for meta description and OG tags" }
+      - { name: social_image, label: Social image, widget: image, required: false, i18n: false }
+      - { name: body, label: Body, widget: markdown, i18n: true }
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    fields:
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: subtitle, label: Subtitle, widget: string, required: false, i18n: true }
+      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: authors, label: Authors, widget: list, required: false, i18n: duplicate, hint: "Leave empty to default to site author" }
+      - { name: tags, label: Tags, widget: list, required: false, i18n: duplicate }
+      - { name: aliases, label: Aliases, widget: list, required: false, i18n: false, hint: "Old URLs that should redirect to this page" }
+      - { name: modified, label: Last modified, widget: datetime, required: false, i18n: false }
+      - { name: description, label: Description, widget: text, required: false, i18n: true, hint: "Used for meta description and OG tags" }
+      - { name: social_image, label: Social image, widget: image, required: false, i18n: false }
+      - { name: body, label: Body, widget: markdown, i18n: true }
+
+  - name: papers
+    label: Papers
+    label_singular: Paper
+    folder: content/papers
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    fields:
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: subtitle, label: Subtitle, widget: string, required: false, i18n: true }
+      - { name: date, label: Date, widget: datetime, i18n: duplicate }
       - { name: authors, label: Authors, widget: list, required: false, i18n: duplicate, hint: "Leave empty to default to site author" }
       - { name: tags, label: Tags, widget: list, required: false, i18n: duplicate }
       - { name: aliases, label: Aliases, widget: list, required: false, i18n: false, hint: "Old URLs that should redirect to this page" }

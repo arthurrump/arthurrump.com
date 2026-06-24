@@ -4,5 +4,5 @@
 - [ ] Properly setup notes
 - [ ] Check Sveltia config, add it through nix instead of CDN
 - [ ] Clean up Pelican remnants (eg .static, the theme)
-- [ ] Syndication (ran from GitHub Actions?)
+- [ ] Syndication to Mastodon, Bluesky, LinkedIn (ran from GitHub Actions?)
 - [ ] Search, e.g. with https://www.fusejs.io/

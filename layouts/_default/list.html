@@ -1,14 +1,9 @@
 {{- define "content" }}
+{{- block "content_title" . }}{{ end }}
+
 {{- range .Pages }}
-<article>
-  <header>
-    <h1><a class="contrast" href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a></h1>
-    <ul class="inline inline-slash">
-      <li><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format ":date_medium" }}</time></li>
-    </ul>
-  </header>
-  {{ .Summary }}
-</article>
+{{- partial "article/card.html" . }}
 {{- end }}
+
 {{- partial "pagination.html" . }}
 {{- end }}

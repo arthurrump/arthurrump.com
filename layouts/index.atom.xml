@@ -9,7 +9,8 @@
   <author>
     <name>{{ $author }}</name>
   </author>
-  {{- range first 50 .Pages }}
+  {{- $pages := where site.RegularPages "Section" "in" (slice "articles" "notes") }}
+  {{- range first 50 $pages }}
   <entry>
     <title>{{ .Title | plainify | htmlEscape }}</title>
     <link href="{{ .Permalink | absURL }}"/>

@@ -1,0 +1,11 @@
+{{- define "title" }}{{ site.Title }} / {{ .Title | plainify }}{{ end -}}
+
+{{- define "content" }}
+<article>
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{- partial "translations.html" . }}
+  </header>
+  {{ .Content }}
+</article>
+{{- end }}
