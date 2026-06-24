@@ -19,6 +19,9 @@ collections:
     label: Feed
     label_singular: Entry
     folder: content/feed
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
     create: true
     slug: "{{slug}}"
     i18n: true
@@ -39,6 +42,9 @@ collections:
     label: Notes
     label_singular: Note
     folder: content/notes
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}"
     summary: "{{date}} — {{body | trim | truncate 60 }}"
