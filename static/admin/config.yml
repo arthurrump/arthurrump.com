@@ -28,7 +28,7 @@ collections:
     fields:
       - { name: title, label: Title, widget: string, i18n: true }
       - { name: subtitle, label: Subtitle, widget: string, required: false, i18n: true }
-      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: date, label: Date, widget: datetime, type: date, input_timezone: utc, output_utc: true, i18n: duplicate }
       - { name: authors, label: Authors, widget: list, required: false, i18n: duplicate, hint: "Leave empty to default to site author" }
       - { name: tags, label: Tags, widget: list, required: false, i18n: duplicate }
       - { name: aliases, label: Aliases, widget: list, required: false, i18n: false, hint: "Old URLs that should redirect to this page" }
@@ -50,7 +50,7 @@ collections:
     fields:
       - { name: title, label: Title, widget: string, i18n: true }
       - { name: subtitle, label: Subtitle, widget: string, required: false, i18n: true }
-      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: date, label: Date, widget: datetime, type: date, input_timezone: utc, output_utc: true, i18n: duplicate }
       - { name: authors, label: Authors, widget: list, required: false, i18n: duplicate, hint: "Leave empty to default to site author" }
       - { name: tags, label: Tags, widget: list, required: false, i18n: duplicate }
       - { name: aliases, label: Aliases, widget: list, required: false, i18n: false, hint: "Old URLs that should redirect to this page" }
@@ -72,7 +72,7 @@ collections:
     fields:
       - { name: title, label: Title, widget: string, i18n: true }
       - { name: subtitle, label: Subtitle, widget: string, required: false, i18n: true }
-      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: date, label: Date, widget: datetime, type: date, input_timezone: utc, output_utc: true, i18n: duplicate }
       - { name: authors, label: Authors, widget: list, required: false, i18n: duplicate, hint: "Leave empty to default to site author" }
       - { name: tags, label: Tags, widget: list, required: false, i18n: duplicate }
       - { name: aliases, label: Aliases, widget: list, required: false, i18n: false, hint: "Old URLs that should redirect to this page" }
@@ -89,15 +89,17 @@ collections:
     media_folder: ""
     public_folder: ""
     create: true
-    # Slug is a date stamp (yyyymmddhhmm); the date field is prefilled with
-    # {{now}} and rendered with explicit seconds so Hugo can parse it.
-    slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}"
-    summary: "{{date}} — {{body | trim | truncate 60 }}"
+    slug: "{{uuid_short}}"
+    summary: "{{body | trim | truncate(60, '...') }}"
     fields:
-      - { name: date, label: Date, widget: datetime, default: "{{now}}", format: "YYYY-MM-DDTHH:mm:ss" }
+      - { name: date, label: Date, widget: datetime, input_timezone: local, output_utc: true, default: "{{now}}", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { name: body, label: Note, widget: markdown, editor_components: [], linked_images: false }
+      - { name: images, label: Images, widget: list, field: { name: image, label: Image, widget: image }, required: false }
       - { name: tags, label: Tags, widget: list, required: false }
-      - { name: syndication, label: Syndication URLs, widget: list, required: false, hint: "POSSE copy URLs (Mastodon, Bluesky, LinkedIn)" }
-      - { name: body, label: Note, widget: markdown }
+    view_groups:
+      - field: date
+        label: Date
+        pattern: '\d{4}-\d{2}-\d{2}'
 
   - name: pages
     label: Pages
