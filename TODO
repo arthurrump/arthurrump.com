@@ -1,7 +1,7 @@
 - [x] Fix syntax highlighting, prefer original styling
 - [x] Sveltia only shows Pages correctly
 - [x] Separate collections for articles, projects, papers
-- [ ] Properly setup notes
+- [x] Properly setup notes
 - [ ] Check Sveltia config, add it through nix instead of CDN
 - [ ] Clean up Pelican remnants (eg .static, the theme)
 - [ ] Syndication to Mastodon, Bluesky, LinkedIn (ran from GitHub Actions?) _[deferred — needs API credentials/design]_
