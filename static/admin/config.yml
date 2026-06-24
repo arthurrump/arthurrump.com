@@ -89,12 +89,12 @@ collections:
     media_folder: ""
     public_folder: ""
     create: true
-    # No title/identifier field: Sveltia derives {{slug}} from a random UUID
-    # fragment, so note URLs are opaque IDs like /notes/936e17d5/.
-    identifier_field: body
+    # Slug is a date stamp (yyyymmddhhmm); the date field is prefilled with
+    # {{now}} and rendered with explicit seconds so Hugo can parse it.
+    slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}"
     summary: "{{date}} — {{body | trim | truncate 60 }}"
     fields:
-      - { name: date, label: Date, widget: datetime }
+      - { name: date, label: Date, widget: datetime, default: "{{now}}", format: "YYYY-MM-DDTHH:mm:ss" }
       - { name: tags, label: Tags, widget: list, required: false }
       - { name: syndication, label: Syndication URLs, widget: list, required: false, hint: "POSSE copy URLs (Mastodon, Bluesky, LinkedIn)" }
       - { name: body, label: Note, widget: markdown }
