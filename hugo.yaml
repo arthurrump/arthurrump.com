@@ -1,6 +1,6 @@
 baseURL: https://arthurrump.com
 title: Arthur Rump
-languageCode: en
+locale: en
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 timeZone: Europe/Amsterdam
@@ -8,10 +8,10 @@ timeZone: Europe/Amsterdam
 # Multilingual
 languages:
   en:
-    languageName: English
+    label: English
     weight: 1
   nl:
-    languageName: Nederlands
+    label: Nederlands
     weight: 2
 
 # Taxonomies
@@ -22,7 +22,7 @@ permalinks:
   articles: /:slug/
   projects: /:slug/
   papers: /:slug/
-  notes: /n/:filename/
+  notes: /n/:contentbasename/
   tags: /tags/:slug/
 pagination:
   pagerSize: 10
