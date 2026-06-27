@@ -23,5 +23,8 @@
       {{- end }}
     </ul>
   </header>
-  {{ .Summary }}
+  {{ .Summary }}     
+  {{ if .Truncated }}
+    <a class="readmore" href="{{ .RelPermalink }}">Read more -></a>
+  {{ end }}
 </article>

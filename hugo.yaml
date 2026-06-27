@@ -1,9 +1,12 @@
 baseURL: https://arthurrump.com
 title: Arthur Rump
+
 locale: en
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 timeZone: Europe/Amsterdam
+
+summaryLength: 50
 
 # Multilingual
 languages:

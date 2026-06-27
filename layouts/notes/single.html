@@ -4,16 +4,14 @@
 <article class="h-entry note">
   <header>
     <small class="label">Note</small>
-    <ul class="inline inline-slash">
-      <li><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "2006-01-02 15:04" }}</time></li>
-    </ul>
+    <small><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "2006-01-02 15:04" }}</time></small>
   </header>
   <div class="e-content p-name">
     {{ .Content }}
   </div>
+  {{- with .Params.tags }}
   <footer>
     <ul class="inline inline-slash">
-      {{- with .Params.tags }}
       {{- $tags := . }}
       <li>Learn more about
         {{- range $i, $t := $tags }}
@@ -23,16 +21,8 @@
         {{- end }}
         {{- end }}
       </li>
-      {{- end }}
-      {{- with .Params.syndication }}
-      <li>Also on:
-        {{- range $i, $s := . }}
-        {{- if gt $i 0 }}, {{ end }}
-        <a href="{{ $s }}" rel="syndication">{{ $s }}</a>
-        {{- end }}
-      </li>
-      {{- end }}
     </ul>
   </footer>
+  {{- end }}
 </article>
 {{- end }}
