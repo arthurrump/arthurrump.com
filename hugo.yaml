@@ -48,7 +48,7 @@ markup:
 mediaTypes:
   application/atom+xml:
     suffixes:
-      - xml
+      - atom.xml
   text/redirects:
     suffixes:
       - ""
@@ -61,25 +61,27 @@ outputFormats:
     notAlternative: true
   atom:
     mediaType: application/atom+xml
-    baseName: feed.atom
-    isPlainText: false
+    baseName: feed
+    isPlainText: true
     rel: alternate
+  rss:
+    baseName: feed
 
 outputs:
   home:
-    - HTML
-    - RSS
+    - html
+    - rss
     - atom
     - redirects
   section:
-    - HTML
-    - RSS
+    - html
+    - rss
   taxonomy:
-    - HTML
-    - RSS
+    - html
+    - rss
   term:
-    - HTML
-    - RSS
+    - html
+    - rss
 
 # Feeds
 params:

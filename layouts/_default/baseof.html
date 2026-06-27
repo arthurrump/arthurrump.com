@@ -39,7 +39,7 @@
         <ul>
           <li><a href="{{ "/archives/" | relLangURL }}">{{ i18n "archives" }}</a></li>
           {{- range .AlternativeOutputFormats }}
-          {{- if eq .Name "RSS" }}
+          {{- if eq .Name "rss" }}
           <li><a href="{{ .Permalink }}">{{ i18n "rssFeed" }}</a></li>
           {{- end }}
           {{- end }}
