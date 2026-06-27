@@ -1,6 +1,6 @@
 {{- define "content" }}
-{{- /* Combined stream: articles + notes, sorted by date desc */ -}}
-{{- $pages := where site.RegularPages "Section" "in" (slice "articles" "notes") }}
+{{- /* Combined stream, sorted by date desc */ -}}
+{{- $pages := where site.RegularPages "Section" "in" (slice "articles" "notes" "papers" "projects") }}
 {{- $paginator := .Paginate $pages }}
 {{- range $paginator.Pages }}
 {{- if eq .Section "notes" }}
