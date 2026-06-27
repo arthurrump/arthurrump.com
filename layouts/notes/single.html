@@ -1,4 +1,4 @@
-{{- define "title" }}{{ site.Title }} / Note{{ end -}}
+{{- define "title" }}{{ site.Title }} / Note: {{ .Content | plainify | truncate 16 }} {{ end -}}
 
 {{- define "content" }}
 <article class="h-entry note">
@@ -9,20 +9,5 @@
   <div class="e-content p-name">
     {{ .Content }}
   </div>
-  {{- with .Params.tags }}
-  <footer>
-    <ul class="inline inline-slash">
-      {{- $tags := . }}
-      <li>Learn more about
-        {{- range $i, $t := $tags }}
-        {{- if gt $i 0 }}{{ if eq $i (sub (len $tags) 1) }} or {{ else }}, {{ end }}{{ end }}
-        {{- with index site.Taxonomies.tags ($t | lower) }}
-        <a href="{{ .Page.Permalink }}">{{ $t }}</a>
-        {{- end }}
-        {{- end }}
-      </li>
-    </ul>
-  </footer>
-  {{- end }}
 </article>
 {{- end }}

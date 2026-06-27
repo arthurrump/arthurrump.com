@@ -51,7 +51,7 @@ markup:
 mediaTypes:
   application/atom+xml:
     suffixes:
-      - atom.xml
+      - "atom.xml"
   text/redirects:
     suffixes:
       - ""
@@ -79,12 +79,15 @@ outputs:
   section:
     - html
     - rss
+    - atom
   taxonomy:
     - html
     - rss
+    - atom
   term:
     - html
     - rss
+    - atom
 
 # Feeds
 params:

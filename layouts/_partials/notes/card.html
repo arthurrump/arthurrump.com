@@ -1,0 +1,12 @@
+{{- /* Compact note card for use in the homepage stream */ -}}
+<article class="h-entry note">
+  <header>
+    <a class="contrast" href="{{ .Permalink }}" rel="bookmark">
+      <small class="label">Note</small>
+      <small><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "2006-01-02 15:04" }}</time></small>
+    </a>
+  </header>
+  <main class="e-content">
+    {{ .Content }}
+  </main>
+</article>

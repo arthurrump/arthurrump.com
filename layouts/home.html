@@ -3,11 +3,7 @@
 {{- $pages := where site.RegularPages "Section" "in" (slice "articles" "notes" "papers" "projects") }}
 {{- $paginator := .Paginate $pages }}
 {{- range $paginator.Pages }}
-{{- if eq .Section "notes" }}
-{{- partial "notes/card.html" . }}
-{{- else }}
-{{- partial "article/card.html" . }}
-{{- end }}
+{{- partial "card.html" . }}
 {{- end }}
 
 {{- partial "pagination.html" . }}

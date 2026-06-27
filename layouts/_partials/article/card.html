@@ -2,10 +2,12 @@
 {{- $sectionPage := site.GetPage (printf "/%s" .Section) -}}
 <article>
   <header>
-    {{- with $sectionPage }}
-    <small class="label">{{ .Title }}</small>
-    {{- end }}
-    <h1><a class="contrast" href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a></h1>
+    <a class="contrast" href="{{ .Permalink }}" rel="bookmark">
+      {{- with $sectionPage }}
+      <small class="label">{{ .Title }}</small>
+      {{- end }}
+      <h1>{{ .Title }}</h1>
+    </a>
     {{- with .Params.subtitle }}
     <p class="subtitle">{{ . }}</p>
     {{- end }}

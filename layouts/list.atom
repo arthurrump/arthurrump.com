@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ site.Title }}</title>
+  <title>
+    {{ site.Title }}{{ if not (eq .Kind "home") }} / {{ .Title }}{{ end }}
+  </title>
   <link href="{{ with .OutputFormats.Get "atom" }}{{ .Permalink }}{{ end }}"/>
   <link rel="alternate" type="text/html" href="{{ .Permalink | absURL }}"/>
   <id>{{ .Permalink | absURL }}</id>

@@ -71,6 +71,17 @@ article {
     margin: 0;
     border-bottom: 1px solid;
 
+    &.note .e-content {
+        border: solid;
+        border-width: 1px 6px 6px 1px;
+        margin: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal) 0;
+        padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
+
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+
     &>header+* { // First element after the header
         margin-top: var(--pico-block-spacing-vertical);
     }
