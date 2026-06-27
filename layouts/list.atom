@@ -1,27 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+{{- $pctx := . }}
+{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
+{{- $pages := slice }}
+{{- if or $.IsHome $.IsSection }}
+	{{- $pages = $pctx.RegularPages }}
+{{- else }}
+	{{- $pages = $pctx.Pages }}
+{{- end }}
+{{- $pages = where $pages "Date" "ne" (time.AsTime nil) }}
+{{- $limit := .Site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+	{{- $pages = $pages | first $limit }}
+{{- end }}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>
-    {{ site.Title }}{{ if not (eq .Kind "home") }} / {{ .Title }}{{ end }}
-  </title>
-  <link href="{{ with .OutputFormats.Get "atom" }}{{ .Permalink }}{{ end }}"/>
+  <title>{{ site.Title }}{{ if ne .Kind "home" }} / {{ .Title }}{{ end }}</title>
+  <link rel="self" href="{{ with .OutputFormats.Get "atom" }}{{ .Permalink }}{{ end }}"/>
   <link rel="alternate" type="text/html" href="{{ .Permalink | absURL }}"/>
   <id>{{ .Permalink | absURL }}</id>
-  <updated>{{ now.Format "2006-01-02T15:04:05Z07:00" }}</updated>
-  {{- $author := site.Params.author }}
+  <updated>{{ (index $pages.ByLastmod.Reverse 0).Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
+  {{- with site.Params.author }}
   <author>
-    <name>{{ $author }}</name>
+    <name>{{ . }}</name>
   </author>
-  {{- $pages := where site.RegularPages "Section" "in" (slice "articles" "notes") }}
-  {{- range first 50 $pages }}
+  {{- end }}
+  {{- range $pages }}
   <entry>
     <title>{{ .Title | plainify | htmlEscape }}</title>
-    <link href="{{ .Permalink | absURL }}"/>
-    <id>{{ .Permalink | absURL }}</id>
+    <link rel="alternate" href="{{ .Permalink | absURL }}"/>
+    <id>tag:{{ strings.Replace (strings.ReplaceRE "^https?://" "" site.BaseURL) "/" "" }},{{ .Date.Format "2006-01-02" }}:{{ .Permalink | relURL }}</id>
     <published>{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}</published>
     {{- with .Lastmod }}
     <updated>{{ .Format "2006-01-02T15:04:05Z07:00" }}</updated>
     {{- end }}
-    <summary>{{ .Summary | plainify | htmlEscape }}</summary>
+    {{- range .Params.authors }}
+      <author><name>{{ . }}</name></author>
+    {{- end }}
+    <summary type="html">
+      {{ .Summary | transform.XMLEscape | safeHTML }}
+      {{- if .Truncated }}
+      &lt;p&gt;&lt;a href="{{ .Permalink | absURL }}"&gt;Read more...&lt;/a&gt;&lt;/p&gt;
+      {{- end }}
+    </summary>
+    <content type="html">
+      {{ .Content | transform.XMLEscape | safeHTML }}
+    </content>
   </entry>
   {{- end }}
 </feed>
