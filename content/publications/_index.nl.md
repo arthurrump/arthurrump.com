@@ -1,0 +1,4 @@
+---
+title: Publicaties
+singular: Publicatie
+---

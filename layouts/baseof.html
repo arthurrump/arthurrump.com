@@ -37,7 +37,9 @@
       {{- block "footer" . }}
       <nav>
         <ul>
-          <li><a href="{{ "/archives/" | relLangURL }}">{{ i18n "archives" }}</a></li>
+          {{- with site.GetPage "/archives" }}
+          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          {{- end }}
           {{- range .AlternativeOutputFormats }}
           <li><a href="{{ .Permalink }}">{{ i18n .Name }}</a></li>
           {{- end }}

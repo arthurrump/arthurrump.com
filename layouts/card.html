@@ -4,6 +4,6 @@
   </header>
   {{ .Summary }}     
   {{ if .Truncated }}
-    <a class="readmore" href="{{ .RelPermalink }}">Read more -></a>
+    <a class="readmore" href="{{ .RelPermalink }}">{{ i18n "read_more" }} -></a>
   {{ end }}
 </article>

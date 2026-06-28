@@ -1,0 +1,4 @@
+{{- $sectionPage := site.GetPage (printf "/%s" .Section) -}}
+{{- with $sectionPage }}
+<small class="label">{{ .Params.singular }}</small>
+{{- end }}

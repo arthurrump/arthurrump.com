@@ -1,4 +1,4 @@
 {{ .Summary | transform.XMLEscape | safeHTML }}
 {{- if .Truncated }}
-&lt;p&gt;&lt;a href="{{ .Permalink | absURL }}"&gt;Read more...&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="{{ .Permalink | absURL }}"&gt;{{ i18n "read_more" }}...&lt;/a&gt;&lt;/p&gt;
 {{- end }}

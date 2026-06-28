@@ -1,6 +1,4 @@
 ---
 title: Publications
-aliases:
-- /publications/
-- /papers/
+singular: Publication
 ---

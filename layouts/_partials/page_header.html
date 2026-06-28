@@ -1,8 +1,5 @@
 <a class="contrast" href="{{ .Permalink }}" rel="bookmark">
-  {{- $sectionPage := site.GetPage (printf "/%s" .Section) -}}
-  {{- with $sectionPage }}
-  <small class="label">{{ .Title }}</small>
-  {{- end }}
+  {{- partial "section_label.html" . }}
   <h1>{{ .Title }}</h1>
 </a>
 {{- with .Params.subtitle }}
@@ -13,9 +10,9 @@
   {{- $siteAuthor := site.Params.author }}
   {{- $authors := .Params.authors | default (slice $siteAuthor) }}
   {{- if or (gt (len $authors) 1) (ne (index $authors 0) $siteAuthor) }}
-  <li>By
+  <li>{{ i18n "by" }}
     {{- range $i, $a := $authors }}
-    {{- if gt $i 0 }}{{ if eq $i (sub (len $authors) 1) }} and {{ else }}, {{ end }}{{ end }}
+    {{- if gt $i 0 }}{{ if eq $i (sub (len $authors) 1) }} {{ i18n "and" }} {{ else }}, {{ end }}{{ end }}
     {{- with index site.Taxonomies.authors ($a | lower) }}
     <a href="{{ .Page.Permalink }}">{{ $a }}</a>
     {{- end }}

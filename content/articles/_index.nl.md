@@ -1,0 +1,4 @@
+---
+title: Artikelen
+singular: Artikel
+---

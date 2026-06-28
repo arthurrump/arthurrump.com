@@ -1,7 +1,7 @@
 {{- /* Inline translation switcher nav */ -}}
 {{- if .Translations }}
 <nav>
-  Translations:
+  {{ i18n "translations" }}:
   <ul class="inline brackets">
     <li><a aria-current="page" href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang }}</a></li>
     {{- range .Translations }}

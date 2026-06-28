@@ -1,0 +1,10 @@
+{{- define "title" }}{{ site.Title }} / 404 Not Found{{ end -}}
+{{- define "content" }}
+<article>
+  <header>
+    <h1>404 Not Found</h1>
+  </header>
+  <p>De pagina die je zocht is niet gevonden.</p>
+  <p>Wil je in plaats daarvan naar de <a href="{{ .Site.Home.RelPermalink }}">homepagina</a> gaan?</p>
+</article>
+{{- end }}

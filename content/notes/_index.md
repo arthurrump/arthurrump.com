@@ -1,0 +1,4 @@
+---
+title: "Notes"
+singular: "Note"
+---

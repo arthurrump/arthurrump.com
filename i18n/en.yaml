@@ -1,3 +1,23 @@
-archives: Archives
+translations: Translations
+
+by: By
+and: and
+or: of
+
+read_more: Read more
+
+last_updated: Last updated
+find_all: Find all
+learn_more_about: Learn more about
+
+next: Next
+previous: Previous
+
+about_tag: About
+with_author: With
+
+ALT: ALT
+show_alt_text: Show alt text
+
 rss: RSS Feed
 atom: Atom Feed

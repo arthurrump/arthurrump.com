@@ -1,3 +1,23 @@
-archives: Archief
+translations: Vertalingen
+
+by: Door
+and: en
+or: of
+
+read_more: Lees meer
+
+last_updated: Laatste update
+find_all: Zie alle
+learn_more_about: Lees meer over
+
+next: Volgende
+previous: Vorige
+
+about_tag: Over
+with_author: Met
+
+ALT: ALT
+show_alt_text: Toon alt tekst
+
 rss: RSS-feed
 atom: Atom-feed

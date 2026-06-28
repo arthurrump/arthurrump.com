@@ -1,7 +1,7 @@
 {{ define "title" }}{{ site.Title }} / {{ .Title }}{{ end }}
 
 {{- define "content" }}
-<h2>With {{ .Title }}</h2>
+<h2>{{ i18n "with_author" }} {{ .Title }}</h2>
 {{ .Content }}
 {{- range .Pages }}
 {{ .Render "card" }}

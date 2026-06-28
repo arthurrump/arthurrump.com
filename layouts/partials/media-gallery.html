@@ -54,7 +54,7 @@
       {{- end }}
 
       {{- if $alt }}
-        <button class="alt-btn" type="button" aria-label="Show alt text" title="Show alt text">ALT</button>
+        <button class="alt-btn" type="button" aria-label="{{ i18n "show_alt_text" }}" title="{{ i18n "show_alt_text" }}">{{ i18n "ALT" }}</button>
         <div class="alt-text-overlay">{{ $alt }}</div>
       {{- end }}
     </div>
