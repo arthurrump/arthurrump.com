@@ -2,6 +2,7 @@
 @use "theme/code/schemes";
 @use "code";
 @use "inline-lists";
+@use "media-gallery";
 
 @font-face {
     font-display: block;
@@ -74,8 +75,9 @@ article {
     &.note .e-content {
         border: solid;
         border-width: 1px 6px 6px 1px;
-        margin: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal) 0;
         padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
+        margin: var(--pico-block-spacing-vertical) auto 0;
+        max-width: 700px;
 
         :last-child {
             margin-bottom: 0;
