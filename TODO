@@ -1,8 +1,10 @@
-- [x] Fix syntax highlighting, prefer original styling
-- [x] Sveltia only shows Pages correctly
-- [x] Separate collections for articles, projects, papers
-- [x] Properly setup notes
-- [x] Check Sveltia config, add it through nix instead of CDN
-- [x] Clean up Pelican remnants (eg .static, the theme)
-- [ ] Syndication to Mastodon, Bluesky, LinkedIn (ran from GitHub Actions?) _[deferred — needs API credentials/design]_
-- [ ] Search, e.g. with https://www.fusejs.io/ _[deferred — separate feature work]_
+- [ ] language tag in feeds (language in RSS, xml:lang in Atom)
+- [ ] Sidewide i18n switch
+  - Superscript selector on site title?
+  - How to deal with untranslated content? Or add links to English on Dutch list pages?
+- [ ] Submenu for all content types
+- [ ] Microformats for articles (publications, projects?)
+- [ ] Handle URL and #hashtag parsing in notes
+- [ ] Publications: metadata fields for file, doi, other links; add pdf to feeds as enclosure
+- [ ] Syndication to Mastodon, Bluesky, LinkedIn (ran from GitHub Actions?)
+- [ ] Search, e.g. with https://www.fusejs.io/ or any of https://gohugo.io/tools/search/#open-source
