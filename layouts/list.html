@@ -1,5 +1,7 @@
 {{- define "content" }}
-{{- block "content_title" . }}{{ end }}
+{{- block "content_title" . }}
+<h2>{{ .Title }}</h2>
+{{ end }}
 
 {{- range .Pages }}
 {{- partial "card.html" . }}
