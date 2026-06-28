@@ -105,10 +105,10 @@ collections:
       - { name: social_image, label: Social image, widget: image, required: false, i18n: false }
       - { name: body, label: Body, widget: markdown, i18n: true }
 
-  - name: papers
-    label: Papers
-    label_singular: Paper
-    folder: content/papers
+  - name: publications
+    label: Publications
+    label_singular: Publication
+    folder: content/publications
     path: "{{slug}}/index"
     media_folder: ""
     public_folder: ""

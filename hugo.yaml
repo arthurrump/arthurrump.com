@@ -25,7 +25,7 @@ taxonomies:
 permalinks:
   articles: /:slug/
   projects: /:slug/
-  papers: /:slug/
+  publications: /:slug/
   notes: /n/:contentbasename/
   tags: /tags/:slug/
 pagination:
@@ -96,6 +96,6 @@ params:
   feedDomain: https://arthurrump.com
   menuSections:
     - projects
-    - papers
+    - publications
   menuPages:
     - about

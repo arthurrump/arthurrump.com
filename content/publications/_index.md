@@ -1,5 +1,6 @@
 ---
-title: Papers
+title: Publications
 aliases:
 - /publications/
+- /papers/
 ---
