@@ -51,7 +51,9 @@
       <li>By
         {{- range $i, $a := $authors }}
         {{- if gt $i 0 }}{{ if eq $i (sub (len $authors) 1) }} and {{ else }}, {{ end }}{{ end }}
-        {{ $a -}}
+        {{- with index site.Taxonomies.authors ($a | lower) }}
+        <a href="{{ .Page.Permalink }}">{{ $a }}</a>
+        {{- end }}
         {{- end }}
       </li>
       {{- end }}
