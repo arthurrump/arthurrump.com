@@ -7,5 +7,8 @@
   </header>
   <main class="e-content">
     {{ .Content }}
+    {{ with .Params.media }}
+    {{ partial "media-gallery.html" (dict "media" . "page" $) }}
+    {{ end }}
   </main>
 </article>

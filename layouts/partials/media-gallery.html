@@ -1,0 +1,63 @@
+{{- $media := .media }}
+{{- $page := .page }}
+{{- $count := len $media -}}
+
+<div class="media-gallery {{if eq $count 1 }}single{{ else if math.ModBool $count 2 }}even{{else}}odd{{end}}">
+  {{- range $i, $item := $media }}
+    {{- $src := $item.src }}
+    {{- $alt := $item.alt | default "" }}
+    
+    {{- $isExternal := hasPrefix $src "http" }}
+    {{- $mediaRes := "" }}
+    {{- $finalSrc := $src }}
+    {{- $thumbnailSrc := $src }}
+
+    {{- if not $isExternal }}
+      {{- $mediaRes = $page.Resources.GetMatch $src }}
+      {{- if not $mediaRes }}
+        {{- $mediaRes = resources.Get $src }}
+      {{- end }}
+      {{- if $mediaRes }}
+        {{- $finalSrc = $mediaRes.RelPermalink }}
+        {{- $thumbnailSrc = $finalSrc }}
+      {{- end }}
+    {{- else }}
+      {{/* try remote if remote processing is needed, otherwise fallback to direct src */}}
+      {{- $mediaRes = resources.GetRemote $src }}
+    {{- end }}
+    
+    {{- $isAudio := or (strings.HasSuffix $src ".mp3") (strings.HasSuffix $src ".ogg") (strings.HasSuffix $src ".wav") (strings.HasSuffix $src ".flac") }}
+    {{- $isVideo := or (strings.HasSuffix $src ".mp4") (strings.HasSuffix $src ".webm") (strings.HasSuffix $src ".mov") -}}
+    
+    <div class="media-gallery-item">
+      {{- if $isAudio }}
+        <audio controls src="{{ $finalSrc }}" {{ with $alt }}title="{{ . }}"{{ end }}></audio>
+      {{- else if and $isVideo (eq $count 1) }}
+        <video controls src="{{ $finalSrc }}" class="media-video" data-full-src="{{ $finalSrc }}" {{ with $alt }}title="{{ . }}"{{ end }} muted playsinline></video>
+      {{- else if $isVideo }}
+        <video src="{{ $finalSrc }}" class="media-video" data-full-src="{{ $finalSrc }}" {{ with $alt }}title="{{ . }}"{{ end }} muted playsinline></video>
+        <div class="play-indicator"></div>
+      {{- else }}
+        {{/* Process Image */}}
+        {{- $isVector := false }}
+        
+        {{- if $mediaRes }}
+          {{- $isVector = eq $mediaRes.MediaType.SubType "svg" }}
+          {{- if and (not $isVector) (not (eq $mediaRes.MediaType.SubType "gif")) }}
+            {{/* Generate thumbnail */}}
+            {{- $thumbImg := $mediaRes.Fit "1200x1200" }}
+            {{- $thumbnailSrc = $thumbImg.RelPermalink }}
+          {{- end }}
+        {{- end -}}
+        
+        <img src="{{ $thumbnailSrc }}" alt="{{ $alt }}" data-full-src="{{ $finalSrc }}" class="media-image" loading="lazy" />
+      {{- end }}
+
+      {{- if $alt }}
+        <button class="alt-btn" type="button" aria-label="Show alt text" title="Show alt text">ALT</button>
+        <div class="alt-text-overlay">{{ $alt }}</div>
+      {{- end }}
+    </div>
+  {{- end }}
+</div>
+<script src="/theme/js/media-gallery.js" defer></script>
