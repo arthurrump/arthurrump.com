@@ -1,12 +1,12 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
 backend:
   name: github
   repo: arthurrump/arthurrump.com
   branch: main
 
-local_backend: true
-
-media_folder: static/images
-public_folder: /images
+media_folder: static/media
+public_folder: /media
 
 i18n:
   structure: multiple_files
@@ -15,6 +15,52 @@ i18n:
   omit_default_locale_from_file_path: true
 
 collections:
+  - name: notes
+    label: Notes
+    label_singular: Note
+    folder: content/notes
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    slug: "{{uuid_short}}"
+    summary: "{{body | trim | truncate(60, '...') }}"
+    i18n: true
+    fields:
+      - name: date
+        label: Date
+        widget: datetime
+        input_timezone: local
+        output_utc: true
+        default: "{{now}}"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        i18n: duplicate
+      - name: body
+        label: Note
+        widget: markdown
+        editor_components: []
+        linked_images: false
+        hint: "Use #hashtags to add tags"
+        i18n: true
+      - name: media
+        label: Media
+        widget: list
+        i18n: duplicate
+        field:
+          name: media
+          widget: object
+          i18n: duplicate
+          fields:
+            - { name: src, widget: file, accept: "image/*,video/*,audio/*", i18n: duplicate }
+            - { name: alt, widget: string, required: false, i18n: true }
+        required: false
+    view_groups:
+      - field: date
+        label: Date
+        pattern: '\d{4}-\d{2}-\d{2}'
+
+  - divider: true
+
   - name: articles
     label: Articles
     label_singular: Article
@@ -81,25 +127,7 @@ collections:
       - { name: social_image, label: Social image, widget: image, required: false, i18n: false }
       - { name: body, label: Body, widget: markdown, i18n: true }
 
-  - name: notes
-    label: Notes
-    label_singular: Note
-    folder: content/notes
-    path: "{{slug}}/index"
-    media_folder: ""
-    public_folder: ""
-    create: true
-    slug: "{{uuid_short}}"
-    summary: "{{body | trim | truncate(60, '...') }}"
-    fields:
-      - { name: date, label: Date, widget: datetime, input_timezone: local, output_utc: true, default: "{{now}}", format: "YYYY-MM-DDTHH:mm:ssZ" }
-      - { name: body, label: Note, widget: markdown, editor_components: [], linked_images: false }
-      - { name: images, label: Images, widget: list, field: { name: image, label: Image, widget: image }, required: false }
-      - { name: tags, label: Tags, widget: list, required: false }
-    view_groups:
-      - field: date
-        label: Date
-        pattern: '\d{4}-\d{2}-\d{2}'
+  - divider: true
 
   - name: pages
     label: Pages
