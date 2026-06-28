@@ -1,0 +1,18 @@
+<entry>
+  <title>{{ .Title | plainify | htmlEscape }}</title>
+  <link rel="alternate" href="{{ .Permalink | absURL }}"/>
+  <id>{{ partial "feed/id" . }}</id>
+  <published>{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}</published>
+  {{- with .Lastmod }}
+  <updated>{{ .Format "2006-01-02T15:04:05Z07:00" }}</updated>
+  {{- end }}
+  {{- range .Params.authors }}
+  <author><name>{{ . }}</name></author>
+  {{- end }}
+  <summary type="html">
+    {{- partial "feed/summary" . -}}
+  </summary>
+  <content type="html">
+    {{ .Content | transform.XMLEscape | safeHTML }}
+  </content>
+</entry>

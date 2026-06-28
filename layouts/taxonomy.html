@@ -2,6 +2,7 @@
 
 {{- define "content" }}
 <h2>{{ .Title }}</h2>
+{{ .Content }}
 <ul>
     {{ .Content }}
     {{ range .Data.Terms.ByCount }}

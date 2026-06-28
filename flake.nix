@@ -38,7 +38,7 @@
             (pkgs.writeShellScriptBin "develop" ''
               ${sassCmd} --watch &
               ${sveltiaCmd}
-              hugo server --buildDrafts --navigateToChanged
+              hugo server --buildDrafts --navigateToChanged "$@"
             '')
           ];
           inherit SASS_PATH;

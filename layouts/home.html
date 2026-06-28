@@ -1,9 +1,8 @@
 {{- define "content" }}
-{{- /* Combined stream, sorted by date desc */ -}}
-{{- $pages := where site.RegularPages "Section" "in" (slice "articles" "notes" "papers" "projects") }}
+{{- $pages := where site.RegularPages "Date" "ne" (time.AsTime nil) }}
 {{- $paginator := .Paginate $pages }}
 {{- range $paginator.Pages }}
-{{- partial "card.html" . }}
+{{- .Render "card" }}
 {{- end }}
 
 {{- partial "pagination.html" . }}

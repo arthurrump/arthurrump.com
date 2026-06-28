@@ -24,26 +24,6 @@
   </author>
   {{- end }}
   {{- range $pages }}
-  <entry>
-    <title>{{ .Title | plainify | htmlEscape }}</title>
-    <link rel="alternate" href="{{ .Permalink | absURL }}"/>
-    <id>tag:{{ strings.Replace (strings.ReplaceRE "^https?://" "" site.BaseURL) "/" "" }},{{ .Date.Format "2006-01-02" }}:{{ .Permalink | relURL }}</id>
-    <published>{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}</published>
-    {{- with .Lastmod }}
-    <updated>{{ .Format "2006-01-02T15:04:05Z07:00" }}</updated>
-    {{- end }}
-    {{- range .Params.authors }}
-      <author><name>{{ . }}</name></author>
-    {{- end }}
-    <summary type="html">
-      {{ .Summary | transform.XMLEscape | safeHTML }}
-      {{- if .Truncated }}
-      &lt;p&gt;&lt;a href="{{ .Permalink | absURL }}"&gt;Read more...&lt;/a&gt;&lt;/p&gt;
-      {{- end }}
-    </summary>
-    <content type="html">
-      {{ .Content | transform.XMLEscape | safeHTML }}
-    </content>
-  </entry>
+  {{ .Render "entry" }}
   {{- end }}
 </feed>

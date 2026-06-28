@@ -1,13 +1,5 @@
 {{- define "title" }}{{ site.Title }} / Note: {{ .Content | plainify | truncate 16 }} {{ end -}}
 
 {{- define "content" }}
-<article class="h-entry note">
-  <header>
-    <small class="label">Note</small>
-    <small><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "2006-01-02 15:04" }}</time></small>
-  </header>
-  <div class="e-content p-name">
-    {{ .Content }}
-  </div>
-</article>
+{{ .Render "card" }}
 {{- end }}

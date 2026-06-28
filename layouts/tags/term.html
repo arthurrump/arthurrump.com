@@ -3,7 +3,7 @@
 {{- define "content" }}
 <h2>About {{ .Title }}</h2>
 {{- range .Pages }}
-{{- partial "card.html" . }}
+{{- .Render "card" }}
 {{- end }}
 {{- partial "pagination.html" . }}
 {{- end }}

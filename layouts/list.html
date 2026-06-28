@@ -1,10 +1,8 @@
 {{- define "content" }}
-{{- block "content_title" . }}
 <h2>{{ .Title }}</h2>
-{{ end }}
 
 {{- range .Pages }}
-{{- partial "card.html" . }}
+{{ .Render "card" }}
 {{- end }}
 
 {{- partial "pagination.html" . }}

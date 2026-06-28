@@ -35,29 +35,7 @@
 {{- define "content" }}
 <article>
   <header>
-    {{- $sectionPage := site.GetPage (printf "/%s" .Section) }}
-    {{- with $sectionPage }}
-    <small class="label">{{ .Title }}</small>
-    {{- end }}
-    <h1><a class="contrast" href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a></h1>
-    {{- with .Params.subtitle }}
-    <p class="subtitle">{{ . }}</p>
-    {{- end }}
-    <ul class="inline inline-slash">
-      <li><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "2006-01-02" }}</time></li>
-      {{- $siteAuthor := site.Params.author }}
-      {{- $authors := .Params.authors | default (slice $siteAuthor) }}
-      {{- if or (gt (len $authors) 1) (ne (index $authors 0) $siteAuthor) }}
-      <li>By
-        {{- range $i, $a := $authors }}
-        {{- if gt $i 0 }}{{ if eq $i (sub (len $authors) 1) }} and {{ else }}, {{ end }}{{ end }}
-        {{- with index site.Taxonomies.authors ($a | lower) }}
-        <a href="{{ .Page.Permalink }}">{{ $a }}</a>
-        {{- end }}
-        {{- end }}
-      </li>
-      {{- end }}
-    </ul>
+    {{- partial "page_header.html" . }}
     {{- partial "translations.html" . }}
   </header>
   {{ .Content }}
@@ -66,6 +44,7 @@
       {{- with .Params.modified }}
       <li>Last updated: <time datetime="{{ . | time.Format "2006-01-02T15:04:05Z07:00" }}">{{ . | time.Format "2006-01-02" }}</time></li>
       {{- end }}
+      {{- $sectionPage := site.GetPage (printf "/%s" .Section) -}}
       {{- with $sectionPage }}
       <li>Find all <a href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{- end }}

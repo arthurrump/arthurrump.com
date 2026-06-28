@@ -1,0 +1,9 @@
+<article>
+  <header>
+    {{- partial "page_header.html" . }}
+  </header>
+  {{ .Summary }}     
+  {{ if .Truncated }}
+    <a class="readmore" href="{{ .RelPermalink }}">Read more -></a>
+  {{ end }}
+</article>
