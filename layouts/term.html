@@ -1,9 +1,9 @@
 {{ define "title" }}{{ site.Title }} / {{ .Title }}{{ end }}
 
 {{- define "content" }}
-<h2>About {{ .Title }}</h2>
+<h2>{{ block "title-prefix" . }}{{ end }}{{ .Title }}</h2>
 {{- range .Pages }}
-{{- partial "card.html" . }}
+{{- partial "card.html" }}
 {{- end }}
 {{- partial "pagination.html" . }}
 {{- end }}

@@ -20,6 +20,7 @@ languages:
 # Taxonomies
 taxonomies:
   tag: tags
+  author: authors
 # URL patterns
 permalinks:
   articles: /:slug/
