@@ -1,0 +1,16 @@
+{{ define "title" }}{{ site.Title }} / {{ .Title }}{{ end }}
+
+{{- define "content" }}
+<h2>{{ .Title }}</h2>
+{{ .Content }}
+<dl>
+    {{- $pages := where site.RegularPages "Date" "ne" (time.AsTime nil) }}
+    {{- range $pages }}
+    <dt>{{ .Date | time.Format "2006-01-02" }}</dt>
+    <dd>
+        {{- partial "section_label.html" . }}
+        <a href="{{ .Permalink }}">{{ or .Title (.Content | plainify | truncate 16) }}</a>
+    </dd>
+    {{- end }}
+</dl>
+{{- end }}
