@@ -1,7 +1,5 @@
 - [ ] language tag in feeds (language in RSS, xml:lang in Atom)
-- [ ] Sidewide i18n switch
-  - Superscript selector on site title?
-  - How to deal with untranslated content? Or add links to English on Dutch list pages?
+- [x] Sidewide i18n switch
 - [ ] Submenu for all content types
 - [ ] Microformats for articles (publications, projects?)
 - [ ] Handle URL and #hashtag parsing in notes

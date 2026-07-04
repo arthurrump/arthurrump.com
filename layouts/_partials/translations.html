@@ -1,11 +1,9 @@
 {{- /* Inline translation switcher nav */ -}}
 {{- if .Translations }}
-<nav>
-  {{ i18n "translations" }}:
+<nav class="translations">
   <ul class="inline brackets">
-    <li><a aria-current="page" href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang }}</a></li>
-    {{- range .Translations }}
-    <li><a href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang }}</a></li>
+    {{- range (sort (append . .Translations) "Lang") }}
+    <li><a {{ if eq .Permalink $.Permalink }}aria-current="page" {{ end -}} href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang }}</a></li>
     {{- end }}
   </ul>
 </nav>

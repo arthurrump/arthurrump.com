@@ -23,9 +23,12 @@
   <body>
     {{- block "body" . }}
     <header>
-      {{- block "header" . }}
-      <a href="{{ "/" | relLangURL }}">{{ site.Title }}</a>
-      {{- end }}
+      <div class="logo">
+        {{- block "header" . }}
+        <a href="{{ "/" | relLangURL }}">{{ site.Title }}</a>
+        {{- partial "translations.html" . }}
+        {{- end }}
+      </div>
       {{- block "nav" . }}
       {{- partial "nav.html" (dict "Page" .) }}
       {{- end }}

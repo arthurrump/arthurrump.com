@@ -1,7 +1,5 @@
 <article>
-  <header>
-    {{- partial "page_header.html" . }}
-  </header>
+  {{- partial "page_header.html" . }}
   {{ .Summary }}     
   {{ if .Truncated }}
     <a class="readmore" href="{{ .RelPermalink }}">{{ i18n "read_more" }} -></a>

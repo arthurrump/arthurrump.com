@@ -35,7 +35,7 @@ footer a.contrast {
     }
 }
 
-body>header {
+body > header {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -46,18 +46,27 @@ body>header {
     white-space: nowrap;
     overflow-y: scroll;
 
-    nav {
+    > .logo {
+        display: flex;
+        flex-direction: column;
+
+        > a {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .translations {
+            font-size: .875rem;
+        }
+    }
+
+    > nav {
         margin-left: calc(1.5 * var(--pico-block-spacing-horizontal));
         text-align: right;
     }
-
-    >a {
-        font-size: 1.4rem;
-        font-weight: 600;
-    }
 }
 
-body>footer {
+body > footer {
     margin-top: var(--spacing-vertical);
     display: flex;
     justify-content: flex-end;

@@ -34,10 +34,7 @@
 
 {{- define "content" }}
 <article>
-  <header>
-    {{- partial "page_header.html" . }}
-    {{- partial "translations.html" . }}
-  </header>
+  {{- partial "page_header.html" . }}
   {{ .Content }}
   <footer>
     <ul class="inline inline-slash">
