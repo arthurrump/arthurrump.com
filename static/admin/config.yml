@@ -12,6 +12,7 @@ i18n:
   structure: multiple_files
   locales: [en, nl]
   default_locale: en
+  initial_locales: default
   omit_default_locale_from_file_path: true
 
 collections:
