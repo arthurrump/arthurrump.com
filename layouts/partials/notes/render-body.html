@@ -1,0 +1,16 @@
+{{- $page := .page -}}
+{{- $body := .body -}}
+
+{{- range findRE `(^|[^[:alnum:]_/])#[\pL\pN][\pL\pN_-]*` $body -}}
+  {{- $match := . -}}
+  {{- $prefix := replaceRE `^(.)?.*` `$1` . -}}
+  {{- $tag := replaceRE `^.*(#.*)$` `$1` . -}}
+  {{- $name := replaceRE `^#` "" $tag | replaceRE `_` " " | replaceRE `([\p{Ll}\p{Nd}])([\p{Lu}])` "$1 $2" | replaceRE `([\p{Lu}]+)([\p{Lu}][\p{Ll}])` "$1 $2" -}}
+  {{- with index site.Taxonomies.tags (lower $name) -}}
+    {{- if gt (len .Pages) 0 -}}
+      {{- $body = replace $body $match (printf "%s[%s](%s)" $prefix $tag .Page.Permalink) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return ($page.RenderString (dict "display" "block") $body) -}}

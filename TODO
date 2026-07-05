@@ -1,8 +1,8 @@
-- [ ] language tag in feeds (language in RSS, xml:lang in Atom)
 - [x] Sidewide i18n switch
 - [ ] Submenu for all content types
 - [ ] Microformats for articles (publications, projects?)
-- [ ] Handle URL and #hashtag parsing in notes
+- [x] Handle URL and #hashtag parsing in notes
+- [ ] Handle mentions in notes
 - [ ] Publications: metadata fields for file, doi, other links; add pdf to feeds as enclosure
 - [ ] Syndication to Mastodon, Bluesky, LinkedIn (ran from GitHub Actions?)
 - [ ] Search, e.g. with https://www.fusejs.io/ or any of https://gohugo.io/tools/search/#open-source

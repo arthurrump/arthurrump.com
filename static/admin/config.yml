@@ -43,6 +43,9 @@ collections:
         linked_images: false
         hint: "Use #hashtags to add tags"
         i18n: true
+      - name: tags
+        widget: hidden
+        i18n: true
       - name: media
         label: Media
         widget: list
