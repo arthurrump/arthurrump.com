@@ -190,11 +190,14 @@ Notes:
 
 <div class="accent" style="display: grid; width: 100%; grid-template-columns: 1fr 1fr 1fr; justify-items: center; font-weight: bold">
 
-<img class="fragment" src="assets/ai21.png">
+<img class="fragment" data-fragment-index="1" src="assets/ai21.png">
 
-<img class="fragment" src="assets/ai22.png">
+<img class="fragment" data-fragment-index="2" src="assets/ai22.png">
 
-<img class="fragment" src="assets/ai23.png">
+<div class="r-stack">
+<img class="fragment" data-fragment-index="3" src="assets/ai23.png">
+<img class="fragment" data-fragment-index="4" src="assets/ai_csn.png">
+</div>
 
 0-10 jaar
 
@@ -205,7 +208,8 @@ Notes:
 </div>
 
 
-Afbeeldingen geëxtrudeerd met ChatGPT 5.6 Luna
+Afbeeldingen geëxtrudeerd met ChatGPT 5.6 Luna<br>
+<span class="fragment" data-fragment-index="4">Still uit Little Britain, BBC</span>
 
 <!-- .element: class="footnote" -->
 
