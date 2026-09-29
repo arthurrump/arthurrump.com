@@ -24,14 +24,14 @@ Het Lerarencongres 2026<br>
 
 **Arthur Rump** <!-- .element: class="accent" -->
 
-Docent bij\
-Q-vakken filosofie en\
-maatschappijwetenschappen
+Docent filosofie en\
+maatschappijwetenschappen\
+bij de Q-vakken
 
 <!-- .element: style="font-size: .8em" -->
 
-Docent bij\
-Q-vak informatica
+Docent informatica\
+bij de Q-vakken
 
 <!-- .element: style="font-size: .8em" -->
 
@@ -39,17 +39,37 @@ Q-vak informatica
 
 ---
 
+<!-- .slide: style="text-align: left" -->
+
+## Filosofie van de<br>Nieuwe Technologie
+
+<!-- .element: class="font-size: 1.6em" -->
+
+&nbsp;
+
+- Q-vakken
+- De module
+- Scenariodenken
+- Afsluiting en vragen
+
+<!-- .element: style="font-size: 1.6em" -->
+
+Notes:
+Best een vol programma, dus bewaar je vragen voor het einde (schrijf ze op!).
+
+***
+
 <!-- .slide: data-auto-animate -->
 
 <img height="360px" alt="Logo Q-vakken" src="assets/QUA_LOGOS_PROGRAMMA_plain.svg">
 
 <div class="fragment row" style="align-items: start">
 
-<b style="font-size: 2em" class="accent">~200</b>\
+<b style="font-size: 2em" class="accent">228</b>\
 leerlingen bij\
 informatica
 
-<b style="font-size: 2em" class="accent">~70</b>\
+<b style="font-size: 2em" class="accent">46</b>\
 leerlingen bij\
 filosofie
 
@@ -60,8 +80,6 @@ scholen
 
 Notes:
 Extra keuzeaanbod dat scholen niet zelf aan kunnen bieden, bijvoorbeeld filosofie en informatica, maar ook maatschappijwetenschappen, Spaans, wiskunde C en D, bedrijfseconomie.
-
-TODO: aantallen
 
 ---
 
@@ -92,17 +110,18 @@ dagmodules
 
 Notes:
 
-eigen regie: keuzevrijheid en eigenaarschap
-
-modulair: afgebakende en gefocuste leertrajecten, afgerond is afgerond
-
-flexibel: een enkele module volgen, vak op een hoger niveau, starten in klas 3, eerder afronden
+focus op modulair: afgebakende eenheden, waar leerlingen zelf uit kunnen kiezen
 
 fvdt is een dagmodule: van 9:00 tot 20:00 gaan we met een gemixte groep informatica- en filosofieleerlingen aan de slag
 
 ***
 
 ## Filosofie van de Technologie
+
+Notes:
+Wat is het, hoe is dat zo gekomen?
+
+&rarr; ons doel, volgende slide
 
 ---
 
@@ -115,26 +134,6 @@ fvdt is een dagmodule: van 9:00 tot 20:00 gaan we met een gemixte groep informat
 Foto's door [Massimiliano Morosinotto](https://unsplash.com/@therawhunter?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) via [Unsplash](https://unsplash.com/photos/gray-mountain-during-daytime-photo-3i5PHVp1Fkw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) en [Marek Piwnicki](https://unsplash.com/@marekpiwnicki?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) via [Unsplash](https://unsplash.com/photos/a-man-sitting-on-top-of-a-mountain-with-a-backpack-Foj3x1-MRv0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 <!-- .element: class="footnote" -->
-
----
-
-<!-- .slide: style="font-size: .8em" -->
-
-### Dagprogramma
-
-<table>
-<tr><td>9:00 </td><td>Kennismaking en opstart</td></tr>
-<tr><td>9:30 </td><td>Voorbereiding over autonome wapens</td></tr>
-<tr style="font-style: italic"><td>10:30</td><td>Koffiepauze</td></tr>
-<tr><td>10:45</td><td>Onderwerpen kiezen</td></tr>
-<tr><td>11:00</td><td>Denktank: onderzoek</td></tr>
-<tr style="font-style: italic"><td>12:30</td><td>Lunchpauze</td></tr>
-<tr><td>13:00</td><td>Denktank: scenario's en advies</td></tr>
-<tr><td>16:30</td><td>Eerste presentaties </td></tr>
-<tr style="font-style: italic"><td>17:30</td><td>Avondeten (en opruimen!)</td></tr>
-<tr><td>18:30</td><td>Laatste presentaties</td></tr>
-<tr><td>19:45</td><td>Afsluiting</td></tr>
-</table>
 
 ---
 
@@ -181,6 +180,8 @@ Notes:
 - 0-10 jaar: Bij een test van de cybersecurity vaardigheden van een nieuw AI-model zijn alle extra beveiligingen uitgeschakeld, om een goed beeld te kunnen krijgen van wat deze agent kan. Door een onzorgvuldig geformuleerde opdracht volgt de AI een typisch science fiction-scenario en begint andere agents te rekruteren. Dit wordt niet opgemerkt, omdat de testers de agent weken laten draaien, zonder naar de logs te kijken. Om echt te laten zien wat die kan, valt de AI belangrijke infrastructuur aan. Dat begint bij de controlesystemen voor openbaar vervoer, stoplichten en bruggen, maar gaat van daaruit verder naar watervoorziening en het elektriciteitsnet.
 - 10-50 jaar: We zijn de controle op AI-agents kwijtgeraakt na een zoveelste uit de hand gelopen experiment. Na de vorige incidenten zijn mensen iets voorzichtiger geworden, maar goed uitleggen wat wel en niet de opdracht is, blijkt lastiger dan gedacht. Gelukkig houden de agents zich vooral bezig met infrastructuur en zijn ze niet direct bezig om de mensheid uit te roeien. Grote infrastructuur staat daardoor chronisch onder druk, dus vallen mensen terug op lokale en meer decentrale oplossingen. Als iets gehackt wordt door een AI, dan wordt dat deel uitgezet en weer opnieuw opgebouwd. Dit alles is extra uitdagend, omdat mensen in de tussentijd hebben afgeleerd om zelf na te denken.
 - 200 jaar: Het internet zoals wij het kennen bestaat niet meer, grote techbedrijven bestaan niet meer: verbondenheid levert problemen op, dus we gebruiken veel minder technologie. De technologie die wel gebruikt wordt, is iets wat mensen zelf voor eigen gebruik maken. Met hulp van kleine, lokale AI-modellen is dat wel veel makkelijker geworden. Zodra iemand echter iets groters probeert te bouwen, wordt dat door de AI-overlords vrijwel direct neergehaald.
+
+Bij wie roept dit nu al allerlei vragen en ideeën op? Houd dat vast, gaan we straks mee aan de slag, maar dit is niet het enige scenario.
 
 ---
 
@@ -241,7 +242,9 @@ Ons advies: zet in op controlemechanismes en een professionele mindset met begri
 ## Jullie aan zet!
 
 Notes:
-In groepen van 3-4 personen. Jullie krijgen een werkblad en een blaadje met drie onderwerpen. Kies een onderwerp waarover in de groep al wat kennis aanwezig is.
+In groepen; wie is er alleen binnen gekomen? &rarr; kijk om je heen, zorg dat deze mensen bij een groep aansluiten
+
+Groepen van 3-4 personen. Jullie krijgen een werkblad en een blaadje met drie onderwerpen. Kies een onderwerp waarover in de groep al wat kennis aanwezig is.
 
 ---
 
@@ -263,6 +266,42 @@ Wat zijn de scenario's voor *één* van jullie onderwerpen?
 
 Notes:
 Ga met elkaar in discussie en bedenk twee mogelijke scenario's voor jullie onderwerp.
+
+---
+
+<!-- .slide: class="full-height" data-auto-animate style="font-size: .8em;" -->
+
+## Jullie aan zet!
+
+<div class="columns">
+<div>
+
+Wat zijn de scenario's voor *één* van jullie onderwerpen? 
+
+<div class="accent" style="display: flex; flex-direction: column; justify-content: space-around; font-weight: bold;">
+
+0-10 jaar
+
+10-50 jaar
+
+200 jaar
+
+</div>
+
+</div>
+<div style="font-size: .8em">
+
+### Jullie advies
+
+Geef een pitch in vier zinnen:
+
+1. Wat is jullie onderwerp?
+2. Wat is het grootste gevaar?
+3. Wat is de grootste kans?
+4. Wat is jullie dringende advies?
+
+</div>
+</div>
 
 ---
 
@@ -385,3 +424,30 @@ Foto door [Marek Piwnicki](https://unsplash.com/@marekpiwnicki?utm_source=unspla
 
 Notes:
 Dank voor uw aandacht. Zijn er nog vragen?
+
+***
+
+<!-- .slide: data-visibility="uncounted" -->
+
+## Bonus slides
+
+---
+
+<!-- .slide: data-visibility="uncounted" style="font-size: .8em" -->
+
+### Dagprogramma
+
+<table>
+<tr><td>9:00 </td><td>Kennismaking en opstart</td></tr>
+<tr><td>9:30 </td><td>Voorbereiding over autonome wapens</td></tr>
+<tr style="font-style: italic"><td>10:30</td><td>Koffiepauze</td></tr>
+<tr><td>10:45</td><td>Onderwerpen kiezen</td></tr>
+<tr><td>11:00</td><td>Denktank: onderzoek</td></tr>
+<tr style="font-style: italic"><td>12:30</td><td>Lunchpauze</td></tr>
+<tr><td>13:00</td><td>Denktank: scenario's en advies</td></tr>
+<tr><td>16:30</td><td>Eerste presentaties </td></tr>
+<tr style="font-style: italic"><td>17:30</td><td>Avondeten (en opruimen!)</td></tr>
+<tr><td>18:30</td><td>Laatste presentaties</td></tr>
+<tr><td>19:45</td><td>Afsluiting</td></tr>
+</table>
+
