@@ -1,5 +1,5 @@
 ---
-title: "Automation Support for Giving Feedback in Learning Programming by Doing"
+title: "How Computer Science Teachers Assess Open-ended Programming Assignments"
 subtitle: "Conference paper for Koli Calling 2026"
 authors: [ "Arthur Rump", "Angelika Mader", "Vadim Zaytsev" ]
 category: Publications
