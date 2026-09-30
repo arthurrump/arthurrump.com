@@ -228,8 +228,6 @@ Notes:
 reguleer en denk na over de gevolgen van tech\
 tegelijkertijd: bouw aan een weerbare samenleving
 
-<!-- .element: class="fragment" -->
-
 Notes:
 Van geen van beide scenario's worden we heel blij, maar er zitten goede elementen in: in het eerste scenario komen we tot een eigenwijze samenleving die ons aanspreekt, maar de crisis die daartoe leidt is niet fraai. De tweede heeft voordelen, maar wordt dodelijk saai met niets om voor te leven.
 
@@ -242,7 +240,7 @@ Ons advies: zet in op controlemechanismes en een professionele mindset met begri
 ## Jullie aan zet!
 
 Notes:
-In groepen; wie is er alleen binnen gekomen? &rarr; kijk om je heen, zorg dat deze mensen bij een groep aansluiten
+In groepen 2-4; wie is er alleen binnen gekomen? &rarr; kijk om je heen, zorg dat deze mensen bij een groep aansluiten
 
 Groepen van 3-4 personen. Jullie krijgen een werkblad en een blaadje met drie onderwerpen. Kies een onderwerp waarover in de groep al wat kennis aanwezig is.
 
@@ -301,6 +299,10 @@ Geef een pitch in vier zinnen:
 4. Wat is jullie dringende advies?
 
 </div>
+</div>
+
+<div style="position: absolute; top: 0; right: 0; margin: 12px; font-size: 2.5rem; width: unset;">
+⏰ 10 min
 </div>
 
 ---
@@ -412,8 +414,9 @@ Karen van Wichen\
 <a style="color: #fff" href="mailto:k.vanwichen@quadraam.nl">k.vanwichen@quadraam.nl</a>
 
 Arthur Rump\
-<a style="color: #fff" href="mailto:a.rump@quadraam.nl">a.rump@quadraam.nl</a>\
-<a style="color: #fff" href="https://arthurrump.com">arthurrump.com</a>
+<a style="color: #fff" href="mailto:a.rump@quadraam.nl">a.rump@quadraam.nl</a>
+
+<a href="https://arthurrump.com/lerarencongres2026"><img style="margin-bottom: 0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAAAAAAYQGIGAAABv0lEQVR42u3ayxKCMAxAUf7/p3XngoFwUwsm9bJyFNrjojSPbq8O16ZSpUqVKtdUbtfX7ubDAT8/gAHwbCpVNlCeL7ODX3cDngJP/wOdTaXKNsqjSQbXbvwGALOpVLmcMmbRx1Sq/EclXcWnLwSVKtdUgqwr3itp7nZjFKxS5eNKUG2Y+OnGCoxKlU8qcZE7HBA88Uj1X6XKJ5U0MqTB40XIeD2HSpVtlLEXVNPztT+Q46lU2UGZX8W0XQV6WwM7pEqVdZSDaxzXJ9KlE5UqGyoHm1T0DRAncLkcUqXKssr8jgbSsUlRsEqVdZTxjhaHkaBhSwPZgShYpcpfK1M7GtnWBjtQIL5UqbKYMp4OpGj08CpNA1WqbKiMw75v6up0qNyZQZUqKypT39HDeWBPHeg8q1RZQpnaA2ldPd8UVqmyq5L2mGiKRhvF5MStSpXFlF9XNGgBENQXVarspUzV71ILmJbecXypUmVF5WCvlgaU088MqlRZTJk6QJQ/Jz4pClapsqmSFuHzt6hUuboyte7jP0cCWZUquyhTlUEgp/ncjXV1lSrvV07s0KZyt1xPV6XKYsrCl0qVKlWqXEn5BgsUxcypvtKZAAAAAElFTkSuQmCC"></a>
 
 </div>
 </div>
