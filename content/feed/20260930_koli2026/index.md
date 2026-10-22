@@ -13,3 +13,7 @@ Links:
 - [Paper (DOI)](https://doi.org/10.1145/3856208.3856247)
 - [Supplementary materials (4TU.ResearchData)](https://doi.org/10.4121/c1c947eb-279c-49a7-ad7e-56d18d3bdfc9)
   - [Online version of the coding report]({static}/koli2026/coding_report)
+
+Slides:
+
+- [As presented at the FMT Colloquium on 2026-10-22]({static}/koli2026/slides/fmt-colloquium.html)
