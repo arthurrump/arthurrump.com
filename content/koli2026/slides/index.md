@@ -365,7 +365,7 @@ challenge: clear indicators are helpful (possibly for consistency), but there ar
 
 ***
 
-<!-- .slide: data-auto-animate data-auto-animate-id="conclusions" data-background-gradient="linear-gradient(to bottom right in oklab, color-mix(in oklab, #014f65, #302B63 91%), #302B63)" -->
+<!-- .slide: data-background-gradient="linear-gradient(to bottom right in oklab, color-mix(in oklab, #014f65, #302B63 91%), #302B63)" -->
 
 ## conclusions
 
@@ -380,24 +380,21 @@ design challenge: specifics, without overwhelming; keeping a shared base between
 
 ---
 
-<!-- .slide: data-auto-animate data-auto-animate-id="conclusions" data-background-gradient="linear-gradient(to bottom right in oklab, #302B63, #000)" -->
+<!-- .slide: style="text-align: left" data-background-gradient="linear-gradient(to bottom right in oklab, #302B63, #000)" -->
 
-<div class="columns" style="align-items: center">
-<div>
+<div style="display: grid; grid-template-columns: auto 1fr">
 
-## conclusions
+**Arthur Rump**\
+[arthur.rump@utwente.nl](mailto:arthur.rump@utwente.nl) <!-- .element: style="color: var(--r-main-color)" -->
 
-rubrics are not always rubrics
-
-</div>
-<div style="text-align: right">
-
+<div style="text-align: right;">
 
 **More in the paper:** \
+why open-ended?\
 how rubrics are used\
 formative vs summative\
 what is assessed?\
-general experience\
+general experience:\
 consistency, judgement and workload
 
 &rarr; [arthurrump.com/koli2026](https://arthurrump.com/koli2026) <!-- .element: style="color: var(--r-main-color)" -->
